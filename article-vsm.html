@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Как да направим VSM за 1 ден — LeanHab</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>:root {
+  --black: #0a0a0a;
+  --dark: #111111;
+  --mid: #0e0e0e;
+  --card: #161616;
+  --white: #f5f3ee;
+  --gray: #888;
+  --accent: #d4a843;
+  --green: #2a5f4f;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 4rem;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212,168,67,0.12);
+}
+.logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--white); text-decoration: none; letter-spacing: -0.02em; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.btn-nav { background: var(--accent); color: var(--black); padding: 0.6rem 1.4rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+.btn-nav:hover { opacity: 0.85; }
+
+/* HERO */
+.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 5rem; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(42,95,79,0.2) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,168,67,0.07) 0%, transparent 60%); }
+.hero-grid { position: absolute; inset: 0; opacity: 0.03; background-image: linear-gradient(rgba(245,243,238,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,238,0.5) 1px, transparent 1px); background-size: 60px 60px; }
+.hero-content { position: relative; z-index: 1; max-width: 850px; padding: 4rem 2rem; }
+.hero-tag { display: inline-block; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(212,168,67,0.35); padding: 0.4rem 1rem; margin-bottom: 2rem; }
+.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-sub { font-size: 1.1rem; color: var(--gray); line-height: 1.7; max-width: 500px; margin-bottom: 2.5rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+.btn-primary { background: var(--accent); color: var(--black); padding: 0.9rem 2.2rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.85; }
+.btn-outline { border: 1px solid rgba(245,243,238,0.25); color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+.stat-label { font-size: 0.78rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* SECTIONS */
+.section-dark { padding: 6rem 0; background: var(--black); }
+.section-mid { padding: 6rem 0; background: var(--mid); }
+.section-green { padding: 6rem 0; background: var(--green); }
+.section-tag { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+.section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+.section-title em { font-style: normal; color: var(--accent); }
+.section-intro { color: var(--gray); line-height: 1.7; max-width: 580px; margin-bottom: 3.5rem; font-size: 1rem; }
+
+/* GRIDS */
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+
+/* CARDS */
+.card { background: var(--card); padding: 2.2rem; border: 1px solid rgba(255,255,255,0.05); border-top: 2px solid rgba(212,168,67,0.2); transition: border-top-color 0.3s, transform 0.3s; }
+.card:hover { border-top-color: var(--accent); transform: translateY(-3px); }
+.card-accent { background: rgba(212,168,67,0.06); border-top-color: var(--accent); }
+.card-num { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 1.2rem; }
+.card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
+.card p { color: var(--gray); line-height: 1.7; font-size: 0.92rem; }
+
+/* TIMELINE */
+.timeline { margin-top: 3rem; position: relative; padding-left: 2rem; border-left: 1px solid rgba(212,168,67,0.2); }
+.tl-item { display: flex; gap: 2.5rem; margin-bottom: 3rem; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: -2.4rem; top: 0.4rem; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--mid); }
+.tl-year { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: rgba(212,168,67,0.25); min-width: 80px; line-height: 1; }
+.tl-body h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.tl-body p { color: var(--gray); font-size: 0.92rem; line-height: 1.7; max-width: 500px; }
+
+/* TOOLS */
+.tool-card { background: var(--card); padding: 2rem; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.3s, transform 0.3s; }
+.tool-card:hover { border-color: rgba(212,168,67,0.3); transform: translateY(-3px); }
+.tool-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.tool-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.6rem; }
+.tool-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.65; margin-bottom: 1rem; }
+.tag { display: inline-block; background: rgba(42,95,79,0.25); color: #6fba9f; padding: 0.2rem 0.7rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* SERVICES */
+.service-card { background: rgba(255,255,255,0.05); padding: 2.2rem; border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s; }
+.service-card:hover { background: rgba(255,255,255,0.09); }
+.service-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.8rem; }
+.service-card p { color: rgba(245,243,238,0.7); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.2rem; }
+.service-detail { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--white); }
+
+/* BLOG */
+.blog-card { display: block; background: var(--card); border: 1px solid rgba(255,255,255,0.05); text-decoration: none; color: var(--white); transition: transform 0.3s, border-color 0.3s; }
+.blog-card:hover { transform: translateY(-4px); border-color: rgba(212,168,67,0.25); }
+.blog-img { height: 180px; display: flex; align-items: center; justify-content: center; }
+.blog-img span { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(255,255,255,0.12); letter-spacing: -0.05em; }
+.blog-img-1 { background: linear-gradient(135deg, #1a2f28, #2a5f4f); }
+.blog-img-2 { background: linear-gradient(135deg, #2a1f0a, #6b4e1a); }
+.blog-img-3 { background: linear-gradient(135deg, #0a1a2f, #1a3a6b); }
+.blog-body { padding: 1.6rem; }
+.blog-cat { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+.blog-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.7rem; }
+.blog-card p { color: var(--gray); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem; }
+.blog-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: var(--gray); }
+.read-more { color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 600; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
+.contact-info > p { color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; }
+.contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+.ci-icon { font-size: 1.2rem; width: 40px; height: 40px; background: rgba(212,168,67,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-item div { display: flex; flex-direction: column; gap: 0.2rem; }
+.contact-item strong { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; }
+.contact-item span { color: var(--gray); font-size: 0.88rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.form-group label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
+.form-group input, .form-group textarea, .form-group select { background: var(--card); border: 1px solid rgba(255,255,255,0.08); color: var(--white); padding: 0.85rem 1.1rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+.form-group select option { background: var(--card); }
+.btn-submit { background: var(--accent); color: var(--black); border: none; padding: 1rem 2.5rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; }
+.btn-submit:hover { opacity: 0.85; }
+
+/* FOOTER */
+footer { background: #070707; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-copy { color: var(--gray); font-size: 0.8rem; }
+
+/* ARTICLE PAGE */
+.article-page { padding-top: 5rem; }
+.article-hero { height: 320px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 6rem; font-weight: 800; color: rgba(255,255,255,0.1); letter-spacing: -0.05em; }
+.article-container { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+.back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); text-decoration: none; font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; border: 1px solid rgba(212,168,67,0.3); padding: 0.6rem 1.2rem; margin-bottom: 3rem; transition: background 0.2s; }
+.back-link:hover { background: rgba(212,168,67,0.08); }
+.article-cat { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+.article-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
+.article-meta { color: var(--gray); font-size: 0.82rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.article-body h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; }
+.article-body p { color: rgba(245,243,238,0.8); line-height: 1.85; font-size: 1rem; margin-bottom: 1.1rem; }
+.article-body ul { color: rgba(245,243,238,0.8); line-height: 1.85; font-size: 1rem; padding-left: 1.5rem; margin-bottom: 1.2rem; }
+.article-body ul li { margin-bottom: 0.5rem; }
+.article-highlight { background: rgba(212,168,67,0.07); border-left: 3px solid var(--accent); padding: 1.4rem 1.8rem; margin: 2rem 0; }
+.article-highlight p { color: var(--white); margin: 0; }
+.article-step { display: flex; gap: 1.5rem; background: var(--card); padding: 1.4rem; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.05); }
+.step-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: rgba(212,168,67,0.25); line-height: 1; min-width: 48px; }
+.step-body h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.step-body p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; margin: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-stats { gap: 2rem; }
+  footer .footer-inner { flex-direction: column; align-items: flex-start; }
+  .tl-item { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body class="article-page">
+
+<nav>
+  <a href="index.html" class="logo">Lean<span>Hab</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#principles">Принципи</a></li>
+    <li><a href="index.html#tools">Инструменти</a></li>
+    <li><a href="index.html#services">Услуги</a></li>
+    <li><a href="index.html#blog">Блог</a></li>
+  </ul>
+  <a href="index.html#contact" class="btn-nav">Контакт</a>
+</nav>
+
+<div class="article-hero" style="background:linear-gradient(135deg,#1a2f28,#2a5f4f)">VSM</div>
+
+<div class="article-container">
+  <a href="index.html#blog" class="back-link">← Назад към блога</a>
+  <div class="article-cat">Инструменти</div>
+  <h1 class="article-title">Как да направим Value Stream Map за 1 ден</h1>
+  <div class="article-meta">15 Март 2026 &nbsp;·&nbsp; 8 минути четене</div>
+
+  <div class="article-body">
+    <p>Value Stream Mapping (VSM) е един от най-мощните инструменти в Lean арсенала. Много мениджъри обаче смятат, че е сложен и отнема седмици. Истината е, че с правилния подход може да направите пълна карта за един работен ден.</p>
+
+    <div class="article-highlight"><p>„VSM не е перфектна карта на реалността — VSM е инструмент за разговор за подобрение."</p></div>
+
+    <h2>Какво е Value Stream Map?</h2>
+    <p>VSM визуализира целия поток от стъпки — от суровините до доставката при клиента. Показва не само физическия поток на материалите, но и информационния поток. Двата потока заедно разкриват скритите загуби, които обикновено са невидими в ежедневната работа.</p>
+    <p>Има два типа карти: <strong>Текущо състояние (Current State)</strong> — как изглежда процесът днес, и <strong>Бъдещо състояние (Future State)</strong> — как искаме да изглежда след подобренията.</p>
+
+    <h2>Подготовка преди деня</h2>
+    <ul>
+      <li>Изберете едно продуктово семейство (не целия завод/отдел)</li>
+      <li>Съберете екип от 4-6 души — хора, които реално работят в процеса</li>
+      <li>Пригответе: голям лист хартия (A0), стикери, маркери, таймер</li>
+      <li>Набавете данни: такт тайм, обем на поръчките, брой смени</li>
+    </ul>
+
+    <h2>Стъпките за един ден</h2>
+    <div class="article-step"><div class="step-num">01</div><div class="step-body"><h3>Дефинирайте клиента (30 мин)</h3><p>Кой е крайният клиент? Колко единици иска на ден/седмица? Нарисувайте клиента в горния десен ъгъл на листа.</p></div></div>
+    <div class="article-step"><div class="step-num">02</div><div class="step-body"><h3>Картографирайте процесните стъпки (2 часа)</h3><p>Вървете по реалния процес — от края към началото. Нарисувайте всяка стъпка като правоъгълник. Запишете: cycle time, changeover time, брой оператори.</p></div></div>
+    <div class="article-step"><div class="step-num">03</div><div class="step-body"><h3>Добавете информационния поток (1 час)</h3><p>Как информацията се движи? Кой изпраща поръчки на кого? Рисувайте стрелките в горната половина на картата.</p></div></div>
+    <div class="article-step"><div class="step-num">04</div><div class="step-body"><h3>Изчислете времената (30 мин)</h3><p>Запишете Lead Time (от поръчка до доставка) и Value-Added Time (само времето с добавена стойност). Разликата е вашата загуба.</p></div></div>
+    <div class="article-step"><div class="step-num">05</div><div class="step-body"><h3>Нарисувайте бъдещото състояние (2 часа)</h3><p>Приложете Lean принципи — непрекъснат поток, pull системи, изравняване на натоварването.</p></div></div>
+    <div class="article-step"><div class="step-num">06</div><div class="step-body"><h3>Дефинирайте план за действие (1 час)</h3><p>Кои са топ 3-5 промени с най-голямо въздействие? Задайте собственик и срок за всяка.</p></div></div>
+
+    <h2>Честите грешки</h2>
+    <ul>
+      <li><strong>Карта без поход по процеса</strong> — не рисувайте от паметта, вървете физически</li>
+      <li><strong>Твърде много детайли</strong> — VSM не е процесна схема, а стратегически инструмент</li>
+      <li><strong>Без Future State</strong> — Current State без бъдещо видение е безсмислено</li>
+      <li><strong>Забравен информационен поток</strong> — той е половината от картата</li>
+    </ul>
+
+    <div class="article-highlight"><p>Помнете: целта на VSM не е перфектната карта — целта е разговорът, който се случва докато я рисувате.</p></div>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="index.html" class="logo">Lean<span>Hab</span></a>
+    <div class="footer-copy">© 2026 LeanHab.eu</div>
+  </div>
+</footer>
+
+</body>
+</html>
