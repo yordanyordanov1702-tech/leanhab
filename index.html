@@ -3,172 +3,357 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://leanhab.eu/">
+<link rel="canonical" href="https://leanhab.eu/">
 <title>LeanHab — Lean Консултантство България</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>:root {
-  --black: #0a0a0a;
-  --dark: #111111;
-  --mid: #0e0e0e;
-  --card: #161616;
-  --white: #f5f3ee;
-  --gray: #888;
-  --accent: #d4a843;
-  --green: #2a5f4f;
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0b1a2e;
+  --blue: #1a3a5c;
+  --mid-blue: #1d4e8a;
+  --accent: #1565c0;
+  --light-blue: #e8f0f9;
+  --white: #ffffff;
+  --off-white: #f8f7f4;
+  --gray-light: #f2f2f0;
+  --gray: #6b6b6b;
+  --gray-dark: #3d3d3d;
+  --black: #1a1a1a;
+  --border: #e0e0e0;
+  --gold: #c9a84c;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
 
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem;
+  height: 64px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.2rem 4rem;
-  background: rgba(10,10,10,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(212,168,67,0.12);
 }
-.logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--white); text-decoration: none; letter-spacing: -0.02em; }
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.4rem;
+  color: var(--navy); text-decoration: none;
+  letter-spacing: -0.01em;
+}
 .logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
-.nav-links a:hover { color: var(--accent); }
-.btn-nav { background: var(--accent); color: var(--black); padding: 0.6rem 1.4rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
-.btn-nav:hover { opacity: 0.85; }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a {
+  color: var(--gray-dark); text-decoration: none;
+  font-size: 0.88rem; font-weight: 500;
+  padding: 0 1.2rem; height: 64px;
+  display: flex; align-items: center;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.btn-nav {
+  background: var(--navy); color: var(--white);
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem; font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-nav:hover { background: var(--accent); }
 
 /* HERO */
-.hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 5rem; }
-.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(42,95,79,0.2) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,168,67,0.07) 0%, transparent 60%); }
-.hero-grid { position: absolute; inset: 0; opacity: 0.03; background-image: linear-gradient(rgba(245,243,238,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(245,243,238,0.5) 1px, transparent 1px); background-size: 60px 60px; }
-.hero-content { position: relative; z-index: 1; max-width: 850px; padding: 4rem 2rem; }
-.hero-tag { display: inline-block; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(212,168,67,0.35); padding: 0.4rem 1rem; margin-bottom: 2rem; }
-.hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(3rem, 8vw, 6.5rem); font-weight: 800; line-height: 0.95; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
-.hero h1 em { font-style: normal; color: var(--accent); }
-.hero-sub { font-size: 1.1rem; color: var(--gray); line-height: 1.7; max-width: 500px; margin-bottom: 2.5rem; }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
-.btn-primary { background: var(--accent); color: var(--black); padding: 0.9rem 2.2rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: opacity 0.2s; }
-.btn-primary:hover { opacity: 0.85; }
-.btn-outline { border: 1px solid rgba(245,243,238,0.25); color: var(--white); padding: 0.9rem 2.2rem; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-.hero-stats { display: flex; gap: 3rem; flex-wrap: wrap; }
-.stat-num { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
-.stat-label { font-size: 0.78rem; color: var(--gray); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.hero {
+  padding-top: 64px;
+  background: var(--navy);
+  min-height: 580px;
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; right: 0; top: 0; bottom: 0;
+  width: 45%;
+  background: linear-gradient(135deg, #1d4e8a 0%, #0d2d50 100%);
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 600px; padding: 5rem 0; }
+.hero-tag {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 600; line-height: 1.2;
+  color: var(--white); margin-bottom: 1.5rem;
+}
+.hero-sub {
+  font-size: 1.1rem; color: rgba(255,255,255,0.75);
+  line-height: 1.7; max-width: 480px; margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--gold); color: var(--navy);
+  padding: 0.85rem 2rem;
+  font-size: 0.9rem; font-weight: 600;
+  text-decoration: none; transition: opacity 0.2s;
+  letter-spacing: 0.02em;
+}
+.btn-primary:hover { opacity: 0.88; }
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.4); color: var(--white);
+  padding: 0.85rem 2rem;
+  font-size: 0.9rem; font-weight: 500;
+  text-decoration: none; transition: border-color 0.2s;
+}
+.btn-secondary:hover { border-color: var(--white); }
+
+/* STATS BAR */
+.stats-bar {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+}
+.stats-inner { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; }
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem; font-weight: 700;
+  color: var(--navy); line-height: 1;
+}
+.stat-label { font-size: 0.82rem; color: var(--gray); margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.08em; }
 
 /* SECTIONS */
-.section-dark { padding: 6rem 0; background: var(--black); }
-.section-mid { padding: 6rem 0; background: var(--mid); }
-.section-green { padding: 6rem 0; background: var(--green); }
-.section-tag { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-.section-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
-.section-title em { font-style: normal; color: var(--accent); }
-.section-intro { color: var(--gray); line-height: 1.7; max-width: 580px; margin-bottom: 3.5rem; font-size: 1rem; }
+.section { padding: 6rem 0; }
+.section-light { background: var(--white); }
+.section-off { background: var(--off-white); }
+.section-navy { background: var(--navy); }
+.section-blue { background: var(--light-blue); }
 
-/* GRIDS */
-.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.section-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.8rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600; line-height: 1.2;
+  color: var(--navy); margin-bottom: 1.2rem;
+}
+.section-title.light { color: var(--white); }
+.section-intro {
+  font-size: 1.05rem; color: var(--gray);
+  line-height: 1.75; max-width: 620px;
+  margin-bottom: 3.5rem; font-weight: 300;
+}
+.divider { width: 48px; height: 3px; background: var(--gold); margin: 1.2rem 0 2rem; }
 
-/* CARDS */
-.card { background: var(--card); padding: 2.2rem; border: 1px solid rgba(255,255,255,0.05); border-top: 2px solid rgba(212,168,67,0.2); transition: border-top-color 0.3s, transform 0.3s; }
-.card:hover { border-top-color: var(--accent); transform: translateY(-3px); }
-.card-accent { background: rgba(212,168,67,0.06); border-top-color: var(--accent); }
-.card-num { font-family: 'Syne', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--accent); letter-spacing: 0.15em; margin-bottom: 1.2rem; }
-.card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.7rem; }
-.card p { color: var(--gray); line-height: 1.7; font-size: 0.92rem; }
+/* PRINCIPLES */
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; border: 1px solid var(--border); }
+.principle-card {
+  padding: 2.5rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.principle-card:hover { background: var(--light-blue); }
+.p-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 700;
+  color: rgba(21,101,192,0.15); line-height: 1;
+  margin-bottom: 1rem;
+}
+.principle-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 0.7rem;
+}
+.principle-card p { color: var(--gray); font-size: 0.92rem; line-height: 1.7; }
 
 /* TIMELINE */
-.timeline { margin-top: 3rem; position: relative; padding-left: 2rem; border-left: 1px solid rgba(212,168,67,0.2); }
-.tl-item { display: flex; gap: 2.5rem; margin-bottom: 3rem; position: relative; }
-.tl-item::before { content: ''; position: absolute; left: -2.4rem; top: 0.4rem; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--mid); }
-.tl-year { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: rgba(212,168,67,0.25); min-width: 80px; line-height: 1; }
-.tl-body h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
-.tl-body p { color: var(--gray); font-size: 0.92rem; line-height: 1.7; max-width: 500px; }
+.timeline { border-left: 2px solid var(--border); padding-left: 3rem; margin-top: 3rem; }
+.tl-item { margin-bottom: 3rem; position: relative; }
+.tl-item::before {
+  content: ''; position: absolute;
+  left: -3.45rem; top: 0.3rem;
+  width: 14px; height: 14px;
+  background: var(--accent); border-radius: 50%;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tl-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--accent); margin-bottom: 0.4rem;
+}
+.tl-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 0.5rem;
+}
+.tl-item p { color: var(--gray); font-size: 0.92rem; line-height: 1.7; max-width: 580px; }
 
 /* TOOLS */
-.tool-card { background: var(--card); padding: 2rem; border: 1px solid rgba(255,255,255,0.05); transition: border-color 0.3s, transform 0.3s; }
-.tool-card:hover { border-color: rgba(212,168,67,0.3); transform: translateY(-3px); }
-.tool-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-.tool-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.6rem; }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+.tool-card {
+  background: var(--white); padding: 2rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.tool-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.tool-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--navy); margin-bottom: 0.6rem;
+}
 .tool-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.65; margin-bottom: 1rem; }
-.tag { display: inline-block; background: rgba(42,95,79,0.25); color: #6fba9f; padding: 0.2rem 0.7rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.tool-tag {
+  display: inline-block;
+  background: var(--light-blue); color: var(--accent);
+  padding: 0.2rem 0.7rem; font-size: 0.72rem;
+  font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+}
 
 /* SERVICES */
-.service-card { background: rgba(255,255,255,0.05); padding: 2.2rem; border: 1px solid rgba(255,255,255,0.1); transition: background 0.3s; }
-.service-card:hover { background: rgba(255,255,255,0.09); }
-.service-card h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.8rem; }
-.service-card p { color: rgba(245,243,238,0.7); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.2rem; }
-.service-detail { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; color: var(--white); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: rgba(255,255,255,0.1); margin-top: 3rem; }
+.service-card {
+  background: rgba(255,255,255,0.05);
+  padding: 2.5rem;
+  border-left: 3px solid transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+.service-card:hover { border-left-color: var(--gold); background: rgba(255,255,255,0.08); }
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 600;
+  color: var(--white); margin-bottom: 0.8rem;
+}
+.service-card p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.2rem; }
+.service-detail { font-size: 0.82rem; font-weight: 600; color: var(--gold); letter-spacing: 0.05em; text-transform: uppercase; }
 
 /* BLOG */
-.blog-card { display: block; background: var(--card); border: 1px solid rgba(255,255,255,0.05); text-decoration: none; color: var(--white); transition: transform 0.3s, border-color 0.3s; }
-.blog-card:hover { transform: translateY(-4px); border-color: rgba(212,168,67,0.25); }
-.blog-img { height: 180px; display: flex; align-items: center; justify-content: center; }
-.blog-img span { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: rgba(255,255,255,0.12); letter-spacing: -0.05em; }
-.blog-img-1 { background: linear-gradient(135deg, #1a2f28, #2a5f4f); }
-.blog-img-2 { background: linear-gradient(135deg, #2a1f0a, #6b4e1a); }
-.blog-img-3 { background: linear-gradient(135deg, #0a1a2f, #1a3a6b); }
-.blog-body { padding: 1.6rem; }
-.blog-cat { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
-.blog-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.7rem; }
-.blog-card p { color: var(--gray); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.2rem; }
-.blog-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: var(--gray); }
-.read-more { color: var(--accent); font-family: 'Syne', sans-serif; font-weight: 600; }
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem; }
+.blog-card {
+  display: block; text-decoration: none; color: var(--black);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s, transform 0.2s;
+  background: var(--white);
+}
+.blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.blog-img {
+  height: 200px; display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem; font-weight: 700;
+  color: rgba(255,255,255,0.2); letter-spacing: -0.03em;
+}
+.blog-img-1 { background: linear-gradient(135deg, #0b2545, #1a3a5c); }
+.blog-img-2 { background: linear-gradient(135deg, #1a2a1a, #2d4a1a); }
+.blog-img-3 { background: linear-gradient(135deg, #1a1a2e, #2d1a4a); }
+.blog-body { padding: 1.8rem; }
+.blog-cat {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.7rem;
+}
+.blog-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--navy); line-height: 1.35; margin-bottom: 0.7rem;
+}
+.blog-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.65; margin-bottom: 1.3rem; }
+.blog-footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 1rem; border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+}
+.blog-date { color: var(--gray); }
+.read-more { color: var(--accent); font-weight: 600; }
 
 /* CONTACT */
-.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; margin-top: 3.5rem; align-items: start; }
-.contact-info > p { color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; }
-.contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
-.ci-icon { font-size: 1.2rem; width: 40px; height: 40px; background: rgba(212,168,67,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; margin-top: 3.5rem; align-items: start; }
+.contact-info p { color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; font-weight: 300; }
+.contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+.ci-icon {
+  width: 42px; height: 42px;
+  background: var(--light-blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0;
+}
 .contact-item div { display: flex; flex-direction: column; gap: 0.2rem; }
-.contact-item strong { font-family: 'Syne', sans-serif; font-size: 0.88rem; font-weight: 700; }
+.contact-item strong { font-size: 0.85rem; font-weight: 600; color: var(--navy); }
 .contact-item span { color: var(--gray); font-size: 0.88rem; }
-.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
-.form-group { display: flex; flex-direction: column; gap: 0.45rem; }
-.form-group label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
-.form-group input, .form-group textarea, .form-group select { background: var(--card); border: 1px solid rgba(255,255,255,0.08); color: var(--white); padding: 0.85rem 1.1rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+
+.contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-dark); }
+.form-group input, .form-group textarea, .form-group select {
+  background: var(--white); border: 1px solid var(--border);
+  color: var(--black); padding: 0.8rem 1rem;
+  font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem;
+  outline: none; transition: border-color 0.2s;
+}
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
-.form-group select option { background: var(--card); }
-.btn-submit { background: var(--accent); color: var(--black); border: none; padding: 1rem 2.5rem; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; align-self: flex-start; }
-.btn-submit:hover { opacity: 0.85; }
+.btn-submit {
+  background: var(--navy); color: var(--white); border: none;
+  padding: 0.9rem 2.5rem;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; transition: background 0.2s;
+  align-self: flex-start; letter-spacing: 0.02em;
+}
+.btn-submit:hover { background: var(--accent); }
 
 /* FOOTER */
-footer { background: #070707; border-top: 1px solid rgba(255,255,255,0.05); padding: 3rem 0; }
-.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; }
+footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3.5rem 0 2rem; }
+.footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.3rem;
+  color: var(--white); text-decoration: none;
+}
+.footer-logo span { color: var(--gold); }
+.footer-tagline { color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-top: 0.4rem; }
 .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-.footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-.footer-links a:hover { color: var(--accent); }
-.footer-copy { color: var(--gray); font-size: 0.8rem; }
+.footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { color: rgba(255,255,255,0.4); font-size: 0.78rem; }
 
 /* ARTICLE PAGE */
-.article-page { padding-top: 5rem; }
-.article-hero { height: 320px; display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 6rem; font-weight: 800; color: rgba(255,255,255,0.1); letter-spacing: -0.05em; }
+.article-page { padding-top: 64px; }
+.article-hero { height: 280px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 700; color: rgba(255,255,255,0.15); }
 .article-container { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
-.back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); text-decoration: none; font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.05em; border: 1px solid rgba(212,168,67,0.3); padding: 0.6rem 1.2rem; margin-bottom: 3rem; transition: background 0.2s; }
-.back-link:hover { background: rgba(212,168,67,0.08); }
-.article-cat { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-.article-title { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.8rem; }
-.article-meta { color: var(--gray); font-size: 0.82rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
-.article-body h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; }
-.article-body p { color: rgba(245,243,238,0.8); line-height: 1.85; font-size: 1rem; margin-bottom: 1.1rem; }
-.article-body ul { color: rgba(245,243,238,0.8); line-height: 1.85; font-size: 1rem; padding-left: 1.5rem; margin-bottom: 1.2rem; }
+.back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; margin-bottom: 3rem; transition: gap 0.2s; }
+.back-link:hover { gap: 0.8rem; }
+.article-cat { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+.article-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 600; color: var(--navy); line-height: 1.2; margin-bottom: 0.8rem; }
+.article-meta { color: var(--gray); font-size: 0.82rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.article-body h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--navy); margin: 2.5rem 0 1rem; }
+.article-body p { color: var(--gray-dark); line-height: 1.85; font-size: 1rem; margin-bottom: 1.2rem; font-weight: 300; }
+.article-body ul { color: var(--gray-dark); line-height: 1.85; font-size: 1rem; padding-left: 1.5rem; margin-bottom: 1.2rem; }
 .article-body ul li { margin-bottom: 0.5rem; }
-.article-highlight { background: rgba(212,168,67,0.07); border-left: 3px solid var(--accent); padding: 1.4rem 1.8rem; margin: 2rem 0; }
-.article-highlight p { color: var(--white); margin: 0; }
-.article-step { display: flex; gap: 1.5rem; background: var(--card); padding: 1.4rem; margin-bottom: 1rem; border: 1px solid rgba(255,255,255,0.05); }
-.step-num { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: rgba(212,168,67,0.25); line-height: 1; min-width: 48px; }
-.step-body h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.article-highlight { background: var(--light-blue); border-left: 4px solid var(--accent); padding: 1.5rem 2rem; margin: 2rem 0; }
+.article-highlight p { color: var(--navy); font-weight: 400; margin: 0; font-style: italic; }
+.article-step { display: flex; gap: 1.5rem; background: var(--off-white); padding: 1.5rem; margin-bottom: 1rem; border-left: 3px solid var(--border); transition: border-color 0.2s; }
+.article-step:hover { border-left-color: var(--accent); }
+.step-num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: rgba(21,101,192,0.2); line-height: 1; min-width: 48px; }
+.step-body h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
 .step-body p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; margin: 0; }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
+  nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
+  .hero::before { display: none; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-stats { gap: 2rem; }
-  footer .footer-inner { flex-direction: column; align-items: flex-start; }
-  .tl-item { flex-direction: column; gap: 0.5rem; }
+  .container { padding: 0 1.5rem; }
+  .section { padding: 4rem 0; }
+  footer .footer-inner { flex-direction: column; }
 }
 </style>
 </head>
@@ -183,63 +368,71 @@ footer { background: #070707; border-top: 1px solid rgba(255,255,255,0.05); padd
     <li><a href="#services">Услуги</a></li>
     <li><a href="#blog">Блог</a></li>
   </ul>
-  <a href="#contact" class="btn-nav">Контакт</a>
+  <a href="#contact" class="btn-nav">Свържете се с нас</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="container hero-content">
-    <div class="hero-tag">Lean Консултантство — България</div>
-    <h1>Елиминирай<br>загубите.<br><em>Расти бързо.</em></h1>
-    <p class="hero-sub">Прилагаме Lean методологията за трансформация на бизнес процеси — по-малко разходи, по-висока ефективност, по-доволни клиенти.</p>
-    <div class="hero-actions">
-      <a href="#services" class="btn-primary">Нашите услуги</a>
-      <a href="#principles" class="btn-outline">Lean принципи</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Lean принципа</div></div>
-      <div class="stat"><div class="stat-num">8</div><div class="stat-label">Вида загуби</div></div>
-      <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Инструмента</div></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">Lean Консултантство — България</div>
+      <h1>Трансформирайте бизнеса си чрез Lean методология</h1>
+      <p class="hero-sub">Помагаме на организации да елиминират загубите, да оптимизират процесите и да постигнат устойчив растеж.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Нашите услуги</a>
+        <a href="#principles" class="btn-secondary">Lean принципи</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ПРИНЦИПИ -->
-<section id="principles" class="section-dark">
+<!-- STATS -->
+<div class="stats-bar">
   <div class="container">
-    <div class="section-tag">Методология</div>
-    <h2 class="section-title">5-те <em>Lean</em> принципа</h2>
-    <p class="section-intro">Lean философията е разработена от Toyota и се базира на пет фундаментални принципа за елиминиране на загубите и създаване на стойност.</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-num">01</div>
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Lean принципа</div></div>
+      <div class="stat-item"><div class="stat-num">8</div><div class="stat-label">Вида загуби</div></div>
+      <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Lean инструмента</div></div>
+      <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Практически подход</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ПРИНЦИПИ -->
+<section class="section section-light" id="principles">
+  <div class="container">
+    <div class="section-label">Методология</div>
+    <h2 class="section-title">5-те Lean принципа</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Lean философията, разработена от Toyota, се базира на пет фундаментални принципа за елиминиране на загубите и създаване на стойност за клиента.</p>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="p-num">01</div>
         <h3>Дефинирай стойността</h3>
-        <p>Стойността се дефинира от гледна точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба.</p>
+        <p>Стойността се определя от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба.</p>
       </div>
-      <div class="card">
-        <div class="card-num">02</div>
+      <div class="principle-card">
+        <div class="p-num">02</div>
         <h3>Картографирай потока</h3>
-        <p>Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби.</p>
+        <p>Value Stream Mapping визуализира целия поток от дейности и идентифицира кои стъпки добавят стойност и кои са загуби.</p>
       </div>
-      <div class="card">
-        <div class="card-num">03</div>
+      <div class="principle-card">
+        <div class="p-num">03</div>
         <h3>Създай непрекъснат поток</h3>
-        <p>Премахни пречките за да може работата да тече непрекъснато. Намали чакането между стъпките и елиминирай задръстванията.</p>
+        <p>Премахни пречките за да може работата да тече непрекъснато. Намали чакането и елиминирай задръстванията в процеса.</p>
       </div>
-      <div class="card">
-        <div class="card-num">04</div>
+      <div class="principle-card">
+        <div class="p-num">04</div>
         <h3>Pull система</h3>
-        <p>Произвеждай само когато има реално търсене. Pull системата означава, че следващата стъпка "тегли" работата само когато е готова.</p>
+        <p>Произвеждай само при реално търсене. Pull системата означава, че следващата стъпка "тегли" работата само когато е готова.</p>
       </div>
-      <div class="card">
-        <div class="card-num">05</div>
+      <div class="principle-card">
+        <div class="p-num">05</div>
         <h3>Стремеж към съвършенство</h3>
-        <p>Lean не е проект с начало и край — това е непрекъснато пътуване. Kaizen означава всеки ден да правиш нещата малко по-добре.</p>
+        <p>Lean е непрекъснато пътуване. Kaizen означава всеки ден да правиш нещата малко по-добре — без край.</p>
       </div>
-      <div class="card card-accent">
-        <div class="card-num">+</div>
+      <div class="principle-card" style="background:var(--light-blue);">
+        <div class="p-num" style="color:rgba(21,101,192,0.3);">+</div>
         <h3>8-те вида загуби (MUDA)</h3>
         <p>Транспорт, Излишни запаси, Движение, Чакане, Свръхпроизводство, Свръхобработка, Дефекти, Неизползван потенциал.</p>
       </div>
@@ -248,194 +441,110 @@ footer { background: #070707; border-top: 1px solid rgba(255,255,255,0.05); padd
 </section>
 
 <!-- ИСТОРИЯ -->
-<section id="history" class="section-mid">
+<section class="section section-off" id="history">
   <div class="container">
-    <div class="section-tag">Произход</div>
-    <h2 class="section-title">История на <em>Lean</em></h2>
+    <div class="section-label">Произход</div>
+    <h2 class="section-title">История на Lean</h2>
+    <div class="divider"></div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-year">1910</div>
-        <div class="tl-body">
-          <h3>Ford Production System</h3>
-          <p>Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство и ранните идеи за поток и елиминиране на загуби.</p>
-        </div>
+        <h3>Ford Production System</h3>
+        <p>Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство и ранните идеи за поток и елиминиране на загуби.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">1950</div>
-        <div class="tl-body">
-          <h3>Toyota Production System (TPS)</h3>
-          <p>Тайичи Оно и Шигео Шинго в Toyota разработват TPS. Just-in-Time и Jidoka са двата стълба на системата, която ще стане основата на Lean.</p>
-        </div>
+        <h3>Toyota Production System (TPS)</h3>
+        <p>Тайичи Оно и Шигео Шинго разработват TPS. Just-in-Time и Jidoka са двата стълба на системата, която ще стане основата на Lean.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">1988</div>
-        <div class="tl-body">
-          <h3>Терминът "Lean" е роден</h3>
-          <p>Джон Крафчик въвежда термина "Lean production". Описва как Toyota постига повече с по-малко — по-малко усилия, пространство, капитал и грешки.</p>
-        </div>
+        <h3>Терминът "Lean" е роден</h3>
+        <p>Джон Крафчик въвежда термина "Lean production" — описва как Toyota постига повече с по-малко усилия, пространство и капитал.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">1996</div>
-        <div class="tl-body">
-          <h3>"Lean Thinking" — книгата</h3>
-          <p>Уомак и Джоунс публикуват "Lean Thinking" — библията на Lean методологията. За първи път 5-те принципа са систематизирани за широката аудитория.</p>
-        </div>
+        <h3>"Lean Thinking" — книгата</h3>
+        <p>Уомак и Джоунс публикуват библията на Lean. За първи път 5-те принципа са систематизирани и достъпни за широката бизнес аудитория.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">2000+</div>
-        <div class="tl-body">
-          <h3>Lean навсякъде</h3>
-          <p>Lean се разпространява извън производството — здравеопазване, IT, строителство, услуги, стартъпи. Днес принципите се прилагат в почти всяка индустрия.</p>
-        </div>
+        <h3>Lean навсякъде</h3>
+        <p>Lean се разпространява в здравеопазване, IT, строителство и услуги. Днес принципите се прилагат в почти всяка индустрия по света.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ИНСТРУМЕНТИ -->
-<section id="tools" class="section-dark">
+<section class="section section-light" id="tools">
   <div class="container">
-    <div class="section-tag">Практически инструменти</div>
-    <h2 class="section-title">Lean <em>инструменти</em></h2>
-    <div class="grid-3">
-      <div class="tool-card">
-        <div class="tool-icon">🗺️</div>
-        <h3>Value Stream Mapping</h3>
-        <p>Визуален инструмент за картографиране на целия производствен или бизнес поток. Показва кои стъпки добавят стойност и кои са загуби.</p>
-        <span class="tag">Анализ</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">✨</div>
-        <h3>5S методология</h3>
-        <p>Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място за максимална ефективност и безопасност.</p>
-        <span class="tag">Организация</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🔄</div>
-        <h3>Kaizen</h3>
-        <p>Философията на непрекъснатото подобрение. Малки промени правени всеки ден от всеки служител водят до огромни резултати.</p>
-        <span class="tag">Подобрение</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">📋</div>
-        <h3>Kanban</h3>
-        <p>Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити и показва статуса на всяка задача.</p>
-        <span class="tag">Управление</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">⏱️</div>
-        <h3>Takt Time</h3>
-        <p>Ритъмът на производство, синхронизиран с търсенето на клиента. Основен инструмент за балансиране на натоварването.</p>
-        <span class="tag">Планиране</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🎯</div>
-        <h3>Poka-Yoke</h3>
-        <p>Техники за предотвратяване на грешки чрез дизайн. Системата прави невъзможно допускането на дефекти — защита против човешка грешка.</p>
-        <span class="tag">Качество</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🔍</div>
-        <h3>A3 Problem Solving</h3>
-        <p>Структуриран подход за решаване на проблеми на един лист A3. Включва анализ на причините, контрамерки и план за действие.</p>
-        <span class="tag">Анализ</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">📊</div>
-        <h3>SMED</h3>
-        <p>Single Minute Exchange of Die — намаляване на времето за смяна на настройките под 10 минути за увеличена гъвкавост.</p>
-        <span class="tag">Ефективност</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🏭</div>
-        <h3>Heijunka</h3>
-        <p>Изравняване на производството за намаляване на неравномерността. Разпределя равномерно обема за по-стабилен и предсказуем процес.</p>
-        <span class="tag">Планиране</span>
-      </div>
+    <div class="section-label">Практически инструменти</div>
+    <h2 class="section-title">Lean инструменти</h2>
+    <div class="divider"></div>
+    <div class="tools-grid">
+      <div class="tool-card"><h3>Value Stream Mapping</h3><p>Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност и кои са загуби.</p><span class="tool-tag">Анализ</span></div>
+      <div class="tool-card"><h3>5S методология</h3><p>Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място за максимална ефективност.</p><span class="tool-tag">Организация</span></div>
+      <div class="tool-card"><h3>Kaizen</h3><p>Философията на непрекъснатото подобрение. Малки промени всеки ден водят до огромни резултати с времето.</p><span class="tool-tag">Подобрение</span></div>
+      <div class="tool-card"><h3>Kanban</h3><p>Визуална система за управление на работата и запасите. Предотвратява свръхпроизводството чрез WIP лимити.</p><span class="tool-tag">Управление</span></div>
+      <div class="tool-card"><h3>Takt Time</h3><p>Ритъмът на производство, синхронизиран с търсенето. Основен инструмент за балансиране на натоварването.</p><span class="tool-tag">Планиране</span></div>
+      <div class="tool-card"><h3>Poka-Yoke</h3><p>Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно допускането на дефекти.</p><span class="tool-tag">Качество</span></div>
+      <div class="tool-card"><h3>A3 Problem Solving</h3><p>Структуриран подход за решаване на проблеми. Включва анализ на причините и план за действие.</p><span class="tool-tag">Анализ</span></div>
+      <div class="tool-card"><h3>SMED</h3><p>Single Minute Exchange of Die — намаляване на времето за смяна на настройките под 10 минути.</p><span class="tool-tag">Ефективност</span></div>
+      <div class="tool-card"><h3>Heijunka</h3><p>Изравняване на производството за намаляване на неравномерността и по-стабилен процес.</p><span class="tool-tag">Планиране</span></div>
     </div>
   </div>
 </section>
 
 <!-- УСЛУГИ -->
-<section id="services" class="section-green">
+<section class="section section-navy" id="services">
   <div class="container">
-    <div class="section-tag">Какво предлагаме</div>
-    <h2 class="section-title">Нашите <em>услуги</em></h2>
-    <div class="grid-3">
-      <div class="service-card">
-        <h3>Lean Диагностика</h3>
-        <p>Пълен анализ на вашите процеси — идентифицираме загубите, картографираме потоците и изготвяме детайлен доклад с препоръки.</p>
-        <div class="service-detail">→ От 2 дни на място</div>
-      </div>
-      <div class="service-card">
-        <h3>Value Stream Mapping</h3>
-        <p>Визуализираме текущото и бъдещото състояние на процесите. Идентифицираме бутилките и създаваме пътна карта за трансформация.</p>
-        <div class="service-detail">→ Семинар + доклад</div>
-      </div>
-      <div class="service-card">
-        <h3>5S Внедряване</h3>
-        <p>Трансформираме работното място — от хаос към ред и стандарт. Обучаваме екипа и поддържаме устойчивостта на промените.</p>
-        <div class="service-detail">→ 4-6 седмици</div>
-      </div>
-      <div class="service-card">
-        <h3>Kaizen Workshop</h3>
-        <p>Интензивен 3-5 дневен workshop за бързо подобрение на конкретен процес. Екипът сам открива проблемите и внедрява решенията.</p>
-        <div class="service-detail">→ Бързи резултати</div>
-      </div>
-      <div class="service-card">
-        <h3>Lean обучения</h3>
-        <p>Сертификационни програми за Lean специалисти и мениджъри. Теория + практика + реални казуси от вашата индустрия.</p>
-        <div class="service-detail">→ 1-3 дни</div>
-      </div>
-      <div class="service-card">
-        <h3>Lean Трансформация</h3>
-        <p>Дългосрочно партньорство за цялостна трансформация. Изграждаме Lean култура, системи и компетентности за устойчив успех.</p>
-        <div class="service-detail">→ 6-18 месеца</div>
-      </div>
+    <div class="section-label" style="color:var(--gold)">Какво предлагаме</div>
+    <h2 class="section-title light">Нашите услуги</h2>
+    <div class="divider"></div>
+    <div class="services-grid">
+      <div class="service-card"><h3>Lean Диагностика</h3><p>Пълен анализ на вашите процеси — идентифицираме загубите и изготвяме детайлен доклад с препоръки.</p><div class="service-detail">→ От 2 дни на място</div></div>
+      <div class="service-card"><h3>Value Stream Mapping</h3><p>Визуализираме текущото и бъдещото състояние. Идентифицираме бутилките и създаваме пътна карта.</p><div class="service-detail">→ Семинар + доклад</div></div>
+      <div class="service-card"><h3>5S Внедряване</h3><p>Трансформираме работното място от хаос към ред и стандарт. Обучаваме екипа за устойчивост.</p><div class="service-detail">→ 4-6 седмици</div></div>
+      <div class="service-card"><h3>Kaizen Workshop</h3><p>Интензивен 3-5 дневен workshop за бързо подобрение. Екипът сам открива и внедрява решенията.</p><div class="service-detail">→ Бързи резултати</div></div>
+      <div class="service-card"><h3>Lean обучения</h3><p>Сертификационни програми за специалисти и мениджъри. Теория + практика + реални казуси.</p><div class="service-detail">→ 1-3 дни</div></div>
+      <div class="service-card"><h3>Lean Трансформация</h3><p>Дългосрочно партньорство за цялостна трансформация. Изграждаме Lean култура и компетентности.</p><div class="service-detail">→ 6-18 месеца</div></div>
     </div>
   </div>
 </section>
 
 <!-- БЛОГ -->
-<section id="blog" class="section-mid">
+<section class="section section-off" id="blog">
   <div class="container">
-    <div class="section-tag">Знания и опит</div>
-    <h2 class="section-title">Lean <em>блог</em></h2>
-    <div class="grid-3">
+    <div class="section-label">Знания и опит</div>
+    <h2 class="section-title">Lean блог</h2>
+    <div class="divider"></div>
+    <div class="blog-grid">
       <a href="article-vsm.html" class="blog-card">
-        <div class="blog-img blog-img-1"><span>VSM</span></div>
+        <div class="blog-img blog-img-1">VSM</div>
         <div class="blog-body">
           <div class="blog-cat">Инструменти</div>
           <h3>Как да направим Value Stream Map за 1 ден</h3>
           <p>Стъпка по стъпка ръководство за картографиране на вашия процес — от избора на продуктово семейство до бъдещото състояние.</p>
-          <div class="blog-footer">
-            <span>15 Март 2026</span>
-            <span class="read-more">Прочети →</span>
-          </div>
+          <div class="blog-footer"><span class="blog-date">15 Март 2026</span><span class="read-more">Прочети →</span></div>
         </div>
       </a>
       <a href="article-5s.html" class="blog-card">
-        <div class="blog-img blog-img-2"><span>5S</span></div>
+        <div class="blog-img blog-img-2">5S</div>
         <div class="blog-body">
           <div class="blog-cat">Организация</div>
           <h3>5S: Защо повечето компании го правят грешно</h3>
-          <p>5S не е само почистване. Разкриваме 5-те най-чести грешки при внедряването и как да ги избегнете за трайни резултати.</p>
-          <div class="blog-footer">
-            <span>8 Март 2026</span>
-            <span class="read-more">Прочети →</span>
-          </div>
+          <p>Разкриваме 5-те най-чести грешки при внедряването на 5S и как да ги избегнете за трайни резултати.</p>
+          <div class="blog-footer"><span class="blog-date">8 Март 2026</span><span class="read-more">Прочети →</span></div>
         </div>
       </a>
       <a href="article-services.html" class="blog-card">
-        <div class="blog-img blog-img-3"><span>ROI</span></div>
+        <div class="blog-img blog-img-3">ROI</div>
         <div class="blog-body">
           <div class="blog-cat">Бизнес резултати</div>
           <h3>Lean в сферата на услугите — мит или реалност?</h3>
-          <p>Много смятат, че Lean е само за производство. Показваме реални примери от банки, болници и IT компании.</p>
-          <div class="blog-footer">
-            <span>1 Март 2026</span>
-            <span class="read-more">Прочети →</span>
-          </div>
+          <p>Реални примери от банки, болници и IT компании с измерими резултати доказват, че Lean работи навсякъде.</p>
+          <div class="blog-footer"><span class="blog-date">1 Март 2026</span><span class="read-more">Прочети →</span></div>
         </div>
       </a>
     </div>
@@ -443,29 +552,23 @@ footer { background: #070707; border-top: 1px solid rgba(255,255,255,0.05); padd
 </section>
 
 <!-- КОНТАКТ -->
-<section id="contact" class="section-dark">
+<section class="section section-light" id="contact">
   <div class="container">
-    <div class="section-tag">Свържи се с нас</div>
-    <h2 class="section-title">Готов за <em>промяна?</em></h2>
+    <div class="section-label">Свържете се с нас</div>
+    <h2 class="section-title">Готови ли сте за промяна?</h2>
+    <div class="divider"></div>
     <div class="contact-grid">
       <div class="contact-info">
-        <p>Разкажи ни за вашия бизнес и предизвикателствата. Ще ви предложим безплатна 30-минутна консултация и план за действие.</p>
-        <div class="contact-item"><span class="ci-icon">📍</span><div><strong>Локация</strong><span>България — онлайн и присъствено</span></div></div>
-        <div class="contact-item"><span class="ci-icon">✉️</span><div><strong>Имейл</strong><span>info@carehab.eu</span></div></div>
-        <div class="contact-item"><span class="ci-icon">💬</span><div><strong>Безплатна консултация</strong><span>30 минути — без ангажимент</span></div></div>
+        <p>Разкажете ни за вашия бизнес и предизвикателствата. Ще ви предложим безплатна 30-минутна консултация и план за действие.</p>
+        <div class="contact-item"><div class="ci-icon">📍</div><div><strong>Локация</strong><span>България — онлайн и присъствено</span></div></div>
+        <div class="contact-item"><div class="ci-icon">✉️</div><div><strong>Имейл</strong><span>info@carehab.eu</span></div></div>
+        <div class="contact-item"><div class="ci-icon">💬</div><div><strong>Безплатна консултация</strong><span>30 минути — без ангажимент</span></div></div>
       </div>
-      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thanks.html">
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">
-        <div class="form-group">
-          <label>Вашето име</label>
-          <input type="text" name="name" placeholder="Иван Иванов" required>
-        </div>
-        <div class="form-group">
-          <label>Имейл адрес</label>
-          <input type="email" name="email" placeholder="ivan@company.bg" required>
-        </div>
-        <div class="form-group">
-          <label>Интересувам се от</label>
+        <div class="form-group"><label>Вашето име</label><input type="text" name="name" placeholder="Иван Иванов" required></div>
+        <div class="form-group"><label>Имейл адрес</label><input type="email" name="email" placeholder="ivan@company.bg" required></div>
+        <div class="form-group"><label>Интересувам се от</label>
           <select name="service">
             <option>Lean Диагностика</option>
             <option>Value Stream Mapping</option>
@@ -475,28 +578,33 @@ footer { background: #070707; border-top: 1px solid rgba(255,255,255,0.05); padd
             <option>Lean Трансформация</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Съобщение</label>
-          <textarea name="message" rows="4" placeholder="Разкажете ни за вашия бизнес..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Изпрати съобщение</button>
+        <div class="form-group"><label>Съобщение</label><textarea name="message" rows="4" placeholder="Разкажете ни за вашия бизнес..."></textarea></div>
+        <button type="submit" class="btn-submit">Изпратете запитване</button>
       </form>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="container footer-inner">
-    <a href="index.html" class="logo">Lean<span>Hab</span></a>
-    <div class="footer-links">
-      <a href="#principles">Принципи</a>
-      <a href="#history">История</a>
-      <a href="#tools">Инструменти</a>
-      <a href="#services">Услуги</a>
-      <a href="#blog">Блог</a>
-      <a href="#contact">Контакт</a>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="index.html" class="footer-logo">Lean<span>Hab</span></a>
+        <div class="footer-tagline">Lean консултантство за устойчив растеж</div>
+      </div>
+      <div class="footer-links">
+        <a href="#principles">Принципи</a>
+        <a href="#history">История</a>
+        <a href="#tools">Инструменти</a>
+        <a href="#services">Услуги</a>
+        <a href="#blog">Блог</a>
+        <a href="#contact">Контакт</a>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 LeanHab.eu</div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 LeanHab.eu — Всички права запазени</div>
+      <div class="footer-copy">Lean консултантство България</div>
+    </div>
   </div>
 </footer>
 
