@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://leanhab.eu/">
+<title>LeanHab — Lean Консултантство България</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0b1a2e;
+  --blue: #1a3a5c;
+  --accent: #1565c0;
+  --gold: #c9a84c;
+  --white: #ffffff;
+  --off-white: #f8f7f4;
+  --gray-light: #f2f2f0;
+  --gray: #6b6b6b;
+  --gray-dark: #3d3d3d;
+  --black: #1a1a1a;
+  --border: #e0e0e0;
+  --light-blue: #e8f0f9;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
+img { display: block; width: 100%; object-fit: cover; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--border);
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  backdrop-filter: blur(8px);
+}
+.logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--navy); text-decoration: none; }
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a { color: var(--gray-dark); text-decoration: none; font-size: 0.88rem; font-weight: 500; padding: 0 1.1rem; height: 64px; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; }
+.nav-links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.btn-nav { background: var(--navy); color: var(--white); padding: 0.6rem 1.4rem; font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+.btn-nav:hover { background: var(--accent); }
+
+/* HERO */
+.hero {
+  padding-top: 64px;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.hero-left {
+  background: var(--navy);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem 6rem 3rem;
+  position: relative;
+}
+.hero-left::after {
+  content: '';
+  position: absolute; right: -40px; top: 0; bottom: 0; width: 80px;
+  background: var(--navy);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  z-index: 1;
+}
+.hero-right { position: relative; overflow: hidden; }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75); }
+.hero-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 600; line-height: 1.2; color: var(--white); margin-bottom: 1.5rem; }
+.hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 460px; margin-bottom: 2.5rem; font-weight: 300; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 4rem; }
+.btn-primary { background: var(--gold); color: var(--navy); padding: 0.85rem 2rem; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-outline-white { border: 1px solid rgba(255,255,255,0.4); color: var(--white); padding: 0.85rem 2rem; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: border-color 0.2s; }
+.btn-outline-white:hover { border-color: var(--white); }
+.hero-stats { display: flex; gap: 2.5rem; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* INTRO STRIP */
+.intro-strip { background: var(--off-white); padding: 3rem 0; border-bottom: 1px solid var(--border); }
+.intro-strip-inner { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
+.intro-strip p { font-size: 1.1rem; color: var(--gray-dark); line-height: 1.7; font-weight: 300; max-width: 700px; }
+.intro-strip-num { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700; color: rgba(21,101,192,0.1); flex-shrink: 0; }
+
+/* SECTION BASE */
+.section { padding: 6rem 0; }
+.section-light { background: var(--white); }
+.section-off { background: var(--off-white); }
+.section-navy { background: var(--navy); }
+.section-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 600; line-height: 1.2; color: var(--navy); margin-bottom: 1rem; }
+.section-title.light { color: var(--white); }
+.section-intro { font-size: 1rem; color: var(--gray); line-height: 1.75; max-width: 620px; margin-bottom: 3.5rem; font-weight: 300; }
+.divider { width: 48px; height: 3px; background: var(--gold); margin: 1rem 0 2rem; }
+
+/* IMAGE + TEXT SPLIT */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+.split.reverse { direction: rtl; }
+.split.reverse > * { direction: ltr; }
+.split-img { height: 500px; overflow: hidden; }
+.split-img img { height: 100%; filter: brightness(0.9); transition: transform 0.5s; }
+.split-img:hover img { transform: scale(1.03); }
+.split-text { padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
+.split-text.dark { background: var(--navy); }
+.split-text.off { background: var(--off-white); }
+
+/* PRINCIPLES */
+.principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-top: 3rem; }
+.principle-card { background: var(--white); padding: 2.2rem; transition: background 0.2s; }
+.principle-card:hover { background: var(--light-blue); }
+.p-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: rgba(21,101,192,0.1); line-height: 1; margin-bottom: 1rem; }
+.principle-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; }
+.principle-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.7; }
+
+/* TOOLS GRID */
+.tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.tool-card { border: 1px solid var(--border); border-top: 3px solid var(--accent); padding: 1.8rem; background: var(--white); transition: box-shadow 0.2s, transform 0.2s; }
+.tool-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.tool-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
+.tool-card p { color: var(--gray); font-size: 0.85rem; line-height: 1.65; margin-bottom: 0.8rem; }
+.tool-tag { display: inline-block; background: var(--light-blue); color: var(--accent); padding: 0.18rem 0.6rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* SERVICES */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.1); margin-top: 3rem; }
+.service-card { background: rgba(255,255,255,0.04); padding: 2.2rem; border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s; }
+.service-card:hover { border-left-color: var(--gold); background: rgba(255,255,255,0.08); }
+.service-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.7rem; }
+.service-card p { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.7; }
+
+/* IMAGE GALLERY */
+.gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 300px 300px; gap: 4px; margin-top: 3rem; }
+.gallery-item { overflow: hidden; }
+.gallery-item:first-child { grid-row: 1 / 3; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; filter: brightness(0.85); }
+.gallery-item:hover img { transform: scale(1.05); filter: brightness(1); }
+
+/* TIMELINE */
+.timeline { border-left: 2px solid var(--border); padding-left: 3rem; margin-top: 3rem; }
+.tl-item { margin-bottom: 2.5rem; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: -3.45rem; top: 0.3rem; width: 14px; height: 14px; background: var(--accent); border-radius: 50%; border: 3px solid var(--off-white); box-shadow: 0 0 0 2px var(--accent); }
+.tl-year { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 0.3rem; }
+.tl-item h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; }
+.tl-item p { color: var(--gray); font-size: 0.88rem; line-height: 1.7; max-width: 560px; }
+
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; margin-top: 3.5rem; align-items: start; }
+.contact-info p { color: var(--gray); line-height: 1.8; font-size: 1rem; margin-bottom: 2rem; font-weight: 300; }
+.contact-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
+.ci-icon { width: 40px; height: 40px; background: var(--light-blue); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.contact-item div { display: flex; flex-direction: column; gap: 0.2rem; }
+.contact-item strong { font-size: 0.85rem; font-weight: 600; color: var(--navy); }
+.contact-item span { color: var(--gray); font-size: 0.85rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-dark); }
+.form-group input, .form-group textarea, .form-group select { background: var(--white); border: 1px solid var(--border); color: var(--black); padding: 0.8rem 1rem; font-family: 'Source Sans 3', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); }
+.btn-submit { background: var(--navy); color: var(--white); border: none; padding: 0.9rem 2.5rem; font-family: 'Source Sans 3', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+.btn-submit:hover { background: var(--accent); }
+
+/* FOOTER */
+footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3rem 0 2rem; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+.footer-logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.3rem; color: var(--white); text-decoration: none; }
+.footer-logo span { color: var(--gold); }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { color: rgba(255,255,255,0.35); font-size: 0.78rem; }
+
+/* QUOTE BLOCK */
+.quote-block { background: var(--light-blue); border-left: 4px solid var(--accent); padding: 2rem 2.5rem; margin: 2rem 0; }
+.quote-block p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--navy); line-height: 1.6; }
+.quote-block cite { display: block; margin-top: 0.8rem; font-size: 0.82rem; color: var(--gray); font-style: normal; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-right { height: 300px; }
+  .hero-left::after { display: none; }
+  .hero-left { padding: 5rem 2rem 3rem; }
+  .split { grid-template-columns: 1fr; }
+  .split-img { height: 300px; }
+  .split-text { padding: 3rem 2rem; }
+  .principles-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: 1fr 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: auto; grid-column: 1 / 3; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .container { padding: 0 1.5rem; }
+  .section { padding: 4rem 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Lean<span>Hab</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">За нас</a></li>
+    <li><a href="#principles">Принципи</a></li>
+    <li><a href="#tools">Инструменти</a></li>
+    <li><a href="#services">Услуги</a></li>
+    <li><a href="#history">История</a></li>
+  </ul>
+  <a href="#contact" class="btn-nav">Свържете се с нас</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Lean Консултантство — България</div>
+    <h1>Трансформирайте бизнеса си чрез Lean методология</h1>
+    <p class="hero-sub">Помагаме на организации да елиминират загубите, да оптимизират процесите и да постигнат устойчив растеж чрез доказани Lean практики.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Нашите услуги</a>
+      <a href="#principles" class="btn-outline-white">Lean принципи</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">5</div><div class="stat-label">Lean принципа</div></div>
+      <div><div class="stat-num">8</div><div class="stat-label">Вида загуби</div></div>
+      <div><div class="stat-num">30+</div><div class="stat-label">Инструмента</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80" alt="Lean производство">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-off" id="about">
+  <div class="container">
+    <div class="split">
+      <div class="split-img">
+        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80" alt="Lean консултантство">
+      </div>
+      <div class="split-text">
+        <div class="section-label">Кои сме ние</div>
+        <h2 class="section-title">Lean експерти с практически опит</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">LeanHab е консултантска компания специализирана в Lean методологията и непрекъснатото подобрение. Работим с производствени и сервизни организации в България и региона.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">Нашият подход е практически — не само теория. Работим заедно с вашия екип на терен, за да внедрим устойчиви промени с измерими резултати.</p>
+        <div class="quote-block">
+          <p>„Lean не е инструмент — Lean е начин на мислене."</p>
+          <cite>— Тайичи Оно, създател на Toyota Production System</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРИНЦИПИ -->
+<section class="section section-light" id="principles">
+  <div class="container">
+    <div class="section-label">Методология</div>
+    <h2 class="section-title">5-те Lean принципа</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Lean философията, разработена от Toyota, се базира на пет фундаментални принципа за елиминиране на загубите и създаване на максимална стойност за клиента.</p>
+    <div class="principles-grid">
+      <div class="principle-card">
+        <div class="p-num">01</div>
+        <h3>Дефинирай стойността</h3>
+        <p>Стойността се определя от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба която трябва да се елиминира.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-num">02</div>
+        <h3>Картографирай потока</h3>
+        <p>Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби, за да се намерят възможности за подобрение.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-num">03</div>
+        <h3>Създай непрекъснат поток</h3>
+        <p>Премахни пречките и задръстванията за да може работата да тече непрекъснато без чакане и прекъсвания между отделните стъпки на процеса.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-num">04</div>
+        <h3>Pull система</h3>
+        <p>Произвеждай само при реално търсене от клиента. Pull системата означава, че следващата стъпка „тегли" работата само когато е готова да я приеме.</p>
+      </div>
+      <div class="principle-card">
+        <div class="p-num">05</div>
+        <h3>Стремеж към съвършенство</h3>
+        <p>Lean е непрекъснато пътуване без край. Kaizen означава всеки ден да правиш нещата малко по-добре — малките подобрения водят до огромни резултати.</p>
+      </div>
+      <div class="principle-card" style="background:var(--light-blue);">
+        <div class="p-num" style="color:rgba(21,101,192,0.2);">+</div>
+        <h3>8-те вида загуби (MUDA)</h3>
+        <p>Транспорт, Излишни запаси, Движение, Чакане, Свръхпроизводство, Свръхобработка, Дефекти и Неизползван потенциал — осемте врага на ефективността.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMAGE GALLERY -->
+<section class="section section-off">
+  <div class="container">
+    <div class="section-label">Lean в действие</div>
+    <h2 class="section-title">Производство и процеси</h2>
+    <div class="divider"></div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="Производствен процес">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&q=80" alt="Фабрика">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?w=600&q=80" alt="Качество">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=600&q=80" alt="Работен процес">
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Автоматизация">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ИНСТРУМЕНТИ -->
+<section class="section section-light" id="tools">
+  <div class="container">
+    <div class="section-label">Практически инструменти</div>
+    <h2 class="section-title">Lean инструменти</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Прилагаме доказани Lean инструменти адаптирани към спецификата на вашата организация и индустрия.</p>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <h3>Value Stream Mapping</h3>
+        <p>Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност и кои са загуби за целия процес.</p>
+        <span class="tool-tag">Анализ</span>
+      </div>
+      <div class="tool-card">
+        <h3>5S методология</h3>
+        <p>Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място за максимална ефективност и безопасност.</p>
+        <span class="tool-tag">Организация</span>
+      </div>
+      <div class="tool-card">
+        <h3>Kaizen</h3>
+        <p>Философията на непрекъснатото подобрение. Малки промени правени всеки ден от всеки служител водят до огромни резултати.</p>
+        <span class="tool-tag">Подобрение</span>
+      </div>
+      <div class="tool-card">
+        <h3>Kanban</h3>
+        <p>Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити и ясна визуализация.</p>
+        <span class="tool-tag">Управление</span>
+      </div>
+      <div class="tool-card">
+        <h3>Poka-Yoke</h3>
+        <p>Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно или трудно допускането на дефекти в процеса.</p>
+        <span class="tool-tag">Качество</span>
+      </div>
+      <div class="tool-card">
+        <h3>A3 Problem Solving</h3>
+        <p>Структуриран подход за решаване на проблеми. Включва анализ на първопричините и системен план за действие.</p>
+        <span class="tool-tag">Анализ</span>
+      </div>
+      <div class="tool-card">
+        <h3>Takt Time</h3>
+        <p>Ритъмът на производство синхронизиран с търсенето на клиента. Основен инструмент за балансиране на натоварването.</p>
+        <span class="tool-tag">Планиране</span>
+      </div>
+      <div class="tool-card">
+        <h3>SMED</h3>
+        <p>Single Minute Exchange of Die — намаляване на времето за смяна на настройките до под 10 минути за максимална гъвкавост.</p>
+        <span class="tool-tag">Ефективност</span>
+      </div>
+      <div class="tool-card">
+        <h3>Heijunka</h3>
+        <p>Изравняване на производството за намаляване на неравномерността. Създава по-стабилен и предсказуем производствен процес.</p>
+        <span class="tool-tag">Планиране</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- УСЛУГИ -->
+<section class="section section-navy" id="services">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Какво предлагаме</div>
+    <h2 class="section-title light">Нашите услуги</h2>
+    <div class="divider"></div>
+    <p class="section-intro" style="color:rgba(255,255,255,0.6)">Предлагаме комплексни Lean консултантски услуги — от диагностика и обучение до пълна организационна трансформация.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Lean Диагностика</h3>
+        <p>Пълен анализ на вашите процеси — идентифицираме загубите, картографираме потоците и изготвяме детайлен доклад с конкретни препоръки за подобрение.</p>
+      </div>
+      <div class="service-card">
+        <h3>Value Stream Mapping</h3>
+        <p>Визуализираме текущото и бъдещото състояние на процесите. Идентифицираме бутилките и създаваме ясна пътна карта за трансформация.</p>
+      </div>
+      <div class="service-card">
+        <h3>5S Внедряване</h3>
+        <p>Трансформираме работното място от хаос към ред и стандарт. Обучаваме екипа и изграждаме системи за поддържане на устойчивостта.</p>
+      </div>
+      <div class="service-card">
+        <h3>Kaizen Workshop</h3>
+        <p>Интензивен 3-5 дневен workshop за бързо подобрение на конкретен процес. Екипът сам открива проблемите и внедрява решенията.</p>
+      </div>
+      <div class="service-card">
+        <h3>Lean обучения</h3>
+        <p>Сертификационни програми за Lean специалисти и мениджъри. Теория, практика и реални казуси от вашата индустрия.</p>
+      </div>
+      <div class="service-card">
+        <h3>Lean Трансформация</h3>
+        <p>Дългосрочно партньорство за цялостна организационна трансформация. Изграждаме Lean култура, системи и компетентности.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT IMAGE SECTION -->
+<section class="section section-light">
+  <div class="container">
+    <div class="split reverse">
+      <div class="split-img">
+        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="Lean обучение">
+      </div>
+      <div class="split-text off">
+        <div class="section-label">Нашият подход</div>
+        <h2 class="section-title">Практически, измерим, устойчив</h2>
+        <div class="divider"></div>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.2rem;">Не вярваме в теоретични консултации. Работим директно с вашия екип на терен — там където се случват процесите.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.2rem;">Всяко подобрение се измерва с конкретни числа: намаление на lead time, редуциране на дефекти, повишена производителност.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;">Изграждаме вътрешни компетентности така, че промените да са устойчиви дори след края на нашата работа заедно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ИСТОРИЯ -->
+<section class="section section-off" id="history">
+  <div class="container">
+    <div class="section-label">Произход</div>
+    <h2 class="section-title">История на Lean</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">1910</div>
+        <h3>Ford Production System</h3>
+        <p>Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство и ранните идеи за поток и елиминиране на загуби.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1950</div>
+        <h3>Toyota Production System (TPS)</h3>
+        <p>Тайичи Оно и Шигео Шинго разработват TPS в Toyota. Just-in-Time и Jidoka са двата стълба на системата, която ще стане основата на Lean методологията.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1988</div>
+        <h3>Терминът "Lean" е роден</h3>
+        <p>Джон Крафчик въвежда термина "Lean production" — описва как Toyota постига повече с по-малко усилия, пространство, капитал и грешки.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1996</div>
+        <h3>"Lean Thinking" — библията на Lean</h3>
+        <p>Уомак и Джоунс публикуват книгата, която систематизира 5-те принципа и прави Lean достъпен за широката бизнес аудитория по целия свят.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2000+</div>
+        <h3>Lean навсякъде</h3>
+        <p>Lean се разпространява в здравеопазване, IT, строителство, финанси и услуги. Днес принципите се прилагат успешно в почти всяка индустрия.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-light" id="contact">
+  <div class="container">
+    <div class="section-label">Свържете се с нас</div>
+    <h2 class="section-title">Готови ли сте за промяна?</h2>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Разкажете ни за вашия бизнес и предизвикателствата пред вас. Ще ви предложим безплатна консултация и конкретен план за действие.</p>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div><strong>Локация</strong><span>България — онлайн и присъствено</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div><strong>Имейл</strong><span>info@leanhab.eu</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">💬</div>
+          <div><strong>Безплатна консултация</strong><span>30 минути — без ангажимент</span></div>
+        </div>
+      </div>
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="form-group">
+          <label>Вашето име</label>
+          <input type="text" name="name" placeholder="Иван Иванов" required>
+        </div>
+        <div class="form-group">
+          <label>Имейл адрес</label>
+          <input type="email" name="email" placeholder="ivan@company.bg" required>
+        </div>
+        <div class="form-group">
+          <label>Интересувам се от</label>
+          <select name="service">
+            <option>Lean Диагностика</option>
+            <option>Value Stream Mapping</option>
+            <option>5S Внедряване</option>
+            <option>Kaizen Workshop</option>
+            <option>Lean Обучения</option>
+            <option>Lean Трансформация</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Съобщение</label>
+          <textarea name="message" rows="4" placeholder="Разкажете ни за вашия бизнес и целите, които искате да постигнете..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Изпратете запитване</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="#" class="footer-logo">Lean<span>Hab</span></a>
+        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;">Lean консултантство за устойчив растеж</div>
+      </div>
+      <div class="footer-links">
+        <a href="#about">За нас</a>
+        <a href="#principles">Принципи</a>
+        <a href="#tools">Инструменти</a>
+        <a href="#services">Услуги</a>
+        <a href="#history">История</a>
+        <a href="#contact">Контакт</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 LeanHab.eu — Всички права запазени</div>
+      <div class="footer-copy">Lean консултантство България</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
