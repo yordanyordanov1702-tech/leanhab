@@ -198,7 +198,13 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
   .container { padding: 0 1.5rem; }
   .section { padding: 4rem 0; }
 }
+
+/* FORM FEEDBACK */
+.form-success { display:none; background:#e8f5e9; border:1px solid #a5d6a7; color:#2e7d32; padding:1rem 1.5rem; font-size:0.95rem; margin-top:1rem; }
+.form-error { display:none; background:#ffebee; border:1px solid #ef9a9a; color:#c62828; padding:1rem 1.5rem; font-size:0.95rem; margin-top:1rem; }
+.btn-submit:disabled { opacity:0.6; cursor:not-allowed; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -496,8 +502,7 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
           <div><strong>Безплатна консултация</strong><span>30 минути — без ангажимент</span></div>
         </div>
       </div>
-      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
+      <form class="contact-form" id="contact-form">
         <div class="form-group">
           <label>Вашето име</label>
           <input type="text" name="name" placeholder="Иван Иванов" required>
@@ -521,7 +526,9 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
           <label>Съобщение</label>
           <textarea name="message" rows="4" placeholder="Разкажете ни за вашия бизнес и целите, които искате да постигнете..."></textarea>
         </div>
-        <button type="submit" class="btn-submit">Изпратете запитване</button>
+        <button type="submit" class="btn-submit" id="submit-btn">Изпратете запитване</button>
+        <div class="form-success" id="form-success">Благодарим! Ще се свържем с вас скоро.</div>
+        <div class="form-error" id="form-error">Грешка при изпращане. Моля опитайте отново.</div>
       </form>
     </div>
   </div>
@@ -551,5 +558,32 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
   </div>
 </footer>
 
+<script>
+  emailjs.init("YOUR_PUBLIC_KEY");
+
+  document.getElementById("contact-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    var btn = document.getElementById("submit-btn");
+    var success = document.getElementById("form-success");
+    var error = document.getElementById("form-error");
+
+    btn.disabled = true;
+    btn.textContent = "Изпращане...";
+    success.style.display = "none";
+    error.style.display = "none";
+
+    emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", this)
+      .then(function() {
+        success.style.display = "block";
+        document.getElementById("contact-form").reset();
+        btn.disabled = false;
+        btn.textContent = "Изпратете запитване";
+      }, function() {
+        error.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Изпратете запитване";
+      });
+  });
+</script>
 </body>
 </html>
