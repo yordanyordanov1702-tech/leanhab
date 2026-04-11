@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://leanhab.eu/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='28' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LH</text></svg>">
 <title>LeanHab — Lean Консултантство България</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -178,6 +179,16 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 .quote-block p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--navy); line-height: 1.6; }
 .quote-block cite { display: block; margin-top: 0.8rem; font-size: 0.82rem; color: var(--gray); font-style: normal; }
 
+/* COOKIE BANNER */
+.cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--navy); color: var(--white); padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; z-index: 999; flex-wrap: wrap; border-top: 3px solid var(--gold); }
+.cookie-banner p { font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.5; margin: 0; flex: 1; min-width: 200px; }
+.cookie-banner p a { color: var(--gold); }
+.cookie-actions { display: flex; gap: 0.8rem; flex-shrink: 0; }
+.btn-cookie-accept { background: var(--gold); color: var(--navy); border: none; padding: 0.6rem 1.5rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; font-family: 'Source Sans 3', sans-serif; }
+.btn-cookie-decline { background: none; color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.3); padding: 0.6rem 1.5rem; font-size: 0.85rem; cursor: pointer; font-family: 'Source Sans 3', sans-serif; }
+.btn-cookie-accept:hover { opacity: 0.85; }
+.btn-cookie-decline:hover { color: var(--white); }
+
 /* LANG SWITCHER */
 .lang-switcher { display: flex; gap: 0.3rem; margin-left: 1rem; }
 .lang-btn { background: none; border: 1px solid var(--border); color: var(--gray); padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Source Sans 3', sans-serif; letter-spacing: 0.05em; }
@@ -249,6 +260,15 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     <a href="#contact" class="btn-nav" data-i18n="nav.contact">Свържете се с нас</a>
   </div>
 </nav>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookie-banner">
+  <p>Този сайт използва бисквитки за подобряване на потребителското изживяване. С продължаването на използването приемате нашата политика за поверителност.</p>
+  <div class="cookie-actions">
+    <button class="btn-cookie-decline" onclick="cookieDecline()">Отказ</button>
+    <button class="btn-cookie-accept" onclick="cookieAccept()">Приемам</button>
+  </div>
+</div>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
@@ -737,6 +757,19 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     document.getElementById('btn-'+lang).classList.add('active');
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
+  }
+
+  // Cookie banner
+  if (localStorage.getItem('cookieConsent')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function cookieAccept() {
+    localStorage.setItem('cookieConsent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function cookieDecline() {
+    localStorage.setItem('cookieConsent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
   }
 
   function toggleMenu() {
