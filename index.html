@@ -178,6 +178,12 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 .quote-block p { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: var(--navy); line-height: 1.6; }
 .quote-block cite { display: block; margin-top: 0.8rem; font-size: 0.82rem; color: var(--gray); font-style: normal; }
 
+/* LANG SWITCHER */
+.lang-switcher { display: flex; gap: 0.3rem; margin-left: 1rem; }
+.lang-btn { background: none; border: 1px solid var(--border); color: var(--gray); padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Source Sans 3', sans-serif; letter-spacing: 0.05em; }
+.lang-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
+.lang-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; }
@@ -212,29 +218,36 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <nav>
   <a href="#" class="logo">Lean<span>Hab</span></a>
   <ul class="nav-links">
-    <li><a href="#about">За нас</a></li>
-    <li><a href="#principles">Принципи</a></li>
-    <li><a href="#tools">Инструменти</a></li>
-    <li><a href="#services">Услуги</a></li>
-    <li><a href="#history">История</a></li>
+    <li><a href="#about" data-i18n="nav.about">За нас</a></li>
+    <li><a href="#principles" data-i18n="nav.principles">Принципи</a></li>
+    <li><a href="#tools" data-i18n="nav.tools">Инструменти</a></li>
+    <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
+    <li><a href="#history" data-i18n="nav.history">История</a></li>
   </ul>
-  <a href="#contact" class="btn-nav">Свържете се с нас</a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">BG</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
+    </div>
+    <a href="#contact" class="btn-nav" data-i18n="nav.contact">Свържете се с нас</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-tag">Lean Консултантство — България</div>
-    <h1>Трансформирайте бизнеса си чрез Lean методология</h1>
-    <p class="hero-sub">Помагаме на организации да елиминират загубите, да оптимизират процесите и да постигнат устойчив растеж чрез доказани Lean практики.</p>
+    <div class="hero-tag" data-i18n="hero.tag">Lean Консултантство — България</div>
+    <h1 data-i18n="hero.h1">Трансформирайте бизнеса си чрез Lean методология</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Помагаме на организации да елиминират загубите, да оптимизират процесите и да постигнат устойчив растеж чрез доказани Lean практики.</p>
     <div class="hero-actions">
-      <a href="#services" class="btn-primary">Нашите услуги</a>
-      <a href="#principles" class="btn-outline-white">Lean принципи</a>
+      <a href="#services" class="btn-primary" data-i18n="hero.btn1">Нашите услуги</a>
+      <a href="#principles" class="btn-outline-white" data-i18n="hero.btn2">Lean принципи</a>
     </div>
     <div class="hero-stats">
-      <div><div class="stat-num">5</div><div class="stat-label">Lean принципа</div></div>
-      <div><div class="stat-num">8</div><div class="stat-label">Вида загуби</div></div>
-      <div><div class="stat-num">30+</div><div class="stat-label">Инструмента</div></div>
+      <div><div class="stat-num">5</div><div class="stat-label" data-i18n="hero.stat1">Lean принципа</div></div>
+      <div><div class="stat-num">8</div><div class="stat-label" data-i18n="hero.stat2">Вида загуби</div></div>
+      <div><div class="stat-num">30+</div><div class="stat-label" data-i18n="hero.stat3">Инструмента</div></div>
     </div>
   </div>
   <div class="hero-right">
@@ -250,14 +263,14 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
         <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&q=80" alt="Lean консултантство">
       </div>
       <div class="split-text">
-        <div class="section-label">Кои сме ние</div>
-        <h2 class="section-title">Lean експерти с практически опит</h2>
+        <div class="section-label" data-i18n="about.label">Кои сме ние</div>
+        <h2 class="section-title" data-i18n="about.title">Lean експерти с практически опит</h2>
         <div class="divider"></div>
-        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">LeanHab е консултантска компания специализирана в Lean методологията и непрекъснатото подобрение. Работим с производствени и сервизни организации в България и региона.</p>
-        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.5rem;">Нашият подход е практически — не само теория. Работим заедно с вашия екип на терен, за да внедрим устойчиви промени с измерими резултати.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.5rem;" data-i18n="about.p1">LeanHab е консултантска компания специализирана в Lean методологията и непрекъснатото подобрение. Работим с производствени и сервизни организации в България и региона.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.5rem;" data-i18n="about.p2">Нашият подход е практически — не само теория. Работим заедно с вашия екип на терен, за да внедрим устойчиви промени с измерими резултати.</p>
         <div class="quote-block">
-          <p>„Lean не е инструмент — Lean е начин на мислене."</p>
-          <cite>— Тайичи Оно, създател на Toyota Production System</cite>
+          <p data-i18n="about.quote">„Lean не е инструмент — Lean е начин на мислене."</p>
+          <cite data-i18n="about.cite">— Тайичи Оно, създател на Toyota Production System</cite>
         </div>
       </div>
     </div>
@@ -267,40 +280,40 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <!-- ПРИНЦИПИ -->
 <section class="section section-light" id="principles">
   <div class="container">
-    <div class="section-label">Методология</div>
-    <h2 class="section-title">5-те Lean принципа</h2>
+    <div class="section-label" data-i18n="principles.label">Методология</div>
+    <h2 class="section-title" data-i18n="principles.title">5-те Lean принципа</h2>
     <div class="divider"></div>
-    <p class="section-intro">Lean философията, разработена от Toyota, се базира на пет фундаментални принципа за елиминиране на загубите и създаване на максимална стойност за клиента.</p>
+    <p class="section-intro" data-i18n="principles.intro">Lean философията, разработена от Toyota, се базира на пет фундаментални принципа за елиминиране на загубите и създаване на максимална стойност за клиента.</p>
     <div class="principles-grid">
       <div class="principle-card">
         <div class="p-num">01</div>
-        <h3>Дефинирай стойността</h3>
-        <p>Стойността се определя от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба която трябва да се елиминира.</p>
+        <h3 data-i18n="p1.title">Дефинирай стойността</h3>
+        <p data-i18n="p1.text">Стойността се определя от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба която трябва да се елиминира.</p>
       </div>
       <div class="principle-card">
         <div class="p-num">02</div>
-        <h3>Картографирай потока</h3>
-        <p>Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби, за да се намерят възможности за подобрение.</p>
+        <h3 data-i18n="p2.title">Картографирай потока</h3>
+        <p data-i18n="p2.text">Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби, за да се намерят възможности за подобрение.</p>
       </div>
       <div class="principle-card">
         <div class="p-num">03</div>
-        <h3>Създай непрекъснат поток</h3>
-        <p>Премахни пречките и задръстванията за да може работата да тече непрекъснато без чакане и прекъсвания между отделните стъпки на процеса.</p>
+        <h3 data-i18n="p3.title">Създай непрекъснат поток</h3>
+        <p data-i18n="p3.text">Премахни пречките и задръстванията за да може работата да тече непрекъснато без чакане и прекъсвания между отделните стъпки на процеса.</p>
       </div>
       <div class="principle-card">
         <div class="p-num">04</div>
-        <h3>Pull система</h3>
-        <p>Произвеждай само при реално търсене от клиента. Pull системата означава, че следващата стъпка „тегли" работата само когато е готова да я приеме.</p>
+        <h3 data-i18n="p4.title">Pull система</h3>
+        <p data-i18n="p4.text">Произвеждай само при реално търсене от клиента. Pull системата означава, че следващата стъпка „тегли" работата само когато е готова да я приеме.</p>
       </div>
       <div class="principle-card">
         <div class="p-num">05</div>
-        <h3>Стремеж към съвършенство</h3>
-        <p>Lean е непрекъснато пътуване без край. Kaizen означава всеки ден да правиш нещата малко по-добре — малките подобрения водят до огромни резултати.</p>
+        <h3 data-i18n="p5.title">Стремеж към съвършенство</h3>
+        <p data-i18n="p5.text">Lean е непрекъснато пътуване без край. Kaizen означава всеки ден да правиш нещата малко по-добре — малките подобрения водят до огромни резултати.</p>
       </div>
       <div class="principle-card" style="background:var(--light-blue);">
         <div class="p-num" style="color:rgba(21,101,192,0.2);">+</div>
-        <h3>8-те вида загуби (MUDA)</h3>
-        <p>Транспорт, Излишни запаси, Движение, Чакане, Свръхпроизводство, Свръхобработка, Дефекти и Неизползван потенциал — осемте врага на ефективността.</p>
+        <h3 data-i18n="p6.title">8-те вида загуби (MUDA)</h3>
+        <p data-i18n="p6.text">Транспорт, Излишни запаси, Движение, Чакане, Свръхпроизводство, Свръхобработка, Дефекти и Неизползван потенциал — осемте врага на ефективността.</p>
       </div>
     </div>
   </div>
@@ -309,8 +322,8 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <!-- IMAGE GALLERY -->
 <section class="section section-off">
   <div class="container">
-    <div class="section-label">Lean в действие</div>
-    <h2 class="section-title">Производство и процеси</h2>
+    <div class="section-label" data-i18n="gallery.label">Lean в действие</div>
+    <h2 class="section-title" data-i18n="gallery.title">Производство и процеси</h2>
     <div class="divider"></div>
     <div class="gallery">
       <div class="gallery-item">
@@ -335,55 +348,55 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <!-- ИНСТРУМЕНТИ -->
 <section class="section section-light" id="tools">
   <div class="container">
-    <div class="section-label">Практически инструменти</div>
-    <h2 class="section-title">Lean инструменти</h2>
+    <div class="section-label" data-i18n="tools.label">Практически инструменти</div>
+    <h2 class="section-title" data-i18n="tools.title">Lean инструменти</h2>
     <div class="divider"></div>
-    <p class="section-intro">Прилагаме доказани Lean инструменти адаптирани към спецификата на вашата организация и индустрия.</p>
+    <p class="section-intro" data-i18n="tools.intro">Прилагаме доказани Lean инструменти адаптирани към спецификата на вашата организация и индустрия.</p>
     <div class="tools-grid">
       <div class="tool-card">
         <h3>Value Stream Mapping</h3>
-        <p>Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност и кои са загуби за целия процес.</p>
-        <span class="tool-tag">Анализ</span>
+        <p data-i18n="t1.text">Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност и кои са загуби за целия процес.</p>
+        <span class="tool-tag" data-i18n="t1.tag">Анализ</span>
       </div>
       <div class="tool-card">
         <h3>5S методология</h3>
-        <p>Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място за максимална ефективност и безопасност.</p>
-        <span class="tool-tag">Организация</span>
+        <p data-i18n="t2.text">Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място за максимална ефективност и безопасност.</p>
+        <span class="tool-tag" data-i18n="t2.tag">Организация</span>
       </div>
       <div class="tool-card">
         <h3>Kaizen</h3>
-        <p>Философията на непрекъснатото подобрение. Малки промени правени всеки ден от всеки служител водят до огромни резултати.</p>
-        <span class="tool-tag">Подобрение</span>
+        <p data-i18n="t3.text">Философията на непрекъснатото подобрение. Малки промени правени всеки ден от всеки служител водят до огромни резултати.</p>
+        <span class="tool-tag" data-i18n="t3.tag">Подобрение</span>
       </div>
       <div class="tool-card">
         <h3>Kanban</h3>
-        <p>Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити и ясна визуализация.</p>
-        <span class="tool-tag">Управление</span>
+        <p data-i18n="t4.text">Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити и ясна визуализация.</p>
+        <span class="tool-tag" data-i18n="t4.tag">Управление</span>
       </div>
       <div class="tool-card">
         <h3>Poka-Yoke</h3>
-        <p>Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно или трудно допускането на дефекти в процеса.</p>
-        <span class="tool-tag">Качество</span>
+        <p data-i18n="t5.text">Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно или трудно допускането на дефекти в процеса.</p>
+        <span class="tool-tag" data-i18n="t5.tag">Качество</span>
       </div>
       <div class="tool-card">
         <h3>A3 Problem Solving</h3>
-        <p>Структуриран подход за решаване на проблеми. Включва анализ на първопричините и системен план за действие.</p>
-        <span class="tool-tag">Анализ</span>
+        <p data-i18n="t6.text">Структуриран подход за решаване на проблеми. Включва анализ на първопричините и системен план за действие.</p>
+        <span class="tool-tag" data-i18n="t6.tag">Анализ</span>
       </div>
       <div class="tool-card">
         <h3>Takt Time</h3>
-        <p>Ритъмът на производство синхронизиран с търсенето на клиента. Основен инструмент за балансиране на натоварването.</p>
-        <span class="tool-tag">Планиране</span>
+        <p data-i18n="t7.text">Ритъмът на производство синхронизиран с търсенето на клиента. Основен инструмент за балансиране на натоварването.</p>
+        <span class="tool-tag" data-i18n="t7.tag">Планиране</span>
       </div>
       <div class="tool-card">
         <h3>SMED</h3>
-        <p>Single Minute Exchange of Die — намаляване на времето за смяна на настройките до под 10 минути за максимална гъвкавост.</p>
-        <span class="tool-tag">Ефективност</span>
+        <p data-i18n="t8.text">Single Minute Exchange of Die — намаляване на времето за смяна на настройките до под 10 минути за максимална гъвкавост.</p>
+        <span class="tool-tag" data-i18n="t8.tag">Ефективност</span>
       </div>
       <div class="tool-card">
         <h3>Heijunka</h3>
-        <p>Изравняване на производството за намаляване на неравномерността. Създава по-стабилен и предсказуем производствен процес.</p>
-        <span class="tool-tag">Планиране</span>
+        <p data-i18n="t9.text">Изравняване на производството за намаляване на неравномерността. Създава по-стабилен и предсказуем производствен процес.</p>
+        <span class="tool-tag" data-i18n="t9.tag">Планиране</span>
       </div>
     </div>
   </div>
@@ -392,34 +405,34 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <!-- УСЛУГИ -->
 <section class="section section-navy" id="services">
   <div class="container">
-    <div class="section-label" style="color:var(--gold)">Какво предлагаме</div>
-    <h2 class="section-title light">Нашите услуги</h2>
+    <div class="section-label" style="color:var(--gold)" data-i18n="services.label">Какво предлагаме</div>
+    <h2 class="section-title light" data-i18n="services.title">Нашите услуги</h2>
     <div class="divider"></div>
-    <p class="section-intro" style="color:rgba(255,255,255,0.6)">Предлагаме комплексни Lean консултантски услуги — от диагностика и обучение до пълна организационна трансформация.</p>
+    <p class="section-intro" style="color:rgba(255,255,255,0.6)" data-i18n="services.intro">Предлагаме комплексни Lean консултантски услуги — от диагностика и обучение до пълна организационна трансформация.</p>
     <div class="services-grid">
       <div class="service-card">
-        <h3>Lean Диагностика</h3>
-        <p>Пълен анализ на вашите процеси — идентифицираме загубите, картографираме потоците и изготвяме детайлен доклад с конкретни препоръки за подобрение.</p>
+        <h3 data-i18n="s1.title">Lean Диагностика</h3>
+        <p data-i18n="s1.text">Пълен анализ на вашите процеси — идентифицираме загубите, картографираме потоците и изготвяме детайлен доклад с конкретни препоръки за подобрение.</p>
       </div>
       <div class="service-card">
-        <h3>Value Stream Mapping</h3>
-        <p>Визуализираме текущото и бъдещото състояние на процесите. Идентифицираме бутилките и създаваме ясна пътна карта за трансформация.</p>
+        <h3 data-i18n="s2.title">Value Stream Mapping</h3>
+        <p data-i18n="s2.text">Визуализираме текущото и бъдещото състояние на процесите. Идентифицираме бутилките и създаваме ясна пътна карта за трансформация.</p>
       </div>
       <div class="service-card">
-        <h3>5S Внедряване</h3>
-        <p>Трансформираме работното място от хаос към ред и стандарт. Обучаваме екипа и изграждаме системи за поддържане на устойчивостта.</p>
+        <h3 data-i18n="s3.title">5S Внедряване</h3>
+        <p data-i18n="s3.text">Трансформираме работното място от хаос към ред и стандарт. Обучаваме екипа и изграждаме системи за поддържане на устойчивостта.</p>
       </div>
       <div class="service-card">
-        <h3>Kaizen Workshop</h3>
-        <p>Интензивен 3-5 дневен workshop за бързо подобрение на конкретен процес. Екипът сам открива проблемите и внедрява решенията.</p>
+        <h3 data-i18n="s4.title">Kaizen Workshop</h3>
+        <p data-i18n="s4.text">Интензивен 3-5 дневен workshop за бързо подобрение на конкретен процес. Екипът сам открива проблемите и внедрява решенията.</p>
       </div>
       <div class="service-card">
-        <h3>Lean обучения</h3>
-        <p>Сертификационни програми за Lean специалисти и мениджъри. Теория, практика и реални казуси от вашата индустрия.</p>
+        <h3 data-i18n="s5.title">Lean обучения</h3>
+        <p data-i18n="s5.text">Сертификационни програми за Lean специалисти и мениджъри. Теория, практика и реални казуси от вашата индустрия.</p>
       </div>
       <div class="service-card">
-        <h3>Lean Трансформация</h3>
-        <p>Дългосрочно партньорство за цялостна организационна трансформация. Изграждаме Lean култура, системи и компетентности.</p>
+        <h3 data-i18n="s6.title">Lean Трансформация</h3>
+        <p data-i18n="s6.text">Дългосрочно партньорство за цялостна организационна трансформация. Изграждаме Lean култура, системи и компетентности.</p>
       </div>
     </div>
   </div>
@@ -433,12 +446,12 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
         <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80" alt="Lean обучение">
       </div>
       <div class="split-text off">
-        <div class="section-label">Нашият подход</div>
-        <h2 class="section-title">Практически, измерим, устойчив</h2>
+        <div class="section-label" data-i18n="approach.label">Нашият подход</div>
+        <h2 class="section-title" data-i18n="approach.title">Практически, измерим, устойчив</h2>
         <div class="divider"></div>
-        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.2rem;">Не вярваме в теоретични консултации. Работим директно с вашия екип на терен — там където се случват процесите.</p>
-        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.2rem;">Всяко подобрение се измерва с конкретни числа: намаление на lead time, редуциране на дефекти, повишена производителност.</p>
-        <p style="color:var(--gray);line-height:1.8;font-weight:300;">Изграждаме вътрешни компетентности така, че промените да са устойчиви дори след края на нашата работа заедно.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.2rem;" data-i18n="approach.p1">Не вярваме в теоретични консултации. Работим директно с вашия екип на терен — там където се случват процесите.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;margin-bottom:1.2rem;" data-i18n="approach.p2">Всяко подобрение се измерва с конкретни числа: намаление на lead time, редуциране на дефекти, повишена производителност.</p>
+        <p style="color:var(--gray);line-height:1.8;font-weight:300;" data-i18n="approach.p3">Изграждаме вътрешни компетентности така, че промените да са устойчиви дори след края на нашата работа заедно.</p>
       </div>
     </div>
   </div>
@@ -447,34 +460,34 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <!-- ИСТОРИЯ -->
 <section class="section section-off" id="history">
   <div class="container">
-    <div class="section-label">Произход</div>
-    <h2 class="section-title">История на Lean</h2>
+    <div class="section-label" data-i18n="history.label">Произход</div>
+    <h2 class="section-title" data-i18n="history.title">История на Lean</h2>
     <div class="divider"></div>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-year">1910</div>
-        <h3>Ford Production System</h3>
-        <p>Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство и ранните идеи за поток и елиминиране на загуби.</p>
+        <h3 data-i18n="h1.title">Ford Production System</h3>
+        <p data-i18n="h1.text">Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство и ранните идеи за поток и елиминиране на загуби.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">1950</div>
-        <h3>Toyota Production System (TPS)</h3>
-        <p>Тайичи Оно и Шигео Шинго разработват TPS в Toyota. Just-in-Time и Jidoka са двата стълба на системата, която ще стане основата на Lean методологията.</p>
+        <h3 data-i18n="h2.title">Toyota Production System (TPS)</h3>
+        <p data-i18n="h2.text">Тайичи Оно и Шигео Шинго разработват TPS в Toyota. Just-in-Time и Jidoka са двата стълба на системата, която ще стане основата на Lean методологията.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">1988</div>
-        <h3>Терминът "Lean" е роден</h3>
-        <p>Джон Крафчик въвежда термина "Lean production" — описва как Toyota постига повече с по-малко усилия, пространство, капитал и грешки.</p>
+        <h3 data-i18n="h3.title">Терминът "Lean" е роден</h3>
+        <p data-i18n="h3.text">Джон Крафчик въвежда термина "Lean production" — описва как Toyota постига повече с по-малко усилия, пространство, капитал и грешки.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">1996</div>
-        <h3>"Lean Thinking" — библията на Lean</h3>
-        <p>Уомак и Джоунс публикуват книгата, която систематизира 5-те принципа и прави Lean достъпен за широката бизнес аудитория по целия свят.</p>
+        <h3 data-i18n="h4.title">"Lean Thinking" — библията на Lean</h3>
+        <p data-i18n="h4.text">Уомак и Джоунс публикуват книгата, която систематизира 5-те принципа и прави Lean достъпен за широката бизнес аудитория по целия свят.</p>
       </div>
       <div class="tl-item">
         <div class="tl-year">2000+</div>
-        <h3>Lean навсякъде</h3>
-        <p>Lean се разпространява в здравеопазване, IT, строителство, финанси и услуги. Днес принципите се прилагат успешно в почти всяка индустрия.</p>
+        <h3 data-i18n="h5.title">Lean навсякъде</h3>
+        <p data-i18n="h5.text">Lean се разпространява в здравеопазване, IT, строителство, финанси и услуги. Днес принципите се прилагат успешно в почти всяка индустрия.</p>
       </div>
     </div>
   </div>
@@ -483,52 +496,52 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <!-- CONTACT -->
 <section class="section section-light" id="contact">
   <div class="container">
-    <div class="section-label">Свържете се с нас</div>
-    <h2 class="section-title">Готови ли сте за промяна?</h2>
+    <div class="section-label" data-i18n="contact.label">Свържете се с нас</div>
+    <h2 class="section-title" data-i18n="contact.title">Готови ли сте за промяна?</h2>
     <div class="divider"></div>
     <div class="contact-grid">
       <div class="contact-info">
-        <p>Разкажете ни за вашия бизнес и предизвикателствата пред вас. Ще ви предложим безплатна консултация и конкретен план за действие.</p>
+        <p data-i18n="contact.intro">Разкажете ни за вашия бизнес и предизвикателствата пред вас. Ще ви предложим безплатна консултация и конкретен план за действие.</p>
         <div class="contact-item">
           <div class="ci-icon">📍</div>
-          <div><strong>Локация</strong><span>България — онлайн и присъствено</span></div>
+          <div><strong data-i18n="contact.loc">Локация</strong><span data-i18n="contact.loc.val">България — онлайн и присъствено</span></div>
         </div>
         <div class="contact-item">
           <div class="ci-icon">✉️</div>
-          <div><strong>Имейл</strong><span>info@leanhab.eu</span></div>
+          <div><strong data-i18n="contact.email">Имейл</strong><span>info@leanhab.eu</span></div>
         </div>
         <div class="contact-item">
           <div class="ci-icon">💬</div>
-          <div><strong>Безплатна консултация</strong><span>30 минути — без ангажимент</span></div>
+          <div><strong data-i18n="contact.free">Безплатна консултация</strong><span data-i18n="contact.free.val">30 минути — без ангажимент</span></div>
         </div>
       </div>
       <form class="contact-form" id="contact-form" data-fs-form>
         <div class="form-group">
-          <label>Вашето име</label>
-          <input type="text" name="name" placeholder="Иван Иванов" required data-fs-field>
+          <label data-i18n="form.name">Вашето име</label>
+          <input type="text" name="name" placeholder="Иван Иванов" required data-fs-field data-i18n-placeholder="form.name.ph">
         </div>
         <div class="form-group">
-          <label>Имейл адрес</label>
+          <label data-i18n="form.email">Имейл адрес</label>
           <input type="email" name="email" placeholder="ivan@company.bg" required data-fs-field>
         </div>
         <div class="form-group">
-          <label>Интересувам се от</label>
+          <label data-i18n="form.service">Интересувам се от</label>
           <select name="service">
-            <option>Lean Диагностика</option>
+            <option data-i18n="s1.title">Lean Диагностика</option>
             <option>Value Stream Mapping</option>
-            <option>5S Внедряване</option>
+            <option data-i18n="s3.title">5S Внедряване</option>
             <option>Kaizen Workshop</option>
-            <option>Lean Обучения</option>
-            <option>Lean Трансформация</option>
+            <option data-i18n="s5.title">Lean обучения</option>
+            <option data-i18n="s6.title">Lean Трансформация</option>
           </select>
         </div>
         <div class="form-group">
-          <label>Съобщение</label>
-          <textarea name="message" rows="4" placeholder="Разкажете ни за вашия бизнес и целите, които искате да постигнете..." data-fs-field></textarea>
+          <label data-i18n="form.message">Съобщение</label>
+          <textarea name="message" rows="4" placeholder="Разкажете ни за вашия бизнес и целите, които искате да постигнете..." data-fs-field data-i18n-placeholder="form.message.ph"></textarea>
         </div>
-        <button type="submit" class="btn-submit" data-fs-submit-btn>Изпратете запитване</button>
-        <div class="form-success" data-fs-success>Благодарим! Ще се свържем с вас скоро.</div>
-        <div class="form-error" data-fs-error>Грешка при изпращане. Моля опитайте отново.</div>
+        <button type="submit" class="btn-submit" data-fs-submit-btn data-i18n="form.submit">Изпратете запитване</button>
+        <div class="form-success" data-fs-success data-i18n="form.success">Благодарим! Ще се свържем с вас скоро.</div>
+        <div class="form-error" data-fs-error data-i18n="form.error">Грешка при изпращане. Моля опитайте отново.</div>
       </form>
     </div>
   </div>
@@ -540,20 +553,20 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     <div class="footer-inner">
       <div>
         <a href="#" class="footer-logo">Lean<span>Hab</span></a>
-        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;">Lean консултантство за устойчив растеж</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;" data-i18n="footer.tagline">Lean консултантство за устойчив растеж</div>
       </div>
       <div class="footer-links">
-        <a href="#about">За нас</a>
-        <a href="#principles">Принципи</a>
-        <a href="#tools">Инструменти</a>
-        <a href="#services">Услуги</a>
-        <a href="#history">История</a>
-        <a href="#contact">Контакт</a>
+        <a href="#about" data-i18n="nav.about">За нас</a>
+        <a href="#principles" data-i18n="nav.principles">Принципи</a>
+        <a href="#tools" data-i18n="nav.tools">Инструменти</a>
+        <a href="#services" data-i18n="nav.services">Услуги</a>
+        <a href="#history" data-i18n="nav.history">История</a>
+        <a href="#contact" data-i18n="footer.contact">Контакт</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2026 LeanHab.eu — Всички права запазени</div>
-      <div class="footer-copy">Lean консултантство България</div>
+      <div class="footer-copy" data-i18n="footer.copy">© 2026 LeanHab.eu — Всички права запазени</div>
+      <div class="footer-copy" data-i18n="footer.sub">Lean консултантство България</div>
     </div>
   </div>
 </footer>
@@ -561,6 +574,147 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 <script>
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
   formspree('initForm', { formElement: '#contact-form', formId: 'xqegvjdl' });
+
+  const t = {
+    bg: {
+      'nav.about':'За нас','nav.principles':'Принципи','nav.tools':'Инструменти','nav.services':'Услуги','nav.history':'История','nav.contact':'Свържете се с нас',
+      'hero.tag':'Lean Консултантство — България','hero.h1':'Трансформирайте бизнеса си чрез Lean методология','hero.sub':'Помагаме на организации да елиминират загубите, да оптимизират процесите и да постигнат устойчив растеж чрез доказани Lean практики.','hero.btn1':'Нашите услуги','hero.btn2':'Lean принципи','hero.stat1':'Lean принципа','hero.stat2':'Вида загуби','hero.stat3':'Инструмента',
+      'about.label':'Кои сме ние','about.title':'Lean експерти с практически опит','about.p1':'LeanHab е консултантска компания специализирана в Lean методологията и непрекъснатото подобрение. Работим с производствени и сервизни организации в България и региона.','about.p2':'Нашият подход е практически — не само теория. Работим заедно с вашия екип на терен, за да внедрим устойчиви промени с измерими резултати.','about.quote':'„Lean не е инструмент — Lean е начин на мислене."','about.cite':'— Тайичи Оно, създател на Toyota Production System',
+      'principles.label':'Методология','principles.title':'5-те Lean принципа','principles.intro':'Lean философията, разработена от Toyota, се базира на пет фундаментални принципа за елиминиране на загубите и създаване на максимална стойност за клиента.',
+      'p1.title':'Дефинирай стойността','p1.text':'Стойността се определя от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба която трябва да се елиминира.',
+      'p2.title':'Картографирай потока','p2.text':'Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби.',
+      'p3.title':'Създай непрекъснат поток','p3.text':'Премахни пречките и задръстванията за да може работата да тече непрекъснато без чакане между стъпките.',
+      'p4.title':'Pull система','p4.text':'Произвеждай само при реално търсене от клиента. Pull системата означава, че следващата стъпка тегли работата само когато е готова.',
+      'p5.title':'Стремеж към съвършенство','p5.text':'Lean е непрекъснато пътуване. Kaizen означава всеки ден да правиш нещата малко по-добре.',
+      'p6.title':'8-те вида загуби (MUDA)','p6.text':'Транспорт, Излишни запаси, Движение, Чакане, Свръхпроизводство, Свръхобработка, Дефекти и Неизползван потенциал.',
+      'gallery.label':'Lean в действие','gallery.title':'Производство и процеси',
+      'tools.label':'Практически инструменти','tools.title':'Lean инструменти','tools.intro':'Прилагаме доказани Lean инструменти адаптирани към спецификата на вашата организация.',
+      't1.text':'Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност.','t1.tag':'Анализ',
+      't2.text':'Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място.','t2.tag':'Организация',
+      't3.text':'Философията на непрекъснатото подобрение. Малки промени всеки ден водят до огромни резултати.','t3.tag':'Подобрение',
+      't4.text':'Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити.','t4.tag':'Управление',
+      't5.text':'Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно допускането на дефекти.','t5.tag':'Качество',
+      't6.text':'Структуриран подход за решаване на проблеми с анализ на първопричините.','t6.tag':'Анализ',
+      't7.text':'Ритъмът на производство синхронизиран с търсенето на клиента.','t7.tag':'Планиране',
+      't8.text':'Намаляване на времето за смяна на настройките до под 10 минути за максимална гъвкавост.','t8.tag':'Ефективност',
+      't9.text':'Изравняване на производството за намаляване на неравномерността.','t9.tag':'Планиране',
+      'services.label':'Какво предлагаме','services.title':'Нашите услуги','services.intro':'Предлагаме комплексни Lean консултантски услуги — от диагностика до пълна трансформация.',
+      's1.title':'Lean Диагностика','s1.text':'Пълен анализ на процесите — идентифицираме загубите и изготвяме препоръки за подобрение.',
+      's2.title':'Value Stream Mapping','s2.text':'Визуализираме текущото и бъдещото състояние на процесите и създаваме пътна карта.',
+      's3.title':'5S Внедряване','s3.text':'Трансформираме работното място от хаос към ред и стандарт.',
+      's4.title':'Kaizen Workshop','s4.text':'Интензивен 3-5 дневен workshop за бързо подобрение на конкретен процес.',
+      's5.title':'Lean обучения','s5.text':'Сертификационни програми за Lean специалисти и мениджъри.',
+      's6.title':'Lean Трансформация','s6.text':'Дългосрочно партньорство за цялостна организационна трансформация.',
+      'approach.label':'Нашият подход','approach.title':'Практически, измерим, устойчив','approach.p1':'Не вярваме в теоретични консултации. Работим директно с вашия екип на терен.','approach.p2':'Всяко подобрение се измерва с конкретни числа: намаление на lead time, редуциране на дефекти.','approach.p3':'Изграждаме вътрешни компетентности така, че промените да са устойчиви.',
+      'history.label':'Произход','history.title':'История на Lean',
+      'h1.title':'Ford Production System','h1.text':'Хенри Форд въвежда конвейерното производство. Поставя основите на масовото производство.',
+      'h2.title':'Toyota Production System (TPS)','h2.text':'Тайичи Оно разработва TPS. Just-in-Time и Jidoka са двата стълба на системата.',
+      'h3.title':'Терминът "Lean" е роден','h3.text':'Джон Крафчик въвежда термина "Lean production" — описва как Toyota постига повече с по-малко.',
+      'h4.title':'"Lean Thinking" — библията на Lean','h4.text':'Уомак и Джоунс публикуват книгата която систематизира 5-те принципа.',
+      'h5.title':'Lean навсякъде','h5.text':'Lean се разпространява в здравеопазване, IT, строителство и услуги.',
+      'contact.label':'Свържете се с нас','contact.title':'Готови ли сте за промяна?','contact.intro':'Разкажете ни за вашия бизнес. Ще ви предложим безплатна консултация и план за действие.','contact.loc':'Локация','contact.loc.val':'България — онлайн и присъствено','contact.email':'Имейл','contact.free':'Безплатна консултация','contact.free.val':'30 минути — без ангажимент',
+      'form.name':'Вашето име','form.name.ph':'Иван Иванов','form.email':'Имейл адрес','form.service':'Интересувам се от','form.message':'Съобщение','form.message.ph':'Разкажете ни за вашия бизнес...','form.submit':'Изпратете запитване','form.success':'Благодарим! Ще се свържем с вас скоро.','form.error':'Грешка при изпращане. Моля опитайте отново.',
+      'footer.tagline':'Lean консултантство за устойчив растеж','footer.contact':'Контакт','footer.copy':'© 2026 LeanHab.eu — Всички права запазени','footer.sub':'Lean консултантство България'
+    },
+    en: {
+      'nav.about':'About','nav.principles':'Principles','nav.tools':'Tools','nav.services':'Services','nav.history':'History','nav.contact':'Contact Us',
+      'hero.tag':'Lean Consulting — Bulgaria','hero.h1':'Transform Your Business Through Lean Methodology','hero.sub':'We help organizations eliminate waste, optimize processes and achieve sustainable growth through proven Lean practices.','hero.btn1':'Our Services','hero.btn2':'Lean Principles','hero.stat1':'Lean Principles','hero.stat2':'Types of Waste','hero.stat3':'Tools',
+      'about.label':'Who We Are','about.title':'Lean Experts with Practical Experience','about.p1':'LeanHab is a consulting company specialized in Lean methodology and continuous improvement. We work with manufacturing and service organizations in Bulgaria and the region.','about.p2':'Our approach is practical — not just theory. We work directly with your team on the ground to implement sustainable changes with measurable results.','about.quote':'"Lean is not a tool — Lean is a way of thinking."','about.cite':'— Taiichi Ohno, creator of the Toyota Production System',
+      'principles.label':'Methodology','principles.title':'The 5 Lean Principles','principles.intro':'The Lean philosophy, developed by Toyota, is based on five fundamental principles for eliminating waste and creating maximum value for the customer.',
+      'p1.title':'Define Value','p1.text':'Value is defined from the perspective of the end customer. Everything the customer is not willing to pay for is potential waste that must be eliminated.',
+      'p2.title':'Map the Value Stream','p2.text':'Value Stream Mapping visualizes the entire flow of activities. It identifies which steps add value and which are waste.',
+      'p3.title':'Create Flow','p3.text':'Remove obstacles so that work can flow continuously without waiting or interruptions between process steps.',
+      'p4.title':'Establish Pull','p4.text':'Produce only when there is real customer demand. A pull system means the next step pulls work only when ready to receive it.',
+      'p5.title':'Pursue Perfection','p5.text':'Lean is a continuous journey. Kaizen means making things a little better every day — small improvements lead to huge results.',
+      'p6.title':'8 Types of Waste (MUDA)','p6.text':'Transport, Inventory, Motion, Waiting, Overproduction, Over-processing, Defects and Unused Talent — the eight enemies of efficiency.',
+      'gallery.label':'Lean in Action','gallery.title':'Manufacturing & Processes',
+      'tools.label':'Practical Tools','tools.title':'Lean Tools','tools.intro':'We apply proven Lean tools adapted to the specifics of your organization and industry.',
+      't1.text':'A visual tool for mapping the entire value stream. Shows which steps add value and which are waste.','t1.tag':'Analysis',
+      't2.text':'Sort, Set in order, Shine, Standardize, Sustain. Organizes the workplace for maximum efficiency.','t2.tag':'Organization',
+      't3.text':'The philosophy of continuous improvement. Small daily changes by every employee lead to enormous results.','t3.tag':'Improvement',
+      't4.text':'A visual work management system. Prevents overproduction through WIP limits and clear visualization.','t4.tag':'Management',
+      't5.text':'Error-proofing techniques through design. Makes it impossible or difficult to produce defects.','t5.tag':'Quality',
+      't6.text':'A structured problem-solving approach including root cause analysis and a systematic action plan.','t6.tag':'Analysis',
+      't7.text':'The production rhythm synchronized with customer demand. Key tool for workload balancing.','t7.tag':'Planning',
+      't8.text':'Single Minute Exchange of Die — reducing changeover time to under 10 minutes for maximum flexibility.','t8.tag':'Efficiency',
+      't9.text':'Production leveling to reduce unevenness. Creates a more stable and predictable production process.','t9.tag':'Planning',
+      'services.label':'What We Offer','services.title':'Our Services','services.intro':'We offer comprehensive Lean consulting services — from diagnostics and training to full organizational transformation.',
+      's1.title':'Lean Diagnostics','s1.text':'Full analysis of your processes — we identify waste, map flows and prepare a detailed report with improvement recommendations.',
+      's2.title':'Value Stream Mapping','s2.text':'We visualize the current and future state of processes and create a clear transformation roadmap.',
+      's3.title':'5S Implementation','s3.text':'We transform the workplace from chaos to order and standard. We train the team and build sustainability systems.',
+      's4.title':'Kaizen Workshop','s4.text':'An intensive 3-5 day workshop for rapid improvement of a specific process.',
+      's5.title':'Lean Training','s5.text':'Certification programs for Lean specialists and managers. Theory, practice and real case studies.',
+      's6.title':'Lean Transformation','s6.text':'Long-term partnership for comprehensive organizational transformation. We build Lean culture and competencies.',
+      'approach.label':'Our Approach','approach.title':'Practical, Measurable, Sustainable','approach.p1':'We do not believe in theoretical consulting. We work directly with your team on the ground.','approach.p2':'Every improvement is measured with concrete numbers: lead time reduction, defect reduction, increased productivity.','approach.p3':'We build internal competencies so that changes are sustainable even after our work together ends.',
+      'history.label':'Origins','history.title':'History of Lean',
+      'h1.title':'Ford Production System','h1.text':'Henry Ford introduced assembly line production and standardization, laying the foundations for mass production.',
+      'h2.title':'Toyota Production System (TPS)','h2.text':'Taiichi Ohno developed TPS at Toyota. Just-in-Time and Jidoka are the two pillars of the system.',
+      'h3.title':'The Term "Lean" is Born','h3.text':'John Krafcik coined the term "Lean production" — describing how Toyota achieves more with less.',
+      'h4.title':'"Lean Thinking" — The Lean Bible','h4.text':'Womack and Jones published the book that systematized the 5 principles and made Lean accessible worldwide.',
+      'h5.title':'Lean Everywhere','h5.text':'Lean spread into healthcare, IT, construction, finance and services.',
+      'contact.label':'Get In Touch','contact.title':'Ready for Change?','contact.intro':'Tell us about your business and challenges. We will offer a free consultation and concrete action plan.','contact.loc':'Location','contact.loc.val':'Bulgaria — online and on-site','contact.email':'Email','contact.free':'Free Consultation','contact.free.val':'30 minutes — no obligation',
+      'form.name':'Your Name','form.name.ph':'John Smith','form.email':'Email Address','form.service':'I am interested in','form.message':'Message','form.message.ph':'Tell us about your business and goals...','form.submit':'Send Inquiry','form.success':'Thank you! We will be in touch soon.','form.error':'Sending failed. Please try again.',
+      'footer.tagline':'Lean consulting for sustainable growth','footer.contact':'Contact','footer.copy':'© 2026 LeanHab.eu — All rights reserved','footer.sub':'Lean Consulting Bulgaria'
+    },
+    de: {
+      'nav.about':'Über uns','nav.principles':'Prinzipien','nav.tools':'Werkzeuge','nav.services':'Leistungen','nav.history':'Geschichte','nav.contact':'Kontakt aufnehmen',
+      'hero.tag':'Lean Beratung — Bulgarien','hero.h1':'Transformieren Sie Ihr Unternehmen durch Lean-Methodik','hero.sub':'Wir helfen Organisationen, Verschwendung zu eliminieren, Prozesse zu optimieren und nachhaltiges Wachstum durch bewährte Lean-Praktiken zu erzielen.','hero.btn1':'Unsere Leistungen','hero.btn2':'Lean-Prinzipien','hero.stat1':'Lean-Prinzipien','hero.stat2':'Verschwendungsarten','hero.stat3':'Werkzeuge',
+      'about.label':'Wer wir sind','about.title':'Lean-Experten mit praktischer Erfahrung','about.p1':'LeanHab ist ein Beratungsunternehmen spezialisiert auf Lean-Methodik und kontinuierliche Verbesserung. Wir arbeiten mit Produktions- und Dienstleistungsorganisationen in Bulgarien und der Region.','about.p2':'Unser Ansatz ist praktisch — nicht nur Theorie. Wir arbeiten direkt mit Ihrem Team vor Ort zusammen.','about.quote':'"Lean ist kein Werkzeug — Lean ist eine Denkweise."','about.cite':'— Taiichi Ohno, Schöpfer des Toyota-Produktionssystems',
+      'principles.label':'Methodik','principles.title':'Die 5 Lean-Prinzipien','principles.intro':'Die von Toyota entwickelte Lean-Philosophie basiert auf fünf grundlegenden Prinzipien zur Eliminierung von Verschwendung.',
+      'p1.title':'Wert definieren','p1.text':'Der Wert wird aus der Perspektive des Endkunden definiert. Alles, wofür der Kunde nicht zahlen möchte, ist potenzielle Verschwendung.',
+      'p2.title':'Wertstrom identifizieren','p2.text':'Value Stream Mapping visualisiert den gesamten Aktivitätsfluss und identifiziert wertschöpfende und nicht-wertschöpfende Schritte.',
+      'p3.title':'Fluss erzeugen','p3.text':'Hindernisse beseitigen, damit die Arbeit kontinuierlich ohne Wartezeiten zwischen den Prozessschritten fließen kann.',
+      'p4.title':'Pull-Prinzip','p4.text':'Nur produzieren, wenn echter Kundenbedarf besteht. Ein Pull-System bedeutet, dass der nächste Schritt Arbeit nur dann zieht, wenn er bereit ist.',
+      'p5.title':'Perfektion anstreben','p5.text':'Lean ist eine kontinuierliche Reise. Kaizen bedeutet, jeden Tag die Dinge ein wenig besser zu machen.',
+      'p6.title':'8 Verschwendungsarten (MUDA)','p6.text':'Transport, Bestände, Bewegung, Warten, Überproduktion, Überbearbeitung, Fehler und ungenutztes Talent.',
+      'gallery.label':'Lean in Aktion','gallery.title':'Produktion & Prozesse',
+      'tools.label':'Praktische Werkzeuge','tools.title':'Lean-Werkzeuge','tools.intro':'Wir wenden bewährte Lean-Werkzeuge an, die auf die Besonderheiten Ihrer Organisation zugeschnitten sind.',
+      't1.text':'Ein visuelles Werkzeug zur Kartierung des gesamten Wertstroms.','t1.tag':'Analyse',
+      't2.text':'Sortieren, Systematisieren, Säubern, Standardisieren, Selbstdisziplin. Organisiert den Arbeitsplatz.','t2.tag':'Organisation',
+      't3.text':'Die Philosophie der kontinuierlichen Verbesserung durch tägliche kleine Veränderungen.','t3.tag':'Verbesserung',
+      't4.text':'Ein visuelles Arbeitsmanagementsystem zur Vermeidung von Überproduktion.','t4.tag':'Management',
+      't5.text':'Fehlervermeidungstechniken durch Design. Macht es unmöglich oder schwierig, Fehler zu produzieren.','t5.tag':'Qualität',
+      't6.text':'Strukturierter Problemlösungsansatz mit Ursachenanalyse und systematischem Aktionsplan.','t6.tag':'Analyse',
+      't7.text':'Der mit der Kundennachfrage synchronisierte Produktionsrhythmus.','t7.tag':'Planung',
+      't8.text':'Single Minute Exchange of Die — Reduzierung der Rüstzeit auf unter 10 Minuten.','t8.tag':'Effizienz',
+      't9.text':'Produktionsnivellierung zur Reduzierung von Ungleichmäßigkeiten.','t9.tag':'Planung',
+      'services.label':'Was wir anbieten','services.title':'Unsere Leistungen','services.intro':'Wir bieten umfassende Lean-Beratungsleistungen — von der Diagnose bis zur vollständigen Transformation.',
+      's1.title':'Lean-Diagnose','s1.text':'Vollständige Prozessanalyse — wir identifizieren Verschwendung und erstellen detaillierte Verbesserungsempfehlungen.',
+      's2.title':'Value Stream Mapping','s2.text':'Wir visualisieren den aktuellen und zukünftigen Zustand der Prozesse und erstellen eine Transformations-Roadmap.',
+      's3.title':'5S-Implementierung','s3.text':'Wir transformieren den Arbeitsplatz von Chaos zu Ordnung und Standard.',
+      's4.title':'Kaizen-Workshop','s4.text':'Ein intensiver 3-5-tägiger Workshop zur schnellen Verbesserung eines bestimmten Prozesses.',
+      's5.title':'Lean-Schulungen','s5.text':'Zertifizierungsprogramme für Lean-Spezialisten und Manager.',
+      's6.title':'Lean-Transformation','s6.text':'Langfristige Partnerschaft für eine umfassende organisatorische Transformation.',
+      'approach.label':'Unser Ansatz','approach.title':'Praktisch, Messbar, Nachhaltig','approach.p1':'Wir glauben nicht an theoretische Beratung. Wir arbeiten direkt mit Ihrem Team vor Ort.','approach.p2':'Jede Verbesserung wird mit konkreten Zahlen gemessen: Lead-Time-Reduzierung, Fehlerreduzierung.','approach.p3':'Wir bauen interne Kompetenzen auf, damit Veränderungen nachhaltig sind.',
+      'history.label':'Ursprung','history.title':'Geschichte des Lean',
+      'h1.title':'Ford-Produktionssystem','h1.text':'Henry Ford führte Fließbandproduktion ein und legte die Grundlagen für die Massenproduktion.',
+      'h2.title':'Toyota-Produktionssystem (TPS)','h2.text':'Taiichi Ohno entwickelte TPS bei Toyota. Just-in-Time und Jidoka sind die zwei Säulen.',
+      'h3.title':'Der Begriff "Lean" wird geboren','h3.text':'John Krafcik prägte den Begriff "Lean production" — beschreibt wie Toyota mehr mit weniger erreicht.',
+      'h4.title':'"Lean Thinking" — Die Lean-Bibel','h4.text':'Womack und Jones veröffentlichten das Buch, das die 5 Prinzipien systematisierte.',
+      'h5.title':'Lean überall','h5.text':'Lean verbreitete sich in Gesundheitswesen, IT, Bauwesen, Finanzen und Dienstleistungen.',
+      'contact.label':'Kontakt aufnehmen','contact.title':'Bereit für Veränderung?','contact.intro':'Erzählen Sie uns von Ihrem Unternehmen. Wir bieten eine kostenlose Beratung und einen konkreten Aktionsplan.','contact.loc':'Standort','contact.loc.val':'Bulgarien — online und vor Ort','contact.email':'E-Mail','contact.free':'Kostenlose Beratung','contact.free.val':'30 Minuten — unverbindlich',
+      'form.name':'Ihr Name','form.name.ph':'Max Mustermann','form.email':'E-Mail-Adresse','form.service':'Ich interessiere mich für','form.message':'Nachricht','form.message.ph':'Erzählen Sie uns von Ihrem Unternehmen...','form.submit':'Anfrage senden','form.success':'Vielen Dank! Wir melden uns bald.','form.error':'Fehler beim Senden. Bitte versuchen Sie es erneut.',
+      'footer.tagline':'Lean-Beratung für nachhaltiges Wachstum','footer.contact':'Kontakt','footer.copy':'© 2026 LeanHab.eu — Alle Rechte vorbehalten','footer.sub':'Lean Beratung Bulgarien'
+    }
+  };
+
+  function setLang(lang) {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[lang] && t[lang][key]) el.innerHTML = t[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (t[lang] && t[lang][key]) el.placeholder = t[lang][key];
+    });
+    ['bg','en','de'].forEach(l => document.getElementById('btn-'+l).classList.remove('active'));
+    document.getElementById('btn-'+lang).classList.add('active');
+    document.documentElement.lang = lang;
+    localStorage.setItem('lang', lang);
+  }
+
+  const savedLang = localStorage.getItem('lang') || 'bg';
+  if (savedLang !== 'bg') setLang(savedLang);
 </script>
 </body>
 </html>
