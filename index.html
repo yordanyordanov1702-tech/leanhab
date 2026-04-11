@@ -184,10 +184,23 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 .lang-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
 .lang-btn:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
 
+/* HAMBURGER */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); z-index: 99; padding: 1rem 1.5rem; flex-direction: column; gap: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.mobile-nav a { color: var(--gray-dark); text-decoration: none; font-size: 1rem; font-weight: 500; padding: 0.9rem 0; border-bottom: 1px solid var(--border); display: block; }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover { color: var(--accent); }
+.mobile-nav.open { display: flex; }
+
 /* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
+  .hamburger { display: flex; }
   .hero { grid-template-columns: 1fr; min-height: auto; }
   .hero-right { height: 300px; }
   .hero-left::after { display: none; }
@@ -224,6 +237,9 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     <li><a href="#services" data-i18n="nav.services">Услуги</a></li>
     <li><a href="#history" data-i18n="nav.history">История</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
   <div style="display:flex;align-items:center;gap:1rem;">
     <div class="lang-switcher">
       <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">BG</button>
@@ -233,6 +249,16 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     <a href="#contact" class="btn-nav" data-i18n="nav.contact">Свържете се с нас</a>
   </div>
 </nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#about" onclick="closeMenu()" data-i18n="nav.about">За нас</a>
+  <a href="#principles" onclick="closeMenu()" data-i18n="nav.principles">Принципи</a>
+  <a href="#tools" onclick="closeMenu()" data-i18n="nav.tools">Инструменти</a>
+  <a href="#services" onclick="closeMenu()" data-i18n="nav.services">Услуги</a>
+  <a href="#history" onclick="closeMenu()" data-i18n="nav.history">История</a>
+  <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Свържете се с нас</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -711,6 +737,15 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     document.getElementById('btn-'+lang).classList.add('active');
     document.documentElement.lang = lang;
     localStorage.setItem('lang', lang);
+  }
+
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('mobile-nav').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobile-nav').classList.remove('open');
   }
 
   const savedLang = localStorage.getItem('lang') || 'bg';
