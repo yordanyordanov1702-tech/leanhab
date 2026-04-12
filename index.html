@@ -221,6 +221,10 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
 .btn-cookie-decline:hover { color: var(--white); }
 
 /* LANG SWITCHER */
+.site-switcher { display: flex; gap: 0; border: 1px solid var(--border); overflow: hidden; }
+.site-btn { background: none; border: none; color: var(--gray); padding: 0.3rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Source Sans 3', sans-serif; letter-spacing: 0.05em; text-decoration: none; display: flex; align-items: center; }
+.site-btn.active { background: var(--gold); color: var(--navy); }
+.site-btn:hover:not(.active) { background: var(--light-blue); color: var(--accent); }
 .lang-switcher { display: flex; gap: 0.3rem; margin-left: 1rem; }
 .lang-btn { background: none; border: 1px solid var(--border); color: var(--gray); padding: 0.3rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.2s; font-family: 'Source Sans 3', sans-serif; letter-spacing: 0.05em; }
 .lang-btn.active { background: var(--navy); color: var(--white); border-color: var(--navy); }
@@ -283,6 +287,10 @@ footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 3r
     <span></span><span></span><span></span>
   </button>
   <div style="display:flex;align-items:center;gap:1rem;">
+    <div class="site-switcher">
+      <button class="site-btn active" id="btn-lean">LEAN</button>
+      <a href="https://carehab.eu" target="_blank" rel="noopener" class="site-btn" id="btn-care">CARE</a>
+    </div>
     <div class="lang-switcher">
       <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">BG</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
