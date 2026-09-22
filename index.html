@@ -4,19 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
-<meta name="description" content="Lean University — Всичко за Lean методологията. История, принципи, инструменти, MUDA загуби, различни подходи и интерактивен симулатор.">
-<meta name="keywords" content="Lean методология, Lean история, Toyota Production System, Kaizen, 5S, MUDA, Lean принципи, Lean симулатор, Lean University">
-<meta name="author" content="Lean University">
-<meta property="og:title" content="Lean University — Всичко за Lean методологията">
-<meta property="og:description" content="Изчерпателен образователен ресурс за Lean: история, принципи, загуби, инструменти, симулатор.">
+<meta name="description" content="LeanUniversity — Образователна платформа за Lean методология. История, принципи, 8 загуби, инструменти, интерактивен симулатор и курсове.">
+<meta name="keywords" content="Lean методология, Lean обучение, Toyota Production System, Kaizen, 5S, MUDA, Lean принципи, Lean симулатор, LeanUniversity">
+<meta name="author" content="LeanUniversity">
+<meta property="og:title" content="LeanUniversity — Образователна платформа за Lean методология">
+<meta property="og:description" content="Изчерпателен образователен ресурс за Lean: история, принципи, загуби, инструменти, симулатор и курсове.">
 <meta property="og:url" content="https://leanhab.eu/">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LeanUniversity — Образователна платформа за Lean методология">
+<meta name="twitter:description" content="Всичко за Lean методологията на едно място.">
 <link rel="canonical" href="https://leanhab.eu/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='26' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LU</text></svg>">
-<title>LEAN UNIVERSITY — Всичко за Lean методологията</title>
+<title>LeanUniversity — Образователна платформа за Lean методология</title>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TTTLSPYZEF"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-TTTLSPYZEF');</script>
+<!-- Schema.org: Organization -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"LeanUniversity","url":"https://leanhab.eu","description":"Образователна платформа за Lean методология","sameAs":[],"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"info@leanhab.eu"}}
+</script>
+<!-- Schema.org: WebSite -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"LeanUniversity","url":"https://leanhab.eu","description":"Образователна платформа за Lean методология — история, принципи, инструменти, симулатор и курсове"}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -31,269 +42,170 @@
   --black: #1a1a1a;
   --border: #e0e0e0;
   --light-blue: #e8f0f9;
-  --green: #4caf50;
-  --orange: #ff9800;
-  --purple: #9c27b0;
-  --red: #e53935;
-  --teal: #00897b;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--black); overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2.5rem; }
-
 /* NAV */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(11,26,46,0.97);
-  border-bottom: 2px solid var(--gold);
-  height: 64px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 3rem;
-  backdrop-filter: blur(8px);
-}
-.logo { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--white); text-decoration: none; }
-.logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 0; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0 0.9rem; height: 64px; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: color 0.2s, border-color 0.2s; }
-.nav-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-.btn-nav { background: var(--gold); color: var(--navy); padding: 0.55rem 1.3rem; font-size: 0.82rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; border-radius: 2px; }
-.btn-nav:hover { opacity: 0.85; }
-
+nav { position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.97);border-bottom:2px solid var(--gold);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;backdrop-filter:blur(8px); }
+.logo { font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--white);text-decoration:none; }
+.logo span { color:var(--gold); }
+.nav-links { display:flex;gap:0;list-style:none; }
+.nav-links a { color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s; }
+.nav-links a:hover { color:var(--gold);border-bottom-color:var(--gold); }
+.btn-nav { background:var(--gold);color:var(--navy);padding:0.55rem 1.3rem;font-size:0.82rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;border-radius:2px; }
+.btn-nav:hover { opacity:0.85; }
 /* HERO */
-.hero {
-  min-height: 100vh;
-  padding-top: 64px;
-  background: linear-gradient(135deg, #0b1a2e 0%, #1a3a5c 50%, #0d2137 100%);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; position: relative; overflow: hidden;
-  padding-bottom: 4rem;
-}
-.hero-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.shape { position: absolute; border-radius: 50%; opacity: 0.06; animation: float 8s ease-in-out infinite; }
-.shape-1 { width: 400px; height: 400px; background: var(--gold); top: -100px; left: -100px; animation-delay: 0s; }
-.shape-2 { width: 300px; height: 300px; background: var(--accent); bottom: -50px; right: -50px; animation-delay: 2s; }
-.shape-3 { width: 200px; height: 200px; background: var(--green); top: 50%; left: 10%; animation-delay: 4s; }
+.hero { min-height:100vh;padding-top:64px;background:linear-gradient(135deg,#0b1a2e 0%,#1a3a5c 50%,#0d2137 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding-bottom:4rem; }
+.hero-shapes { position:absolute;inset:0;pointer-events:none;overflow:hidden; }
+.shape { position:absolute;border-radius:50%;opacity:0.06;animation:float 8s ease-in-out infinite; }
+.shape-1 { width:400px;height:400px;background:var(--gold);top:-100px;left:-100px;animation-delay:0s; }
+.shape-2 { width:300px;height:300px;background:var(--accent);bottom:-50px;right:-50px;animation-delay:2s; }
+.shape-3 { width:200px;height:200px;background:#4caf50;top:50%;left:10%;animation-delay:4s; }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
-.hero-content { position: relative; z-index: 1; max-width: 860px; padding: 0 2rem; }
-.hero-badge { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); padding: 0.4rem 1.2rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; border-radius: 20px; }
-.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 1.2rem; }
-.hero h1 span { color: var(--gold); }
-.hero-sub { font-size: 1.15rem; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 640px; margin: 0 auto 2.5rem; font-weight: 300; }
-.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem; }
-.btn-gold { background: var(--gold); color: var(--navy); padding: 0.9rem 2.2rem; font-size: 0.95rem; font-weight: 700; text-decoration: none; border-radius: 3px; transition: opacity 0.2s; }
-.btn-gold:hover { opacity: 0.88; }
-.btn-outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); padding: 0.9rem 2.2rem; font-size: 0.95rem; font-weight: 500; text-decoration: none; border-radius: 3px; transition: border-color 0.2s; }
-.btn-outline:hover { border-color: var(--white); }
-.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; max-width: 700px; margin: 0 auto; }
-.hero-stat { padding: 1.2rem; text-align: center; }
-.hero-stat-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
-.hero-stat-val { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold); line-height: 1; }
-.hero-stat-lbl { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
-
-/* SECTION BASE */
-.section { padding: 6rem 0; }
-.section-light { background: var(--white); }
-.section-off { background: var(--off-white); }
-.section-navy { background: var(--navy); }
-.section-dark { background: #0d2137; }
-.section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
-.section-label.accent { color: var(--accent); }
-.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 600; line-height: 1.2; color: var(--navy); margin-bottom: 0.8rem; }
-.section-title.light { color: var(--white); }
-.section-intro { font-size: 1rem; color: var(--gray); line-height: 1.8; max-width: 640px; margin-bottom: 3.5rem; font-weight: 300; }
-.section-intro.light { color: rgba(255,255,255,0.6); }
-.divider { width: 48px; height: 3px; background: var(--gold); margin: 1rem 0 2rem; }
-.divider.accent { background: var(--accent); }
-
-/* HISTORY TIMELINE */
-.timeline { position: relative; margin-top: 3rem; }
-.timeline::before { content:''; position:absolute; left:28px; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--gold),var(--accent),var(--green),var(--purple),var(--orange)); border-radius:3px; }
-.tl-item { display:flex; gap:2rem; margin-bottom:2.5rem; position:relative; }
-.tl-dot { width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; flex-shrink:0; position:relative; z-index:1; box-shadow:0 4px 16px rgba(0,0,0,0.15); }
+.hero-content { position:relative;z-index:1;max-width:860px;padding:0 2rem; }
+.hero-badge { display:inline-block;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);padding:0.4rem 1.2rem;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem;border-radius:20px; }
+.hero h1 { font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:700;color:var(--white);line-height:1.15;margin-bottom:1.2rem; }
+.hero h1 span { color:var(--gold); }
+.hero-sub { font-size:1.15rem;color:rgba(255,255,255,0.65);line-height:1.75;max-width:640px;margin:0 auto 2.5rem;font-weight:300; }
+.hero-actions { display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem; }
+.btn-gold { background:var(--gold);color:var(--navy);padding:0.9rem 2.2rem;font-size:0.95rem;font-weight:700;text-decoration:none;border-radius:3px;transition:opacity 0.2s; }
+.btn-gold:hover { opacity:0.88; }
+.btn-outline { border:2px solid rgba(255,255,255,0.35);color:var(--white);padding:0.9rem 2.2rem;font-size:0.95rem;font-weight:500;text-decoration:none;border-radius:3px;transition:border-color 0.2s; }
+.btn-outline:hover { border-color:var(--white); }
+.hero-stats { display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.1);border-radius:8px;overflow:hidden;max-width:700px;margin:0 auto; }
+.hero-stat { padding:1.2rem;text-align:center; }
+.hero-stat-icon { font-size:1.8rem;margin-bottom:0.4rem; }
+.hero-stat-val { font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold);line-height:1; }
+.hero-stat-lbl { font-size:0.72rem;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.2rem; }
+/* SECTION */
+.section { padding:6rem 0; }
+.section-light { background:var(--white); }
+.section-off { background:var(--off-white); }
+.section-navy { background:var(--navy); }
+.section-label { font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem; }
+.section-label.accent { color:var(--accent); }
+.section-title { font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;line-height:1.2;color:var(--navy);margin-bottom:0.8rem; }
+.section-title.light { color:var(--white); }
+.section-intro { font-size:1rem;color:var(--gray);line-height:1.8;max-width:640px;margin-bottom:3rem;font-weight:300; }
+.section-intro.light { color:rgba(255,255,255,0.6); }
+.divider { width:48px;height:3px;background:var(--gold);margin:1rem 0 2rem; }
+.divider.accent { background:var(--accent); }
+/* TOPICS GRID */
+.topics-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem; }
+.topic-card { display:block;text-decoration:none;border:1px solid var(--border);border-radius:10px;padding:2rem;background:var(--white);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s; }
+.topic-card:hover { transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);border-color:var(--gold); }
+.topic-icon { font-size:2.5rem;margin-bottom:0.8rem; }
+.topic-card h3 { font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:0.5rem; }
+.topic-card p { color:var(--gray);font-size:0.88rem;line-height:1.65;margin-bottom:1rem; }
+.topic-link { font-size:0.85rem;font-weight:600;color:var(--accent); }
+/* TIMELINE */
+.timeline { position:relative;margin-top:3rem; }
+.timeline::before { content:'';position:absolute;left:28px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--accent),#4caf50,#9c27b0,#ff9800);border-radius:3px; }
+.tl-item { display:flex;gap:2rem;margin-bottom:2.5rem;position:relative; }
+.tl-dot { width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;position:relative;z-index:1;box-shadow:0 4px 16px rgba(0,0,0,0.15); }
 .tl-dot.gold { background:linear-gradient(135deg,#c9a84c,#e8c97a); }
 .tl-dot.blue { background:linear-gradient(135deg,#1565c0,#42a5f5); }
 .tl-dot.green { background:linear-gradient(135deg,#2e7d32,#66bb6a); }
 .tl-dot.purple { background:linear-gradient(135deg,#6a1b9a,#ba68c8); }
 .tl-dot.orange { background:linear-gradient(135deg,#e65100,#ffa726); }
-.tl-card { background:var(--white); border:1px solid var(--border); border-radius:8px; padding:1.5rem 1.8rem; flex:1; box-shadow:0 2px 12px rgba(0,0,0,0.06); transition:transform 0.2s,box-shadow 0.2s; }
-.tl-card:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(0,0,0,0.1); }
-.tl-year { font-family:'Playfair Display',serif; font-size:0.85rem; font-weight:700; color:var(--gold); letter-spacing:0.1em; margin-bottom:0.3rem; }
-.tl-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem; }
-.tl-card p { color:var(--gray); font-size:0.9rem; line-height:1.7; }
-
-/* PRINCIPLES */
-.principles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
-.principle-card { border-radius:10px; padding:2rem; transition:transform 0.2s,box-shadow 0.2s; position:relative; overflow:hidden; }
-.principle-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.1); }
-.principle-card.c1 { background:linear-gradient(135deg,#e3f2fd,#bbdefb); border-top:4px solid #1565c0; }
-.principle-card.c2 { background:linear-gradient(135deg,#f3e5f5,#e1bee7); border-top:4px solid #9c27b0; }
-.principle-card.c3 { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); border-top:4px solid #4caf50; }
-.principle-card.c4 { background:linear-gradient(135deg,#fff8e1,#ffecb3); border-top:4px solid #ff9800; }
-.principle-card.c5 { background:linear-gradient(135deg,#fce4ec,#f8bbd9); border-top:4px solid #e91e63; }
-.principle-card.c6 { background:linear-gradient(135deg,#e0f2f1,#b2dfdb); border-top:4px solid #009688; }
-.p-icon { font-size:2.5rem; margin-bottom:0.8rem; }
-.p-num { font-family:'Playfair Display',serif; font-size:0.75rem; font-weight:700; letter-spacing:0.15em; color:rgba(0,0,0,0.3); margin-bottom:0.3rem; text-transform:uppercase; }
-.principle-card h3 { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem; }
-.principle-card p { color:#444; font-size:0.88rem; line-height:1.7; }
-
-/* MUDA */
-.muda-intro { background:var(--navy); padding:5rem 0; }
-.muda-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin-top:3rem; }
-.muda-card { border-radius:12px; padding:1.8rem 1.5rem; text-align:center; transition:transform 0.2s,box-shadow 0.2s; cursor:default; }
-.muda-card:hover { transform:translateY(-6px) scale(1.02); box-shadow:0 12px 32px rgba(0,0,0,0.15); }
-.muda-card.m1 { background:linear-gradient(135deg,#ff7043,#ff8a65); }
-.muda-card.m2 { background:linear-gradient(135deg,#5c6bc0,#7986cb); }
-.muda-card.m3 { background:linear-gradient(135deg,#26a69a,#4db6ac); }
-.muda-card.m4 { background:linear-gradient(135deg,#ffa726,#ffca28); }
-.muda-card.m5 { background:linear-gradient(135deg,#ef5350,#e57373); }
-.muda-card.m6 { background:linear-gradient(135deg,#ab47bc,#ce93d8); }
-.muda-card.m7 { background:linear-gradient(135deg,#66bb6a,#a5d6a7); }
-.muda-card.m8 { background:linear-gradient(135deg,#29b6f6,#81d4fa); }
-.muda-icon { font-size:2.8rem; margin-bottom:0.8rem; }
-.muda-card h3 { font-family:'Playfair Display',serif; font-size:0.95rem; font-weight:700; color:var(--white); margin-bottom:0.4rem; }
-.muda-card p { color:rgba(255,255,255,0.85); font-size:0.8rem; line-height:1.55; }
-.muda-tag { display:inline-block; background:rgba(255,255,255,0.25); color:var(--white); font-size:0.65rem; font-weight:700; letter-spacing:0.1em; padding:0.2rem 0.6rem; border-radius:10px; margin-bottom:0.6rem; text-transform:uppercase; }
-
-/* TOOLS */
-.tools-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
-.tool-card { border:1px solid var(--border); border-radius:8px; padding:1.8rem; background:var(--white); transition:box-shadow 0.2s,transform 0.2s; }
-.tool-card:hover { box-shadow:0 8px 28px rgba(0,0,0,0.08); transform:translateY(-3px); }
-.tool-icon { font-size:2rem; margin-bottom:0.8rem; }
-.tool-card h3 { font-family:'Playfair Display',serif; font-size:1rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem; }
-.tool-card p { color:var(--gray); font-size:0.85rem; line-height:1.65; margin-bottom:0.8rem; }
-.tool-tag { display:inline-block; padding:0.18rem 0.65rem; font-size:0.68rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border-radius:10px; }
-.tool-tag.blue { background:#e3f2fd; color:#1565c0; }
-.tool-tag.green { background:#e8f5e9; color:#2e7d32; }
-.tool-tag.orange { background:#fff3e0; color:#e65100; }
-.tool-tag.purple { background:#f3e5f5; color:#6a1b9a; }
-.tool-tag.teal { background:#e0f2f1; color:#00695c; }
-
-/* APPROACHES */
-.approaches-section { background:var(--navy); padding:6rem 0; }
-.approach-table-wrap { overflow-x:auto; margin-top:3rem; }
-table.approach-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
-.approach-table th { padding:1rem 1.2rem; text-align:left; font-family:'Playfair Display',serif; font-weight:600; font-size:0.95rem; border-bottom:2px solid rgba(255,255,255,0.15); }
-.approach-table td { padding:1rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.75); line-height:1.55; vertical-align:top; }
+.tl-card { background:var(--white);border:1px solid var(--border);border-radius:8px;padding:1.5rem 1.8rem;flex:1;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform 0.2s,box-shadow 0.2s; }
+.tl-card:hover { transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,0.1); }
+.tl-year { font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.3rem; }
+.tl-card h3 { font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:0.5rem; }
+.tl-card p { color:var(--gray);font-size:0.9rem;line-height:1.7; }
+/* APPROACHES TABLE */
+.approach-table-wrap { overflow-x:auto;margin-top:3rem; }
+table.approach-table { width:100%;border-collapse:collapse;font-size:0.9rem; }
+.approach-table th { padding:1rem 1.2rem;text-align:left;font-family:'Playfair Display',serif;font-weight:600;font-size:0.95rem;border-bottom:2px solid rgba(255,255,255,0.15); }
+.approach-table td { padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.75);line-height:1.55;vertical-align:top; }
 .approach-table tr:hover td { background:rgba(255,255,255,0.04); }
-.approach-table .col-lean { color:#c9a84c; font-weight:600; }
-.th-lean { background:rgba(201,168,76,0.15); color:var(--gold) !important; border-radius:4px 4px 0 0; }
-.th-sigma { background:rgba(33,150,243,0.12); color:#64b5f6 !important; }
-.th-agile { background:rgba(76,175,80,0.12); color:#81c784 !important; }
-.th-kaizen { background:rgba(255,152,0,0.12); color:#ffb74d !important; }
-.th-tps { background:rgba(156,39,176,0.12); color:#ce93d8 !important; }
-.approach-name { font-weight:700; color:var(--white) !important; font-size:0.88rem; }
-
-/* SIMULATOR */
-.simulator-wrapper { border:2px solid var(--gold); border-radius:8px; overflow:hidden; margin-top:2rem; box-shadow:0 8px 40px rgba(201,168,76,0.2); }
-.simulator-wrapper iframe { display:block; }
-
-/* COURSES */
-.courses-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:3rem; }
-.course-card { border-radius:10px; overflow:hidden; background:var(--white); border:1px solid var(--border); transition:transform 0.2s,box-shadow 0.2s; }
-.course-card:hover { transform:translateY(-4px); box-shadow:0 12px 32px rgba(0,0,0,0.1); }
-.course-header { padding:2rem 1.8rem 1.2rem; }
-.course-header.c1 { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); }
-.course-header.c2 { background:linear-gradient(135deg,#e3f2fd,#bbdefb); }
-.course-header.c3 { background:linear-gradient(135deg,#fce4ec,#f8bbd9); }
-.course-icon { font-size:2.5rem; margin-bottom:0.6rem; }
-.course-badge { display:inline-block; padding:0.2rem 0.75rem; font-size:0.7rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border-radius:10px; margin-bottom:0.5rem; }
-.course-badge.free { background:#e8f5e9; color:#2e7d32; }
-.course-badge.paid { background:#e3f2fd; color:#1565c0; }
-.course-body { padding:1.2rem 1.8rem 1.8rem; }
-.course-body h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:600; color:var(--navy); margin-bottom:0.5rem; }
-.course-body p { color:var(--gray); font-size:0.88rem; line-height:1.65; margin-bottom:1rem; }
-.course-meta { display:flex; gap:1rem; font-size:0.8rem; color:var(--gray); border-top:1px solid var(--border); padding-top:0.8rem; }
-
+.col-lean { color:#c9a84c;font-weight:600; }
+.th-lean { background:rgba(201,168,76,0.15);color:var(--gold) !important; }
+.th-sigma { background:rgba(33,150,243,0.12);color:#64b5f6 !important; }
+.th-agile { background:rgba(76,175,80,0.12);color:#81c784 !important; }
+.th-kaizen { background:rgba(255,152,0,0.12);color:#ffb74d !important; }
+.th-tps { background:rgba(156,39,176,0.12);color:#ce93d8 !important; }
+.approach-name { font-weight:700;color:var(--white) !important;font-size:0.88rem; }
 /* CONTACT */
-.contact-grid { display:grid; grid-template-columns:1fr 1.3fr; gap:6rem; margin-top:3.5rem; align-items:start; }
-.contact-info p { color:var(--gray); line-height:1.8; font-size:1rem; margin-bottom:2rem; font-weight:300; }
-.contact-item { display:flex; gap:1rem; margin-bottom:1.5rem; align-items:flex-start; }
-.ci-icon { width:42px; height:42px; background:var(--light-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
-.contact-item div { display:flex; flex-direction:column; gap:0.2rem; }
-.contact-item strong { font-size:0.85rem; font-weight:600; color:var(--navy); }
-.contact-item span { color:var(--gray); font-size:0.85rem; }
-.contact-form { display:flex; flex-direction:column; gap:1.1rem; }
-.form-group { display:flex; flex-direction:column; gap:0.4rem; }
-.form-group label { font-size:0.75rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gray-dark); }
-.form-group input, .form-group textarea, .form-group select { background:var(--white); border:1px solid var(--border); color:var(--black); padding:0.8rem 1rem; font-family:'Source Sans 3',sans-serif; font-size:0.95rem; outline:none; transition:border-color 0.2s; border-radius:4px; }
+.contact-grid { display:grid;grid-template-columns:1fr 1.3fr;gap:6rem;margin-top:3.5rem;align-items:start; }
+.contact-info p { color:var(--gray);line-height:1.8;font-size:1rem;margin-bottom:2rem;font-weight:300; }
+.contact-item { display:flex;gap:1rem;margin-bottom:1.5rem;align-items:flex-start; }
+.ci-icon { width:42px;height:42px;background:var(--light-blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0; }
+.contact-item div { display:flex;flex-direction:column;gap:0.2rem; }
+.contact-item strong { font-size:0.85rem;font-weight:600;color:var(--navy); }
+.contact-item span { color:var(--gray);font-size:0.85rem; }
+.contact-form { display:flex;flex-direction:column;gap:1.1rem; }
+.form-group { display:flex;flex-direction:column;gap:0.4rem; }
+.form-group label { font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray-dark); }
+.form-group input, .form-group textarea, .form-group select { background:var(--white);border:1px solid var(--border);color:var(--black);padding:0.8rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.2s;border-radius:4px; }
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--accent); }
-.btn-submit { background:var(--navy); color:var(--white); border:none; padding:0.9rem 2.5rem; font-family:'Source Sans 3',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:background 0.2s; align-self:flex-start; border-radius:4px; }
+.btn-submit { background:var(--navy);color:var(--white);border:none;padding:0.9rem 2.5rem;font-family:'Source Sans 3',sans-serif;font-size:0.9rem;font-weight:600;cursor:pointer;transition:background 0.2s;align-self:flex-start;border-radius:4px; }
 .btn-submit:hover { background:var(--accent); }
-
+.form-success { display:none;background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;padding:1rem 1.5rem;font-size:0.95rem;margin-top:1rem;border-radius:4px; }
+.form-error { display:none;background:#ffebee;border:1px solid #ef9a9a;color:#c62828;padding:1rem 1.5rem;font-size:0.95rem;margin-top:1rem;border-radius:4px; }
+.btn-submit:disabled { opacity:0.6;cursor:not-allowed; }
 /* FOOTER */
-footer { background:var(--navy); border-top:3px solid var(--gold); padding:3rem 0 2rem; }
-.footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:2rem; margin-bottom:2rem; }
-.footer-logo { font-family:'Playfair Display',serif; font-weight:700; font-size:1.3rem; color:var(--white); text-decoration:none; }
+footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2rem; }
+.footer-inner { display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;margin-bottom:2rem; }
+.footer-logo { font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none; }
 .footer-logo span { color:var(--gold); }
-.footer-links { display:flex; gap:2rem; flex-wrap:wrap; }
-.footer-links a { color:rgba(255,255,255,0.5); text-decoration:none; font-size:0.85rem; transition:color 0.2s; }
+.footer-links { display:flex;gap:2rem;flex-wrap:wrap; }
+.footer-links a { color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s; }
 .footer-links a:hover { color:var(--gold); }
-.footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:1.5rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
-.footer-copy { color:rgba(255,255,255,0.3); font-size:0.78rem; }
-
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem; }
+.footer-copy { color:rgba(255,255,255,0.3);font-size:0.78rem; }
+.footer-legal { display:flex;gap:1.5rem;flex-wrap:wrap; }
+.footer-legal a { color:rgba(255,255,255,0.3);font-size:0.78rem;text-decoration:none;transition:color 0.2s; }
+.footer-legal a:hover { color:var(--gold); }
 /* WHATSAPP */
-.whatsapp-btn { position:fixed; bottom:2rem; right:2rem; width:58px; height:58px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(37,211,102,0.4); z-index:998; text-decoration:none; transition:transform 0.2s; }
+.whatsapp-btn { position:fixed;bottom:2rem;right:2rem;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:998;text-decoration:none;transition:transform 0.2s; }
 .whatsapp-btn:hover { transform:scale(1.1); }
-.whatsapp-btn svg { width:32px; height:32px; fill:white; }
-.whatsapp-tooltip { position:absolute; right:68px; background:var(--navy); color:white; padding:0.4rem 0.9rem; font-size:0.8rem; white-space:nowrap; border-radius:4px; opacity:0; pointer-events:none; transition:opacity 0.2s; }
+.whatsapp-btn svg { width:32px;height:32px;fill:white; }
+.whatsapp-tooltip { position:absolute;right:68px;background:var(--navy);color:white;padding:0.4rem 0.9rem;font-size:0.8rem;white-space:nowrap;border-radius:4px;opacity:0;pointer-events:none;transition:opacity 0.2s; }
 .whatsapp-btn:hover .whatsapp-tooltip { opacity:1; }
-
 /* COOKIE */
-.cookie-banner { position:fixed; bottom:0; left:0; right:0; background:var(--navy); color:var(--white); padding:1.2rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; z-index:999; flex-wrap:wrap; border-top:3px solid var(--gold); }
-.cookie-banner p { font-size:0.88rem; color:rgba(255,255,255,0.8); line-height:1.5; margin:0; flex:1; min-width:200px; }
-.cookie-actions { display:flex; gap:0.8rem; flex-shrink:0; }
-.btn-cookie-accept { background:var(--gold); color:var(--navy); border:none; padding:0.6rem 1.5rem; font-size:0.85rem; font-weight:700; cursor:pointer; font-family:'Source Sans 3',sans-serif; border-radius:3px; }
-.btn-cookie-decline { background:none; color:rgba(255,255,255,0.6); border:1px solid rgba(255,255,255,0.3); padding:0.6rem 1.5rem; font-size:0.85rem; cursor:pointer; font-family:'Source Sans 3',sans-serif; border-radius:3px; }
-
+.cookie-banner { position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:var(--white);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;z-index:999;flex-wrap:wrap;border-top:3px solid var(--gold); }
+.cookie-banner p { font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.5;margin:0;flex:1;min-width:200px; }
+.cookie-actions { display:flex;gap:0.8rem;flex-shrink:0; }
+.btn-cookie-accept { background:var(--gold);color:var(--navy);border:none;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px; }
+.btn-cookie-decline { background:none;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px; }
 /* LANG */
-.site-switcher { display:flex; gap:0; border:1px solid rgba(255,255,255,0.2); overflow:hidden; border-radius:3px; }
-.site-btn { background:none; border:none; color:rgba(255,255,255,0.6); padding:0.3rem 0.75rem; font-size:0.75rem; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:'Source Sans 3',sans-serif; letter-spacing:0.05em; text-decoration:none; display:flex; align-items:center; }
-.site-btn.active { background:var(--gold); color:var(--navy); }
-.lang-switcher { display:flex; gap:0.3rem; margin-left:1rem; }
-.lang-btn { background:none; border:1px solid rgba(255,255,255,0.25); color:rgba(255,255,255,0.6); padding:0.3rem 0.65rem; font-size:0.75rem; font-weight:700; cursor:pointer; transition:all 0.2s; font-family:'Source Sans 3',sans-serif; border-radius:3px; }
-.lang-btn.active { background:var(--gold); color:var(--navy); border-color:var(--gold); }
-.lang-btn:hover:not(.active) { border-color:var(--gold); color:var(--gold); }
-
+.site-switcher { display:flex;gap:0;border:1px solid rgba(255,255,255,0.2);overflow:hidden;border-radius:3px; }
+.site-btn { background:none;border:none;color:rgba(255,255,255,0.6);padding:0.3rem 0.75rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;letter-spacing:0.05em;text-decoration:none;display:flex;align-items:center; }
+.site-btn.active { background:var(--gold);color:var(--navy); }
+.lang-switcher { display:flex;gap:0.3rem;margin-left:1rem; }
+.lang-btn { background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);padding:0.3rem 0.65rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;border-radius:3px; }
+.lang-btn.active { background:var(--gold);color:var(--navy);border-color:var(--gold); }
+.lang-btn:hover:not(.active) { border-color:var(--gold);color:var(--gold); }
 /* HAMBURGER */
-.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; background:none; border:none; }
-.hamburger span { display:block; width:24px; height:2px; background:var(--white); transition:all 0.3s; }
+.hamburger { display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none; }
+.hamburger span { display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s; }
 .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity:0; }
 .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
-.mobile-nav { display:none; position:fixed; top:64px; left:0; right:0; background:var(--navy); border-bottom:2px solid var(--gold); z-index:99; padding:1rem 1.5rem; flex-direction:column; gap:0; }
-.mobile-nav a { color:rgba(255,255,255,0.8); text-decoration:none; font-size:1rem; font-weight:500; padding:0.9rem 0; border-bottom:1px solid rgba(255,255,255,0.1); display:block; }
+.mobile-nav { display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);border-bottom:2px solid var(--gold);z-index:99;padding:1rem 1.5rem;flex-direction:column;gap:0; }
+.mobile-nav a { color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:block; }
 .mobile-nav a:hover { color:var(--gold); }
 .mobile-nav.open { display:flex; }
-
-/* FORM FEEDBACK */
-.form-success { display:none; background:#e8f5e9; border:1px solid #a5d6a7; color:#2e7d32; padding:1rem 1.5rem; font-size:0.95rem; margin-top:1rem; border-radius:4px; }
-.form-error { display:none; background:#ffebee; border:1px solid #ef9a9a; color:#c62828; padding:1rem 1.5rem; font-size:0.95rem; margin-top:1rem; border-radius:4px; }
-.btn-submit:disabled { opacity:0.6; cursor:not-allowed; }
-
 /* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width:900px) {
   nav { padding:0 1.5rem; }
   .nav-links { display:none; }
   .hamburger { display:flex; }
-  .hero-stats { grid-template-columns:repeat(2,1fr); max-width:400px; }
-  .principles-grid { grid-template-columns:1fr 1fr; }
-  .muda-grid { grid-template-columns:repeat(2,1fr); }
-  .tools-grid { grid-template-columns:1fr 1fr; }
-  .courses-grid { grid-template-columns:1fr; }
-  .contact-grid { grid-template-columns:1fr; gap:3rem; }
+  .hero-stats { grid-template-columns:repeat(2,1fr);max-width:400px; }
+  .topics-grid { grid-template-columns:1fr 1fr; }
+  .contact-grid { grid-template-columns:1fr;gap:3rem; }
   .container { padding:0 1.5rem; }
   .section { padding:4rem 0; }
-  .simulator-wrapper iframe { height:450px; }
-  .approach-table th, .approach-table td { padding:0.75rem 0.8rem; font-size:0.82rem; }
   .tl-item { gap:1rem; }
-  .tl-dot { width:46px; height:46px; font-size:1.2rem; }
+  .tl-dot { width:46px;height:46px;font-size:1.2rem; }
+  .approach-table th,.approach-table td { padding:0.75rem 0.8rem;font-size:0.82rem; }
 }
-@media (max-width: 600px) {
+@media (max-width:600px) {
   .hero h1 { font-size:1.9rem; }
-  .principles-grid { grid-template-columns:1fr; }
-  .muda-grid { grid-template-columns:1fr 1fr; }
-  .tools-grid { grid-template-columns:1fr; }
+  .topics-grid { grid-template-columns:1fr; }
   .hero-stats { grid-template-columns:repeat(2,1fr); }
 }
 </style>
@@ -305,12 +217,12 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:3rem 
 <nav>
   <a href="/" class="logo">Lean<span>University</span></a>
   <ul class="nav-links">
-    <li><a href="#history" data-i18n="nav.history">История</a></li>
-    <li><a href="#principles" data-i18n="nav.principles">Принципи</a></li>
-    <li><a href="#muda" data-i18n="nav.muda">Загуби</a></li>
-    <li><a href="#tools" data-i18n="nav.tools">Инструменти</a></li>
-    <li><a href="#approaches" data-i18n="nav.approaches">Подходи</a></li>
-    <li><a href="#simulator" data-i18n="nav.simulator">Симулатор</a></li>
+    <li><a href="/#history">История</a></li>
+    <li><a href="/lean-principi.html">Принципи</a></li>
+    <li><a href="/muda-8-vida-zagubi.html">Загуби</a></li>
+    <li><a href="/instrumenti.html">Инструменти</a></li>
+    <li><a href="/simulator.html">Симулатор</a></li>
+    <li><a href="/kursove.html">Курсове</a></li>
   </ul>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню">
     <span></span><span></span><span></span>
@@ -325,7 +237,7 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:3rem 
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
     </div>
-    <a href="#contact" class="btn-nav" data-i18n="nav.contact">Контакт</a>
+    <a href="#contact" class="btn-nav">Контакт</a>
   </div>
 </nav>
 
@@ -337,23 +249,22 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:3rem 
 
 <!-- COOKIE -->
 <div class="cookie-banner" id="cookie-banner">
-  <p data-i18n="cookie.text">Този сайт използва бисквитки за подобряване на потребителското изживяване. С продължаването на използването приемате нашата политика за поверителност.</p>
+  <p>Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата <a href="/privacy-policy.html" style="color:var(--gold)">Политика за поверителност</a>.</p>
   <div class="cookie-actions">
-    <button class="btn-cookie-decline" onclick="cookieDecline()" data-i18n="cookie.decline">Отказ</button>
-    <button class="btn-cookie-accept" onclick="cookieAccept()" data-i18n="cookie.accept">Приемам</button>
+    <button class="btn-cookie-decline" onclick="cookieDecline()">Отказ</button>
+    <button class="btn-cookie-accept" onclick="cookieAccept()">Приемам</button>
   </div>
 </div>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
-  <a href="#history" onclick="closeMenu()" data-i18n="nav.history">История</a>
-  <a href="#principles" onclick="closeMenu()" data-i18n="nav.principles">Принципи</a>
-  <a href="#muda" onclick="closeMenu()" data-i18n="nav.muda">Загуби</a>
-  <a href="#tools" onclick="closeMenu()" data-i18n="nav.tools">Инструменти</a>
-  <a href="#approaches" onclick="closeMenu()" data-i18n="nav.approaches">Подходи</a>
-  <a href="#simulator" onclick="closeMenu()" data-i18n="nav.simulator">Симулатор</a>
-  <a href="#courses" onclick="closeMenu()" data-i18n="nav.courses">Курсове</a>
-  <a href="#contact" onclick="closeMenu()" data-i18n="nav.contact">Контакт</a>
+  <a href="/#history" onclick="closeMenu()">История</a>
+  <a href="/lean-principi.html" onclick="closeMenu()">Принципи</a>
+  <a href="/muda-8-vida-zagubi.html" onclick="closeMenu()">Загуби</a>
+  <a href="/instrumenti.html" onclick="closeMenu()">Инструменти</a>
+  <a href="/simulator.html" onclick="closeMenu()">Симулатор</a>
+  <a href="/kursove.html" onclick="closeMenu()">Курсове</a>
+  <a href="#contact" onclick="closeMenu()">Контакт</a>
 </div>
 
 <!-- HERO -->
@@ -364,451 +275,181 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:3rem 
     <div class="shape shape-3"></div>
   </div>
   <div class="hero-content">
-    <div class="hero-badge" data-i18n="hero.badge">🎓 Образователна платформа</div>
-    <h1 data-i18n="hero.h1">Всичко за <span>Lean</span> методологията</h1>
-    <p class="hero-sub" data-i18n="hero.sub">История, принципи, загуби, инструменти, различни подходи и интерактивен симулатор — всичко на едно място.</p>
+    <div class="hero-badge">🎓 Образователна платформа</div>
+    <h1>Всичко за <span>Lean</span> методологията</h1>
+    <p class="hero-sub">История, принципи, 8 вида загуби, инструменти, различни подходи и интерактивен симулатор — всичко на едно място.</p>
     <div class="hero-actions">
-      <a href="#history" class="btn-gold" data-i18n="hero.btn1">🚀 Започни от тук</a>
-      <a href="#simulator" class="btn-outline" data-i18n="hero.btn2">🎮 Пробвай симулатора</a>
+      <a href="/#history" class="btn-gold">🚀 Започни от тук</a>
+      <a href="/simulator.html" class="btn-outline">🎮 Пробвай симулатора</a>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-icon">📜</div>
-        <div class="hero-stat-val">100+</div>
-        <div class="hero-stat-lbl" data-i18n="hero.s1">Години история</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-icon">⚙️</div>
-        <div class="hero-stat-val">5</div>
-        <div class="hero-stat-lbl" data-i18n="hero.s2">Принципа</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-icon">🗑️</div>
-        <div class="hero-stat-val">8</div>
-        <div class="hero-stat-lbl" data-i18n="hero.s3">Вида загуби</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-icon">🛠️</div>
-        <div class="hero-stat-val">9+</div>
-        <div class="hero-stat-lbl" data-i18n="hero.s4">Инструмента</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-icon">📜</div><div class="hero-stat-val">100+</div><div class="hero-stat-lbl">Години история</div></div>
+      <div class="hero-stat"><div class="hero-stat-icon">⚙️</div><div class="hero-stat-val">5</div><div class="hero-stat-lbl">Принципа</div></div>
+      <div class="hero-stat"><div class="hero-stat-icon">🗑️</div><div class="hero-stat-val">8</div><div class="hero-stat-lbl">Вида загуби</div></div>
+      <div class="hero-stat"><div class="hero-stat-icon">🛠️</div><div class="hero-stat-val">9+</div><div class="hero-stat-lbl">Инструмента</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS GRID -->
+<section class="section section-off">
+  <div class="container">
+    <div class="section-label accent">Изучи Lean методологията</div>
+    <h2 class="section-title">Теми и ресурси</h2>
+    <div class="divider accent"></div>
+    <div class="topics-grid">
+      <a href="/lean-principi.html" class="topic-card">
+        <div class="topic-icon">⚙️</div>
+        <h3>5-те Lean принципа</h3>
+        <p>Фундаментите на Lean: от дефиниране на стойност до стремеж към съвършенство. Разбери логиката зад Toyota Production System.</p>
+        <span class="topic-link">Виж принципите →</span>
+      </a>
+      <a href="/muda-8-vida-zagubi.html" class="topic-card">
+        <div class="topic-icon">🗑️</div>
+        <h3>8-те вида загуби (MUDA)</h3>
+        <p>TIM WOODS — осемте врага на ефективността. Научи се да ги разпознаваш и елиминираш в своята организация.</p>
+        <span class="topic-link">Виж загубите →</span>
+      </a>
+      <a href="/instrumenti.html" class="topic-card">
+        <div class="topic-icon">🛠️</div>
+        <h3>Lean инструменти</h3>
+        <p>VSM, 5S, Kaizen, Kanban, Poka-Yoke, A3, SMED, Heijunka и Takt Time — практически инструменти за всеки процес.</p>
+        <span class="topic-link">Виж инструментите →</span>
+      </a>
+      <a href="/simulator.html" class="topic-card">
+        <div class="topic-icon">🎮</div>
+        <h3>Lean Flow Симулатор</h3>
+        <p>Изпробвай Lean принципите интерактивно. Симулирай производствен процес и виж ефекта от подобренията в реално време.</p>
+        <span class="topic-link">Отвори симулатора →</span>
+      </a>
+      <a href="/kursove.html" class="topic-card">
+        <div class="topic-icon">🎓</div>
+        <h3>Lean курсове</h3>
+        <p>Три нива на обучение: Lean Основи (безплатно), Lean Практик и Lean Мениджър. Структурирани програми за всяко ниво.</p>
+        <span class="topic-link">Виж курсовете →</span>
+      </a>
+      <a href="/#history" class="topic-card">
+        <div class="topic-icon">📜</div>
+        <h3>История на Lean</h3>
+        <p>От Ford (1910) до Toyota TPS, термина „Lean" и разпространението му в здравеопазването, IT и строителството.</p>
+        <span class="topic-link">Виж историята →</span>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- ИСТОРИЯ -->
-<section class="section section-off" id="history">
+<section class="section section-light" id="history">
   <div class="container">
-    <div class="section-label" data-i18n="history.label">Произход и еволюция</div>
-    <h2 class="section-title" data-i18n="history.title">История на Lean</h2>
+    <div class="section-label">Произход и еволюция</div>
+    <h2 class="section-title">История на Lean методологията</h2>
     <div class="divider"></div>
-    <p class="section-intro" data-i18n="history.intro">От конвейера на Форд до глобалната революция в управлението — Lean методологията се е развивала в продължение на повече от 100 години.</p>
+    <p class="section-intro">От конвейера на Форд до глобалната управленска революция — Lean се е развивала в продължение на повече от 100 години и днес се прилага в почти всяка индустрия.</p>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot gold">🏭</div>
         <div class="tl-card">
           <div class="tl-year">1910-те</div>
-          <h3 data-i18n="h1.title">Ford Production System</h3>
-          <p data-i18n="h1.text">Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство — стандартни части, поточна линия, минимизиране на загубите от движение и чакане.</p>
+          <h3>Ford Production System</h3>
+          <p>Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство — стандартни части, поточна линия, минимизиране на загубите от движение и чакане. Идеите на Форд за ефективност директно повлияват по-късното развитие на Toyota Production System.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot blue">🚗</div>
         <div class="tl-card">
           <div class="tl-year">1950-те</div>
-          <h3 data-i18n="h2.title">Toyota Production System (TPS)</h3>
-          <p data-i18n="h2.text">Тайичи Оно и Шигео Шинго разработват TPS в Toyota. Just-in-Time и Jidoka са двата стълба. Системата е отговор на ресурсния дефицит в следвоенна Япония — правене на повече с по-малко.</p>
+          <h3>Toyota Production System (TPS)</h3>
+          <p>Тайичи Оно и Шигео Шинго разработват TPS в Toyota. Just-in-Time и Jidoka са двата стълба. Системата е отговор на ресурсния дефицит в следвоенна Япония — правене на повече с по-малко. TPS поставя основите на цялата съвременна Lean методология.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot green">📦</div>
         <div class="tl-card">
           <div class="tl-year">1988</div>
-          <h3 data-i18n="h3.title">Терминът „Lean" е роден</h3>
-          <p data-i18n="h3.text">Джон Крафчик въвежда термина „Lean production" в научна статия в MIT. Описва как Toyota постига повече с по-малко усилия, пространство, капитал и грешки в сравнение с масовото производство.</p>
+          <h3>Терминът „Lean" е роден</h3>
+          <p>Джон Крафчик въвежда термина „Lean production" в научна статия в MIT. Описва как Toyota постига повече с по-малко усилия, пространство, капитал и грешки в сравнение с масовото производство. Терминът бързо се разпространява в академичната и бизнес общност.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot purple">📖</div>
         <div class="tl-card">
           <div class="tl-year">1996</div>
-          <h3 data-i18n="h4.title">„Lean Thinking" — библията на Lean</h3>
-          <p data-i18n="h4.text">Джеймс Уомак и Даниел Джоунс публикуват книгата, която систематизира 5-те Lean принципа и прави методологията достъпна за мениджъри по целия свят. Превеждана на 30+ езика.</p>
+          <h3>„Lean Thinking" — библията на Lean</h3>
+          <p>Джеймс Уомак и Даниел Джоунс публикуват книгата, която систематизира 5-те Lean принципа и прави методологията достъпна за мениджъри по целия свят. Книгата е преведена на 30+ езика и все още е задължително четиво за всеки Lean специалист.</p>
         </div>
       </div>
       <div class="tl-item">
         <div class="tl-dot orange">🌍</div>
         <div class="tl-card">
           <div class="tl-year">2000+ до днес</div>
-          <h3 data-i18n="h5.title">Lean навсякъде</h3>
-          <p data-i18n="h5.text">Lean се разпространява в здравеопазване, IT (Lean Startup), строителство, финанси, образование и държавна администрация. Днес принципите се прилагат успешно в почти всяка индустрия по света.</p>
+          <h3>Lean навсякъде</h3>
+          <p>Lean се разпространява в здравеопазване (Lean Healthcare), IT (Lean Startup, Agile), строителство (Lean Construction), финанси и образование. Днес принципите се прилагат успешно в почти всяка индустрия по света, включително в стартъпи и правителствени организации.</p>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5 ПРИНЦИПА -->
-<section class="section section-light" id="principles">
-  <div class="container">
-    <div class="section-label accent" data-i18n="principles.label">Фундаментите</div>
-    <h2 class="section-title" data-i18n="principles.title">5-те Lean принципа</h2>
-    <div class="divider accent"></div>
-    <p class="section-intro" data-i18n="principles.intro">Lean философията, разработена от Toyota, се базира на пет фундаментални принципа. Те са универсални — прилагат се в производство, услуги, здравеопазване и IT.</p>
-    <div class="principles-grid">
-      <div class="principle-card c1">
-        <div class="p-icon">💎</div>
-        <div class="p-num" data-i18n="p.step">СТЪПКА 01</div>
-        <h3 data-i18n="p1.title">Дефинирай стойността</h3>
-        <p data-i18n="p1.text">Стойността се определя единствено от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба.</p>
-      </div>
-      <div class="principle-card c2">
-        <div class="p-icon">🗺️</div>
-        <div class="p-num" data-i18n="p.step2">СТЪПКА 02</div>
-        <h3 data-i18n="p2.title">Картографирай потока</h3>
-        <p data-i18n="p2.text">Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби в процеса.</p>
-      </div>
-      <div class="principle-card c3">
-        <div class="p-icon">🌊</div>
-        <div class="p-num" data-i18n="p.step3">СТЪПКА 03</div>
-        <h3 data-i18n="p3.title">Създай непрекъснат поток</h3>
-        <p data-i18n="p3.text">Премахни пречките и задръстванията за да може работата да тече непрекъснато без чакане и прекъсвания между стъпките.</p>
-      </div>
-      <div class="principle-card c4">
-        <div class="p-icon">⬅️</div>
-        <div class="p-num" data-i18n="p.step4">СТЪПКА 04</div>
-        <h3 data-i18n="p4.title">Pull система</h3>
-        <p data-i18n="p4.text">Произвеждай само при реално търсене от клиента. Pull означава, че следващата стъпка „тегли" работата само когато е готова да я приеме.</p>
-      </div>
-      <div class="principle-card c5">
-        <div class="p-icon">⭐</div>
-        <div class="p-num" data-i18n="p.step5">СТЪПКА 05</div>
-        <h3 data-i18n="p5.title">Стремеж към съвършенство</h3>
-        <p data-i18n="p5.text">Lean е непрекъснато пътуване без край. Kaizen — всеки ден прави нещата малко по-добре. Малките подобрения водят до огромни резултати.</p>
-      </div>
-      <div class="principle-card c6">
-        <div class="p-icon">🔄</div>
-        <div class="p-num" data-i18n="p.kaizen">KAIZEN</div>
-        <h3 data-i18n="p6.title">Непрекъснато подобрение</h3>
-        <p data-i18n="p6.text">Kaizen (改善) означава „промяна към по-добро". Всеки служител, всеки ден, на всяко ниво участва в подобряването на процесите.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 8 ЗАГУБИ MUDA -->
-<section class="muda-intro" id="muda">
-  <div class="container">
-    <div class="section-label" data-i18n="muda.label">Идентифицирай и елиминирай</div>
-    <h2 class="section-title light" data-i18n="muda.title">8-те вида загуби (MUDA)</h2>
-    <div class="divider"></div>
-    <p class="section-intro light" data-i18n="muda.intro">MUDA (無駄) е японската дума за „загуба". В Lean има 8 вида дейности, които не добавят стойност и трябва да се елиминират. Запомни ги с акронима TIM WOODS.</p>
-    <div class="muda-grid">
-      <div class="muda-card m1">
-        <div class="muda-tag">T</div>
-        <div class="muda-icon">🚚</div>
-        <h3 data-i18n="m1.title">Транспорт</h3>
-        <p data-i18n="m1.text">Ненужно преместване на материали, продукти или информация между стъпките на процеса.</p>
-      </div>
-      <div class="muda-card m2">
-        <div class="muda-tag">I</div>
-        <div class="muda-icon">📦</div>
-        <h3 data-i18n="m2.title">Излишни запаси</h3>
-        <p data-i18n="m2.text">Повече суровини, незавършена продукция или готови стоки отколкото реално е необходимо.</p>
-      </div>
-      <div class="muda-card m3">
-        <div class="muda-tag">M</div>
-        <div class="muda-icon">🚶</div>
-        <h3 data-i18n="m3.title">Движение</h3>
-        <p data-i18n="m3.text">Ненужно движение на хора — търсене на инструменти, обхождане на дълги разстояния, неудобни пози.</p>
-      </div>
-      <div class="muda-card m4">
-        <div class="muda-tag">W</div>
-        <div class="muda-icon">⏳</div>
-        <h3 data-i18n="m4.title">Чакане</h3>
-        <p data-i18n="m4.text">Хора или машини в престой — чакане на материали, одобрения, информация или ремонти.</p>
-      </div>
-      <div class="muda-card m5">
-        <div class="muda-tag">O</div>
-        <div class="muda-icon">🏭</div>
-        <h3 data-i18n="m5.title">Свръхпроизводство</h3>
-        <p data-i18n="m5.text">Производство на повече от нужното или по-рано от нужното. Смята се за най-опасната загуба.</p>
-      </div>
-      <div class="muda-card m6">
-        <div class="muda-tag">O</div>
-        <div class="muda-icon">⚙️</div>
-        <h3 data-i18n="m6.title">Свръхобработка</h3>
-        <p data-i18n="m6.text">Повече работа, прецизност или функции отколкото клиентът изисква и е готов да плати.</p>
-      </div>
-      <div class="muda-card m7">
-        <div class="muda-tag">D</div>
-        <div class="muda-icon">❌</div>
-        <h3 data-i18n="m7.title">Дефекти</h3>
-        <p data-i18n="m7.text">Грешки, преработки, брак — всичко, което не отговаря на изискванията и трябва да се поправи.</p>
-      </div>
-      <div class="muda-card m8">
-        <div class="muda-tag">S</div>
-        <div class="muda-icon">🧠</div>
-        <h3 data-i18n="m8.title">Неизползван потенциал</h3>
-        <p data-i18n="m8.text">Неизползваните знания, умения и идеи на служителите. Осмата загуба — добавена в модерния Lean.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ИНСТРУМЕНТИ -->
-<section class="section section-off" id="tools">
-  <div class="container">
-    <div class="section-label accent" data-i18n="tools.label">Практически инструменти</div>
-    <h2 class="section-title" data-i18n="tools.title">Lean инструменти</h2>
-    <div class="divider accent"></div>
-    <p class="section-intro" data-i18n="tools.intro">Lean предлага богат набор от практически инструменти. Всеки инструмент решава конкретен проблем и може да се прилага самостоятелно или в комбинация.</p>
-    <div class="tools-grid">
-      <div class="tool-card">
-        <div class="tool-icon">🗺️</div>
-        <h3>Value Stream Mapping</h3>
-        <p data-i18n="t1.text">Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност, кои са загуби и къде са задръстванията.</p>
-        <span class="tool-tag blue" data-i18n="t1.tag">Анализ</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">✨</div>
-        <h3>5S методология</h3>
-        <p data-i18n="t2.text">Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място за максимална ефективност и безопасност.</p>
-        <span class="tool-tag green" data-i18n="t2.tag">Организация</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🔄</div>
-        <h3>Kaizen</h3>
-        <p data-i18n="t3.text">Философията на непрекъснатото подобрение. Малки промени правени всеки ден от всеки служител водят до огромни резултати.</p>
-        <span class="tool-tag orange" data-i18n="t3.tag">Подобрение</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">📋</div>
-        <h3>Kanban</h3>
-        <p data-i18n="t4.text">Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити и ясна визуализация на потока.</p>
-        <span class="tool-tag blue" data-i18n="t4.tag">Управление</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">🛡️</div>
-        <h3>Poka-Yoke</h3>
-        <p data-i18n="t5.text">Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно или трудно допускането на дефекти в процеса.</p>
-        <span class="tool-tag teal" data-i18n="t5.tag">Качество</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">📄</div>
-        <h3>A3 Problem Solving</h3>
-        <p data-i18n="t6.text">Структуриран подход за решаване на проблеми на един лист А3. Включва анализ на първопричините и системен план за действие.</p>
-        <span class="tool-tag blue" data-i18n="t6.tag">Анализ</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">⏱️</div>
-        <h3>Takt Time</h3>
-        <p data-i18n="t7.text">Ритъмът на производство синхронизиран с търсенето на клиента. Основен инструмент за балансиране на натоварването в процеса.</p>
-        <span class="tool-tag orange" data-i18n="t7.tag">Планиране</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">⚡</div>
-        <h3>SMED</h3>
-        <p data-i18n="t8.text">Single Minute Exchange of Die — намаляване на времето за смяна на настройките до под 10 минути за максимална гъвкавост.</p>
-        <span class="tool-tag green" data-i18n="t8.tag">Ефективност</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-icon">📊</div>
-        <h3>Heijunka</h3>
-        <p data-i18n="t9.text">Изравняване на производството за намаляване на неравномерността. Създава по-стабилен и предсказуем производствен процес.</p>
-        <span class="tool-tag purple" data-i18n="t9.tag">Планиране</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ПОДХОДИ -->
-<section class="approaches-section" id="approaches">
+<section class="section section-navy">
   <div class="container">
-    <div class="section-label" data-i18n="app.label">Сравнение</div>
-    <h2 class="section-title light" data-i18n="app.title">Различни подходи за подобрение</h2>
+    <div class="section-label">Сравнение</div>
+    <h2 class="section-title light">Lean и другите подходи за подобрение</h2>
     <div class="divider"></div>
-    <p class="section-intro light" data-i18n="app.intro">Lean не е единственият подход за подобрение на процесите. Ето как се сравнява с другите популярни методологии.</p>
+    <p class="section-intro light">Lean не е единственият подход. Ето как се сравнява с другите популярни методологии за подобрение на процесите.</p>
     <div class="approach-table-wrap">
       <table class="approach-table">
         <thead>
           <tr>
-            <th style="color:rgba(255,255,255,0.5);font-size:0.8rem;" data-i18n="app.th.aspect">Аспект</th>
-            <th class="th-lean" data-i18n="app.th.lean">🏆 Lean</th>
-            <th class="th-sigma" data-i18n="app.th.sigma">📐 Six Sigma</th>
-            <th class="th-agile" data-i18n="app.th.agile">🔁 Agile</th>
-            <th class="th-kaizen" data-i18n="app.th.kaizen">✨ Kaizen</th>
-            <th class="th-tps" data-i18n="app.th.tps">🚗 TPS</th>
+            <th style="color:rgba(255,255,255,0.5);font-size:0.8rem;">Аспект</th>
+            <th class="th-lean">🏆 Lean</th>
+            <th class="th-sigma">📐 Six Sigma</th>
+            <th class="th-agile">🔁 Agile</th>
+            <th class="th-kaizen">✨ Kaizen</th>
+            <th class="th-tps">🚗 TPS</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="approach-name" data-i18n="app.row.focus">Фокус</td>
-            <td class="col-lean" data-i18n="app.lean.focus">Елиминиране на загуби</td>
-            <td data-i18n="app.sigma.focus">Намаляване на дефекти</td>
-            <td data-i18n="app.agile.focus">Гъвкавост и скорост</td>
-            <td data-i18n="app.kaizen.focus">Непрекъснато подобрение</td>
-            <td data-i18n="app.tps.focus">Производствена система</td>
-          </tr>
-          <tr>
-            <td class="approach-name" data-i18n="app.row.origin">Произход</td>
-            <td class="col-lean" data-i18n="app.lean.origin">Toyota, Япония</td>
-            <td data-i18n="app.sigma.origin">Motorola, USA (1986)</td>
-            <td data-i18n="app.agile.origin">Software, USA (2001)</td>
-            <td data-i18n="app.kaizen.origin">Toyota, Япония</td>
-            <td data-i18n="app.tps.origin">Toyota, 1950-те</td>
-          </tr>
-          <tr>
-            <td class="approach-name" data-i18n="app.row.tool">Ключов инструмент</td>
-            <td class="col-lean" data-i18n="app.lean.tool">VSM, 5S, Kanban</td>
-            <td data-i18n="app.sigma.tool">DMAIC, статистика</td>
-            <td data-i18n="app.agile.tool">Sprints, Scrum</td>
-            <td data-i18n="app.kaizen.tool">Kaizen events</td>
-            <td data-i18n="app.tps.tool">JIT, Jidoka</td>
-          </tr>
-          <tr>
-            <td class="approach-name" data-i18n="app.row.best">Подходящ за</td>
-            <td class="col-lean" data-i18n="app.lean.best">Всички индустрии</td>
-            <td data-i18n="app.sigma.best">Производство, качество</td>
-            <td data-i18n="app.agile.best">Software, проекти</td>
-            <td data-i18n="app.kaizen.best">Всички процеси</td>
-            <td data-i18n="app.tps.best">Автомобилна индустрия</td>
-          </tr>
-          <tr>
-            <td class="approach-name" data-i18n="app.row.speed">Скорост на резултати</td>
-            <td class="col-lean" data-i18n="app.lean.speed">Бърза (дни/седмици)</td>
-            <td data-i18n="app.sigma.speed">Бавна (месеци)</td>
-            <td data-i18n="app.agile.speed">Бърза (2-4 седмици)</td>
-            <td data-i18n="app.kaizen.speed">Много бърза (дни)</td>
-            <td data-i18n="app.tps.speed">Дългосрочна</td>
-          </tr>
+          <tr><td class="approach-name">Фокус</td><td class="col-lean">Елиминиране на загуби</td><td>Намаляване на дефекти</td><td>Гъвкавост и скорост</td><td>Непрекъснато подобрение</td><td>Производствена система</td></tr>
+          <tr><td class="approach-name">Произход</td><td class="col-lean">Toyota, Япония</td><td>Motorola, USA (1986)</td><td>Software, USA (2001)</td><td>Toyota, Япония</td><td>Toyota, 1950-те</td></tr>
+          <tr><td class="approach-name">Ключов инструмент</td><td class="col-lean">VSM, 5S, Kanban</td><td>DMAIC, статистика</td><td>Sprints, Scrum</td><td>Kaizen events</td><td>JIT, Jidoka</td></tr>
+          <tr><td class="approach-name">Подходящ за</td><td class="col-lean">Всички индустрии</td><td>Производство, качество</td><td>Software, проекти</td><td>Всички процеси</td><td>Автомобилна индустрия</td></tr>
+          <tr><td class="approach-name">Скорост на резултати</td><td class="col-lean">Бърза (дни/седмици)</td><td>Бавна (месеци)</td><td>Бърза (2-4 седмици)</td><td>Много бърза (дни)</td><td>Дългосрочна</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- СИМУЛАТОР -->
-<section class="section section-light" id="simulator">
-  <div class="container">
-    <div class="section-label accent" data-i18n="sim.label">Интерактивно обучение</div>
-    <h2 class="section-title" data-i18n="sim.title">🎮 Lean Flow Симулатор</h2>
-    <div class="divider accent"></div>
-    <p class="section-intro" data-i18n="sim.intro">Изпробвай Lean принципите интерактивно. Симулирай производствен процес, елиминирай загубите и виж резултатите в реално време. Без регистрация.</p>
-    <div class="simulator-wrapper">
-      <iframe src="https://lean-flow-simulator.vercel.app/"
-              width="100%" height="700"
-              frameborder="0" allowfullscreen
-              title="Lean Flow Симулатор"></iframe>
-    </div>
-  </div>
-</section>
-
-<!-- КУРСОВЕ -->
-<section class="section section-off" id="courses">
-  <div class="container">
-    <div class="section-label" data-i18n="courses.label">Образователни програми</div>
-    <h2 class="section-title" data-i18n="courses.title">Нашите курсове</h2>
-    <div class="divider"></div>
-    <p class="section-intro" data-i18n="courses.intro">Структурирани обучения за всяко ниво — от въведение до стратегическо лидерство.</p>
-    <div class="courses-grid">
-      <div class="course-card">
-        <div class="course-header c1">
-          <div class="course-icon">📗</div>
-          <span class="course-badge free" data-i18n="courses.free">Безплатно</span>
-        </div>
-        <div class="course-body">
-          <h3 data-i18n="c1.title">Lean Основи</h3>
-          <p data-i18n="c1.text">Въведение в Lean мисленето, 5-те принципа и 8-те вида загуби. Идеален старт за всеки, който иска да разбере Lean от нулата.</p>
-          <div class="course-meta">
-            <span data-i18n="c1.duration">⏱ 8 часа</span>
-            <span data-i18n="c1.level">📘 Начинаещ</span>
-          </div>
-        </div>
-      </div>
-      <div class="course-card">
-        <div class="course-header c2">
-          <div class="course-icon">📘</div>
-          <span class="course-badge paid" data-i18n="courses.paid">Платен</span>
-        </div>
-        <div class="course-body">
-          <h3 data-i18n="c2.title">Lean Практик</h3>
-          <p data-i18n="c2.text">Практически Lean инструменти: VSM, 5S, Kanban, Kaizen. С реални казуси и упражнения от производствени и сервизни среди.</p>
-          <div class="course-meta">
-            <span data-i18n="c2.duration">⏱ 24 часа</span>
-            <span data-i18n="c2.level">📗 Средно ниво</span>
-          </div>
-        </div>
-      </div>
-      <div class="course-card">
-        <div class="course-header c3">
-          <div class="course-icon">📕</div>
-          <span class="course-badge paid" data-i18n="courses.paid">Платен</span>
-        </div>
-        <div class="course-body">
-          <h3 data-i18n="c3.title">Lean Мениджър</h3>
-          <p data-i18n="c3.text">Стратегическо внедряване на Lean, изграждане на Lean култура и управление на трансформация на организационно ниво.</p>
-          <div class="course-meta">
-            <span data-i18n="c3.duration">⏱ 40 часа</span>
-            <span data-i18n="c3.level">📕 Напреднал</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
-<section class="section section-light" id="contact">
+<section class="section section-off" id="contact">
   <div class="container">
-    <div class="section-label accent" data-i18n="contact.label">Свържете се с нас</div>
-    <h2 class="section-title" data-i18n="contact.title">Имате въпроси?</h2>
+    <div class="section-label accent">Свържете се с нас</div>
+    <h2 class="section-title">Имате въпроси?</h2>
     <div class="divider accent"></div>
     <div class="contact-grid">
       <div class="contact-info">
-        <p data-i18n="contact.intro">Разкажете ни за вашите цели. Ще ви помогнем да изберете правилния курс и да започнете Lean пътуването си.</p>
-        <div class="contact-item">
-          <div class="ci-icon">📍</div>
-          <div><strong data-i18n="contact.loc">Локация</strong><span data-i18n="contact.loc.val">България — онлайн и присъствено</span></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">📞</div>
-          <div><strong data-i18n="contact.phone">Телефон</strong><span><a href="tel:+359883584139" style="color:inherit;text-decoration:none;">0883 584 139</a> / <a href="tel:+359877557661" style="color:inherit;text-decoration:none;">0877 557 661</a></span></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">✉️</div>
-          <div><strong data-i18n="contact.email">Имейл</strong><span><a href="mailto:vasilenasofia@gmail.com" style="color:inherit;text-decoration:none;">vasilenasofia@gmail.com</a></span></div>
-        </div>
-        <div class="contact-item">
-          <div class="ci-icon">🎓</div>
-          <div><strong data-i18n="contact.free">Безплатна консултация</strong><span data-i18n="contact.free.val">30 минути — без ангажимент</span></div>
-        </div>
+        <p>Разкажете ни за вашите цели и предизвикателства. Екипът на LeanUniversity ще ви помогне да изберете правилния курс и да започнете Lean пътуването си.</p>
+        <div class="contact-item"><div class="ci-icon">📍</div><div><strong>Локация</strong><span>България — онлайн и присъствено</span></div></div>
+        <div class="contact-item"><div class="ci-icon">📞</div><div><strong>Телефон</strong><span><a href="tel:+359883584139" style="color:inherit;text-decoration:none;">0883 584 139</a></span></div></div>
+        <div class="contact-item"><div class="ci-icon">✉️</div><div><strong>Имейл</strong><span><a href="mailto:info@leanhab.eu" style="color:inherit;text-decoration:none;">info@leanhab.eu</a></span></div></div>
+        <div class="contact-item"><div class="ci-icon">🎓</div><div><strong>Безплатна консултация</strong><span>30 минути — без ангажимент</span></div></div>
       </div>
       <form class="contact-form" id="contact-form" data-fs-form>
-        <div class="form-group">
-          <label data-i18n="form.name">Вашето име</label>
-          <input type="text" name="name" placeholder="Иван Иванов" required data-fs-field data-i18n-placeholder="form.name.ph">
-        </div>
-        <div class="form-group">
-          <label data-i18n="form.email">Имейл адрес</label>
-          <input type="email" name="email" placeholder="ivan@company.bg" required data-fs-field>
-        </div>
-        <div class="form-group">
-          <label data-i18n="form.service">Интересувам се от</label>
+        <div class="form-group"><label>Вашето име</label><input type="text" name="name" placeholder="Иван Иванов" required data-fs-field></div>
+        <div class="form-group"><label>Имейл адрес</label><input type="email" name="email" placeholder="ivan@example.bg" required data-fs-field></div>
+        <div class="form-group"><label>Интересувам се от</label>
           <select name="service">
-            <option data-i18n="c1.title">Lean Основи</option>
-            <option data-i18n="c2.title">Lean Практик</option>
-            <option data-i18n="c3.title">Lean Мениджър</option>
-            <option data-i18n="form.opt.other">Друго</option>
+            <option>Lean Основи (безплатен курс)</option>
+            <option>Lean Практик</option>
+            <option>Lean Мениджър</option>
+            <option>Друго</option>
           </select>
         </div>
-        <div class="form-group">
-          <label data-i18n="form.message">Съобщение</label>
-          <textarea name="message" rows="4" placeholder="Разкажете ни за вашите цели..." data-fs-field data-i18n-placeholder="form.message.ph"></textarea>
-        </div>
-        <button type="submit" class="btn-submit" data-fs-submit-btn data-i18n="form.submit">Изпратете запитване</button>
-        <div class="form-success" data-fs-success data-i18n="form.success">Благодарим! Ще се свържем с вас скоро.</div>
-        <div class="form-error" data-fs-error data-i18n="form.error">Грешка при изпращане. Моля опитайте отново.</div>
+        <div class="form-group"><label>Съобщение</label><textarea name="message" rows="4" placeholder="Разкажете ни за вашите цели..." data-fs-field></textarea></div>
+        <button type="submit" class="btn-submit" data-fs-submit-btn>Изпратете запитване</button>
+        <div class="form-success" data-fs-success>Благодарим! Ще се свържем с вас скоро.</div>
+        <div class="form-error" data-fs-error>Грешка при изпращане. Моля опитайте отново.</div>
       </form>
     </div>
   </div>
@@ -820,233 +461,40 @@ footer { background:var(--navy); border-top:3px solid var(--gold); padding:3rem 
     <div class="footer-inner">
       <div>
         <a href="/" class="footer-logo">Lean<span>University</span></a>
-        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;" data-i18n="footer.tagline">Всичко за Lean методологията</div>
+        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;">Образователна платформа за Lean методология</div>
       </div>
       <div class="footer-links">
-        <a href="#history" data-i18n="nav.history">История</a>
-        <a href="#principles" data-i18n="nav.principles">Принципи</a>
-        <a href="#muda" data-i18n="nav.muda">Загуби</a>
-        <a href="#tools" data-i18n="nav.tools">Инструменти</a>
-        <a href="#approaches" data-i18n="nav.approaches">Подходи</a>
-        <a href="#simulator" data-i18n="nav.simulator">Симулатор</a>
-        <a href="#courses" data-i18n="nav.courses">Курсове</a>
-        <a href="#contact" data-i18n="nav.contact">Контакт</a>
+        <a href="/lean-principi.html">Принципи</a>
+        <a href="/muda-8-vida-zagubi.html">Загуби</a>
+        <a href="/instrumenti.html">Инструменти</a>
+        <a href="/simulator.html">Симулатор</a>
+        <a href="/kursove.html">Курсове</a>
+        <a href="#contact">Контакт</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy" data-i18n="footer.copy">© 2026 LeanUniversity.eu — Всички права запазени</div>
-      <div class="footer-copy"><span data-i18n="footer.partner">Сестринска компания</span>: <a href="https://carehab.eu" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.45);text-decoration:none;" onmouseover="this.style.color='#c9a84c'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">CareHab.eu</a></div>
-      <div class="footer-copy" data-i18n="footer.sub">Lean образование България</div>
+      <div class="footer-copy">© 2026 LeanUniversity — Всички права запазени</div>
+      <div class="footer-legal">
+        <a href="/privacy-policy.html">Поверителност</a>
+        <a href="/terms.html">Условия</a>
+        <a href="/impressum.html">Impressum</a>
+      </div>
+      <div class="footer-copy">Lean образование България</div>
     </div>
   </div>
 </footer>
 
 <script>
-  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-  formspree('initForm', { formElement: '#contact-form', formId: 'xqegvjdl' });
-
-  const t = {
-    bg: {
-      'nav.history':'История','nav.principles':'Принципи','nav.muda':'Загуби','nav.tools':'Инструменти','nav.approaches':'Подходи','nav.simulator':'Симулатор','nav.courses':'Курсове','nav.contact':'Контакт',
-      'cookie.text':'Този сайт използва бисквитки за подобряване на потребителското изживяване.','cookie.decline':'Отказ','cookie.accept':'Приемам',
-      'hero.badge':'🎓 Образователна платформа','hero.h1':'Всичко за <span>Lean</span> методологията','hero.sub':'История, принципи, загуби, инструменти, различни подходи и интерактивен симулатор — всичко на едно място.','hero.btn1':'🚀 Започни от тук','hero.btn2':'🎮 Пробвай симулатора','hero.s1':'Години история','hero.s2':'Принципа','hero.s3':'Вида загуби','hero.s4':'Инструмента',
-      'history.label':'Произход и еволюция','history.title':'История на Lean','history.intro':'От конвейера на Форд до глобалната революция в управлението — Lean методологията се е развивала в продължение на повече от 100 години.',
-      'h1.title':'Ford Production System','h1.text':'Хенри Форд въвежда конвейерното производство и стандартизацията. Поставя основите на масовото производство — стандартни части, поточна линия, минимизиране на загубите.',
-      'h2.title':'Toyota Production System (TPS)','h2.text':'Тайичи Оно и Шигео Шинго разработват TPS в Toyota. Just-in-Time и Jidoka са двата стълба. Системата е отговор на ресурсния дефицит в следвоенна Япония.',
-      'h3.title':'Терминът „Lean" е роден','h3.text':'Джон Крафчик въвежда термина „Lean production" в MIT. Описва как Toyota постига повече с по-малко усилия, пространство, капитал и грешки.',
-      'h4.title':'„Lean Thinking" — библията на Lean','h4.text':'Джеймс Уомак и Даниел Джоунс систематизират 5-те принципа. Книгата е преведена на 30+ езика и прави Lean достъпен за мениджъри по целия свят.',
-      'h5.title':'Lean навсякъде','h5.text':'Lean се разпространява в здравеопазване, IT, строителство, финанси и образование. Принципите се прилагат успешно в почти всяка индустрия по света.',
-      'principles.label':'Фундаментите','principles.title':'5-те Lean принципа','principles.intro':'Lean философията, разработена от Toyota, се базира на пет фундаментални принципа. Те са универсални — прилагат се в производство, услуги, здравеопазване и IT.',
-      'p.step':'СТЪПКА 01','p.step2':'СТЪПКА 02','p.step3':'СТЪПКА 03','p.step4':'СТЪПКА 04','p.step5':'СТЪПКА 05','p.kaizen':'KAIZEN',
-      'p1.title':'Дефинирай стойността','p1.text':'Стойността се определя единствено от гледната точка на крайния клиент. Всичко, за което клиентът не е готов да плати, е потенциална загуба.',
-      'p2.title':'Картографирай потока','p2.text':'Value Stream Mapping визуализира целия поток от дейности. Идентифицира кои стъпки добавят стойност и кои са загуби в процеса.',
-      'p3.title':'Създай непрекъснат поток','p3.text':'Премахни пречките за да може работата да тече непрекъснато без чакане между стъпките.',
-      'p4.title':'Pull система','p4.text':'Произвеждай само при реално търсене от клиента. Pull означава, че следващата стъпка тегли работата само когато е готова.',
-      'p5.title':'Стремеж към съвършенство','p5.text':'Lean е непрекъснато пътуване. Kaizen — всеки ден прави нещата малко по-добре. Малките подобрения водят до огромни резултати.',
-      'p6.title':'Непрекъснато подобрение','p6.text':'Kaizen (改善) означава „промяна към по-добро". Всеки служител, всеки ден участва в подобряването на процесите.',
-      'muda.label':'Идентифицирай и елиминирай','muda.title':'8-те вида загуби (MUDA)','muda.intro':'MUDA (無駄) е японската дума за „загуба". В Lean има 8 вида дейности, които не добавят стойност. Запомни ги с акронима TIM WOODS.',
-      'm1.title':'Транспорт','m1.text':'Ненужно преместване на материали, продукти или информация между стъпките.',
-      'm2.title':'Излишни запаси','m2.text':'Повече суровини или готови стоки отколкото реално е необходимо.',
-      'm3.title':'Движение','m3.text':'Ненужно движение на хора — търсене на инструменти, дълги разстояния.',
-      'm4.title':'Чакане','m4.text':'Хора или машини в престой — чакане на материали, одобрения или информация.',
-      'm5.title':'Свръхпроизводство','m5.text':'Производство на повече от нужното. Смята се за най-опасната загуба в Lean.',
-      'm6.title':'Свръхобработка','m6.text':'Повече работа или функции отколкото клиентът изисква и е готов да плати.',
-      'm7.title':'Дефекти','m7.text':'Грешки, преработки, брак — всичко, което не отговаря на изискванията.',
-      'm8.title':'Неизползван потенциал','m8.text':'Неизползваните знания, умения и идеи на служителите. Осмата загуба.',
-      'tools.label':'Практически инструменти','tools.title':'Lean инструменти','tools.intro':'Lean предлага богат набор от практически инструменти. Всеки решава конкретен проблем.',
-      't1.text':'Визуален инструмент за картографиране на целия поток. Показва кои стъпки добавят стойност.','t1.tag':'Анализ',
-      't2.text':'Сортиране, Наредба, Почистване, Стандартизация, Дисциплина. Организира работното място.','t2.tag':'Организация',
-      't3.text':'Философията на непрекъснатото подобрение. Малки промени всеки ден водят до огромни резултати.','t3.tag':'Подобрение',
-      't4.text':'Визуална система за управление на работата. Предотвратява свръхпроизводството чрез WIP лимити.','t4.tag':'Управление',
-      't5.text':'Техники за предотвратяване на грешки чрез дизайн. Прави невъзможно допускането на дефекти.','t5.tag':'Качество',
-      't6.text':'Структуриран подход за решаване на проблеми на един лист А3 с анализ на първопричините.','t6.tag':'Анализ',
-      't7.text':'Ритъмът на производство синхронизиран с търсенето на клиента.','t7.tag':'Планиране',
-      't8.text':'Намаляване на времето за смяна на настройките до под 10 минути.','t8.tag':'Ефективност',
-      't9.text':'Изравняване на производството за намаляване на неравномерността.','t9.tag':'Планиране',
-      'app.label':'Сравнение','app.title':'Различни подходи за подобрение','app.intro':'Lean не е единственият подход. Ето как се сравнява с другите популярни методологии.',
-      'app.th.aspect':'Аспект','app.th.lean':'🏆 Lean','app.th.sigma':'📐 Six Sigma','app.th.agile':'🔁 Agile','app.th.kaizen':'✨ Kaizen','app.th.tps':'🚗 TPS',
-      'app.row.focus':'Фокус','app.row.origin':'Произход','app.row.tool':'Ключов инструмент','app.row.best':'Подходящ за','app.row.speed':'Скорост',
-      'app.lean.focus':'Елиминиране на загуби','app.lean.origin':'Toyota, Япония','app.lean.tool':'VSM, 5S, Kanban','app.lean.best':'Всички индустрии','app.lean.speed':'Бърза (дни/седмици)',
-      'app.sigma.focus':'Намаляване на дефекти','app.sigma.origin':'Motorola, USA (1986)','app.sigma.tool':'DMAIC, статистика','app.sigma.best':'Производство, качество','app.sigma.speed':'Бавна (месеци)',
-      'app.agile.focus':'Гъвкавост и скорост','app.agile.origin':'Software, USA (2001)','app.agile.tool':'Sprints, Scrum','app.agile.best':'Software, проекти','app.agile.speed':'Бърза (2-4 седмици)',
-      'app.kaizen.focus':'Непрекъснато подобрение','app.kaizen.origin':'Toyota, Япония','app.kaizen.tool':'Kaizen events','app.kaizen.best':'Всички процеси','app.kaizen.speed':'Много бърза (дни)',
-      'app.tps.focus':'Производствена система','app.tps.origin':'Toyota, 1950-те','app.tps.tool':'JIT, Jidoka','app.tps.best':'Автомобилна индустрия','app.tps.speed':'Дългосрочна',
-      'sim.label':'Интерактивно обучение','sim.title':'🎮 Lean Flow Симулатор','sim.intro':'Изпробвай Lean принципите интерактивно. Симулирай производствен процес, елиминирай загубите и виж резултатите в реално време. Без регистрация.',
-      'courses.label':'Образователни програми','courses.title':'Нашите курсове','courses.intro':'Структурирани обучения за всяко ниво.','courses.free':'Безплатно','courses.paid':'Платен',
-      'c1.title':'Lean Основи','c1.text':'Въведение в Lean мисленето, принципите и загубите. Идеален старт за всеки, който иска да разбере Lean от нулата.','c1.duration':'⏱ 8 часа','c1.level':'📘 Начинаещ',
-      'c2.title':'Lean Практик','c2.text':'Практически инструменти: VSM, 5S, Kanban, Kaizen. С реални казуси от производствени и сервизни среди.','c2.duration':'⏱ 24 часа','c2.level':'📗 Средно ниво',
-      'c3.title':'Lean Мениджър','c3.text':'Стратегическо внедряване, изграждане на Lean култура и управление на трансформация.','c3.duration':'⏱ 40 часа','c3.level':'📕 Напреднал',
-      'contact.label':'Свържете се с нас','contact.title':'Имате въпроси?','contact.intro':'Разкажете ни за вашите цели. Ще ви помогнем да изберете правилния курс.','contact.loc':'Локация','contact.loc.val':'България — онлайн и присъствено','contact.phone':'Телефон','contact.email':'Имейл','contact.free':'Безплатна консултация','contact.free.val':'30 минути — без ангажимент',
-      'form.name':'Вашето име','form.name.ph':'Иван Иванов','form.email':'Имейл адрес','form.service':'Интересувам се от','form.message':'Съобщение','form.message.ph':'Разкажете ни за вашите цели...','form.submit':'Изпратете запитване','form.success':'Благодарим! Ще се свържем с вас скоро.','form.error':'Грешка при изпращане. Моля опитайте отново.','form.opt.other':'Друго',
-      'footer.tagline':'Всичко за Lean методологията','footer.copy':'© 2026 LeanUniversity.eu — Всички права запазени','footer.sub':'Lean образование България','footer.partner':'Сестринска компания'
-    },
-    en: {
-      'nav.history':'History','nav.principles':'Principles','nav.muda':'Waste','nav.tools':'Tools','nav.approaches':'Approaches','nav.simulator':'Simulator','nav.courses':'Courses','nav.contact':'Contact',
-      'cookie.text':'This site uses cookies to improve user experience.','cookie.decline':'Decline','cookie.accept':'Accept',
-      'hero.badge':'🎓 Educational Platform','hero.h1':'Everything about <span>Lean</span> Methodology','hero.sub':'History, principles, waste types, tools, approaches and an interactive simulator — all in one place.','hero.btn1':'🚀 Start Here','hero.btn2':'🎮 Try the Simulator','hero.s1':'Years of history','hero.s2':'Principles','hero.s3':'Waste types','hero.s4':'Tools',
-      'history.label':'Origin & Evolution','history.title':'History of Lean','history.intro':'From Ford\'s assembly line to the global management revolution — Lean methodology has evolved over more than 100 years.',
-      'h1.title':'Ford Production System','h1.text':'Henry Ford introduced assembly line production and standardization. He laid the foundations for mass production — standard parts, flow lines, minimizing waste from motion and waiting.',
-      'h2.title':'Toyota Production System (TPS)','h2.text':'Taiichi Ohno and Shigeo Shingo developed TPS at Toyota. Just-in-Time and Jidoka are the two pillars. The system was a response to resource scarcity in post-war Japan.',
-      'h3.title':'The Term "Lean" is Born','h3.text':'John Krafcik introduced the term "Lean production" at MIT. It describes how Toyota achieves more with less effort, space, capital and errors than mass production.',
-      'h4.title':'"Lean Thinking" — The Lean Bible','h4.text':'James Womack and Daniel Jones systematized the 5 principles. The book has been translated into 30+ languages and makes Lean accessible to managers worldwide.',
-      'h5.title':'Lean Everywhere','h5.text':'Lean spread into healthcare, IT, construction, finance and education. The principles are successfully applied in almost every industry worldwide.',
-      'principles.label':'Fundamentals','principles.title':'The 5 Lean Principles','principles.intro':'The Lean philosophy, developed by Toyota, is based on five fundamental principles. They are universal — applied in manufacturing, services, healthcare and IT.',
-      'p.step':'STEP 01','p.step2':'STEP 02','p.step3':'STEP 03','p.step4':'STEP 04','p.step5':'STEP 05','p.kaizen':'KAIZEN',
-      'p1.title':'Define Value','p1.text':'Value is defined solely from the perspective of the end customer. Everything the customer is not willing to pay for is potential waste.',
-      'p2.title':'Map the Value Stream','p2.text':'Value Stream Mapping visualizes the entire flow of activities. It identifies which steps add value and which are waste.',
-      'p3.title':'Create Flow','p3.text':'Remove obstacles so work can flow continuously without waiting between steps.',
-      'p4.title':'Establish Pull','p4.text':'Produce only when there is real customer demand. Pull means the next step takes work only when ready.',
-      'p5.title':'Pursue Perfection','p5.text':'Lean is a continuous journey. Kaizen — every day make things a little better. Small improvements lead to huge results.',
-      'p6.title':'Continuous Improvement','p6.text':'Kaizen (改善) means "change for the better". Every employee, every day participates in process improvement.',
-      'muda.label':'Identify & Eliminate','muda.title':'8 Types of Waste (MUDA)','muda.intro':'MUDA (無駄) is the Japanese word for "waste". Lean identifies 8 activities that add no value. Remember them with the acronym TIM WOODS.',
-      'm1.title':'Transport','m1.text':'Unnecessary movement of materials, products or information between process steps.',
-      'm2.title':'Inventory','m2.text':'More raw materials or finished goods than actually needed.',
-      'm3.title':'Motion','m3.text':'Unnecessary movement of people — searching for tools, long distances.',
-      'm4.title':'Waiting','m4.text':'People or machines idle — waiting for materials, approvals or information.',
-      'm5.title':'Overproduction','m5.text':'Producing more than needed. Considered the most dangerous waste in Lean.',
-      'm6.title':'Over-processing','m6.text':'More work or features than the customer requires and is willing to pay for.',
-      'm7.title':'Defects','m7.text':'Errors, rework, scrap — everything that does not meet requirements.',
-      'm8.title':'Unused Talent','m8.text':'Unused knowledge, skills and ideas of employees. The eighth waste.',
-      'tools.label':'Practical Tools','tools.title':'Lean Tools','tools.intro':'Lean offers a rich set of practical tools. Each solves a specific problem.',
-      't1.text':'A visual tool for mapping the entire value stream. Shows which steps add value.','t1.tag':'Analysis',
-      't2.text':'Sort, Set in order, Shine, Standardize, Sustain. Organizes the workplace for maximum efficiency.','t2.tag':'Organization',
-      't3.text':'The philosophy of continuous improvement. Small daily changes lead to enormous results.','t3.tag':'Improvement',
-      't4.text':'A visual work management system. Prevents overproduction through WIP limits.','t4.tag':'Management',
-      't5.text':'Error-proofing techniques through design. Makes it impossible to produce defects.','t5.tag':'Quality',
-      't6.text':'Structured problem-solving on one A3 sheet with root cause analysis.','t6.tag':'Analysis',
-      't7.text':'The production rhythm synchronized with customer demand.','t7.tag':'Planning',
-      't8.text':'Reducing changeover time to under 10 minutes for maximum flexibility.','t8.tag':'Efficiency',
-      't9.text':'Production leveling to reduce unevenness and create stability.','t9.tag':'Planning',
-      'app.label':'Comparison','app.title':'Different Improvement Approaches','app.intro':'Lean is not the only approach. Here is how it compares with other popular methodologies.',
-      'app.th.aspect':'Aspect','app.th.lean':'🏆 Lean','app.th.sigma':'📐 Six Sigma','app.th.agile':'🔁 Agile','app.th.kaizen':'✨ Kaizen','app.th.tps':'🚗 TPS',
-      'app.row.focus':'Focus','app.row.origin':'Origin','app.row.tool':'Key Tool','app.row.best':'Best for','app.row.speed':'Speed',
-      'app.lean.focus':'Eliminating waste','app.lean.origin':'Toyota, Japan','app.lean.tool':'VSM, 5S, Kanban','app.lean.best':'All industries','app.lean.speed':'Fast (days/weeks)',
-      'app.sigma.focus':'Reducing defects','app.sigma.origin':'Motorola, USA (1986)','app.sigma.tool':'DMAIC, statistics','app.sigma.best':'Manufacturing, quality','app.sigma.speed':'Slow (months)',
-      'app.agile.focus':'Flexibility & speed','app.agile.origin':'Software, USA (2001)','app.agile.tool':'Sprints, Scrum','app.agile.best':'Software, projects','app.agile.speed':'Fast (2-4 weeks)',
-      'app.kaizen.focus':'Continuous improvement','app.kaizen.origin':'Toyota, Japan','app.kaizen.tool':'Kaizen events','app.kaizen.best':'All processes','app.kaizen.speed':'Very fast (days)',
-      'app.tps.focus':'Production system','app.tps.origin':'Toyota, 1950s','app.tps.tool':'JIT, Jidoka','app.tps.best':'Automotive industry','app.tps.speed':'Long-term',
-      'sim.label':'Interactive Learning','sim.title':'🎮 Lean Flow Simulator','sim.intro':'Try Lean principles interactively. Simulate a production process, eliminate waste and see results in real time. No registration needed.',
-      'courses.label':'Educational Programs','courses.title':'Our Courses','courses.intro':'Structured training for every level.','courses.free':'Free','courses.paid':'Paid',
-      'c1.title':'Lean Fundamentals','c1.text':'Introduction to Lean thinking, principles and waste. The ideal start for anyone who wants to understand Lean from scratch.','c1.duration':'⏱ 8 hours','c1.level':'📘 Beginner',
-      'c2.title':'Lean Practitioner','c2.text':'Practical tools: VSM, 5S, Kanban, Kaizen. With real case studies from manufacturing and service environments.','c2.duration':'⏱ 24 hours','c2.level':'📗 Intermediate',
-      'c3.title':'Lean Manager','c3.text':'Strategic deployment, building Lean culture and managing organizational transformation.','c3.duration':'⏱ 40 hours','c3.level':'📕 Advanced',
-      'contact.label':'Get In Touch','contact.title':'Have Questions?','contact.intro':'Tell us about your goals. We will help you choose the right course.','contact.loc':'Location','contact.loc.val':'Bulgaria — online and on-site','contact.phone':'Phone','contact.email':'Email','contact.free':'Free Consultation','contact.free.val':'30 minutes — no obligation',
-      'form.name':'Your Name','form.name.ph':'John Smith','form.email':'Email Address','form.service':'I am interested in','form.message':'Message','form.message.ph':'Tell us about your goals...','form.submit':'Send Inquiry','form.success':'Thank you! We will be in touch soon.','form.error':'Sending failed. Please try again.','form.opt.other':'Other',
-      'footer.tagline':'Everything about Lean methodology','footer.copy':'© 2026 LeanUniversity.eu — All rights reserved','footer.sub':'Lean Education Bulgaria','footer.partner':'Sister company'
-    },
-    de: {
-      'nav.history':'Geschichte','nav.principles':'Prinzipien','nav.muda':'Verschwendung','nav.tools':'Werkzeuge','nav.approaches':'Ansätze','nav.simulator':'Simulator','nav.courses':'Kurse','nav.contact':'Kontakt',
-      'cookie.text':'Diese Website verwendet Cookies zur Verbesserung der Benutzererfahrung.','cookie.decline':'Ablehnen','cookie.accept':'Akzeptieren',
-      'hero.badge':'🎓 Bildungsplattform','hero.h1':'Alles über die <span>Lean</span>-Methodik','hero.sub':'Geschichte, Prinzipien, Verschwendung, Werkzeuge, Ansätze und interaktiver Simulator — alles an einem Ort.','hero.btn1':'🚀 Hier starten','hero.btn2':'🎮 Simulator ausprobieren','hero.s1':'Jahre Geschichte','hero.s2':'Prinzipien','hero.s3':'Verschwendungsarten','hero.s4':'Werkzeuge',
-      'history.label':'Ursprung & Entwicklung','history.title':'Geschichte des Lean','history.intro':'Von Fords Fließband bis zur globalen Managementrevolution — die Lean-Methodik hat sich über mehr als 100 Jahre entwickelt.',
-      'h1.title':'Ford-Produktionssystem','h1.text':'Henry Ford führte Fließbandproduktion und Standardisierung ein. Er legte die Grundlagen für die Massenproduktion.',
-      'h2.title':'Toyota-Produktionssystem (TPS)','h2.text':'Taiichi Ohno und Shigeo Shingo entwickelten TPS bei Toyota. Just-in-Time und Jidoka sind die zwei Säulen.',
-      'h3.title':'Der Begriff „Lean" wird geboren','h3.text':'John Krafcik prägte den Begriff „Lean production" am MIT. Er beschreibt, wie Toyota mehr mit weniger erreicht.',
-      'h4.title':'„Lean Thinking" — Die Lean-Bibel','h4.text':'Womack und Jones systematisierten die 5 Prinzipien. Das Buch wurde in 30+ Sprachen übersetzt.',
-      'h5.title':'Lean überall','h5.text':'Lean verbreitete sich in Gesundheitswesen, IT, Bauwesen und Bildung. Die Prinzipien werden in fast jeder Branche angewandt.',
-      'principles.label':'Grundlagen','principles.title':'Die 5 Lean-Prinzipien','principles.intro':'Die Lean-Philosophie basiert auf fünf grundlegenden Prinzipien. Sie sind universell — anwendbar in Produktion, Dienstleistungen und IT.',
-      'p.step':'SCHRITT 01','p.step2':'SCHRITT 02','p.step3':'SCHRITT 03','p.step4':'SCHRITT 04','p.step5':'SCHRITT 05','p.kaizen':'KAIZEN',
-      'p1.title':'Wert definieren','p1.text':'Wert wird ausschließlich aus der Perspektive des Endkunden definiert. Alles, wofür der Kunde nicht zahlen möchte, ist potenzielle Verschwendung.',
-      'p2.title':'Wertstrom identifizieren','p2.text':'Value Stream Mapping visualisiert den gesamten Aktivitätsfluss und identifiziert wertschöpfende Schritte.',
-      'p3.title':'Fluss erzeugen','p3.text':'Hindernisse beseitigen, damit die Arbeit kontinuierlich ohne Wartezeiten fließen kann.',
-      'p4.title':'Pull-Prinzip','p4.text':'Nur produzieren, wenn echter Kundenbedarf besteht. Pull bedeutet, der nächste Schritt zieht Arbeit nur wenn bereit.',
-      'p5.title':'Perfektion anstreben','p5.text':'Lean ist eine kontinuierliche Reise. Kaizen — jeden Tag die Dinge ein wenig besser machen.',
-      'p6.title':'Kontinuierliche Verbesserung','p6.text':'Kaizen (改善) bedeutet „Veränderung zum Besseren". Jeder Mitarbeiter nimmt täglich an der Prozessverbesserung teil.',
-      'muda.label':'Identifizieren & Eliminieren','muda.title':'8 Verschwendungsarten (MUDA)','muda.intro':'MUDA (無駄) ist das japanische Wort für „Verschwendung". Lean kennt 8 Aktivitäten ohne Wertschöpfung. Merke sie mit TIM WOODS.',
-      'm1.title':'Transport','m1.text':'Unnötige Bewegung von Materialien oder Informationen zwischen Prozessschritten.',
-      'm2.title':'Bestände','m2.text':'Mehr Rohstoffe oder Fertigwaren als tatsächlich benötigt.',
-      'm3.title':'Bewegung','m3.text':'Unnötige Bewegung von Menschen — Suchen von Werkzeugen, lange Wege.',
-      'm4.title':'Warten','m4.text':'Menschen oder Maschinen im Leerlauf — Warten auf Materialien oder Genehmigungen.',
-      'm5.title':'Überproduktion','m5.text':'Mehr produzieren als nötig. Gilt als die gefährlichste Verschwendung.',
-      'm6.title':'Überbearbeitung','m6.text':'Mehr Arbeit oder Funktionen als der Kunde verlangt und zu zahlen bereit ist.',
-      'm7.title':'Fehler','m7.text':'Fehler, Nacharbeit, Ausschuss — alles, was nicht den Anforderungen entspricht.',
-      'm8.title':'Ungenutztes Talent','m8.text':'Ungenutzte Kenntnisse, Fähigkeiten und Ideen der Mitarbeiter. Die achte Verschwendung.',
-      'tools.label':'Praktische Werkzeuge','tools.title':'Lean-Werkzeuge','tools.intro':'Lean bietet eine reiche Auswahl an praktischen Werkzeugen. Jedes löst ein konkretes Problem.',
-      't1.text':'Visuelles Werkzeug zur Kartierung des gesamten Wertstroms.','t1.tag':'Analyse',
-      't2.text':'Sortieren, Systematisieren, Säubern, Standardisieren, Selbstdisziplin. Organisiert den Arbeitsplatz.','t2.tag':'Organisation',
-      't3.text':'Philosophie der kontinuierlichen Verbesserung durch tägliche kleine Veränderungen.','t3.tag':'Verbesserung',
-      't4.text':'Visuelles Arbeitsmanagementsystem zur Vermeidung von Überproduktion durch WIP-Limits.','t4.tag':'Management',
-      't5.text':'Fehlervermeidungstechniken durch Design. Macht Fehler unmöglich oder schwierig.','t5.tag':'Qualität',
-      't6.text':'Strukturierter Problemlösungsansatz auf einem A3-Blatt mit Ursachenanalyse.','t6.tag':'Analyse',
-      't7.text':'Der mit der Kundennachfrage synchronisierte Produktionsrhythmus.','t7.tag':'Planung',
-      't8.text':'Reduzierung der Rüstzeit auf unter 10 Minuten für maximale Flexibilität.','t8.tag':'Effizienz',
-      't9.text':'Produktionsnivellierung zur Reduzierung von Ungleichmäßigkeiten.','t9.tag':'Planung',
-      'app.label':'Vergleich','app.title':'Verschiedene Verbesserungsansätze','app.intro':'Lean ist nicht der einzige Ansatz. So vergleicht er sich mit anderen Methoden.',
-      'app.th.aspect':'Aspekt','app.th.lean':'🏆 Lean','app.th.sigma':'📐 Six Sigma','app.th.agile':'🔁 Agile','app.th.kaizen':'✨ Kaizen','app.th.tps':'🚗 TPS',
-      'app.row.focus':'Fokus','app.row.origin':'Ursprung','app.row.tool':'Schlüsselwerkzeug','app.row.best':'Geeignet für','app.row.speed':'Geschwindigkeit',
-      'app.lean.focus':'Verschwendung eliminieren','app.lean.origin':'Toyota, Japan','app.lean.tool':'VSM, 5S, Kanban','app.lean.best':'Alle Branchen','app.lean.speed':'Schnell (Tage/Wochen)',
-      'app.sigma.focus':'Fehler reduzieren','app.sigma.origin':'Motorola, USA (1986)','app.sigma.tool':'DMAIC, Statistik','app.sigma.best':'Produktion, Qualität','app.sigma.speed':'Langsam (Monate)',
-      'app.agile.focus':'Flexibilität & Tempo','app.agile.origin':'Software, USA (2001)','app.agile.tool':'Sprints, Scrum','app.agile.best':'Software, Projekte','app.agile.speed':'Schnell (2-4 Wochen)',
-      'app.kaizen.focus':'Kont. Verbesserung','app.kaizen.origin':'Toyota, Japan','app.kaizen.tool':'Kaizen-Events','app.kaizen.best':'Alle Prozesse','app.kaizen.speed':'Sehr schnell (Tage)',
-      'app.tps.focus':'Produktionssystem','app.tps.origin':'Toyota, 1950er','app.tps.tool':'JIT, Jidoka','app.tps.best':'Automobilindustrie','app.tps.speed':'Langfristig',
-      'sim.label':'Interaktives Lernen','sim.title':'🎮 Lean Flow Simulator','sim.intro':'Lean-Prinzipien interaktiv ausprobieren. Produktionsprozess simulieren, Verschwendung eliminieren, Ergebnisse in Echtzeit sehen.',
-      'courses.label':'Bildungsprogramme','courses.title':'Unsere Kurse','courses.intro':'Strukturierte Schulungen für jedes Niveau.','courses.free':'Kostenlos','courses.paid':'Kostenpflichtig',
-      'c1.title':'Lean Grundlagen','c1.text':'Einführung in Lean-Denken, Prinzipien und Verschwendung. Ideal für jeden, der Lean von Grund auf verstehen möchte.','c1.duration':'⏱ 8 Stunden','c1.level':'📘 Einsteiger',
-      'c2.title':'Lean Praktiker','c2.text':'Praktische Werkzeuge: VSM, 5S, Kanban, Kaizen. Mit echten Fallstudien.','c2.duration':'⏱ 24 Stunden','c2.level':'📗 Mittelstufe',
-      'c3.title':'Lean Manager','c3.text':'Strategische Einführung, Aufbau einer Lean-Kultur und Transformationsmanagement.','c3.duration':'⏱ 40 Stunden','c3.level':'📕 Fortgeschritten',
-      'contact.label':'Kontakt aufnehmen','contact.title':'Haben Sie Fragen?','contact.intro':'Erzählen Sie uns von Ihren Zielen. Wir helfen Ihnen den richtigen Kurs zu wählen.','contact.loc':'Standort','contact.loc.val':'Bulgarien — online und vor Ort','contact.phone':'Telefon','contact.email':'E-Mail','contact.free':'Kostenlose Beratung','contact.free.val':'30 Minuten — unverbindlich',
-      'form.name':'Ihr Name','form.name.ph':'Max Mustermann','form.email':'E-Mail-Adresse','form.service':'Ich interessiere mich für','form.message':'Nachricht','form.message.ph':'Erzählen Sie von Ihren Zielen...','form.submit':'Anfrage senden','form.success':'Vielen Dank! Wir melden uns bald.','form.error':'Fehler beim Senden. Bitte versuchen Sie es erneut.','form.opt.other':'Sonstiges',
-      'footer.tagline':'Alles über die Lean-Methodik','footer.copy':'© 2026 LeanUniversity.eu — Alle Rechte vorbehalten','footer.sub':'Lean Bildung Bulgarien','footer.partner':'Schwesterunternehmen'
-    }
-  };
-
-  function setLang(lang) {
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if (t[lang] && t[lang][key]) el.innerHTML = t[lang][key];
-    });
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if (t[lang] && t[lang][key]) el.placeholder = t[lang][key];
-    });
-    ['bg','en','de'].forEach(l => document.getElementById('btn-'+l).classList.remove('active'));
-    document.getElementById('btn-'+lang).classList.add('active');
-    document.documentElement.lang = lang;
-    localStorage.setItem('lang', lang);
-  }
-
-  if (localStorage.getItem('cookieConsent')) {
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-  function cookieAccept() {
-    localStorage.setItem('cookieConsent','accepted');
-    document.getElementById('cookie-banner').style.display='none';
-  }
-  function cookieDecline() {
-    localStorage.setItem('cookieConsent','declined');
-    document.getElementById('cookie-banner').style.display='none';
-  }
-  function toggleMenu() {
-    document.getElementById('hamburger').classList.toggle('open');
-    document.getElementById('mobile-nav').classList.toggle('open');
-  }
-  function closeMenu() {
-    document.getElementById('hamburger').classList.remove('open');
-    document.getElementById('mobile-nav').classList.remove('open');
-  }
-
-  const savedLang = localStorage.getItem('lang') || 'bg';
-  if (savedLang !== 'bg') setLang(savedLang);
+  window.formspree = window.formspree || function(){(formspree.q=formspree.q||[]).push(arguments)};
+  formspree('initForm',{formElement:'#contact-form',formId:'xqegvjdl'});
+  if(localStorage.getItem('cookieConsent')) document.getElementById('cookie-banner').style.display='none';
+  function cookieAccept(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';}
+  function cookieDecline(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+  function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-nav').classList.toggle('open');}
+  function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-nav').classList.remove('open');}
+  function setLang(lang){['bg','en','de'].forEach(l=>document.getElementById('btn-'+l).classList.remove('active'));document.getElementById('btn-'+lang).classList.add('active');document.documentElement.lang=lang;localStorage.setItem('lang',lang);}
+  const savedLang=localStorage.getItem('lang')||'bg';
+  if(savedLang!=='bg') setLang(savedLang);
 </script>
 </body>
 </html>
