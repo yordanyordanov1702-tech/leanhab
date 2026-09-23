@@ -80,6 +80,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .blog-card-link:hover{color:var(--gold);}
 .blog-card-placeholder{background:var(--off-white);border:2px dashed var(--border);}
 .blog-card-placeholder .blog-card-title{color:var(--gray);}
+.blog-card-img{height:140px;margin:-1.5rem -1.5rem 1.5rem;border-radius:8px 8px 0 0;background:var(--navy);}
+.lean-green-img{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 40%,#43a047 100%);}
+.kaizen-img{background:linear-gradient(135deg,#e65100 0%,#ef6c00 40%,#ffa726 100%);}
+.vsm-img{background:linear-gradient(135deg,#0d47a1 0%,#1565c0 40%,#42a5f5 100%);}
+.fives-img{background:linear-gradient(135deg,#4a148c 0%,#6a1b9a 40%,#ab47bc 100%);}
 footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2rem;}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
 .footer-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none;}
@@ -169,9 +174,22 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
     <p style="color:var(--gray);font-size:1rem;line-height:1.8;max-width:600px;font-weight:300;" data-bg="Изследваме Lean методологията в дълбочина — от теория до практика." data-en="We explore Lean methodology in depth — from theory to practice.">Изследваме Lean методологията в дълбочина — от теория до практика.</p>
 
     <div class="blog-grid">
+      <!-- Lean Green -->
+      <article class="blog-card">
+        <div class="blog-card-body">
+          <div class="blog-card-img lean-green-img"></div>
+          <div class="blog-card-tag" data-bg="Lean Green" data-en="Lean Green">Lean Green</div>
+          <h2 class="blog-card-title" data-bg="Lean: от ефективност към устойчивост" data-en="Lean: from efficiency to sustainability">Lean: от ефективност към устойчивост</h2>
+          <div class="blog-card-date" data-bg="23 септември 2026 · LeanUniversity" data-en="23 September 2026 · LeanUniversity">23 септември 2026 · LeanUniversity</div>
+          <p class="blog-card-excerpt" data-bg="Как Lean методологията помага на компаниите да постигнат едновременно ефективност и устойчивост в ера на въглеродни регулации и изкуствен интелект." data-en="How Lean methodology helps companies achieve efficiency and sustainability simultaneously in an era of carbon regulations and artificial intelligence.">Как Lean методологията помага на компаниите да постигнат едновременно ефективност и устойчивост в ера на въглеродни регулации и изкуствен интелект.</p>
+          <a href="/blog/lean-green-efektivnost-ustoychivost.html" class="blog-card-link" data-bg="Прочети →" data-en="Read →">Прочети →</a>
+        </div>
+      </article>
+
       <!-- Статия 1 -->
       <article class="blog-card">
         <div class="blog-card-body">
+          <div class="blog-card-img kaizen-img"></div>
           <div class="blog-card-tag" data-bg="Основи" data-en="Fundamentals">Основи</div>
           <h2 class="blog-card-title" data-bg="Lean и Kaizen: Как да започнете с непрекъснатото подобрение" data-en="Lean and Kaizen: How to Start with Continuous Improvement">Lean и Kaizen: Как да започнете с непрекъснатото подобрение</h2>
           <div class="blog-card-date" data-bg="22 септември 2026 · LeanUniversity" data-en="September 22, 2026 · LeanUniversity">22 септември 2026 · LeanUniversity</div>
@@ -183,6 +201,7 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
       <!-- Placeholder 2 -->
       <article class="blog-card blog-card-placeholder">
         <div class="blog-card-body">
+          <div class="blog-card-img vsm-img"></div>
           <div class="blog-card-tag" style="color:var(--gray);" data-bg="Скоро" data-en="Coming Soon">Скоро</div>
           <h2 class="blog-card-title" data-bg="Value Stream Mapping: Стъпка по стъпка" data-en="Value Stream Mapping: Step by Step">Value Stream Mapping: Стъпка по стъпка</h2>
           <div class="blog-card-date" data-bg="Очаквайте скоро" data-en="Coming soon">Очаквайте скоро</div>
@@ -193,6 +212,7 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
       <!-- Placeholder 3 -->
       <article class="blog-card blog-card-placeholder">
         <div class="blog-card-body">
+          <div class="blog-card-img fives-img"></div>
           <div class="blog-card-tag" style="color:var(--gray);" data-bg="Скоро" data-en="Coming Soon">Скоро</div>
           <h2 class="blog-card-title" data-bg="5S в офиса: Организация на работното място" data-en="5S in the Office: Workplace Organisation">5S в офиса: Организация на работното място</h2>
           <div class="blog-card-date" data-bg="Очаквайте скоро" data-en="Coming soon">Очаквайте скоро</div>
