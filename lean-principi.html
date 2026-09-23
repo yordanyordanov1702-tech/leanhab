@@ -206,17 +206,17 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
 <nav>
   <a href="/" class="logo">Lean<span>University</span></a>
   <ul class="nav-links">
-    <li><a href="/#history">История</a></li>
-    <li><a href="/lean-principi.html" class="active">Принципи</a></li>
-    <li><a href="/instrumenti.html">Инструменти</a></li>
-    <li><a href="/simulator.html">Симулатор</a></li>
-    <li><a href="/kursove.html">Курсове</a></li>
+    <li><a href="/#history" data-bg="История" data-en="History">История</a></li>
+    <li><a href="/lean-principi.html" class="active" data-bg="Принципи" data-en="Principles">Принципи</a></li>
+    <li><a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a></li>
+    <li><a href="/simulator.html" data-bg="Симулатор" data-en="Simulator">Симулатор</a></li>
+    <li><a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a></li>
     <li class="nav-dropdown">
-      <button class="nav-dropdown-btn" onclick="toggleDropdown(this)">Още ▾</button>
+      <button class="nav-dropdown-btn" onclick="toggleDropdown(this)" data-bg="Още ▾" data-en="More ▾">Още ▾</button>
       <ul class="nav-dropdown-menu">
-        <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()">Загуби (MUDA)</a></li>
-        <li><a href="/blog/" onclick="closeMenu()">Блог</a></li>
-        <li><a href="/publikatsii/" onclick="closeMenu()">Публикации</a></li>
+        <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a></li>
+        <li><a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
+        <li><a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a></li>
       </ul>
     </li>
   </ul>
@@ -231,38 +231,37 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
     <div class="lang-switcher">
       <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">BG</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="btn-de" onclick="setLang('de')">DE</button>
     </div>
-    <a href="/#contact" class="btn-nav">Контакт</a>
+    <a href="/#contact" class="btn-nav" data-bg="Контакт" data-en="Contact">Контакт</a>
   </div>
 </nav>
 
 <!-- WHATSAPP -->
 <a href="https://wa.me/359883584139" target="_blank" class="whatsapp-btn" aria-label="WhatsApp">
-  <span class="whatsapp-tooltip">Пишете ни в WhatsApp</span>
+  <span class="whatsapp-tooltip" data-bg="Пишете ни в WhatsApp" data-en="Message us on WhatsApp">Пишете ни в WhatsApp</span>
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <!-- COOKIE -->
 <div class="cookie-banner" id="cookie-banner">
-  <p>Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата <a href="/privacy-policy.html" style="color:var(--gold)">Политика за поверителност</a>.</p>
+  <p data-bg="Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Политика за поверителност&lt;/a&gt;." data-en="This site uses cookies to improve user experience. See our &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Privacy Policy&lt;/a&gt;.">Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата <a href="/privacy-policy.html" style="color:var(--gold)">Политика за поверителност</a>.</p>
   <div class="cookie-actions">
-    <button class="btn-cookie-decline" onclick="cookieDecline()">Отказ</button>
-    <button class="btn-cookie-accept" onclick="cookieAccept()">Приемам</button>
+    <button class="btn-cookie-decline" onclick="cookieDecline()" data-bg="Отказ" data-en="Decline">Отказ</button>
+    <button class="btn-cookie-accept" onclick="cookieAccept()" data-bg="Приемам" data-en="Accept">Приемам</button>
   </div>
 </div>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
-  <a href="/#history" onclick="closeMenu()">История</a>
-  <a href="/lean-principi.html" onclick="closeMenu()">Принципи</a>
-  <a href="/instrumenti.html" onclick="closeMenu()">Инструменти</a>
-  <a href="/simulator.html" onclick="closeMenu()">Симулатор</a>
-  <a href="/kursove.html" onclick="closeMenu()">Курсове</a>
-  <a href="/muda-8-vida-zagubi.html" onclick="closeMenu()">Загуби (MUDA)</a>
-  <a href="/blog/" onclick="closeMenu()">Блог</a>
-  <a href="/publikatsii/" onclick="closeMenu()">Публикации</a>
-  <a href="/#contact" onclick="closeMenu()">Контакт</a>
+  <a href="/#history" onclick="closeMenu()" data-bg="История" data-en="History">История</a>
+  <a href="/lean-principi.html" onclick="closeMenu()" data-bg="Принципи" data-en="Principles">Принципи</a>
+  <a href="/instrumenti.html" onclick="closeMenu()" data-bg="Инструменти" data-en="Tools">Инструменти</a>
+  <a href="/simulator.html" onclick="closeMenu()" data-bg="Симулатор" data-en="Simulator">Симулатор</a>
+  <a href="/kursove.html" onclick="closeMenu()" data-bg="Курсове" data-en="Courses">Курсове</a>
+  <a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a>
+  <a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a>
+  <a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a>
+  <a href="/#contact" onclick="closeMenu()" data-bg="Контакт" data-en="Contact">Контакт</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -279,19 +278,19 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
       <span style="color:rgba(255,255,255,0.7);">5-те Lean принципа</span>
     </nav>
     <div class="hero-badge">⚙️ Lean методология</div>
-    <h1 class="hero-title">5-те фундаментални <span>Lean</span> принципа</h1>
-    <p class="hero-sub">Основата на Lean мислене — от идентифициране на стойността до постигане на съвършенство</p>
-    <a href="/" class="btn-outline" style="display:inline-block;margin-top:0.5rem;">← Обратно към Начало</a>
+    <h1 class="hero-title" data-bg="5-те фундаментални &lt;span&gt;Lean&lt;/span&gt; принципа" data-en="The 5 fundamental &lt;span&gt;Lean&lt;/span&gt; Principles">5-те фундаментални <span>Lean</span> принципа</h1>
+    <p class="hero-sub" data-bg="Основата на Lean мислене — от идентифициране на стойността до постигане на съвършенство" data-en="The foundation of Lean thinking — from identifying value to achieving perfection">Основата на Lean мислене — от идентифициране на стойността до постигане на съвършенство</p>
+    <a href="/" class="btn-outline" style="display:inline-block;margin-top:0.5rem;" data-bg="← Обратно към Начало" data-en="← Back to Home">← Обратно към Начало</a>
   </div>
 </section>
 
 <!-- MAIN CONTENT -->
 <section class="section section-light">
   <div class="container">
-    <div class="section-label">Теория и практика</div>
-    <h2 class="section-title">Какво представляват Lean принципите?</h2>
+    <div class="section-label" data-bg="Теория и практика" data-en="Theory and practice">Теория и практика</div>
+    <h2 class="section-title" data-bg="Какво представляват Lean принципите?" data-en="What are the Lean Principles?">Какво представляват Lean принципите?</h2>
     <div class="divider"></div>
-    <p class="section-intro">
+    <p class="section-intro" data-bg="5-те Lean принципа са систематизирани за първи път от Джеймс Уомак и Даниел Джоунс в книгата им „Lean Thinking" (1996). Те предоставят ясна рамка за трансформиране на всяка организация — производствена, сервизна или административна. Принципите не са самостоятелни стъпки, а взаимно свързан цикъл: прилагат се последователно и след достигане на петия отново се връщате към първия с по-задълбочено разбиране. Целта е постоянно да намалявате загубите и да увеличавате стойността, която получава клиентът — без излишни ресурси, без ненужно чакане, без дефекти. Lean мисленето е начин на работа, а не еднократен проект." data-en="The 5 Lean principles were first systematized by James Womack and Daniel Jones in their book &quot;Lean Thinking&quot; (1996). They provide a clear framework for transforming any organization — manufacturing, service, or administrative. The principles are not standalone steps but an interconnected cycle: they are applied sequentially, and after reaching the fifth you return to the first with deeper understanding. The goal is to continuously reduce waste and increase the value the customer receives — without excess resources, unnecessary waiting, or defects. Lean thinking is a way of working, not a one-time project.">
       5-те Lean принципа са систематизирани за първи път от Джеймс Уомак и Даниел Джоунс в книгата им „Lean Thinking" (1996). Те предоставят ясна рамка за трансформиране на всяка организация — производствена, сервизна или административна. Принципите не са самостоятелни стъпки, а взаимно свързан цикъл: прилагат се последователно и след достигане на петия отново се връщате към първия с по-задълбочено разбиране. Целта е постоянно да намалявате загубите и да увеличавате стойността, която получава клиентът — без излишни ресурси, без ненужно чакане, без дефекти. Lean мисленето е начин на работа, а не еднократен проект.
     </p>
 
@@ -301,9 +300,9 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
       <article class="principle-card">
         <div class="principle-number num-gold">1</div>
         <div class="principle-body">
-          <h3>Дефинирай стойността</h3>
+          <h3 data-bg="Дефинирай стойността" data-en="Define Value">Дефинирай стойността</h3>
           <div class="principle-en">Define Value</div>
-          <p>Стойността се определя единствено от гледната точка на крайния клиент — не от инженера, не от мениджъра, а от човека, който плаща за продукта или услугата. Всяка характеристика, функция или стъпка в процеса, за която клиентът не е готов да плати, е загуба (muda). Преди да оптимизирате каквото и да е, задайте ясния въпрос: „Какво точно цени нашият клиент?" Отговорът определя посоката на всички останали подобрения. Организациите, пропускащи тази стъпка, рискуват да оптимизират процеси, които изобщо не трябва да съществуват.</p>
+          <p data-bg="Стойността се определя единствено от гледната точка на крайния клиент — не от инженера, не от мениджъра, а от човека, който плаща за продукта или услугата. Всяка характеристика, функция или стъпка в процеса, за която клиентът не е готов да плати, е загуба (muda). Преди да оптимизирате каквото и да е, задайте ясния въпрос: „Какво точно цени нашият клиент?" Отговорът определя посоката на всички останали подобрения. Организациите, пропускащи тази стъпка, рискуват да оптимизират процеси, които изобщо не трябва да съществуват." data-en="Value is defined solely from the perspective of the end customer — not by the engineer, not by the manager, but by the person who pays for the product or service. Any feature, function, or process step for which the customer is not willing to pay is waste (muda). Before optimizing anything, ask the clear question: &quot;What exactly does our customer value?&quot; The answer determines the direction of all other improvements. Organizations that skip this step risk optimizing processes that should not exist at all.">Стойността се определя единствено от гледната точка на крайния клиент — не от инженера, не от мениджъра, а от човека, който плаща за продукта или услугата. Всяка характеристика, функция или стъпка в процеса, за която клиентът не е готов да плати, е загуба (muda). Преди да оптимизирате каквото и да е, задайте ясния въпрос: „Какво точно цени нашият клиент?" Отговорът определя посоката на всички останали подобрения. Организациите, пропускащи тази стъпка, рискуват да оптимизират процеси, които изобщо не трябва да съществуват.</p>
         </div>
       </article>
 
