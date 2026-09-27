@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
-<meta name="description" content="VSM Mapper — картирайте потока на стойността онлайн. Безплатен интерактивен инструмент за Value Stream Mapping директно в браузъра. LeanUniversity.">
-<meta property="og:title" content="VSM Mapper — Картиране на потока на стойността | LeanUniversity">
-<meta property="og:description" content="Картирайте потока на стойността онлайн с VSM Mapper. Безплатен инструмент за Value Stream Mapping — без инсталация, директно в браузъра.">
-<meta property="og:url" content="https://leanhab.eu/tools/vsm-mapper.html">
+<meta name="description" content="draw.io — Безплатен инструмент за VSM и Lean диаграми с пълен export (PDF, PNG, SVG). Директно в браузъра, без инсталация. LeanUniversity.">
+<meta property="og:title" content="draw.io — VSM и Lean диаграми | LeanUniversity">
+<meta property="og:description" content="Създавайте VSM карти и Lean диаграми с draw.io. Безплатен export на PDF, PNG, SVG — без инсталация.">
+<meta property="og:url" content="https://leanhab.eu/tools/draw-io.html">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://leanhab.eu/tools/vsm-mapper.html">
+<link rel="canonical" href="https://leanhab.eu/tools/draw-io.html">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='26' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LU</text></svg>">
-<title>VSM Mapper — Картиране на потока на стойността | LeanUniversity</title>
+<title>draw.io — VSM и Lean диаграми | LeanUniversity</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0b1a2e;--blue:#1a3a5c;--accent:#1565c0;--gold:#c9a84c;--white:#ffffff;--off-white:#f8f7f4;--gray:#6b6b6b;--gray-dark:#3d3d3d;--black:#1a1a1a;--border:#e0e0e0;--light-blue:#e8f0f9;}
@@ -37,9 +37,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .footer-social-link:hover{color:var(--gold);}
 .btn-nav{background:var(--gold);color:var(--navy);padding:0.55rem 1.3rem;font-size:0.82rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;border-radius:2px;}
 .btn-nav:hover{opacity:0.85;}
-.site-switcher{display:flex;gap:0;border:1px solid rgba(255,255,255,0.2);overflow:hidden;border-radius:3px;}
-.site-btn{background:none;border:none;color:rgba(255,255,255,0.6);padding:0.3rem 0.75rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;letter-spacing:0.05em;text-decoration:none;display:flex;align-items:center;}
-.site-btn.active{background:var(--gold);color:var(--navy);}
 .lang-switcher{display:flex;gap:0.3rem;margin-left:1rem;}
 .lang-btn{background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);padding:0.3rem 0.65rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
 .lang-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
@@ -73,6 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .page-hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:600px;margin:0 auto 2rem;}
 .btn-back{display:inline-block;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);padding:0.6rem 1.4rem;font-size:0.85rem;text-decoration:none;border-radius:3px;transition:all 0.2s;}
 .btn-back:hover{border-color:var(--gold);color:var(--gold);}
+.export-badge{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(76,175,80,0.15);border:1px solid rgba(76,175,80,0.4);color:#81c784;padding:0.35rem 0.8rem;border-radius:20px;font-size:0.8rem;font-weight:600;margin-bottom:1.2rem;}
 .sim-wrapper{background:var(--off-white);padding:2rem 0 0;}
 .sim-container{max-width:1200px;margin:0 auto;padding:0 2rem;}
 .sim-frame{width:100%;border:none;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.15);display:block;background:var(--white);}
@@ -107,12 +105,10 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 .sim-fullscreen-bar{display:flex;justify-content:flex-end;align-items:center;gap:0.6rem;padding:0.75rem 0 0.5rem;}
 .btn-fullscreen{background:var(--navy);color:var(--white);border:none;padding:0.5rem 1.2rem;font-size:0.82rem;font-weight:600;cursor:pointer;border-radius:4px;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;}
 .btn-fullscreen:hover{background:var(--accent);}
-.btn-newtab{background:rgba(11,26,46,0.07);color:var(--navy);border:1px solid var(--border);padding:0.5rem 1.2rem;font-size:0.82rem;font-weight:600;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;}
-.btn-newtab:hover{background:rgba(11,26,46,0.13);}
-.export-note{font-size:0.78rem;color:var(--gray);padding:0.5rem 0 0;text-align:right;}
-.export-notice{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:0.75rem 1rem;font-size:0.85rem;color:#5d4037;margin-top:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;}
+.btn-newtab{background:var(--gold);color:var(--navy);border:none;padding:0.5rem 1.4rem;font-size:0.85rem;font-weight:700;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:opacity 0.2s;}
+.btn-newtab:hover{opacity:0.85;}
+.export-notice{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:0.75rem 1rem;font-size:0.85rem;color:#5d4037;margin-bottom:0.5rem;display:flex;align-items:flex-start;gap:0.5rem;}
 .export-notice strong{color:#e65100;}
-.export-notice a{color:#1565c0;font-weight:600;}
 #sim-frame-wrapper:fullscreen,#sim-frame-wrapper:-webkit-full-screen{background:#000;display:flex;flex-direction:column;padding:0;}
 #sim-frame-wrapper:fullscreen .sim-frame,#sim-frame-wrapper:-webkit-full-screen .sim-frame{flex:1;width:100%;height:100%!important;border-radius:0;}
 #sim-frame-wrapper:fullscreen .sim-fullscreen-bar,#sim-frame-wrapper:-webkit-full-screen .sim-fullscreen-bar{background:rgba(0,0,0,0.85);padding:0.5rem 1rem;}
@@ -183,74 +179,75 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
       <span>›</span>
       <a href="/tools/" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
       <span>›</span>
-      <span>VSM Mapper</span>
+      <span>draw.io</span>
     </div>
-    <h1 data-bg="VSM &lt;span&gt;Mapper&lt;/span&gt;" data-en="VSM &lt;span&gt;Mapper&lt;/span&gt;">VSM <span>Mapper</span></h1>
-    <p class="page-hero-sub" data-bg="Картирайте потока на стойността онлайн — визуализирайте текущото и бъдещото състояние на вашия производствен или административен процес. Директно в браузъра, без инсталация." data-en="Map the value stream online — visualize the current and future state of your production or administrative process. Directly in the browser, no installation needed.">Картирайте потока на стойността онлайн — визуализирайте текущото и бъдещото състояние на вашия производствен или административен процес. Директно в браузъра, без инсталация.</p>
+    <div class="export-badge" data-bg="✓ Export PDF · PNG · SVG — работи в нов таб" data-en="✓ Export PDF · PNG · SVG — works in new tab">✓ Export PDF · PNG · SVG — работи в нов таб</div>
+    <h1 data-bg="draw.io — &lt;span&gt;VSM и Lean диаграми&lt;/span&gt;" data-en="draw.io — &lt;span&gt;VSM &amp; Lean Diagrams&lt;/span&gt;">draw.io — <span>VSM и Lean диаграми</span></h1>
+    <p class="page-hero-sub" data-bg="Безплатен инструмент за диаграми с вградена библиотека от Lean и VSM символи. За export (PDF, PNG, SVG) отворете draw.io в нов таб — бутонът е точно под хероа." data-en="Free diagramming tool with a built-in library of Lean and VSM symbols. For export (PDF, PNG, SVG) open draw.io in a new tab — the button is just below.">Безплатен инструмент за диаграми с вградена библиотека от Lean и VSM символи. За export (PDF, PNG, SVG) отворете draw.io в нов таб — бутонът е точно под хероа.</p>
     <a href="/tools/" class="btn-back" data-bg="← Всички инструменти" data-en="← All Tools">← Всички инструменти</a>
   </div>
 </div>
 
 <div class="sim-wrapper">
   <div class="sim-container">
+    <div class="export-notice">
+      <span>⚡</span>
+      <span data-bg="&lt;strong&gt;Export (PDF / PNG / SVG):&lt;/strong&gt; Браузърите блокират изтегляния от вградени прозорци. Отворете draw.io в нов таб с бутона по-горе — там export работи нормално." data-en="&lt;strong&gt;Export (PDF / PNG / SVG):&lt;/strong&gt; Browsers block downloads from embedded frames. Open draw.io in a new tab with the button above — export works normally there."><strong>Export (PDF / PNG / SVG):</strong> Браузърите блокират изтегляния от вградени прозорци. Отворете draw.io в нов таб с бутона по-горе — там export работи нормално.</span>
+    </div>
     <div id="sim-frame-wrapper">
       <div class="sim-fullscreen-bar">
-        <a href="https://vsm-mapper.vercel.app/" target="_blank" rel="noopener" class="btn-newtab" data-bg="⧉ Нов таб" data-en="⧉ New tab">⧉ Нов таб</a>
+        <a href="https://app.diagrams.net/?splash=0&libs=lean_mapping" target="_blank" rel="noopener" class="btn-newtab" data-bg="⧉ Отвори в нов таб (за export)" data-en="⧉ Open in new tab (for export)">⧉ Отвори в нов таб (за export)</a>
         <button class="btn-fullscreen" id="btn-fullscreen" onclick="toggleFullscreen()" data-bg="⛶ Пълен екран" data-en="⛶ Full screen">⛶ Пълен екран</button>
       </div>
       <iframe
-        src="https://vsm-mapper.vercel.app/"
+        src="https://app.diagrams.net/?splash=0&libs=lean_mapping"
         class="sim-frame"
-        height="750"
-        title="VSM Mapper"
+        height="720"
+        title="draw.io — VSM и Lean диаграми"
         loading="lazy"
-        allow="fullscreen; downloads; clipboard-write"
+        allow="fullscreen; clipboard-write; clipboard-read"
       ></iframe>
-    </div>
-    <div class="export-notice">
-      <span>⚠️</span>
-      <span data-bg="&lt;strong&gt;Export (PDF / PNG) не работи&lt;/strong&gt; в VSM Mapper — проблемът е в самото приложение. За надеждно export ползвайте &lt;a href=&quot;/tools/draw-io.html&quot;&gt;draw.io&lt;/a&gt; — безплатен, с вградени VSM символи." data-en="&lt;strong&gt;Export (PDF / PNG) does not work&lt;/strong&gt; in VSM Mapper — the issue is in the application itself. For reliable export use &lt;a href=&quot;/tools/draw-io.html&quot;&gt;draw.io&lt;/a&gt; — free, with built-in VSM symbols."><strong>Export (PDF / PNG) не работи</strong> в VSM Mapper — проблемът е в самото приложение. За надеждно export ползвайте <a href="/tools/draw-io.html">draw.io</a> — безплатен, с вградени VSM символи.</span>
     </div>
   </div>
 </div>
 
 <section class="section section-light">
   <div class="container">
-    <div class="section-label" data-bg="Как да използвате VSM Mapper" data-en="How to use VSM Mapper">Как да използвате VSM Mapper</div>
-    <h2 class="section-title" data-bg="Стъпки за ефективно картиране" data-en="Steps for effective mapping">Стъпки за ефективно картиране</h2>
+    <div class="section-label" data-bg="Как да използвате draw.io за VSM" data-en="How to use draw.io for VSM">Как да използвате draw.io за VSM</div>
+    <h2 class="section-title" data-bg="Стъпки за VSM картиране с draw.io" data-en="Steps for VSM mapping with draw.io">Стъпки за VSM картиране с draw.io</h2>
     <div class="divider"></div>
-    <p class="section-intro" data-bg="Value Stream Mapping (VSM) е основен Lean инструмент за визуализиране и анализ на целия поток от стойност — от суровина до клиент. VSM Mapper ви позволява да изградите карта на потока онлайн, да идентифицирате загубите и да проектирате бъдещото идеално състояние." data-en="Value Stream Mapping (VSM) is a core Lean tool for visualizing and analyzing the entire value stream — from raw material to customer. VSM Mapper lets you build a value stream map online, identify wastes, and design the ideal future state.">Value Stream Mapping (VSM) е основен Lean инструмент за визуализиране и анализ на целия поток от стойност — от суровина до клиент. VSM Mapper ви позволява да изградите карта на потока онлайн, да идентифицирате загубите и да проектирате бъдещото идеално състояние.</p>
+    <p class="section-intro" data-bg="draw.io (diagrams.net) е един от най-популярните безплатни инструменти за диаграми. Той включва готова библиотека с Lean Mapping символи — производствени процеси, инвентар, информационни потоци и Kaizen burst. Export към PDF, PNG и SVG работи надеждно директно от браузъра." data-en="draw.io (diagrams.net) is one of the most popular free diagramming tools. It includes a ready-made Lean Mapping symbol library — manufacturing processes, inventory, information flows and Kaizen burst. Export to PDF, PNG and SVG works reliably directly from the browser.">draw.io (diagrams.net) е един от най-популярните безплатни инструменти за диаграми. Той включва готова библиотека с Lean Mapping символи — производствени процеси, инвентар, информационни потоци и Kaizen burst. Export към PDF, PNG и SVG работи надеждно директно от браузъра.</p>
 
     <div class="tips-grid">
       <div class="tip-card">
-        <div class="tip-icon">🏭</div>
-        <h3 data-bg="Дефинирайте семейството продукти" data-en="Define the product family">Дефинирайте семейството продукти</h3>
-        <p data-bg="Изберете един продукт или група продукти с подобен производствен маршрут. Фокусирайте VSM картата върху конкретна продуктова линия за по-ясни резултати." data-en="Choose one product or a group of products with a similar production route. Focus the VSM map on a specific product line for clearer results.">Изберете един продукт или група продукти с подобен производствен маршрут. Фокусирайте VSM картата върху конкретна продуктова линия за по-ясни резултати.</p>
+        <div class="tip-icon">📚</div>
+        <h3 data-bg='Отворете библиотеката "Lean Mapping"' data-en='Open the "Lean Mapping" library'>Отворете библиотеката "Lean Mapping"</h3>
+        <p data-bg="draw.io се зарежда с активирана Lean Mapping библиотека. В панела вляво ще намерите готови VSM символи — процеси, инвентар, клиент, доставчик, kamban и др." data-en="draw.io loads with the Lean Mapping library enabled. In the left panel you'll find ready-made VSM symbols — processes, inventory, customer, supplier, kanban and more.">draw.io се зарежда с активирана Lean Mapping библиотека. В панела вляво ще намерите готови VSM символи — процеси, инвентар, клиент, доставчик, kanban и др.</p>
       </div>
       <div class="tip-card">
-        <div class="tip-icon">📋</div>
-        <h3 data-bg="Картирайте текущото състояние" data-en="Map the current state">Картирайте текущото състояние</h3>
-        <p data-bg="Започнете с текущото реално състояние — не идеалното. Добавете всяка стъпка, запасите между тях и информационните потоци. Данните трябва да са реални, измерени на място." data-en="Start with the current real state — not the ideal one. Add each step, the inventory between them, and information flows. Data must be real, measured on the spot.">Започнете с текущото реално състояние — не идеалното. Добавете всяка стъпка, запасите между тях и информационните потоци. Данните трябва да са реални, измерени на място.</p>
+        <div class="tip-icon">🖱️</div>
+        <h3 data-bg="Влачете и пускайте символи" data-en="Drag and drop symbols">Влачете и пускайте символи</h3>
+        <p data-bg="Намерете нужния символ в лявата библиотека и го влачете върху платното. Свързвайте символите с линии като задържите мишката върху символа и влачете от появилата се точка за връзка." data-en="Find the symbol you need in the left library and drag it onto the canvas. Connect symbols with lines by hovering over a symbol and dragging from the connection point that appears.">Намерете нужния символ в лявата библиотека и го влачете върху платното. Свързвайте символите с линии като задържите мишката върху символа и влачете от появилата се точка за връзка.</p>
       </div>
       <div class="tip-card">
-        <div class="tip-icon">🔍</div>
-        <h3 data-bg="Идентифицирайте загубите" data-en="Identify the wastes">Идентифицирайте загубите</h3>
-        <p data-bg="След като картата на текущото състояние е готова, анализирайте я за 8-те вида MUDA. Тесните места, чакането и свръхзапасите стават видими веднага на визуалната карта." data-en="Once the current state map is complete, analyze it for the 8 types of MUDA. Bottlenecks, waiting, and excess inventory become immediately visible on the visual map.">След като картата на текущото състояние е готова, анализирайте я за 8-те вида MUDA. Тесните места, чакането и свръхзапасите стават видими веднага на визуалната карта.</p>
+        <div class="tip-icon">💾</div>
+        <h3 data-bg="Запазете работата си" data-en="Save your work">Запазете работата си</h3>
+        <p data-bg="Файл → Запази (или Ctrl+S) запазва диаграмата като .drawio файл на вашия компютър. При следваща сесия го отворете с Файл → Отвори. Диаграмите не се качват в облак — всичко остава локално." data-en="File → Save (or Ctrl+S) saves the diagram as a .drawio file on your computer. Next session, open it with File → Open. Diagrams are not uploaded to the cloud — everything stays local.">Файл → Запази (или Ctrl+S) запазва диаграмата като .drawio файл на вашия компютър. При следваща сесия го отворете с Файл → Отвори. Диаграмите не се качват в облак — всичко остава локално.</p>
       </div>
       <div class="tip-card">
-        <div class="tip-icon">🚀</div>
-        <h3 data-bg="Проектирайте бъдещото състояние" data-en="Design the future state">Проектирайте бъдещото състояние</h3>
-        <p data-bg="Създайте втора карта — идеалното бъдещо състояние. Приложете Pull система, намалете партидните размери, въведете супермаркети или непрекъснат поток там, където е възможно." data-en="Create a second map — the ideal future state. Apply a pull system, reduce batch sizes, introduce supermarkets or continuous flow where possible.">Създайте втора карта — идеалното бъдещо състояние. Приложете Pull система, намалете партидните размери, въведете супермаркети или непрекъснат поток там, където е възможно.</p>
+        <div class="tip-icon">📄</div>
+        <h3 data-bg="Експортирайте като PDF или PNG" data-en="Export as PDF or PNG">Експортирайте като PDF или PNG</h3>
+        <p data-bg="Файл → Експортирай → PDF или PNG. Можете да изберете дали да включите само избраните елементи или цялата страница. Export работи напълно в браузъра — без допълнителен софтуер." data-en="File → Export → PDF or PNG. You can choose to include only selected elements or the entire page. Export works fully in the browser — no additional software needed.">Файл → Експортирай → PDF или PNG. Можете да изберете дали да включите само избраните елементи или цялата страница. Export работи напълно в браузъра — без допълнителен софтуер.</p>
       </div>
       <div class="tip-card">
-        <div class="tip-icon">📊</div>
-        <h3 data-bg="Измерете Lead Time и Value Time" data-en="Measure Lead Time and Value Time">Измерете Lead Time и Value Time</h3>
-        <p data-bg="Изчислете общото Lead Time (от суровина до клиент) и сравнете го с реалното Value-Added Time. Типично само 5-10% от Lead Time добавя реална стойност — VSM го прави видимо." data-en="Calculate the total Lead Time (from raw material to customer) and compare it to the actual Value-Added Time. Typically only 5-10% of Lead Time adds real value — VSM makes this visible.">Изчислете общото Lead Time (от суровина до клиент) и сравнете го с реалното Value-Added Time. Типично само 5-10% от Lead Time добавя реална стойност — VSM го прави видимо.</p>
+        <div class="tip-icon">🏷️</div>
+        <h3 data-bg="Добавяйте данни към процесите" data-en="Add data to processes">Добавяйте данни към процесите</h3>
+        <p data-bg="Кликнете двукратно върху символ, за да добавите текст. За данни като C/T, C/O, Uptime — добавете текстови блокове или използвайте таблицата с данни (десен бутон → Редактирай данните)." data-en="Double-click a symbol to add text. For data such as C/T, C/O, Uptime — add text blocks or use the data table (right-click → Edit Data).">Кликнете двукратно върху символ, за да добавите текст. За данни като C/T, C/O, Uptime — добавете текстови блокове или използвайте таблицата с данни (десен бутон → Редактирай данните).</p>
       </div>
       <div class="tip-card">
-        <div class="tip-icon">🔄</div>
-        <h3 data-bg="Планирайте трансформацията" data-en="Plan the transformation">Планирайте трансформацията</h3>
-        <p data-bg="Разбийте пътя от текущото към бъдещото състояние на конкретни Kaizen проекти. Приоритизирайте по въздействие и усилие — VSM картата е основата на вашия план за Lean трансформация." data-en="Break the path from the current to the future state into concrete Kaizen projects. Prioritize by impact and effort — the VSM map is the foundation of your Lean transformation plan.">Разбийте пътя от текущото към бъдещото състояние на конкретни Kaizen проекти. Приоритизирайте по въздействие и усилие — VSM картата е основата на вашия план за Lean трансформация.</p>
+        <div class="tip-icon">📐</div>
+        <h3 data-bg="Работете с времевата линия" data-en="Work with the timeline">Работете с времевата линия</h3>
+        <p data-bg="За Value-Added Time и Lead Time добавете линия в дъното на диаграмата. Използвайте символа 'Timeline' от библиотеката или ръчно нарисувайте стъпковата времева ос с текстови блокове." data-en="For Value-Added Time and Lead Time, add a timeline at the bottom of the diagram. Use the 'Timeline' symbol from the library or manually draw the stepped time axis with text blocks.">За Value-Added Time и Lead Time добавете линия в дъното на диаграмата. Използвайте символа 'Timeline' от библиотеката или ръчно нарисувайте стъпковата времева ос с текстови блокове.</p>
       </div>
     </div>
   </div>
@@ -262,10 +259,10 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
     <h2 class="section-title" data-bg="Задълбочете знанията" data-en="Deepen your knowledge">Задълбочете знанията</h2>
     <div class="related-links">
       <a href="/tools/" class="related-link" data-bg="🛠️ Всички онлайн инструменти" data-en="🛠️ All online tools">🛠️ Всички онлайн инструменти</a>
+      <a href="/tools/vsm-mapper.html" class="related-link" data-bg="🗺️ VSM Mapper" data-en="🗺️ VSM Mapper">🗺️ VSM Mapper</a>
       <a href="/simulator.html" class="related-link" data-bg="🎮 Lean Flow Симулатор" data-en="🎮 Lean Flow Simulator">🎮 Lean Flow Симулатор</a>
       <a href="/muda-8-vida-zagubi.html" class="related-link" data-bg="🗑️ 8-те вида загуби (MUDA)" data-en="🗑️ The 8 types of waste (MUDA)">🗑️ 8-те вида загуби (MUDA)</a>
       <a href="/instrumenti.html" class="related-link" data-bg="🔧 Lean инструменти" data-en="🔧 Lean tools">🔧 Lean инструменти</a>
-      <a href="/lean-principi.html" class="related-link" data-bg="📐 5-те Lean принципа" data-en="📐 The 5 Lean Principles">📐 5-те Lean принципа</a>
     </div>
   </div>
 </div>
