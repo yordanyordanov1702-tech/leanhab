@@ -107,8 +107,8 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 .sim-fullscreen-bar{display:flex;justify-content:flex-end;align-items:center;gap:0.6rem;padding:0.75rem 0 0.5rem;}
 .btn-fullscreen{background:var(--navy);color:var(--white);border:none;padding:0.5rem 1.2rem;font-size:0.82rem;font-weight:600;cursor:pointer;border-radius:4px;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;}
 .btn-fullscreen:hover{background:var(--accent);}
-.btn-newtab{background:rgba(11,26,46,0.07);color:var(--navy);border:1px solid var(--border);padding:0.5rem 1.2rem;font-size:0.82rem;font-weight:600;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;}
-.btn-newtab:hover{background:rgba(11,26,46,0.13);}
+.btn-newtab{background:var(--gold);color:var(--navy);border:none;padding:0.5rem 1.4rem;font-size:0.85rem;font-weight:700;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:opacity 0.2s;}
+.btn-newtab:hover{opacity:0.85;}
 .export-note{font-size:0.78rem;color:var(--gray);padding:0.5rem 0 0;text-align:right;}
 .export-notice{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:0.75rem 1rem;font-size:0.85rem;color:#5d4037;margin-top:0.75rem;display:flex;align-items:flex-start;gap:0.5rem;}
 .export-notice strong{color:#e65100;}
@@ -195,7 +195,7 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
   <div class="sim-container">
     <div id="sim-frame-wrapper">
       <div class="sim-fullscreen-bar">
-        <a href="https://vsm-mapper.vercel.app/" target="_blank" rel="noopener" class="btn-newtab" data-bg="⧉ Нов таб" data-en="⧉ New tab">⧉ Нов таб</a>
+        <a href="https://vsm-mapper.vercel.app/" target="_blank" rel="noopener" class="btn-newtab" data-bg="⧉ Нов таб (за export)" data-en="⧉ New tab (for export)">⧉ Нов таб (за export)</a>
         <button class="btn-fullscreen" id="btn-fullscreen" onclick="toggleFullscreen()" data-bg="⛶ Пълен екран" data-en="⛶ Full screen">⛶ Пълен екран</button>
       </div>
       <iframe
@@ -208,8 +208,8 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
       ></iframe>
     </div>
     <div class="export-notice">
-      <span>⚠️</span>
-      <span data-bg="&lt;strong&gt;Export (PDF / PNG) не работи&lt;/strong&gt; в VSM Mapper — проблемът е в самото приложение. За надеждно export ползвайте &lt;a href=&quot;/tools/draw-io.html&quot;&gt;draw.io&lt;/a&gt; — безплатен, с вградени VSM символи." data-en="&lt;strong&gt;Export (PDF / PNG) does not work&lt;/strong&gt; in VSM Mapper — the issue is in the application itself. For reliable export use &lt;a href=&quot;/tools/draw-io.html&quot;&gt;draw.io&lt;/a&gt; — free, with built-in VSM symbols."><strong>Export (PDF / PNG) не работи</strong> в VSM Mapper — проблемът е в самото приложение. За надеждно export ползвайте <a href="/tools/draw-io.html">draw.io</a> — безплатен, с вградени VSM символи.</span>
+      <span>💡</span>
+      <span data-bg="&lt;strong&gt;За export (PDF / PNG):&lt;/strong&gt; Браузърите блокират изтегляния от вградени прозорци. Отворете VSM Mapper в нов таб с бутона по-горе — там export работи нормално." data-en="&lt;strong&gt;For export (PDF / PNG):&lt;/strong&gt; Browsers block downloads from embedded frames. Open VSM Mapper in a new tab with the button above — export works normally there."><strong>За export (PDF / PNG):</strong> Браузърите блокират изтегляния от вградени прозорци. Отворете VSM Mapper в нов таб с бутона по-горе — там export работи нормално.</span>
     </div>
   </div>
 </div>
