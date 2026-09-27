@@ -196,6 +196,19 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
 .mobile-nav a { color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:block; }
 .mobile-nav a:hover { color:var(--gold); }
 .mobile-nav.open { display:flex; }
+/* TOOLS HIGHLIGHT */
+.tools-highlight { background:var(--navy);padding:4rem 0; }
+.tools-highlight .section-label { color:var(--gold); }
+.tools-highlight .section-title { color:var(--white); }
+.tools-highlight-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem; }
+.tool-hl-card { background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:2rem;display:flex;flex-direction:column;gap:1rem;transition:border-color 0.2s,background 0.2s; }
+.tool-hl-card:hover { border-color:var(--gold);background:rgba(255,255,255,0.08); }
+.tool-hl-icon { font-size:2.4rem; }
+.tool-hl-tag { font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold); }
+.tool-hl-title { font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;color:var(--white); }
+.tool-hl-desc { color:rgba(255,255,255,0.6);font-size:0.9rem;line-height:1.65;font-weight:300; }
+.tool-hl-btn { display:inline-block;background:var(--gold);color:var(--navy);padding:0.65rem 1.4rem;font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:3px;align-self:flex-start;transition:opacity 0.2s; }
+.tool-hl-btn:hover { opacity:0.85; }
 /* RESPONSIVE */
 @media (max-width:900px) {
   nav { padding:0 1.5rem; }
@@ -203,6 +216,7 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
   .hamburger { display:flex; }
   .hero-stats { grid-template-columns:repeat(2,1fr);max-width:400px; }
   .topics-grid { grid-template-columns:1fr 1fr; }
+  .tools-highlight-grid { grid-template-columns:1fr; }
   .contact-grid { grid-template-columns:1fr;gap:3rem; }
   .container { padding:0 1.5rem; }
   .section { padding:4rem 0; }
@@ -232,6 +246,7 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
     <li class="nav-dropdown">
       <button class="nav-dropdown-btn" onclick="toggleDropdown(this)" data-bg="Още ▾" data-en="More ▾">Още ▾</button>
       <ul class="nav-dropdown-menu">
+        <li><a href="/tools/" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
         <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a></li>
         <li><a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
         <li><a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a></li>
@@ -276,6 +291,7 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
   <a href="/instrumenti.html" onclick="closeMenu()" data-bg="Инструменти" data-en="Tools">Инструменти</a>
   <a href="/simulator.html" onclick="closeMenu()" data-bg="Симулатор" data-en="Simulator">Симулатор</a>
   <a href="/kursove.html" onclick="closeMenu()" data-bg="Курсове" data-en="Courses">Курсове</a>
+  <a href="/tools/" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
   <a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a>
   <a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a>
   <a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a>
@@ -302,6 +318,30 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
       <div class="hero-stat"><div class="hero-stat-icon">⚙️</div><div class="hero-stat-val">5</div><div class="hero-stat-lbl" data-bg="Принципа" data-en="Principles">Принципа</div></div>
       <div class="hero-stat"><div class="hero-stat-icon">🗑️</div><div class="hero-stat-val">8</div><div class="hero-stat-lbl" data-bg="Вида загуби" data-en="Types of waste">Вида загуби</div></div>
       <div class="hero-stat"><div class="hero-stat-icon">🛠️</div><div class="hero-stat-val">9+</div><div class="hero-stat-lbl" data-bg="Инструмента" data-en="Tools">Инструмента</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS HIGHLIGHT -->
+<section class="tools-highlight">
+  <div class="container">
+    <div class="section-label" data-bg="Интерактивни инструменти" data-en="Interactive tools">Интерактивни инструменти</div>
+    <h2 class="section-title" data-bg="Онлайн Lean инструменти" data-en="Online Lean tools">Онлайн Lean инструменти</h2>
+    <div class="tools-highlight-grid">
+      <div class="tool-hl-card">
+        <div class="tool-hl-icon">🗺️</div>
+        <div class="tool-hl-tag" data-bg="Картиране на потока" data-en="Value Stream Mapping">Картиране на потока</div>
+        <div class="tool-hl-title">VSM Mapper</div>
+        <p class="tool-hl-desc" data-bg="Картирайте потока на стойността онлайн — визуализирайте текущото и бъдещото състояние на вашия процес. Без инсталация, директно в браузъра." data-en="Map the value stream online — visualize the current and future state of your process. No installation, directly in the browser.">Картирайте потока на стойността онлайн — визуализирайте текущото и бъдещото състояние на вашия процес. Без инсталация, директно в браузъра.</p>
+        <a href="/tools/vsm-mapper.html" class="tool-hl-btn" data-bg="Отвори VSM Mapper →" data-en="Open VSM Mapper →">Отвори VSM Mapper →</a>
+      </div>
+      <div class="tool-hl-card">
+        <div class="tool-hl-icon">🎮</div>
+        <div class="tool-hl-tag" data-bg="Симулация" data-en="Simulation">Симулация</div>
+        <div class="tool-hl-title">Lean Flow Симулатор</div>
+        <p class="tool-hl-desc" data-bg="Симулирайте производствен поток и изпробвайте Lean подобрения в реално време. Открийте загубите и оптимизирайте процеса интерактивно." data-en="Simulate a production flow and try Lean improvements in real time. Discover wastes and optimize the process interactively.">Симулирайте производствен поток и изпробвайте Lean подобрения в реално време. Открийте загубите и оптимизирайте процеса интерактивно.</p>
+        <a href="/simulator.html" class="tool-hl-btn" data-bg="Отвори симулатора →" data-en="Open simulator →">Отвори симулатора →</a>
+      </div>
     </div>
   </div>
 </section>

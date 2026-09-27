@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
-<meta name="description" content="Lean Flow Симулатор — интерактивно Lean обучение. Изживейте принципите на Lean мисленето чрез практическа симулация на производствен поток. Безплатно.">
-<meta property="og:title" content="Lean Flow Симулатор — Интерактивно обучение | LeanUniversity">
-<meta property="og:description" content="Научете Lean чрез правене — интерактивен симулатор на производствен поток. Открийте загубите и оптимизирайте процеса в реално време.">
-<meta property="og:url" content="https://leanhab.eu/simulator.html">
+<meta name="description" content="VSM Mapper — картирайте потока на стойността онлайн. Безплатен интерактивен инструмент за Value Stream Mapping директно в браузъра. LeanUniversity.">
+<meta property="og:title" content="VSM Mapper — Картиране на потока на стойността | LeanUniversity">
+<meta property="og:description" content="Картирайте потока на стойността онлайн с VSM Mapper. Безплатен инструмент за Value Stream Mapping — без инсталация, директно в браузъра.">
+<meta property="og:url" content="https://leanhab.eu/tools/vsm-mapper.html">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://leanhab.eu/simulator.html">
+<link rel="canonical" href="https://leanhab.eu/tools/vsm-mapper.html">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='26' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LU</text></svg>">
-<title>Lean Flow Симулатор — Интерактивно обучение | LeanUniversity</title>
+<title>VSM Mapper — Картиране на потока на стойността | LeanUniversity</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0b1a2e;--blue:#1a3a5c;--accent:#1565c0;--gold:#c9a84c;--white:#ffffff;--off-white:#f8f7f4;--gray:#6b6b6b;--gray-dark:#3d3d3d;--black:#1a1a1a;--border:#e0e0e0;--light-blue:#e8f0f9;}
@@ -28,10 +28,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .nav-dropdown{position:relative;}
 .nav-dropdown-btn{background:none;border:none;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;cursor:pointer;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:0.3rem;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;}
 .nav-dropdown-btn:hover,.nav-dropdown.open .nav-dropdown-btn{color:var(--gold);border-bottom-color:var(--gold);}
-.nav-dropdown-menu{display:none;position:absolute;top:64px;right:0;background:var(--navy);border:1px solid var(--gold);border-top:none;min-width:180px;z-index:200;list-style:none;}
+.nav-dropdown-menu{display:none;position:absolute;top:64px;right:0;background:var(--navy);border:1px solid var(--gold);border-top:none;min-width:200px;z-index:200;list-style:none;}
 .nav-dropdown.open .nav-dropdown-menu{display:block;}
 .nav-dropdown-menu a{display:block;padding:0.9rem 1.2rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.2s,background 0.2s;}
-.nav-dropdown-menu a:hover{color:var(--gold);background:rgba(255,255,255,0.05);}
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a.active{color:var(--gold);background:rgba(255,255,255,0.05);}
 .nav-dropdown-menu li:last-child a{border-bottom:none;}
 .footer-social-link{color:rgba(255,255,255,0.4);transition:color 0.2s;display:inline-flex;align-items:center;}
 .footer-social-link:hover{color:var(--gold);}
@@ -53,12 +53,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:block;}
 .mobile-nav a:hover{color:var(--gold);}
 .mobile-nav.open{display:flex;}
+.whatsapp-btn{position:fixed;bottom:2rem;right:2rem;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:998;text-decoration:none;transition:transform 0.2s;}
+.whatsapp-btn:hover{transform:scale(1.1);}
+.whatsapp-btn svg{width:32px;height:32px;fill:white;}
+.whatsapp-tooltip{position:absolute;right:68px;background:var(--navy);color:white;padding:0.4rem 0.9rem;font-size:0.8rem;white-space:nowrap;border-radius:4px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.whatsapp-btn:hover .whatsapp-tooltip{opacity:1;}
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:var(--white);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;z-index:999;flex-wrap:wrap;border-top:3px solid var(--gold);}
+.cookie-banner p{font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.5;margin:0;flex:1;min-width:200px;}
+.cookie-actions{display:flex;gap:0.8rem;flex-shrink:0;}
+.btn-cookie-accept{background:var(--gold);color:var(--navy);border:none;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.btn-cookie-decline{background:none;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
 .page-hero{padding-top:64px;background:linear-gradient(135deg,#0b1a2e 0%,#1a3a5c 60%,#0d2137 100%);padding-bottom:3rem;text-align:center;}
 .page-hero-inner{padding-top:3rem;max-width:800px;margin:0 auto;padding-left:2rem;padding-right:2rem;}
-.breadcrumb{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:1.5rem;}
+.breadcrumb{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.4rem;justify-content:center;}
 .breadcrumb a{color:rgba(255,255,255,0.45);text-decoration:none;transition:color 0.2s;}
 .breadcrumb a:hover{color:var(--gold);}
-.breadcrumb span{margin:0 0.5rem;}
 .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1rem;}
 .page-hero h1 span{color:var(--gold);}
 .page-hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:600px;margin:0 auto 2rem;}
@@ -95,16 +104,6 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 .footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;}
 .footer-legal a{color:rgba(255,255,255,0.3);font-size:0.78rem;text-decoration:none;transition:color 0.2s;}
 .footer-legal a:hover{color:var(--gold);}
-.whatsapp-btn{position:fixed;bottom:2rem;right:2rem;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);z-index:998;text-decoration:none;transition:transform 0.2s;}
-.whatsapp-btn:hover{transform:scale(1.1);}
-.whatsapp-btn svg{width:32px;height:32px;fill:white;}
-.whatsapp-tooltip{position:absolute;right:68px;background:var(--navy);color:white;padding:0.4rem 0.9rem;font-size:0.8rem;white-space:nowrap;border-radius:4px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
-.whatsapp-btn:hover .whatsapp-tooltip{opacity:1;}
-.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:var(--white);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;z-index:999;flex-wrap:wrap;border-top:3px solid var(--gold);}
-.cookie-banner p{font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.5;margin:0;flex:1;min-width:200px;}
-.cookie-actions{display:flex;gap:0.8rem;flex-shrink:0;}
-.btn-cookie-accept{background:var(--gold);color:var(--navy);border:none;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
-.btn-cookie-decline{background:none;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
 @media(max-width:900px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}.tips-grid{grid-template-columns:1fr 1fr;}.container{padding:0 1.5rem;}.section{padding:3rem 0;}}
 @media(max-width:600px){.page-hero h1{font-size:1.7rem;}.tips-grid{grid-template-columns:1fr;}}
 </style>
@@ -117,12 +116,12 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
     <li><a href="/#history" data-bg="История" data-en="History">История</a></li>
     <li><a href="/lean-principi.html" data-bg="Принципи" data-en="Principles">Принципи</a></li>
     <li><a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a></li>
-    <li><a href="/simulator.html" class="active" data-bg="Симулатор" data-en="Simulator">Симулатор</a></li>
+    <li><a href="/simulator.html" data-bg="Симулатор" data-en="Simulator">Симулатор</a></li>
     <li><a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a></li>
     <li class="nav-dropdown">
       <button class="nav-dropdown-btn" onclick="toggleDropdown(this)" data-bg="Още ▾" data-en="More ▾">Още ▾</button>
       <ul class="nav-dropdown-menu">
-        <li><a href="/tools/" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
+        <li><a href="/tools/" onclick="closeMenu()" class="active" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
         <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a></li>
         <li><a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
         <li><a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a></li>
@@ -173,20 +172,26 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">Начало</a><span>›</span>Lean Flow Симулатор</div>
-    <h1 data-bg="Lean Flow &lt;span&gt;Симулатор&lt;/span&gt;" data-en="Lean Flow &lt;span&gt;Simulator&lt;/span&gt;">Lean Flow <span>Симулатор</span></h1>
-    <p class="page-hero-sub" data-bg="Научете Lean чрез правене — интерактивна симулация на производствен поток. Открийте загубите и оптимизирайте процеса в реално време." data-en="Learn Lean by doing — interactive simulation of a production flow. Discover the wastes and optimize the process in real time.">Научете Lean чрез правене — интерактивна симулация на производствен поток. Открийте загубите и оптимизирайте процеса в реално време.</p>
-    <a href="/" class="btn-back" data-bg="← Обратно към Начало" data-en="← Back to Home">← Обратно към Начало</a>
+    <div class="breadcrumb">
+      <a href="/" data-bg="Начало" data-en="Home">Начало</a>
+      <span>›</span>
+      <a href="/tools/" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
+      <span>›</span>
+      <span>VSM Mapper</span>
+    </div>
+    <h1 data-bg="VSM &lt;span&gt;Mapper&lt;/span&gt;" data-en="VSM &lt;span&gt;Mapper&lt;/span&gt;">VSM <span>Mapper</span></h1>
+    <p class="page-hero-sub" data-bg="Картирайте потока на стойността онлайн — визуализирайте текущото и бъдещото състояние на вашия производствен или административен процес. Директно в браузъра, без инсталация." data-en="Map the value stream online — visualize the current and future state of your production or administrative process. Directly in the browser, no installation needed.">Картирайте потока на стойността онлайн — визуализирайте текущото и бъдещото състояние на вашия производствен или административен процес. Директно в браузъра, без инсталация.</p>
+    <a href="/tools/" class="btn-back" data-bg="← Всички инструменти" data-en="← All Tools">← Всички инструменти</a>
   </div>
 </div>
 
 <div class="sim-wrapper">
   <div class="sim-container">
     <iframe
-      src="https://lean-flow-simulator.vercel.app/"
+      src="https://vsm-mapper.vercel.app/"
       class="sim-frame"
-      height="700"
-      title="Lean Flow Симулатор"
+      height="750"
+      title="VSM Mapper"
       loading="lazy"
       allow="fullscreen"
     ></iframe>
@@ -195,41 +200,41 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 
 <section class="section section-light">
   <div class="container">
-    <div class="section-label" data-bg="Как да използвате симулатора" data-en="How to use the simulator">Как да използвате симулатора</div>
-    <h2 class="section-title" data-bg="Съвети за максимален ефект" data-en="Tips for maximum effect">Съвети за максимален ефект</h2>
+    <div class="section-label" data-bg="Как да използвате VSM Mapper" data-en="How to use VSM Mapper">Как да използвате VSM Mapper</div>
+    <h2 class="section-title" data-bg="Стъпки за ефективно картиране" data-en="Steps for effective mapping">Стъпки за ефективно картиране</h2>
     <div class="divider"></div>
-    <p class="section-intro" data-bg="Lean Flow Симулаторът е интерактивен инструмент, позволяващ ви да изживеете принципите на Lean методологията на практика. Без теория — директно в действие. Симулаторът демонстрира как малки промени в производствения поток водят до значителни подобрения в ефективността." data-en="The Lean Flow Simulator is an interactive tool that allows you to experience the principles of Lean methodology in practice. No theory — straight into action. The simulator demonstrates how small changes in the production flow lead to significant improvements in efficiency.">Lean Flow Симулаторът е интерактивен инструмент, позволяващ ви да изживеете принципите на Lean методологията на практика. Без теория — директно в действие. Симулаторът демонстрира как малки промени в производствения поток водят до значителни подобрения в ефективността.</p>
+    <p class="section-intro" data-bg="Value Stream Mapping (VSM) е основен Lean инструмент за визуализиране и анализ на целия поток от стойност — от суровина до клиент. VSM Mapper ви позволява да изградите карта на потока онлайн, да идентифицирате загубите и да проектирате бъдещото идеално състояние." data-en="Value Stream Mapping (VSM) is a core Lean tool for visualizing and analyzing the entire value stream — from raw material to customer. VSM Mapper lets you build a value stream map online, identify wastes, and design the ideal future state.">Value Stream Mapping (VSM) е основен Lean инструмент за визуализиране и анализ на целия поток от стойност — от суровина до клиент. VSM Mapper ви позволява да изградите карта на потока онлайн, да идентифицирате загубите и да проектирате бъдещото идеално състояние.</p>
 
     <div class="tips-grid">
       <div class="tip-card">
-        <div class="tip-icon">🔍</div>
-        <h3 data-bg="Наблюдавайте загубите" data-en="Observe the wastes">Наблюдавайте загубите</h3>
-        <p data-bg="Следете кои стъпки създават „тапи" в потока. Идентифицирайте чакането, свръхпроизводството и излишните движения в реално симулирана среда." data-en="Watch which steps create &quot;bottlenecks&quot; in the flow. Identify waiting, overproduction, and excess motion in a real simulated environment.">Следете кои стъпки създават „тапи" в потока. Идентифицирайте чакането, свръхпроизводството и излишните движения в реално симулирана среда.</p>
+        <div class="tip-icon">🏭</div>
+        <h3 data-bg="Дефинирайте семейството продукти" data-en="Define the product family">Дефинирайте семейството продукти</h3>
+        <p data-bg="Изберете един продукт или група продукти с подобен производствен маршрут. Фокусирайте VSM картата върху конкретна продуктова линия за по-ясни резултати." data-en="Choose one product or a group of products with a similar production route. Focus the VSM map on a specific product line for clearer results.">Изберете един продукт или група продукти с подобен производствен маршрут. Фокусирайте VSM картата върху конкретна продуктова линия за по-ясни резултати.</p>
       </div>
       <div class="tip-card">
-        <div class="tip-icon">⚡</div>
-        <h3 data-bg="Тествайте промени" data-en="Test changes">Тествайте промени</h3>
-        <p data-bg="Приложете Pull система, намалете партидния размер или въведете Kanban. Симулаторът показва незабавния ефект на вашите Lean решения." data-en="Apply a pull system, reduce batch size, or introduce Kanban. The simulator shows the immediate effect of your Lean decisions.">Приложете Pull система, намалете партидния размер или въведете Kanban. Симулаторът показва незабавния ефект на вашите Lean решения.</p>
+        <div class="tip-icon">📋</div>
+        <h3 data-bg="Картирайте текущото състояние" data-en="Map the current state">Картирайте текущото състояние</h3>
+        <p data-bg="Започнете с текущото реално състояние — не идеалното. Добавете всяка стъпка, запасите между тях и информационните потоци. Данните трябва да са реални, измерени на място." data-en="Start with the current real state — not the ideal one. Add each step, the inventory between them, and information flows. Data must be real, measured on the spot.">Започнете с текущото реално състояние — не идеалното. Добавете всяка стъпка, запасите между тях и информационните потоци. Данните трябва да са реални, измерени на място.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔍</div>
+        <h3 data-bg="Идентифицирайте загубите" data-en="Identify the wastes">Идентифицирайте загубите</h3>
+        <p data-bg="След като картата на текущото състояние е готова, анализирайте я за 8-те вида MUDA. Тесните места, чакането и свръхзапасите стават видими веднага на визуалната карта." data-en="Once the current state map is complete, analyze it for the 8 types of MUDA. Bottlenecks, waiting, and excess inventory become immediately visible on the visual map.">След като картата на текущото състояние е готова, анализирайте я за 8-те вида MUDA. Тесните места, чакането и свръхзапасите стават видими веднага на визуалната карта.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🚀</div>
+        <h3 data-bg="Проектирайте бъдещото състояние" data-en="Design the future state">Проектирайте бъдещото състояние</h3>
+        <p data-bg="Създайте втора карта — идеалното бъдещо състояние. Приложете Pull система, намалете партидните размери, въведете супермаркети или непрекъснат поток там, където е възможно." data-en="Create a second map — the ideal future state. Apply a pull system, reduce batch sizes, introduce supermarkets or continuous flow where possible.">Създайте втора карта — идеалното бъдещо състояние. Приложете Pull система, намалете партидните размери, въведете супермаркети или непрекъснат поток там, където е възможно.</p>
       </div>
       <div class="tip-card">
         <div class="tip-icon">📊</div>
-        <h3 data-bg="Сравнете резултатите" data-en="Compare results">Сравнете резултатите</h3>
-        <p data-bg="Стартирайте симулацията в „преди" и „след" режим. Вижте как Lean трансформацията влияе на throughput, цикличното време и нивото на WIP." data-en="Run the simulation in &quot;before&quot; and &quot;after&quot; mode. See how Lean transformation affects throughput, cycle time, and WIP level.">Стартирайте симулацията в „преди" и „след" режим. Вижте как Lean трансформацията влияе на throughput, цикличното време и нивото на WIP.</p>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">🎓</div>
-        <h3 data-bg="Учете от грешките" data-en="Learn from mistakes">Учете от грешките</h3>
-        <p data-bg="Симулаторът е безопасна среда за експерименти. Правете грешки тук, а не в реалния процес. Всяка грешка е урок без реални последствия." data-en="The simulator is a safe environment for experiments. Make mistakes here, not in the real process. Every mistake is a lesson without real consequences.">Симулаторът е безопасна среда за експерименти. Правете грешки тук, а не в реалния процес. Всяка грешка е урок без реални последствия.</p>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">👥</div>
-        <h3 data-bg="Обучете екипа" data-en="Train the team">Обучете екипа</h3>
-        <p data-bg="Използвайте симулатора за обучение на команди. Груповото изживяване на Lean принципите изгражда обща визия и по-бързо внедряване." data-en="Use the simulator for team training. The group experience of Lean principles builds a shared vision and faster implementation.">Използвайте симулатора за обучение на команди. Груповото изживяване на Lean принципите изгражда обща визия и по-бързо внедряване.</p>
+        <h3 data-bg="Измерете Lead Time и Value Time" data-en="Measure Lead Time and Value Time">Измерете Lead Time и Value Time</h3>
+        <p data-bg="Изчислете общото Lead Time (от суровина до клиент) и сравнете го с реалното Value-Added Time. Типично само 5-10% от Lead Time добавя реална стойност — VSM го прави видимо." data-en="Calculate the total Lead Time (from raw material to customer) and compare it to the actual Value-Added Time. Typically only 5-10% of Lead Time adds real value — VSM makes this visible.">Изчислете общото Lead Time (от суровина до клиент) и сравнете го с реалното Value-Added Time. Типично само 5-10% от Lead Time добавя реална стойност — VSM го прави видимо.</p>
       </div>
       <div class="tip-card">
         <div class="tip-icon">🔄</div>
-        <h3 data-bg="Повтаряйте итерациите" data-en="Repeat iterations">Повтаряйте итерациите</h3>
-        <p data-bg="Lean е непрекъснат процес. Всяка итерация на симулацията разкрива нови възможности за подобрение — точно като Kaizen в реалния живот." data-en="Lean is a continuous process. Every iteration of the simulation reveals new opportunities for improvement — just like Kaizen in real life.">Lean е непрекъснат процес. Всяка итерация на симулацията разкрива нови възможности за подобрение — точно като Kaizen в реалния живот.</p>
+        <h3 data-bg="Планирайте трансформацията" data-en="Plan the transformation">Планирайте трансформацията</h3>
+        <p data-bg="Разбийте пътя от текущото към бъдещото състояние на конкретни Kaizen проекти. Приоритизирайте по въздействие и усилие — VSM картата е основата на вашия план за Lean трансформация." data-en="Break the path from the current to the future state into concrete Kaizen projects. Prioritize by impact and effort — the VSM map is the foundation of your Lean transformation plan.">Разбийте пътя от текущото към бъдещото състояние на конкретни Kaizen проекти. Приоритизирайте по въздействие и усилие — VSM картата е основата на вашия план за Lean трансформация.</p>
       </div>
     </div>
   </div>
@@ -240,11 +245,11 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
     <div class="section-label" data-bg="Свързани теми" data-en="Related topics">Свързани теми</div>
     <h2 class="section-title" data-bg="Задълбочете знанията" data-en="Deepen your knowledge">Задълбочете знанията</h2>
     <div class="related-links">
-      <a href="/lean-principi.html" class="related-link" data-bg="📐 5-те Lean принципа" data-en="📐 The 5 Lean Principles">📐 5-те Lean принципа</a>
-      <a href="/muda-8-vida-zagubi.html" class="related-link" data-bg="🗑️ 8-те вида загуби" data-en="🗑️ The 8 types of waste">🗑️ 8-те вида загуби</a>
+      <a href="/tools/" class="related-link" data-bg="🛠️ Всички онлайн инструменти" data-en="🛠️ All online tools">🛠️ Всички онлайн инструменти</a>
+      <a href="/simulator.html" class="related-link" data-bg="🎮 Lean Flow Симулатор" data-en="🎮 Lean Flow Simulator">🎮 Lean Flow Симулатор</a>
+      <a href="/muda-8-vida-zagubi.html" class="related-link" data-bg="🗑️ 8-те вида загуби (MUDA)" data-en="🗑️ The 8 types of waste (MUDA)">🗑️ 8-те вида загуби (MUDA)</a>
       <a href="/instrumenti.html" class="related-link" data-bg="🔧 Lean инструменти" data-en="🔧 Lean tools">🔧 Lean инструменти</a>
-      <a href="/kursove.html" class="related-link" data-bg="🎓 Lean курсове" data-en="🎓 Lean courses">🎓 Lean курсове</a>
-      <a href="/" class="related-link" data-bg="🏠 Начало" data-en="🏠 Home">🏠 Начало</a>
+      <a href="/lean-principi.html" class="related-link" data-bg="📐 5-те Lean принципа" data-en="📐 The 5 Lean Principles">📐 5-те Lean принципа</a>
     </div>
   </div>
 </div>
@@ -260,7 +265,7 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
         <a href="/lean-principi.html" data-bg="Принципи" data-en="Principles">Принципи</a>
         <a href="/muda-8-vida-zagubi.html" data-bg="Загуби" data-en="Waste">Загуби</a>
         <a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a>
-        <a href="/simulator.html" data-bg="Симулатор" data-en="Simulator">Симулатор</a>
+        <a href="/tools/" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
         <a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a>
         <a href="/#contact" data-bg="Контакт" data-en="Contact">Контакт</a>
       </div>
