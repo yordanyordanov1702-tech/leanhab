@@ -104,6 +104,12 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 .footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;}
 .footer-legal a{color:rgba(255,255,255,0.3);font-size:0.78rem;text-decoration:none;transition:color 0.2s;}
 .footer-legal a:hover{color:var(--gold);}
+.sim-fullscreen-bar{display:flex;justify-content:flex-end;padding:0.75rem 0 0.5rem;}
+.btn-fullscreen{background:var(--navy);color:var(--white);border:none;padding:0.5rem 1.2rem;font-size:0.82rem;font-weight:600;cursor:pointer;border-radius:4px;display:inline-flex;align-items:center;gap:0.5rem;font-family:'Source Sans 3',sans-serif;transition:background 0.2s;}
+.btn-fullscreen:hover{background:var(--accent);}
+#sim-frame-wrapper:fullscreen,#sim-frame-wrapper:-webkit-full-screen{background:#000;display:flex;flex-direction:column;padding:0;}
+#sim-frame-wrapper:fullscreen .sim-frame,#sim-frame-wrapper:-webkit-full-screen .sim-frame{flex:1;width:100%;height:100%!important;border-radius:0;}
+#sim-frame-wrapper:fullscreen .sim-fullscreen-bar,#sim-frame-wrapper:-webkit-full-screen .sim-fullscreen-bar{background:rgba(0,0,0,0.85);padding:0.5rem 1rem;}
 @media(max-width:900px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}.tips-grid{grid-template-columns:1fr 1fr;}.container{padding:0 1.5rem;}.section{padding:3rem 0;}}
 @media(max-width:600px){.page-hero h1{font-size:1.7rem;}.tips-grid{grid-template-columns:1fr;}}
 </style>
@@ -183,14 +189,19 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 
 <div class="sim-wrapper">
   <div class="sim-container">
-    <iframe
-      src="https://vsm-mapper.vercel.app/"
-      class="sim-frame"
-      height="750"
-      title="VSM Mapper"
-      loading="lazy"
-      allow="fullscreen"
-    ></iframe>
+    <div id="sim-frame-wrapper">
+      <div class="sim-fullscreen-bar">
+        <button class="btn-fullscreen" id="btn-fullscreen" onclick="toggleFullscreen()" data-bg="⛶ Пълен екран" data-en="⛶ Full screen">⛶ Пълен екран</button>
+      </div>
+      <iframe
+        src="https://vsm-mapper.vercel.app/"
+        class="sim-frame"
+        height="750"
+        title="VSM Mapper"
+        loading="lazy"
+        allow="fullscreen"
+      ></iframe>
+    </div>
   </div>
 </div>
 
@@ -292,6 +303,9 @@ document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdow
 function setLang(lang){['bg','en'].forEach(l=>document.getElementById('btn-'+l).classList.remove('active'));document.getElementById('btn-'+lang).classList.add('active');document.documentElement.lang=lang;localStorage.setItem('lang',lang);document.querySelectorAll('[data-bg]').forEach(function(el){el.innerHTML=lang==='en'?el.dataset.en:el.dataset.bg;});}
 const savedLang=localStorage.getItem('lang')||'bg';
 if(savedLang!=='bg')setLang(savedLang);
+function toggleFullscreen(){var w=document.getElementById('sim-frame-wrapper');if(!document.fullscreenElement){(w.requestFullscreen||w.webkitRequestFullscreen).call(w);}else{(document.exitFullscreen||document.webkitExitFullscreen).call(document);}}
+document.addEventListener('fullscreenchange',function(){var btn=document.getElementById('btn-fullscreen');if(document.fullscreenElement){btn.innerHTML='✕ Излез от пълен екран';btn.dataset.bg='✕ Излез от пълен екран';btn.dataset.en='✕ Exit full screen';}else{btn.innerHTML='⛶ Пълен екран';btn.dataset.bg='⛶ Пълен екран';btn.dataset.en='⛶ Full screen';}});
+document.addEventListener('webkitfullscreenchange',function(){var btn=document.getElementById('btn-fullscreen');if(document.webkitFullscreenElement){btn.innerHTML='✕ Излез от пълен екран';}else{btn.innerHTML='⛶ Пълен екран';}});
 </script>
 </body>
 </html>
