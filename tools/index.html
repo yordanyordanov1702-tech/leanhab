@@ -4,16 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google" content="notranslate">
-<meta name="description" content="Блог за Lean методология — статии, анализи и практически съвети от LeanUniversity. Научете Lean чрез четене.">
-<meta name="keywords" content="Lean блог, Lean статии, Kaizen, непрекъснато подобрение, Lean методология България">
-<meta name="author" content="LeanUniversity">
-<meta property="og:title" content="Блог — Lean методология | LeanUniversity">
-<meta property="og:description" content="Статии, анализи и практически съвети за Lean методология. Научете се от опита на LeanUniversity.">
-<meta property="og:url" content="https://leanhab.eu/blog/">
+<meta name="description" content="Онлайн инструменти за Lean методология от LeanUniversity. VSM Mapper, Lean Flow Симулатор и още — директно в браузъра, без инсталация.">
+<meta property="og:title" content="Онлайн Lean инструменти | LeanUniversity">
+<meta property="og:description" content="Интерактивни Lean инструменти: VSM Mapper, Lean Flow Симулатор и още. Без инсталация — директно в браузъра.">
+<meta property="og:url" content="https://leanhab.eu/tools/">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://leanhab.eu/blog/">
+<link rel="canonical" href="https://leanhab.eu/tools/">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='26' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LU</text></svg>">
-<title>Блог — Lean методология | LeanUniversity</title>
+<title>Онлайн Lean инструменти | LeanUniversity</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0b1a2e;--blue:#1a3a5c;--accent:#1565c0;--gold:#c9a84c;--white:#ffffff;--off-white:#f8f7f4;--gray:#6b6b6b;--gray-dark:#3d3d3d;--black:#1a1a1a;--border:#e0e0e0;}
@@ -30,10 +28,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .nav-dropdown{position:relative;}
 .nav-dropdown-btn{background:none;border:none;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;cursor:pointer;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:0.3rem;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;}
 .nav-dropdown-btn:hover,.nav-dropdown.open .nav-dropdown-btn{color:var(--gold);border-bottom-color:var(--gold);}
-.nav-dropdown-menu{display:none;position:absolute;top:64px;right:0;background:var(--navy);border:1px solid var(--gold);border-top:none;min-width:180px;z-index:200;list-style:none;}
+.nav-dropdown-menu{display:none;position:absolute;top:64px;right:0;background:var(--navy);border:1px solid var(--gold);border-top:none;min-width:200px;z-index:200;list-style:none;}
 .nav-dropdown.open .nav-dropdown-menu{display:block;}
 .nav-dropdown-menu a{display:block;padding:0.9rem 1.2rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.2s,background 0.2s;}
-.nav-dropdown-menu a:hover{color:var(--gold);background:rgba(255,255,255,0.05);}
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a.active{color:var(--gold);background:rgba(255,255,255,0.05);}
 .nav-dropdown-menu li:last-child a{border-bottom:none;}
 .footer-social-link{color:rgba(255,255,255,0.4);transition:color 0.2s;display:inline-flex;align-items:center;}
 .footer-social-link:hover{color:var(--gold);}
@@ -68,24 +66,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1rem;}
 .page-hero p{color:rgba(255,255,255,0.65);font-size:1rem;line-height:1.75;font-weight:300;}
 .section{padding:5rem 0;}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
-.blog-card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--white);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;}
-.blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);border-color:var(--gold);}
-.blog-card-body{padding:1.8rem;flex:1;display:flex;flex-direction:column;}
-.blog-card-tag{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-.blog-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:0.7rem;line-height:1.35;}
-.blog-card-date{font-size:0.78rem;color:var(--gray);margin-bottom:0.8rem;}
-.blog-card-excerpt{font-size:0.9rem;color:var(--gray);line-height:1.7;flex:1;font-weight:300;}
-.blog-card-link{display:inline-block;margin-top:1.2rem;font-size:0.85rem;font-weight:700;color:var(--accent);text-decoration:none;transition:color 0.2s;}
-.blog-card-link:hover{color:var(--gold);}
-.blog-card-placeholder{background:var(--off-white);border:2px dashed var(--border);}
-.blog-card-placeholder .blog-card-title{color:var(--gray);}
-.blog-card-img{height:140px;margin:-1.5rem -1.5rem 1.5rem;border-radius:8px 8px 0 0;background:var(--navy);}
-.digital-lean-img{background:url('/blog/images/digitalen-lean-2027.jpeg') center/cover no-repeat;}
-.lean-green-img{background:url('/blog/images/lean-management-2027.webp') center/cover no-repeat;}
-.kaizen-img{background:linear-gradient(135deg,#e65100 0%,#ef6c00 40%,#ffa726 100%);}
-.vsm-img{background:linear-gradient(135deg,#0d47a1 0%,#1565c0 40%,#42a5f5 100%);}
-.fives-img{background:linear-gradient(135deg,#4a148c 0%,#6a1b9a 40%,#ab47bc 100%);}
+.section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:600;color:var(--navy);margin-bottom:0.5rem;}
+.divider{width:48px;height:3px;background:var(--gold);margin:1rem 0 0.5rem;}
+.section-intro{color:var(--gray);font-size:1rem;line-height:1.8;max-width:620px;font-weight:300;margin-bottom:0.5rem;}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.tool-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;}
+.tool-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);border-color:var(--gold);}
+.tool-card-head{padding:1.8rem 1.8rem 1rem;background:linear-gradient(135deg,#0b1a2e,#1a3a5c);}
+.tool-card-icon{font-size:2.5rem;margin-bottom:0.6rem;}
+.tool-card-tag{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+.tool-card-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--white);}
+.tool-card-body{padding:1.5rem 1.8rem 1.8rem;flex:1;display:flex;flex-direction:column;}
+.tool-card-desc{font-size:0.9rem;color:var(--gray-dark);line-height:1.7;flex:1;font-weight:300;}
+.tool-card-btn{display:inline-block;margin-top:1.4rem;background:var(--gold);color:var(--navy);padding:0.6rem 1.4rem;font-size:0.85rem;font-weight:700;text-decoration:none;border-radius:3px;transition:opacity 0.2s;align-self:flex-start;}
+.tool-card-btn:hover{opacity:0.85;}
+.tool-card-placeholder{background:var(--off-white);border:2px dashed var(--border);}
+.tool-card-placeholder .tool-card-head{background:rgba(107,107,107,0.08);}
+.tool-card-placeholder .tool-card-title{color:var(--gray);}
+.tool-card-placeholder .tool-card-tag{color:var(--gray);}
+.tool-card-coming{display:inline-block;margin-top:1.4rem;font-size:0.85rem;color:var(--gray);font-style:italic;}
 footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2rem;}
 .footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
 .footer-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none;}
@@ -98,8 +98,8 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 .footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
 .footer-legal a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;transition:color 0.2s;}
 .footer-legal a:hover{color:var(--gold);}
-@media(max-width:900px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}.blog-grid{grid-template-columns:1fr 1fr;}.container{padding:0 1.5rem;}.section{padding:3.5rem 0;}}
-@media(max-width:600px){.page-hero h1{font-size:1.7rem;}.blog-grid{grid-template-columns:1fr;}}
+@media(max-width:900px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}.tools-grid{grid-template-columns:1fr 1fr;}.container{padding:0 1.5rem;}.section{padding:3.5rem 0;}}
+@media(max-width:600px){.page-hero h1{font-size:1.7rem;}.tools-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -115,9 +115,9 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
     <li class="nav-dropdown">
       <button class="nav-dropdown-btn" onclick="toggleDropdown(this)" data-bg="Още ▾" data-en="More ▾">Още ▾</button>
       <ul class="nav-dropdown-menu">
-        <li><a href="/tools/" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
+        <li><a href="/tools/" class="active" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
         <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a></li>
-        <li><a href="/blog/" class="active" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
+        <li><a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
         <li><a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a></li>
       </ul>
     </li>
@@ -134,7 +134,6 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
   </div>
 </nav>
 
-<!-- COOKIE -->
 <div class="cookie-banner" id="cookie-banner">
   <p data-bg="Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Политика за поверителност&lt;/a&gt;." data-en="This site uses cookies to improve user experience. See our &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Privacy Policy&lt;/a&gt;.">Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата <a href="/privacy-policy.html" style="color:var(--gold)">Политика за поверителност</a>.</p>
   <div class="cookie-actions">
@@ -143,7 +142,6 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
   </div>
 </div>
 
-<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobile-nav">
   <a href="/#history" onclick="closeMenu()" data-bg="История" data-en="History">История</a>
   <a href="/lean-principi.html" onclick="closeMenu()" data-bg="Принципи" data-en="Principles">Принципи</a>
@@ -159,77 +157,73 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="/">Начало</a><span>›</span>Блог</div>
-    <h1 data-bg="Блог за Lean методология" data-en="Blog about Lean Methodology">Блог за Lean методология</h1>
-    <p data-bg="Статии, анализи и практически съвети от екипа на LeanUniversity. Четете, учете, прилагайте." data-en="Articles, analyses and practical advice from the LeanUniversity team. Read, learn, apply.">Статии, анализи и практически съвети от екипа на LeanUniversity. Четете, учете, прилагайте.</p>
+    <div class="breadcrumb"><a href="/">Начало</a><span>›</span>Онлайн инструменти</div>
+    <h1 data-bg="Онлайн &lt;span style='color:var(--gold)'&gt;Lean инструменти&lt;/span&gt;" data-en="Online &lt;span style='color:var(--gold)'&gt;Lean Tools&lt;/span&gt;">Онлайн <span style="color:var(--gold)">Lean инструменти</span></h1>
+    <p data-bg="Интерактивни инструменти за картиране, симулация и анализ на процеси — директно в браузъра, без инсталация." data-en="Interactive tools for mapping, simulation and process analysis — directly in the browser, no installation required.">Интерактивни инструменти за картиране, симулация и анализ на процеси — директно в браузъра, без инсталация.</p>
   </div>
 </div>
 
 <section class="section" style="background:var(--white);">
   <div class="container">
-    <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;" data-bg="Публикации" data-en="Publications">Публикации</div>
-    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:600;color:var(--navy);margin-bottom:0.5rem;" data-bg="Всички статии" data-en="All Articles">Всички статии</h2>
-    <div style="width:48px;height:3px;background:var(--gold);margin:1rem 0 0.5rem;"></div>
-    <p style="color:var(--gray);font-size:1rem;line-height:1.8;max-width:600px;font-weight:300;" data-bg="Изследваме Lean методологията в дълбочина — от теория до практика." data-en="We explore Lean methodology in depth — from theory to practice.">Изследваме Lean методологията в дълбочина — от теория до практика.</p>
+    <div class="section-label" data-bg="Инструменти" data-en="Tools">Инструменти</div>
+    <h2 class="section-title" data-bg="Всички инструменти" data-en="All Tools">Всички инструменти</h2>
+    <div class="divider"></div>
+    <p class="section-intro" data-bg="Инструментите на LeanUniversity са проектирани за практическа употреба — в обучения, работни срещи и реални Lean проекти." data-en="LeanUniversity tools are designed for practical use — in training sessions, working meetings and real Lean projects.">Инструментите на LeanUniversity са проектирани за практическа употреба — в обучения, работни срещи и реални Lean проекти.</p>
 
-    <div class="blog-grid">
-      <!-- Дигитален Lean 2027 -->
-      <article class="blog-card">
-        <div class="blog-card-body">
-          <div class="blog-card-img digital-lean-img"></div>
-          <div class="blog-card-tag" data-bg="Дигитален Lean" data-en="Digital Lean">Дигитален Lean</div>
-          <h2 class="blog-card-title" data-bg="Дигиталният Lean през 2027: повече данни, по-малко контрол, повече коучинг" data-en="Digital Lean in 2027: more data, less control, more coaching">Дигиталният Lean през 2027: повече данни, по-малко контрол, повече коучинг</h2>
-          <div class="blog-card-date" data-bg="24 септември 2026 · LeanUniversity" data-en="24 September 2026 · LeanUniversity">24 септември 2026 · LeanUniversity</div>
-          <p class="blog-card-excerpt" data-bg="Как данните, AI и дигиталните инструменти трансформират Lean методологията — и защо човешкият капитал остава водещ фактор за ефективност." data-en="How data, AI and digital tools are transforming Lean methodology — and why human capital remains the leading factor for efficiency.">Как данните, AI и дигиталните инструменти трансформират Lean методологията — и защо човешкият капитал остава водещ фактор за ефективност.</p>
-          <a href="/blog/digitalen-lean-2027.html" class="blog-card-link" data-bg="Прочети →" data-en="Read →">Прочети →</a>
-        </div>
-      </article>
+    <div class="tools-grid">
 
-      <!-- Lean Green -->
-      <article class="blog-card">
-        <div class="blog-card-body">
-          <div class="blog-card-img lean-green-img"></div>
-          <div class="blog-card-tag" data-bg="Lean Green" data-en="Lean Green">Lean Green</div>
-          <h2 class="blog-card-title" data-bg="Lean: от ефективност към устойчивост" data-en="Lean: from efficiency to sustainability">Lean: от ефективност към устойчивост</h2>
-          <div class="blog-card-date" data-bg="23 септември 2026 · LeanUniversity" data-en="23 September 2026 · LeanUniversity">23 септември 2026 · LeanUniversity</div>
-          <p class="blog-card-excerpt" data-bg="Как Lean методологията помага на компаниите да постигнат едновременно ефективност и устойчивост в ера на въглеродни регулации и изкуствен интелект." data-en="How Lean methodology helps companies achieve efficiency and sustainability simultaneously in an era of carbon regulations and artificial intelligence.">Как Lean методологията помага на компаниите да постигнат едновременно ефективност и устойчивост в ера на въглеродни регулации и изкуствен интелект.</p>
-          <a href="/blog/lean-green-efektivnost-ustoychivost.html" class="blog-card-link" data-bg="Прочети →" data-en="Read →">Прочети →</a>
+      <!-- VSM Mapper -->
+      <div class="tool-card">
+        <div class="tool-card-head">
+          <div class="tool-card-icon">🗺️</div>
+          <div class="tool-card-tag" data-bg="Картиране на потока" data-en="Flow Mapping">Картиране на потока</div>
+          <div class="tool-card-title" data-bg="VSM Mapper" data-en="VSM Mapper">VSM Mapper</div>
         </div>
-      </article>
+        <div class="tool-card-body">
+          <p class="tool-card-desc" data-bg="Нарисувай карта на стойностния поток (Value Stream Map) за своя производствен или сервизен процес онлайн. Добавяй операции, инвентар, потоци от информация и изчислявай lead time — директно в браузъра." data-en="Draw a Value Stream Map for your production or service process online. Add operations, inventory, information flows and calculate lead time — directly in the browser.">Нарисувай карта на стойностния поток (Value Stream Map) за своя производствен или сервизен процес онлайн. Добавяй операции, инвентар, потоци от информация и изчислявай lead time — директно в браузъра.</p>
+          <a href="/tools/vsm-mapper.html" class="tool-card-btn" data-bg="Отвори VSM Mapper →" data-en="Open VSM Mapper →">Отвори VSM Mapper →</a>
+        </div>
+      </div>
 
-      <!-- Статия 1 -->
-      <article class="blog-card">
-        <div class="blog-card-body">
-          <div class="blog-card-img kaizen-img"></div>
-          <div class="blog-card-tag" data-bg="Основи" data-en="Fundamentals">Основи</div>
-          <h2 class="blog-card-title" data-bg="Lean и Kaizen: Как да започнете с непрекъснатото подобрение" data-en="Lean and Kaizen: How to Start with Continuous Improvement">Lean и Kaizen: Как да започнете с непрекъснатото подобрение</h2>
-          <div class="blog-card-date" data-bg="22 септември 2026 · LeanUniversity" data-en="September 22, 2026 · LeanUniversity">22 септември 2026 · LeanUniversity</div>
-          <p class="blog-card-excerpt" data-bg="Kaizen не е еднократен проект — това е начин на мислене. В тази статия разглеждаме как всеки екип може да стартира цикъла на непрекъснато подобрение дори без предварителен опит с Lean." data-en="Kaizen is not a one-time project — it is a way of thinking. In this article we examine how every team can start the continuous improvement cycle even without prior Lean experience.">Kaizen не е еднократен проект — това е начин на мислене. В тази статия разглеждаме как всеки екип може да стартира цикъла на непрекъснато подобрение дори без предварителен опит с Lean.</p>
-          <a href="/blog/lean-i-kaizen-vvedenie.html" class="blog-card-link" data-bg="Прочети →" data-en="Read →">Прочети →</a>
+      <!-- Lean Flow Simulator -->
+      <div class="tool-card">
+        <div class="tool-card-head" style="background:linear-gradient(135deg,#0d47a1,#1565c0);">
+          <div class="tool-card-icon">🎮</div>
+          <div class="tool-card-tag" data-bg="Симулация" data-en="Simulation">Симулация</div>
+          <div class="tool-card-title" data-bg="Lean Flow Симулатор" data-en="Lean Flow Simulator">Lean Flow Симулатор</div>
         </div>
-      </article>
+        <div class="tool-card-body">
+          <p class="tool-card-desc" data-bg="Симулирай производствен поток в реално време. Откривай загубите, тествай Lean промени и виж как намаляването на партидния размер и Pull системата подобряват throughput." data-en="Simulate a production flow in real time. Discover wastes, test Lean changes and see how reducing batch size and a Pull system improve throughput.">Симулирай производствен поток в реално време. Откривай загубите, тествай Lean промени и виж как намаляването на партидния размер и Pull системата подобряват throughput.</p>
+          <a href="/simulator.html" class="tool-card-btn" style="background:var(--accent);" data-bg="Отвори симулатора →" data-en="Open simulator →">Отвори симулатора →</a>
+        </div>
+      </div>
 
-      <!-- Placeholder 2 -->
-      <article class="blog-card blog-card-placeholder">
-        <div class="blog-card-body">
-          <div class="blog-card-img vsm-img"></div>
-          <div class="blog-card-tag" style="color:var(--gray);" data-bg="Скоро" data-en="Coming Soon">Скоро</div>
-          <h2 class="blog-card-title" data-bg="Value Stream Mapping: Стъпка по стъпка" data-en="Value Stream Mapping: Step by Step">Value Stream Mapping: Стъпка по стъпка</h2>
-          <div class="blog-card-date" data-bg="Очаквайте скоро" data-en="Coming soon">Очаквайте скоро</div>
-          <p class="blog-card-excerpt" data-bg="Как да нарисувате карта на стойностния поток за вашия процес — от суровина до доставка. Практически наръчник с реални примери." data-en="How to draw a value stream map for your process — from raw material to delivery. A practical guide with real examples.">Как да нарисувате карта на стойностния поток за вашия процес — от суровина до доставка. Практически наръчник с реални примери.</p>
+      <!-- Placeholder: Kanban Board -->
+      <div class="tool-card tool-card-placeholder">
+        <div class="tool-card-head">
+          <div class="tool-card-icon">📋</div>
+          <div class="tool-card-tag" data-bg="Скоро" data-en="Coming Soon">Скоро</div>
+          <div class="tool-card-title" data-bg="Kanban Board" data-en="Kanban Board">Kanban Board</div>
         </div>
-      </article>
+        <div class="tool-card-body">
+          <p class="tool-card-desc" data-bg="Дигитална Kanban дъска за управление на работния поток — визуализирай задачите, ограничи WIP и следи bottleneck-овете в реално време." data-en="A digital Kanban board for managing workflow — visualise tasks, limit WIP and track bottlenecks in real time.">Дигитална Kanban дъска за управление на работния поток — визуализирай задачите, ограничи WIP и следи bottleneck-овете в реално време.</p>
+          <span class="tool-card-coming" data-bg="Очаквайте скоро" data-en="Coming soon">Очаквайте скоро</span>
+        </div>
+      </div>
 
-      <!-- Placeholder 3 -->
-      <article class="blog-card blog-card-placeholder">
-        <div class="blog-card-body">
-          <div class="blog-card-img fives-img"></div>
-          <div class="blog-card-tag" style="color:var(--gray);" data-bg="Скоро" data-en="Coming Soon">Скоро</div>
-          <h2 class="blog-card-title" data-bg="5S в офиса: Организация на работното място" data-en="5S in the Office: Workplace Organisation">5S в офиса: Организация на работното място</h2>
-          <div class="blog-card-date" data-bg="Очаквайте скоро" data-en="Coming soon">Очаквайте скоро</div>
-          <p class="blog-card-excerpt" data-bg="Методологията 5S не е само за производствени цехове. Вижте как да приложите Seiri, Seiton, Seiso, Seiketsu и Shitsuke в административна среда." data-en="The 5S methodology is not only for production floors. See how to apply Seiri, Seiton, Seiso, Seiketsu and Shitsuke in an administrative environment.">Методологията 5S не е само за производствени цехове. Вижте как да приложите Seiri, Seiton, Seiso, Seiketsu и Shitsuke в административна среда.</p>
+      <!-- Placeholder: 5S Checklist -->
+      <div class="tool-card tool-card-placeholder">
+        <div class="tool-card-head">
+          <div class="tool-card-icon">✅</div>
+          <div class="tool-card-tag" data-bg="Скоро" data-en="Coming Soon">Скоро</div>
+          <div class="tool-card-title" data-bg="5S Одит чеклист" data-en="5S Audit Checklist">5S Одит чеклист</div>
         </div>
-      </article>
+        <div class="tool-card-body">
+          <p class="tool-card-desc" data-bg="Цифров 5S одит за работното място — Seiri, Seiton, Seiso, Seiketsu, Shitsuke. Генерирай отчет с намерените нарушения и план за действие." data-en="A digital 5S workplace audit — Seiri, Seiton, Seiso, Seiketsu, Shitsuke. Generate a report of findings and an action plan.">Цифров 5S одит за работното място — Seiri, Seiton, Seiso, Seiketsu, Shitsuke. Генерирай отчет с намерените нарушения и план за действие.</p>
+          <span class="tool-card-coming" data-bg="Очаквайте скоро" data-en="Coming soon">Очаквайте скоро</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -246,9 +240,9 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
         <a href="/muda-8-vida-zagubi.html" data-bg="Загуби" data-en="Waste">Загуби</a>
         <a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a>
         <a href="/simulator.html" data-bg="Симулатор" data-en="Simulator">Симулатор</a>
+        <a href="/tools/" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
         <a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a>
         <a href="/blog/" data-bg="Блог" data-en="Blog">Блог</a>
-        <a href="/publikatsii/" data-bg="Публикации" data-en="Publications">Публикации</a>
         <a href="/#contact" data-bg="Контакт" data-en="Contact">Контакт</a>
       </div>
     </div>
