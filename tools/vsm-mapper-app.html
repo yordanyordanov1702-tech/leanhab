@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Value Stream Mapper</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@700;800&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#0E2A44;
+  --bg-alt:#0A2138;
+  --surface:#123554;
+  --surface-2:#17416A;
+  --surface-3:#1D4C79;
+  --grid-line:#1B4972;
+  --rule:rgba(234,246,250,0.14);
+  --ink:#EAF6FA;
+  --ink-dim:#A9CBDF;
+  --muted:#6F97B3;
+  --accent:#F2762E;
+  --accent-dim:#C85A1D;
+  --accent-soft:rgba(242,118,46,0.16);
+  --good:#4FBF8B;
+  --warn:#E2645A;
+  --shape-fill:#163B5C;
+  --shape-fill-2:#0F2A44;
+  --shadow: 0 10px 30px rgba(3,14,24,0.45);
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Archivo',system-ui,sans-serif;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button, input, select{font-family:inherit;color:inherit;}
+::selection{background:var(--accent-soft);}
+::-webkit-scrollbar{height:10px;width:10px;}
+::-webkit-scrollbar-track{background:var(--bg-alt);}
+::-webkit-scrollbar-thumb{background:var(--surface-3);border-radius:6px;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+.app{
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  height:100vh;
+  min-width:800px;
+}
+
+/* ---------- HEADER ---------- */
+header.topbar{
+  display:flex;align-items:center;gap:16px;
+  padding:10px 18px;
+  background:var(--bg-alt);
+  border-bottom:1px solid var(--rule);
+  z-index:30;
+}
+.brand{display:flex;align-items:baseline;gap:10px;white-space:nowrap;}
+.brand .mark{
+  font-family:'Archivo Expanded',sans-serif;font-weight:800;
+  font-size:19px;letter-spacing:0.2px;color:var(--ink);
+}
+.brand .mark b{color:var(--accent);font-weight:800;}
+.mapname-row{display:flex;align-items:center;gap:8px;flex:1;min-width:0;}
+.mapname{
+  background:transparent;border:1px solid transparent;border-radius:6px;
+  padding:5px 8px;font-size:14px;font-weight:600;color:var(--ink);
+  max-width:340px;
+}
+.mapname:hover{border-color:var(--rule);}
+.mapname:focus{background:var(--surface);border-color:var(--surface-3);outline:none;}
+.status-chip{
+  display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--ink-dim);
+  padding:4px 9px;border-radius:99px;background:var(--surface);white-space:nowrap;
+}
+.status-chip .dot{width:6px;height:6px;border-radius:50%;background:var(--good);}
+.status-chip.dirty .dot{background:var(--accent);}
+.topbar .spacer{flex:1;}
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--surface);border:1px solid var(--surface-3);color:var(--ink);
+  padding:7px 12px;border-radius:7px;font-size:13px;font-weight:600;
+  cursor:pointer;white-space:nowrap;transition:background .12s,border-color .12s;
+}
+.btn:hover{background:var(--surface-2);}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#1A0D04;}
+.btn.primary:hover{background:#ff8a45;}
+.btn.ghost{background:transparent;border-color:transparent;}
+.btn.ghost:hover{background:var(--surface);}
+.btn.danger{color:var(--warn);}
+.btn.small{padding:5px 9px;font-size:12px;}
+.btn[disabled]{opacity:.45;cursor:default;pointer-events:none;}
+.icon{width:15px;height:15px;flex:none;}
+
+.dropdown-wrap{position:relative;}
+.dropdown{
+  position:absolute;top:calc(100% + 8px);right:0;width:300px;
+  background:var(--surface);border:1px solid var(--surface-3);border-radius:10px;
+  box-shadow:var(--shadow);padding:10px;z-index:50;
+}
+.dropdown.hidden{display:none;}
+.dropdown h4{margin:2px 6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700;}
+.maplist{max-height:260px;overflow:auto;display:flex;flex-direction:column;gap:3px;}
+.maprow{
+  display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:7px;cursor:pointer;
+}
+.maprow:hover{background:var(--surface-2);}
+.maprow.active{background:var(--accent-soft);}
+.maprow .info{flex:1;min-width:0;}
+.maprow .name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.maprow .time{font-size:11px;color:var(--muted);}
+.maprow .del{opacity:0;flex:none;}
+.maprow:hover .del{opacity:1;}
+.dropdown-actions{display:flex;gap:8px;margin-top:10px;border-top:1px solid var(--rule);padding-top:10px;}
+
+/* ---------- BODY LAYOUT ---------- */
+.body-row{display:grid;grid-template-columns:190px 1fr 230px;min-height:0;}
+
+/* Palette */
+.palette{
+  background:var(--bg-alt);border-right:1px solid var(--rule);
+  overflow-y:auto;padding:14px 12px 24px;
+}
+.pal-group{margin-bottom:18px;}
+.pal-group h5{
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+  margin:0 4px 8px;font-weight:700;
+}
+.pal-item{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  background:var(--surface);border:1px solid transparent;border-radius:8px;
+  padding:8px 9px;margin-bottom:6px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--ink);
+}
+.pal-item:hover{border-color:var(--surface-3);background:var(--surface-2);}
+.pal-item svg{flex:none;}
+
+/* Canvas */
+.canvas-area{position:relative;min-width:0;background:var(--bg);display:flex;flex-direction:column;min-height:0;}
+.canvas-toolbar-row{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;flex:none;
+  background:var(--bg-alt);border-bottom:1px solid var(--rule);
+}
+.canvas-toolbar-row .spacer{flex:1;}
+.canvas-viewport{position:relative;flex:1;min-height:0;}
+.canvas-scroll{position:absolute;inset:0;overflow:auto;}
+.canvas-scale{transform-origin:0 0;}
+svg#stage{display:block;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;}
+svg#stage text, svg#stage tspan{user-select:none;-webkit-user-select:none;-moz-user-select:none;}
+svg#stage.panning{cursor:grabbing;}
+svg#stage.connecting{cursor:crosshair;}
+.shape{cursor:grab;}
+.shape:active{cursor:grabbing;}
+.shape .label-text, .shape .data-text{font-family:'Archivo',sans-serif;}
+.shape .mono{font-family:'IBM Plex Mono',monospace;}
+.conn-hit{cursor:pointer;}
+
+.canvas-toolbar{
+  display:flex;gap:8px;background:var(--surface);border:1px solid var(--surface-3);
+  border-radius:10px;padding:6px;
+}
+.conn-btn{
+  display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:7px;
+  border:1px solid transparent;background:transparent;color:var(--ink-dim);font-size:12px;font-weight:600;cursor:pointer;
+}
+.conn-btn:hover{background:var(--surface-2);color:var(--ink);}
+.conn-btn.active{background:var(--accent);color:#1A0D04;border-color:var(--accent);}
+.conn-btn .swatch{width:16px;height:2px;background:currentColor;flex:none;}
+
+.zoom-toolbar{
+  display:flex;align-items:center;gap:4px;
+  background:var(--surface);border:1px solid var(--surface-3);border-radius:10px;padding:6px;
+}
+.zoom-toolbar .btn{padding:5px 8px;}
+.zoom-label{font-size:12px;color:var(--ink-dim);width:44px;text-align:center;font-variant-numeric:tabular-nums;}
+
+.hint-banner{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:#1A0D04;font-size:12.5px;font-weight:700;
+  padding:8px 16px;border-radius:99px;box-shadow:var(--shadow);z-index:25;
+  display:flex;align-items:center;gap:10px;
+}
+.hint-banner button{background:rgba(0,0,0,0.15);border:none;color:inherit;border-radius:99px;padding:3px 10px;font-weight:700;font-size:11.5px;cursor:pointer;}
+.hint-banner.hidden{display:none;}
+
+/* Inspector */
+.inspector{
+  background:var(--bg-alt);border-left:1px solid var(--rule);
+  overflow-y:auto;padding:16px 16px 24px;
+}
+.inspector h4{
+  font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+  margin:0 0 12px;font-weight:700;
+}
+.empty-hint{color:var(--ink-dim);font-size:13px;line-height:1.55;}
+.empty-hint .stat{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--rule);font-size:12.5px;}
+.field{margin-bottom:12px;}
+.field label{display:block;font-size:11.5px;color:var(--ink-dim);margin-bottom:5px;font-weight:600;}
+.field input[type=text], .field input[type=number], .field select, .field textarea{
+  width:100%;background:var(--surface);border:1px solid var(--surface-3);border-radius:7px;
+  padding:8px 9px;font-size:13px;color:var(--ink);
+}
+.field textarea{resize:vertical;min-height:56px;font-family:'Archivo',sans-serif;}
+.field input:focus, .field select:focus, .field textarea:focus{border-color:var(--accent);outline:none;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.legend-note{
+  background:var(--surface);border-radius:8px;padding:10px 11px;font-size:12px;color:var(--ink-dim);
+  line-height:1.5;margin:14px 0 16px;border-left:3px solid var(--accent);
+}
+.inspector .btn{width:100%;justify-content:center;margin-top:4px;}
+
+/* ---------- TIMELINE SUMMARY ---------- */
+.timeline-bar{
+  display:flex;align-items:center;gap:16px;padding:9px 18px;
+  background:var(--bg-alt);border-top:1px solid var(--rule);z-index:20;
+}
+.timeline-bar .hint{font-size:12px;color:var(--ink-dim);}
+.timeline-totals{display:flex;gap:18px;margin-left:auto;font-size:12px;flex:none;}
+.timeline-totals b{color:var(--ink);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.timeline-totals .t-lt b{color:var(--ink-dim);}
+.timeline-totals .t-pt b{color:var(--accent);}
+.timeline-totals .t-pce b{color:var(--good);}
+
+/* ---------- MODAL / TOAST ---------- */
+.overlay{
+  position:fixed;inset:0;background:rgba(5,14,24,0.55);z-index:100;
+  display:flex;align-items:center;justify-content:center;
+}
+.overlay.hidden{display:none;}
+.modal{
+  background:var(--surface);border:1px solid var(--surface-3);border-radius:12px;
+  padding:20px;width:340px;box-shadow:var(--shadow);
+}
+.modal h3{margin:0 0 6px;font-size:15px;font-family:'Archivo Expanded',sans-serif;font-weight:700;}
+.modal p{margin:0 0 14px;font-size:13px;color:var(--ink-dim);line-height:1.5;}
+.modal input[type=text]{
+  width:100%;background:var(--bg-alt);border:1px solid var(--surface-3);border-radius:7px;
+  padding:9px 10px;font-size:13.5px;color:var(--ink);margin-bottom:14px;
+}
+.modal input:focus{outline:none;border-color:var(--accent);}
+.modal .actions{display:flex;justify-content:flex-end;gap:8px;}
+
+.toast-wrap{position:fixed;bottom:20px;right:20px;z-index:200;display:flex;flex-direction:column;gap:8px;}
+.toast{
+  background:var(--surface);border:1px solid var(--surface-3);color:var(--ink);
+  padding:10px 14px;border-radius:8px;font-size:13px;font-weight:600;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:8px;animation:toast-in .18s ease-out;
+}
+.toast .d{width:6px;height:6px;border-radius:50%;background:var(--good);flex:none;}
+@keyframes toast-in{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+/* Guide panel */
+.guide-panel{position:absolute;top:12px;right:12px;width:300px;max-height:calc(100% - 24px);overflow:auto;
+  background:var(--surface);border:1px solid var(--surface-3);border-radius:12px;padding:16px;box-shadow:var(--shadow);z-index:40;}
+.guide-panel.hidden{display:none;}
+.guide-panel h3{margin:0 0 4px;font-size:15px;font-family:'Archivo Expanded',sans-serif;}
+.guide-panel .sub{font-size:12px;color:var(--ink-dim);margin:0 0 14px;line-height:1.5;}
+.guide-item{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--rule);}
+.guide-item:first-of-type{border-top:none;}
+.guide-item svg{flex:none;margin-top:1px;}
+.guide-item .t{font-size:12.5px;font-weight:700;margin-bottom:2px;}
+.guide-item .d{font-size:11.5px;color:var(--ink-dim);line-height:1.45;}
+
+@media (prefers-reduced-motion: reduce){
+  .toast{animation:none;}
+}
+</style>
+</head>
+<body>
+
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="mark">Value Stream <b>Mapper</b></span></div>
+    <div class="mapname-row">
+      <input id="mapNameInput" class="mapname" type="text" value="Example: Two-Process Line" spellcheck="false">
+      <span id="statusChip" class="status-chip"><span class="dot"></span><span id="statusLabel">Saved in this browser</span></span>
+    </div>
+    <div class="spacer"></div>
+    <button class="btn ghost" id="guideToggleBtn">Icon guide</button>
+    <button class="btn ghost" id="newMapBtn">New map</button>
+    <div class="dropdown-wrap">
+      <button class="btn" id="myMapsBtn">My maps ▾</button>
+      <div class="dropdown hidden" id="myMapsDropdown">
+        <h4>Saved maps</h4>
+        <div class="maplist" id="mapList"></div>
+        <div class="dropdown-actions">
+          <button class="btn small" id="saveAsBtn" style="flex:1">Save as new…</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn" id="saveBtn">Save</button>
+    <button class="btn" id="exportPdfBtn">Export PDF</button>
+    <button class="btn primary" id="exportPngBtn">Export PNG</button>
+  </header>
+
+  <div class="body-row">
+    <aside class="palette" id="palette"></aside>
+
+    <div class="canvas-area">
+      <div class="canvas-toolbar-row">
+        <div class="canvas-toolbar" id="connToolbar"></div>
+        <div class="spacer"></div>
+        <div class="zoom-toolbar">
+          <button class="btn small" id="zoomOut">−</button>
+          <span class="zoom-label" id="zoomLabel">100%</span>
+          <button class="btn small" id="zoomIn">+</button>
+          <button class="btn small" id="zoomFit" title="Zoom to fit everything you've drawn">Fit</button>
+        </div>
+      </div>
+      <div class="canvas-viewport">
+        <div class="canvas-scroll" id="canvasScroll">
+          <div class="canvas-scale" id="canvasScale">
+            <svg id="stage" xmlns="http://www.w3.org/2000/svg"></svg>
+          </div>
+        </div>
+        <div class="hint-banner hidden" id="connectHint">
+          Choose two shapes to connect <button id="cancelConnect">Esc</button>
+        </div>
+        <div class="guide-panel hidden" id="guidePanel"></div>
+      </div>
+    </div>
+
+    <aside class="inspector" id="inspector"></aside>
+  </div>
+
+  <div class="timeline-bar">
+    <span class="hint">Set a step's time in its own panel on the right — it appears on the timeline directly below that step.</span>
+    <div class="timeline-totals">
+      <span class="t-lt">Total lead time <b id="totLt">—</b></span>
+      <span class="t-pt">Total processing time <b id="totPt">—</b></span>
+      <span class="t-pce">Process cycle efficiency <b id="totPce">—</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="modalOverlay">
+  <div class="modal" id="modalBox"></div>
+</div>
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+(function(){
+"use strict";
+const SVGNS = "http://www.w3.org/2000/svg";
+
+/* ---------------- helpers ---------------- */
+function S(tag, attrs){
+  const n = document.createElementNS(SVGNS, tag);
+  if(attrs) for(const k in attrs) n.setAttribute(k, attrs[k]);
+  return n;
+}
+function H(tag, attrs, html){
+  const n = document.createElement(tag);
+  if(attrs) for(const k in attrs){ if(k==="class") n.className=attrs[k]; else n.setAttribute(k, attrs[k]); }
+  if(html!==undefined) n.innerHTML = html;
+  return n;
+}
+let uidN = 0;
+function uid(p){ uidN++; return p+"_"+uidN+"_"+Math.random().toString(36).slice(2,7); }
+function esc(s){ return (s===undefined||s===null?"":String(s)).replace(/[&<>]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c])); }
+
+function wrapLines(text, maxChars){
+  text = (text||"").trim();
+  if(!text) return [""];
+  const words = text.split(/\s+/);
+  const lines = []; let cur = "";
+  for(const w of words){
+    const test = cur ? cur+" "+w : w;
+    if(test.length > maxChars && cur){ lines.push(cur); cur = w; }
+    else cur = test;
+  }
+  if(cur) lines.push(cur);
+  return lines.slice(0,3);
+}
+function svgText(x,y,text,opts){
+  opts = opts||{};
+  const t = S("text",{
+    x:x, y:y,
+    "text-anchor":opts.anchor||"middle",
+    "dominant-baseline":opts.baseline||"middle",
+    fill:opts.fill||"#EAF6FA",
+    "font-size":opts.size||13,
+    "font-weight":opts.weight||500,
+    "font-family":opts.mono?"'IBM Plex Mono',monospace":"'Archivo',sans-serif",
+    "letter-spacing":opts.spacing||"0"
+  });
+  const lines = opts.wrap ? wrapLines(text, opts.wrap) : [String(text===undefined?"":text)];
+  const lh = opts.lh || (opts.size||13)+4;
+  const startDy = -((lines.length-1)*lh)/2;
+  lines.forEach((ln,i)=>{
+    const ts = S("tspan",{x:x, dy: i===0?startDy:lh});
+    ts.textContent = ln;
+    t.appendChild(ts);
+  });
+  return t;
+}
+
+/* ---------------- palette / shape defs ---------------- */
+const TYPE_META = {
+  supplier:   {label:"Supplier",        group:"Flow endpoints", desc:"Where material for this value stream comes from — drawn as a small factory box."},
+  customer:   {label:"Customer",        group:"Flow endpoints", desc:"Who the value stream ultimately serves — usually placed at the top right."},
+  process:    {label:"Process",         group:"Process",        desc:"One processing step. Give it a short verb-noun name, e.g. \\u201cWeld frame\\u201d."},
+  databox:    {label:"Data box",        group:"Process",        desc:"Sits under a process box and records its key metrics: cycle time (C/T), changeover time (C/O), uptime and operators."},
+  operator:   {label:"Operator",        group:"Process",        desc:"One person staffing a step."},
+  inventory:  {label:"Inventory",       group:"Material flow",  desc:"A stockpile of parts waiting between steps. The number is the quantity or days of stock."},
+  fifo:       {label:"FIFO lane",       group:"Material flow",  desc:"A capped queue where parts move strictly first-in, first-out between two steps."},
+  prodcontrol:{label:"Production control", group:"Information", desc:"The planning function that schedules processes — usually receives orders and issues schedules."},
+  kaizen:     {label:"Kaizen burst",     group:"Improvement",   desc:"Flags a specific opportunity for improvement at that point in the stream."}
+};
+const CONN_META = {
+  material:   {label:"Push arrow",      color:"#EAF6FA", desc:"Material moved to the next step regardless of whether it is needed yet — the default flow between processes."},
+  shipment:   {label:"Shipment",        color:"#EAF6FA", desc:"Material moving to or from an outside company, typically by truck."},
+  manual:     {label:"Manual info",     color:"#A9CBDF", desc:"Information passed by a person — a phone call, a paper schedule, a spreadsheet walked over."},
+  electronic: {label:"Electronic info", color:"#A9CBDF", desc:"Information passed automatically by a system — EDI, an ERP, a shared database."}
+};
+
+function defaultShape(type){
+  const base = {id: uid("sh"), type:type, x:80, y:80};
+  switch(type){
+    case "supplier": return Object.assign(base,{w:130,h:86,label:"Supplier"});
+    case "customer": return Object.assign(base,{w:130,h:86,label:"Customer"});
+    case "process": return Object.assign(base,{w:150,h:66,label:"Process name",ptSeconds:0});
+    case "databox": return Object.assign(base,{w:150,h:64,ct:"",co:"",uptime:"",operators:""});
+    case "operator": return Object.assign(base,{w:46,h:46,label:""});
+    case "inventory": return Object.assign(base,{w:72,h:62,qty:"",ltDays:0});
+    case "fifo": return Object.assign(base,{w:150,h:46,maxQty:""});
+    case "prodcontrol": return Object.assign(base,{w:170,h:66,label:"Production Control"});
+    case "kaizen": return Object.assign(base,{w:118,h:118,note:"Improvement idea"});
+  }
+}
+
+/* ---------------- state ---------------- */
+let state = null;
+let zoom = 1;
+let connectMode = null;   // one of CONN_META keys, or null
+let pendingFrom = null;   // shape id
+let selection = null;     // {type:'shape'|'conn', id}
+let dirty = false;
+
+const STORAGE_KEY = "vsm_maps_v2";
+const OLD_STORAGE_KEY = "vsm_maps_v1";
+const LAST_KEY = "vsm_last_map_v2";
+const EXAMPLE_NAME = "Example: Two-Process Line";
+let storageOk = true;
+let storageMigrated = false;
+
+function exampleMap(){
+  const shapes = [
+    Object.assign(defaultShape("supplier"), {x:40, y:70, label:"Steel Co."}),
+    Object.assign(defaultShape("prodcontrol"), {x:760, y:30, label:"Production Control"}),
+    Object.assign(defaultShape("customer"), {x:1560, y:70, label:"AutoParts Inc."}),
+    Object.assign(defaultShape("process"), {id:"proc_cut", x:300, y:300, label:"Cutting", ptSeconds:35}),
+    Object.assign(defaultShape("databox"), {x:300, y:376, ct:"35 s", co:"10 min", uptime:"90%", operators:"1"}),
+    Object.assign(defaultShape("inventory"), {id:"inv_1", x:494, y:320, qty:"1.2 days", ltDays:1.2}),
+    Object.assign(defaultShape("process"), {id:"proc_weld", x:640, y:300, label:"Welding", ptSeconds:48}),
+    Object.assign(defaultShape("databox"), {x:640, y:376, ct:"48 s", co:"5 min", uptime:"85%", operators:"2"}),
+    Object.assign(defaultShape("inventory"), {id:"inv_2", x:834, y:320, qty:"0.6 days", ltDays:0.6}),
+    Object.assign(defaultShape("kaizen"), {x:640, y:150, note:"Reduce changeover from 5 to 1 min"}),
+    Object.assign(defaultShape("operator"), {x:355, y:260}),
+  ];
+  const connections = [
+    {id:uid("c"), fromId:shapes[0].id, toId:"proc_cut", kind:"material"},
+    {id:uid("c"), fromId:"proc_cut", toId:shapes[5].id, kind:"material"},
+    {id:uid("c"), fromId:shapes[5].id, toId:"proc_weld", kind:"material"},
+    {id:uid("c"), fromId:"proc_weld", toId:shapes[8].id, kind:"material"},
+    {id:uid("c"), fromId:shapes[8].id, toId:shapes[2].id, kind:"shipment"},
+    {id:uid("c"), fromId:shapes[2].id, toId:shapes[1].id, kind:"electronic"},
+    {id:uid("c"), fromId:shapes[1].id, toId:"proc_cut", kind:"manual"},
+    {id:uid("c"), fromId:shapes[1].id, toId:"proc_weld", kind:"manual"},
+  ];
+  return {shapes, connections};
+}
+
+function blankMap(){ return {shapes:[], connections:[]}; }
+
+function loadStorage(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(raw) return JSON.parse(raw);
+    if(!storageMigrated){
+      storageMigrated = true;
+      const oldRaw = localStorage.getItem(OLD_STORAGE_KEY);
+      const migrated = {};
+      if(oldRaw){
+        try{
+          const old = JSON.parse(oldRaw);
+          Object.keys(old).forEach(name=>{ if(name !== EXAMPLE_NAME) migrated[name] = old[name]; });
+        }catch(e){}
+      }
+      migrated[EXAMPLE_NAME] = Object.assign(exampleMap(), {updatedAt:Date.now()});
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(migrated));
+      return migrated;
+    }
+    return {};
+  }catch(e){ storageOk = false; return {}; }
+}
+function saveStorage(all){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(all)); return true; }
+  catch(e){ storageOk = false; return false; }
+}
+function setLastMapName(name){ try{ localStorage.setItem(LAST_KEY, name); }catch(e){} }
+function getLastMapName(){ try{ return localStorage.getItem(LAST_KEY); }catch(e){ return null; } }
+
+function initState(){
+  const all = loadStorage();
+  const names = Object.keys(all);
+  let name, data;
+  if(names.length){
+    const last = getLastMapName();
+    name = (last && all[last]) ? last : names.sort((a,b)=>(all[b].updatedAt||0)-(all[a].updatedAt||0))[0];
+    data = all[name];
+  } else {
+    name = "Example: Two-Process Line";
+    data = Object.assign(exampleMap(), {updatedAt:Date.now()});
+    all[name] = data;
+    saveStorage(all);
+  }
+  state = {
+    mapName: name,
+    shapes: data.shapes.map(s=>Object.assign({},s)),
+    connections: data.connections.map(c=>Object.assign({},c)),
+  };
+  setLastMapName(name);
+}
+
+function markDirty(){ dirty = true; renderStatus(); }
+function markClean(){ dirty = false; renderStatus(); }
+
+/* ---------------- geometry ---------------- */
+function shapeById(id){ return state.shapes.find(s=>s.id===id); }
+function center(s){ return {x:s.x+s.w/2, y:s.y+s.h/2}; }
+function clipToRect(cx,cy,hw,hh,dx,dy){
+  if(dx===0 && dy===0) return {x:cx,y:cy};
+  const sx = dx!==0 ? hw/Math.abs(dx) : Infinity;
+  const sy = dy!==0 ? hh/Math.abs(dy) : Infinity;
+  const s = Math.min(sx,sy) * 0.98;
+  return {x:cx+dx*s, y:cy+dy*s};
+}
+function connEndpoints(conn){
+  const a = shapeById(conn.fromId), b = shapeById(conn.toId);
+  if(!a || !b) return null;
+  const ca = center(a), cb = center(b);
+  const p1 = clipToRect(ca.x,ca.y, a.w/2, a.h/2, cb.x-ca.x, cb.y-ca.y);
+  const p2 = clipToRect(cb.x,cb.y, b.w/2, b.h/2, ca.x-cb.x, ca.y-cb.y);
+  return {p1,p2};
+}
+function zigzagPoints(p1,p2,segments,amp){
+  const dx=p2.x-p1.x, dy=p2.y-p1.y, len=Math.hypot(dx,dy)||1;
+  const ux=dx/len, uy=dy/len, px=-uy, py=ux;
+  const pts=[p1];
+  for(let i=1;i<segments;i++){
+    const t=i/segments;
+    const off = (i%2===0? amp : -amp) * (i===segments-1?0:1);
+    pts.push({x:p1.x+dx*t+px*off, y:p1.y+dy*t+py*off});
+  }
+  pts.push(p2);
+  return pts;
+}
+
+/* ---------------- svg building blocks ---------------- */
+const COL = {ink:"#EAF6FA", inkDim:"#A9CBDF", muted:"#6F97B3", accent:"#F2762E",
+  fill:"#163B5C", fill2:"#0F2A44", grid:"#1B4972", bg:"#0E2A44"};
+
+function buildDefs(){
+  const defs = S("defs");
+  function marker(id, color, scale){
+    const m = S("marker",{id:id, viewBox:"0 0 10 10", refX:9, refY:5, markerWidth:6*scale, markerHeight:6*scale, orient:"auto-start-reverse"});
+    m.appendChild(S("path",{d:"M0,0 L10,5 L0,10 z", fill:color}));
+    return m;
+  }
+  defs.appendChild(marker("arrow-material", COL.ink, 1.3));
+  defs.appendChild(marker("arrow-shipment", COL.ink, 1.6));
+  defs.appendChild(marker("arrow-manual", COL.inkDim, 1));
+  defs.appendChild(marker("arrow-electronic", COL.inkDim, 1));
+
+  const grid = S("pattern",{id:"gridpat", width:40, height:40, patternUnits:"userSpaceOnUse"});
+  grid.appendChild(S("path",{d:"M40 0 L0 0 0 40", fill:"none", stroke:COL.grid, "stroke-width":1}));
+  defs.appendChild(grid);
+  return defs;
+}
+
+function buildShapeGroup(shape){
+  const g = S("g",{class:"shape", "data-id":shape.id, transform:`translate(${shape.x},${shape.y})`});
+  const isSel = selection && selection.type==="shape" && selection.id===shape.id;
+  const isPending = connectMode && pendingFrom===shape.id;
+  switch(shape.type){
+    case "process": {
+      g.appendChild(S("rect",{width:shape.w,height:shape.h, fill:COL.fill, stroke:COL.ink, "stroke-width":2, rx:5}));
+      g.appendChild(svgText(shape.w/2, shape.h/2, shape.label||"Process", {size:14, weight:700, wrap:16, lh:16}));
+      break;
+    }
+    case "databox": {
+      g.appendChild(S("rect",{width:shape.w,height:shape.h, fill:COL.fill2, stroke:COL.inkDim, "stroke-width":1.4, rx:4, "stroke-dasharray":"3,2"}));
+      const rows = [["C/T", shape.ct||"—"],["C/O", shape.co||"—"],["Uptime", shape.uptime||"—"],["Oper.", shape.operators||"—"]];
+      rows.forEach((r,i)=>{
+        const col = i%2, row = Math.floor(i/2);
+        const cx = shape.w*(col===0?0.27:0.77), cy = 15 + row*(shape.h-24);
+        g.appendChild(svgText(cx, cy, r[0], {size:8.5, weight:700, fill:COL.muted, mono:true, spacing:"0.03em"}));
+        g.appendChild(svgText(cx, cy+13, r[1], {size:11, weight:600, fill:COL.ink, mono:true}));
+      });
+      break;
+    }
+    case "inventory": {
+      const w=shape.w, h=shape.h*0.72;
+      g.appendChild(S("polygon",{points:`${w/2},2 ${w-4},${h} 4,${h}`, fill:COL.fill, stroke:COL.ink, "stroke-width":2, "stroke-linejoin":"round"}));
+      g.appendChild(S("text",{x:w/2,y:h*0.62,"text-anchor":"middle","font-family":"'IBM Plex Mono',monospace","font-weight":700,"font-size":15,fill:COL.ink}, )).textContent="I";
+      g.appendChild(svgText(w/2, shape.h-8, shape.qty||"qty?", {size:10.5, weight:600, mono:true, fill:COL.inkDim}));
+      break;
+    }
+    case "fifo": {
+      g.appendChild(S("rect",{width:shape.w,height:shape.h, fill:"none", stroke:COL.ink, "stroke-width":2}));
+      g.appendChild(S("line",{x1:0,y1:0,x2:shape.w,y2:0, stroke:COL.ink, "stroke-width":3, "stroke-dasharray":"7,5"}));
+      g.appendChild(S("line",{x1:0,y1:shape.h,x2:shape.w,y2:shape.h, stroke:COL.ink, "stroke-width":3, "stroke-dasharray":"7,5"}));
+      g.appendChild(svgText(shape.w/2, shape.h/2-6, "FIFO", {size:12, weight:800, spacing:"0.08em"}));
+      g.appendChild(svgText(shape.w/2, shape.h/2+11, "max "+(shape.maxQty||"?"), {size:10, weight:600, fill:COL.inkDim, mono:true}));
+      break;
+    }
+    case "operator": {
+      const r = shape.w/2;
+      g.appendChild(S("circle",{cx:r,cy:r,r:r-2, fill:COL.fill, stroke:COL.ink, "stroke-width":2}));
+      g.appendChild(svgText(r,r,"O",{size:16, weight:800}));
+      if(shape.label) g.appendChild(svgText(r, shape.h+11, shape.label, {size:10, weight:600, fill:COL.inkDim}));
+      break;
+    }
+    case "prodcontrol": {
+      g.appendChild(S("rect",{width:shape.w,height:shape.h, fill:COL.fill, stroke:COL.ink, "stroke-width":2, rx:5}));
+      g.appendChild(svgText(shape.w/2, shape.h/2, shape.label||"Production Control", {size:12.5, weight:700, wrap:20, lh:15}));
+      break;
+    }
+    case "kaizen": {
+      const cx=shape.w/2, cy=shape.h/2, rOuter=shape.w/2-2, rInner=rOuter*0.55, spikes=8;
+      let pts=[];
+      for(let i=0;i<spikes*2;i++){
+        const r = i%2===0?rOuter:rInner;
+        const a = (Math.PI/spikes)*i - Math.PI/2;
+        pts.push((cx+r*Math.cos(a)).toFixed(1)+","+(cy+r*Math.sin(a)).toFixed(1));
+      }
+      g.appendChild(S("polygon",{points:pts.join(" "), fill:COL.accent, stroke:"#1A0D04", "stroke-width":1.5, "stroke-linejoin":"round"}));
+      g.appendChild(svgText(cx, cy, shape.note||"Improvement idea", {size:10.5, weight:800, fill:"#1A0D04", wrap:13, lh:12}));
+      break;
+    }
+    case "supplier":
+    case "customer": {
+      g.appendChild(S("rect",{width:shape.w,height:shape.h, fill:COL.fill, stroke:COL.ink, "stroke-width":2.5}));
+      g.appendChild(S("polyline",{points:`4,26 ${shape.w*0.4},4 ${shape.w-4},26`, fill:"none", stroke:COL.ink, "stroke-width":2, "stroke-linejoin":"round"}));
+      g.appendChild(svgText(shape.w/2, shape.h*0.68, shape.label||(shape.type==="supplier"?"Supplier":"Customer"), {size:12.5, weight:800, wrap:16, lh:14}));
+      break;
+    }
+  }
+  if(isSel){
+    const pad=6;
+    const sel = S("rect",{x:-pad,y:-pad,width:shape.w+pad*2,height:shape.h+pad*2, fill:"none", stroke:COL.accent, "stroke-width":2, "stroke-dasharray":"5,4", rx:8});
+    g.appendChild(sel);
+  }
+  if(isPending){
+    const pad=6;
+    const pend = S("rect",{x:-pad,y:-pad,width:shape.w+pad*2,height:shape.h+pad*2, fill:"none", stroke:COL.accent, "stroke-width":3, rx:8});
+    g.appendChild(pend);
+  }
+  return g;
+}
+
+function buildConnLine(conn){
+  const eps = connEndpoints(conn);
+  if(!eps) return null;
+  const meta = CONN_META[conn.kind] || CONN_META.material;
+  const isSel = selection && selection.type==="conn" && selection.id===conn.id;
+  const g = S("g",{class:"conn", "data-id":conn.id});
+  let visible;
+  if(conn.kind==="electronic"){
+    const pts = zigzagPoints(eps.p1, eps.p2, 7, 6);
+    visible = S("polyline",{points:pts.map(p=>p.x.toFixed(1)+","+p.y.toFixed(1)).join(" "), fill:"none",
+      stroke:meta.color, "stroke-width":1.6, "stroke-dasharray":"5,3", "marker-end":"url(#arrow-electronic)"});
+  } else {
+    const attrs = {x1:eps.p1.x,y1:eps.p1.y,x2:eps.p2.x,y2:eps.p2.y, stroke:meta.color};
+    if(conn.kind==="material"){ attrs["stroke-width"]=3; attrs["marker-end"]="url(#arrow-material)"; }
+    else if(conn.kind==="shipment"){ attrs["stroke-width"]=5; attrs["stroke-dasharray"]="13,7"; attrs["marker-end"]="url(#arrow-shipment)"; }
+    else { attrs["stroke-width"]=1.6; attrs["marker-end"]="url(#arrow-manual)"; }
+    visible = S("line",attrs);
+  }
+  const hit = S("line",{x1:eps.p1.x,y1:eps.p1.y,x2:eps.p2.x,y2:eps.p2.y, stroke:"transparent","stroke-width":14, class:"conn-hit"});
+  g.appendChild(visible); g.appendChild(hit);
+  if(conn.kind==="shipment"){
+    const mx=(eps.p1.x+eps.p2.x)/2, my=(eps.p1.y+eps.p2.y)/2;
+    const ang = Math.atan2(eps.p2.y-eps.p1.y, eps.p2.x-eps.p1.x)*180/Math.PI;
+    const truck = S("g",{transform:`translate(${mx},${my}) rotate(${ang})`});
+    truck.appendChild(S("rect",{x:-11,y:-6,width:22,height:11, fill:COL.bg, stroke:COL.ink, "stroke-width":1.4, rx:2}));
+    truck.appendChild(S("circle",{cx:-5,cy:6,r:2.4, fill:COL.ink}));
+    truck.appendChild(S("circle",{cx:6,cy:6,r:2.4, fill:COL.ink}));
+    g.appendChild(truck);
+  }
+  if(isSel){
+    const halo = visible.cloneNode();
+    halo.setAttribute("stroke", COL.accent);
+    halo.setAttribute("stroke-width", (parseFloat(visible.getAttribute("stroke-width"))||2)+5);
+    halo.setAttribute("opacity","0.35");
+    halo.removeAttribute("marker-end");
+    g.insertBefore(halo, visible);
+  }
+  return g;
+}
+
+/* ---------------- render ---------------- */
+const stage = document.getElementById("stage");
+const CANVAS_W = 2000, CANVAS_H = 760;
+stage.setAttribute("width", CANVAS_W);
+stage.setAttribute("height", CANVAS_H);
+stage.appendChild(buildDefs());
+const bgRect = S("rect",{x:0,y:0,width:CANVAS_W,height:CANVAS_H,fill:COL.bg});
+const gridRect = S("rect",{x:0,y:0,width:CANVAS_W,height:CANVAS_H,fill:"url(#gridpat)"});
+stage.appendChild(bgRect); stage.appendChild(gridRect);
+const timelineLayer = S("g",{id:"timelineLayer"});
+const connLayer = S("g",{id:"connLayer"});
+const shapeLayer = S("g",{id:"shapeLayer"});
+stage.appendChild(timelineLayer); stage.appendChild(connLayer); stage.appendChild(shapeLayer);
+
+function renderAll(){
+  renderConnections();
+  renderShapes();
+  renderInspector();
+  renderTimelineLadder();
+  renderTotals();
+  renderMapName();
+}
+function renderShapes(){
+  shapeLayer.innerHTML = "";
+  state.shapes.forEach(s=> shapeLayer.appendChild(buildShapeGroup(s)));
+}
+function renderConnections(){
+  connLayer.innerHTML = "";
+  state.connections.forEach(c=>{ const n = buildConnLine(c); if(n) connLayer.appendChild(n); });
+}
+function renderMapName(){
+  document.getElementById("mapNameInput").value = state.mapName;
+}
+function renderStatus(){
+  const chip = document.getElementById("statusChip");
+  const label = document.getElementById("statusLabel");
+  chip.classList.toggle("dirty", dirty);
+  if(!storageOk){ label.textContent = "Local save unavailable"; }
+  else label.textContent = dirty ? "Unsaved changes" : "Saved in this browser";
+}
+
+/* ---------------- drag & select ---------------- */
+function toStagePoint(clientX, clientY){
+  const rect = stage.getBoundingClientRect();
+  const scaleX = CANVAS_W / rect.width, scaleY = CANVAS_H / rect.height;
+  return {x:(clientX-rect.left)*scaleX, y:(clientY-rect.top)*scaleY};
+}
+
+let drag = null;
+let pan = null;
+const canvasScrollEl = document.getElementById("canvasScroll");
+stage.addEventListener("pointerdown", (e)=>{
+  e.preventDefault();
+  const shapeG = e.target.closest && e.target.closest(".shape");
+  const connG = e.target.closest && e.target.closest(".conn");
+  const pt = toStagePoint(e.clientX, e.clientY);
+
+  if(connectMode){
+    if(shapeG){
+      const id = shapeG.getAttribute("data-id");
+      if(!pendingFrom){ pendingFrom = id; renderShapes(); }
+      else if(pendingFrom !== id){
+        state.connections.push({id:uid("c"), fromId:pendingFrom, toId:id, kind:connectMode});
+        pendingFrom = null; markDirty(); renderConnections(); renderShapes();
+      } else { pendingFrom = null; renderShapes(); }
+    }
+    return;
+  }
+
+  if(shapeG){
+    const id = shapeG.getAttribute("data-id");
+    selectShape(id);
+    const s = shapeById(id);
+    drag = {id:id, dx: pt.x - s.x, dy: pt.y - s.y, pointerId:e.pointerId};
+    stage.setPointerCapture(e.pointerId);
+  } else if(connG){
+    selectConn(connG.getAttribute("data-id"));
+  } else {
+    selectNone();
+    pan = {startX:e.clientX, startY:e.clientY, startLeft:canvasScrollEl.scrollLeft, startTop:canvasScrollEl.scrollTop, pointerId:e.pointerId};
+    stage.setPointerCapture(e.pointerId);
+    stage.classList.add("panning");
+  }
+});
+stage.addEventListener("pointermove",(e)=>{
+  if(drag){
+    const pt = toStagePoint(e.clientX, e.clientY);
+    const s = shapeById(drag.id);
+    if(!s) return;
+    s.x = Math.max(0, Math.min(CANVAS_W - s.w, pt.x - drag.dx));
+    s.y = Math.max(0, Math.min(CANVAS_H - s.h, pt.y - drag.dy));
+    const g = shapeLayer.querySelector(`[data-id="${drag.id}"]`);
+    if(g) g.setAttribute("transform", `translate(${s.x},${s.y})`);
+    renderConnections();
+    if((s.type==="process" && s.ptSeconds>0) || (s.type==="inventory" && s.ltDays>0)) renderTimelineLadder();
+    return;
+  }
+  if(pan){
+    canvasScrollEl.scrollLeft = pan.startLeft - (e.clientX - pan.startX);
+    canvasScrollEl.scrollTop = pan.startTop - (e.clientY - pan.startY);
+  }
+});
+window.addEventListener("pointerup",(e)=>{
+  if(drag){ try{stage.releasePointerCapture(drag.pointerId);}catch(err){} drag=null; markDirty(); }
+  if(pan){ try{stage.releasePointerCapture(pan.pointerId);}catch(err){} pan=null; stage.classList.remove("panning"); }
+});
+
+function selectShape(id){ selection = {type:"shape", id}; renderShapes(); renderConnections(); renderInspector(); }
+function selectConn(id){ selection = {type:"conn", id}; renderShapes(); renderConnections(); renderInspector(); }
+function selectNone(){ selection = null; renderShapes(); renderConnections(); renderInspector(); }
+
+document.addEventListener("keydown",(e)=>{
+  const tag = (e.target.tagName||"").toLowerCase();
+  if(tag==="input"||tag==="textarea"||tag==="select") return;
+  if((e.key==="Delete"||e.key==="Backspace") && selection){ deleteSelection(); }
+  if(e.key==="Escape"){ setConnectMode(null); }
+});
+function deleteSelection(){
+  if(!selection) return;
+  if(selection.type==="shape"){
+    state.shapes = state.shapes.filter(s=>s.id!==selection.id);
+    state.connections = state.connections.filter(c=>c.fromId!==selection.id && c.toId!==selection.id);
+  } else {
+    state.connections = state.connections.filter(c=>c.id!==selection.id);
+  }
+  selection = null; markDirty(); renderAll();
+}
+
+/* ---------------- connect toolbar ---------------- */
+const connToolbar = document.getElementById("connToolbar");
+Object.keys(CONN_META).forEach(kind=>{
+  const meta = CONN_META[kind];
+  const b = H("button",{class:"conn-btn", "data-kind":kind});
+  b.innerHTML = `<span class="swatch" style="background:${meta.color}"></span>${meta.label}`;
+  b.addEventListener("click", ()=> setConnectMode(connectMode===kind ? null : kind));
+  connToolbar.appendChild(b);
+});
+function setConnectMode(kind){
+  connectMode = kind; pendingFrom = null;
+  document.querySelectorAll(".conn-btn").forEach(b=> b.classList.toggle("active", b.getAttribute("data-kind")===kind));
+  stage.classList.toggle("connecting", !!kind);
+  document.getElementById("connectHint").classList.toggle("hidden", !kind);
+}
+document.getElementById("cancelConnect").addEventListener("click", ()=> setConnectMode(null));
+
+/* ---------------- palette ---------------- */
+const paletteGroups = {};
+Object.keys(TYPE_META).forEach(type=>{
+  const meta = TYPE_META[type];
+  (paletteGroups[meta.group] = paletteGroups[meta.group]||[]).push(type);
+});
+const paletteEl = document.getElementById("palette");
+Object.keys(paletteGroups).forEach(group=>{
+  const gEl = H("div",{class:"pal-group"});
+  gEl.appendChild(H("h5",{},group));
+  paletteGroups[group].forEach(type=>{
+    const btn = H("button",{class:"pal-item"});
+    btn.innerHTML = paletteIcon(type) + `<span>${TYPE_META[type].label}</span>`;
+    btn.addEventListener("click", ()=> addShape(type));
+    gEl.appendChild(btn);
+  });
+  paletteEl.appendChild(gEl);
+});
+function paletteIcon(type){
+  const c = "#F2762E";
+  const icons = {
+    supplier:`<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="11" fill="none" stroke="${c}" stroke-width="1.6"/><polyline points="2,7 7,2 12,7" fill="none" stroke="${c}" stroke-width="1.6"/></svg>`,
+    customer:`<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="11" fill="none" stroke="${c}" stroke-width="1.6"/><polyline points="2,7 7,2 12,7" fill="none" stroke="${c}" stroke-width="1.6"/></svg>`,
+    process:`<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="10" rx="1.5" fill="none" stroke="${c}" stroke-width="1.6"/></svg>`,
+    databox:`<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="5" width="14" height="8" rx="1" fill="none" stroke="${c}" stroke-width="1.4" stroke-dasharray="2,1.5"/></svg>`,
+    operator:`<svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="6" fill="none" stroke="${c}" stroke-width="1.6"/></svg>`,
+    inventory:`<svg width="18" height="18" viewBox="0 0 18 18"><polygon points="9,3 15,14 3,14" fill="none" stroke="${c}" stroke-width="1.6"/></svg>`,
+    fifo:`<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="6" width="14" height="6" fill="none" stroke="${c}" stroke-width="1.6"/><line x1="2" y1="6" x2="16" y2="6" stroke="${c}" stroke-width="2" stroke-dasharray="2,1.5"/><line x1="2" y1="12" x2="16" y2="12" stroke="${c}" stroke-width="2" stroke-dasharray="2,1.5"/></svg>`,
+    prodcontrol:`<svg width="18" height="18" viewBox="0 0 18 18"><rect x="2" y="4" width="14" height="10" rx="1.5" fill="none" stroke="${c}" stroke-width="1.6"/><line x1="5" y1="9" x2="13" y2="9" stroke="${c}" stroke-width="1.3"/></svg>`,
+    kaizen:`<svg width="18" height="18" viewBox="0 0 18 18"><polygon points="9,1 10.6,6 15.7,4.3 12.2,8.5 17,10.3 11.6,10.9 13,16 9,12.6 5,16 6.4,10.9 1,10.3 5.8,8.5 2.3,4.3 7.4,6" fill="${c}"/></svg>`
+  };
+  return icons[type]||"";
+}
+let placeCounter = 0;
+function addShape(type){
+  const s = defaultShape(type);
+  const scroll = document.getElementById("canvasScroll");
+  const col = placeCounter % 10, row = Math.floor(placeCounter/10) % 3;
+  placeCounter++;
+  s.x = Math.max(0, Math.min(CANVAS_W - s.w - 20, scroll.scrollLeft/zoom + 90 + col*180));
+  s.y = Math.max(0, Math.min(TL_BASE_Y - s.h - 100, scroll.scrollTop/zoom + 80 + row*140));
+  state.shapes.push(s);
+  markDirty();
+  renderShapes(); renderConnections();
+  selectShape(s.id);
+}
+
+/* ---------------- inspector ---------------- */
+const inspector = document.getElementById("inspector");
+function renderInspector(){
+  inspector.innerHTML = "";
+  if(!selection){
+    inspector.appendChild(H("h4",{},"Inspector"));
+    const hint = H("div",{class:"empty-hint"});
+    hint.innerHTML = `<p>Select a shape or connector to edit it — or add one from the palette on the left.</p>
+      <div class="stat"><span>Shapes</span><b>${state.shapes.length}</b></div>
+      <div class="stat"><span>Connections</span><b>${state.connections.length}</b></div>`;
+    inspector.appendChild(hint);
+    return;
+  }
+  if(selection.type==="shape"){
+    const s = shapeById(selection.id);
+    if(!s){ selection=null; return renderInspector(); }
+    const meta = TYPE_META[s.type];
+    inspector.appendChild(H("h4",{},meta.label));
+    const form = H("div",{});
+
+    function textField(labelText, key, ph){
+      const f = H("div",{class:"field"});
+      f.appendChild(H("label",{},labelText));
+      const inp = H("input",{type:"text", placeholder:ph||""});
+      inp.value = s[key]||"";
+      inp.addEventListener("input", ()=>{ s[key]=inp.value; markDirty(); renderShapes(); renderConnections(); });
+      f.appendChild(inp);
+      form.appendChild(f);
+    }
+    function textareaField(labelText, key){
+      const f = H("div",{class:"field"});
+      f.appendChild(H("label",{},labelText));
+      const inp = H("textarea",{});
+      inp.value = s[key]||"";
+      inp.addEventListener("input", ()=>{ s[key]=inp.value; markDirty(); renderShapes(); });
+      f.appendChild(inp);
+      form.appendChild(f);
+    }
+    function numberField(labelText, key, step){
+      const f = H("div",{class:"field"});
+      f.appendChild(H("label",{},labelText));
+      const inp = H("input",{type:"number", min:"0", step:step||"1"});
+      inp.value = s[key]||"";
+      inp.addEventListener("input", ()=>{ s[key]=parseFloat(inp.value)||0; markDirty(); renderTimelineLadder(); renderTotals(); });
+      f.appendChild(inp);
+      form.appendChild(f);
+    }
+
+    if(["process","supplier","customer","prodcontrol"].includes(s.type)) textField("Label", "label");
+    if(s.type==="operator") textField("Label (optional)", "label");
+    if(s.type==="inventory") textField("Quantity / days of stock (shown on the triangle)", "qty", "e.g. 240 pcs");
+    if(s.type==="fifo") textField("Max quantity", "maxQty", "e.g. 20 pcs");
+    if(s.type==="kaizen") textareaField("Improvement idea", "note");
+    if(s.type==="process") numberField("Time for this step, seconds — shown on the timeline below (0 = hide)", "ptSeconds", "1");
+    if(s.type==="inventory") numberField("Wait here, days — shown on the timeline below (0 = hide)", "ltDays", "0.1");
+    if(s.type==="databox"){
+      const row = H("div",{class:"field-row"});
+      [["ct","C/T"],["co","C/O"],["uptime","Uptime"],["operators","Operators"]].forEach(([key,lab])=>{
+        const f = H("div",{class:"field"});
+        f.appendChild(H("label",{},lab));
+        const inp = H("input",{type:"text"});
+        inp.value = s[key]||"";
+        inp.addEventListener("input", ()=>{ s[key]=inp.value; markDirty(); renderShapes(); });
+        f.appendChild(inp);
+        row.appendChild(f);
+      });
+      form.appendChild(row);
+    }
+    inspector.appendChild(form);
+    inspector.appendChild(H("div",{class:"legend-note"}, esc(meta.desc)));
+    const del = H("button",{class:"btn danger"},"Delete shape");
+    del.addEventListener("click", deleteSelection);
+    inspector.appendChild(del);
+  } else {
+    const c = state.connections.find(x=>x.id===selection.id);
+    if(!c){ selection=null; return renderInspector(); }
+    inspector.appendChild(H("h4",{},"Connector"));
+    const f = H("div",{class:"field"});
+    f.appendChild(H("label",{},"Kind"));
+    const sel = H("select",{});
+    Object.keys(CONN_META).forEach(k=>{
+      const o = H("option",{value:k}, CONN_META[k].label);
+      if(k===c.kind) o.setAttribute("selected","selected");
+      sel.appendChild(o);
+    });
+    sel.addEventListener("change", ()=>{ c.kind = sel.value; markDirty(); renderConnections(); renderInspector(); });
+    f.appendChild(sel);
+    inspector.appendChild(f);
+    inspector.appendChild(H("div",{class:"legend-note"}, esc(CONN_META[c.kind].desc)));
+    const del = H("button",{class:"btn danger"},"Delete connector");
+    del.addEventListener("click", deleteSelection);
+    inspector.appendChild(del);
+  }
+}
+
+/* ---------------- timeline ladder (drawn on the canvas, under each step) ---------------- */
+const TL_BASE_Y = CANVAS_H - 140;
+function renderTimelineLadder(){
+  timelineLayer.innerHTML = "";
+  const items = [];
+  state.shapes.forEach(s=>{
+    if(s.type==="process" && (s.ptSeconds||0) > 0) items.push({s, kind:"pt", value:s.ptSeconds});
+    if(s.type==="inventory" && (s.ltDays||0) > 0) items.push({s, kind:"lt", value:s.ltDays});
+  });
+  if(!items.length) return;
+  let minX=Infinity, maxX=-Infinity;
+  items.forEach(it=>{ const cx = it.s.x + it.s.w/2; minX=Math.min(minX,cx); maxX=Math.max(maxX,cx); });
+  minX -= 55; maxX += 55;
+  timelineLayer.appendChild(S("line",{x1:minX,y1:TL_BASE_Y,x2:maxX,y2:TL_BASE_Y, stroke:COL.muted, "stroke-width":2}));
+  items.forEach(it=>{
+    const cx = it.s.x + it.s.w/2;
+    const guideTop = it.s.y + it.s.h + 2;
+    if(guideTop < TL_BASE_Y){
+      timelineLayer.appendChild(S("line",{x1:cx,y1:guideTop,x2:cx,y2:TL_BASE_Y, stroke:COL.muted, "stroke-width":1.3, "stroke-dasharray":"3,4"}));
+    }
+    const boxW=78, boxH=42;
+    const boxY = it.kind==="pt" ? TL_BASE_Y+14 : TL_BASE_Y-14-boxH;
+    const color = it.kind==="pt" ? COL.accent : COL.inkDim;
+    timelineLayer.appendChild(S("rect",{x:cx-boxW/2, y:boxY, width:boxW, height:boxH, rx:6, fill:COL.fill2, stroke:color, "stroke-width":1.6}));
+    timelineLayer.appendChild(svgText(cx, boxY+14, it.kind==="pt"?"PROCESSING":"WAITING", {size:7.5, weight:800, fill:color, spacing:"0.04em"}));
+    timelineLayer.appendChild(svgText(cx, boxY+30, it.kind==="pt" ? (it.value+" s") : (it.value+" d"), {size:13, weight:700, fill:COL.ink, mono:true}));
+  });
+}
+function renderTotals(){
+  let pt=0, lt=0;
+  state.shapes.forEach(s=>{
+    if(s.type==="process") pt += (s.ptSeconds||0);
+    if(s.type==="inventory") lt += (s.ltDays||0);
+  });
+  document.getElementById("totLt").textContent = lt ? lt.toFixed(1)+" d" : "—";
+  document.getElementById("totPt").textContent = pt ? pt.toFixed(0)+" s" : "—";
+  const pce = (lt>0) ? (pt/(lt*86400))*100 : 0;
+  document.getElementById("totPce").textContent = (lt>0) ? pce.toFixed(2)+"%" : "—";
+}
+
+/* ---------------- zoom ---------------- */
+const canvasScale = document.getElementById("canvasScale");
+function applyZoom(){
+  canvasScale.style.width = (CANVAS_W*zoom)+"px";
+  canvasScale.style.height = (CANVAS_H*zoom)+"px";
+  stage.style.transform = `scale(${zoom})`;
+  stage.style.transformOrigin = "0 0";
+  document.getElementById("zoomLabel").textContent = Math.round(zoom*100)+"%";
+}
+document.getElementById("zoomIn").addEventListener("click", ()=>{ zoom = Math.min(1.5, +(zoom+0.1).toFixed(2)); applyZoom(); });
+document.getElementById("zoomOut").addEventListener("click", ()=>{ zoom = Math.max(0.5, +(zoom-0.1).toFixed(2)); applyZoom(); });
+document.getElementById("zoomFit").addEventListener("click", fitToContent);
+function fitToContent(){
+  const scroll = document.getElementById("canvasScroll");
+  if(!state.shapes.length){
+    zoom = 1; applyZoom(); scroll.scrollLeft = 0; scroll.scrollTop = 0;
+    toast("Canvas is empty — nothing to fit yet", false);
+    return;
+  }
+  const margin = 70;
+  let minX=Infinity, minY=Infinity, maxX=-Infinity, maxY=-Infinity;
+  let hasLadder = false;
+  state.shapes.forEach(s=>{
+    minX = Math.min(minX, s.x); minY = Math.min(minY, s.y);
+    maxX = Math.max(maxX, s.x+s.w); maxY = Math.max(maxY, s.y+s.h);
+    if((s.type==="process" && s.ptSeconds>0) || (s.type==="inventory" && s.ltDays>0)) hasLadder = true;
+  });
+  if(hasLadder) maxY = Math.max(maxY, TL_BASE_Y+70);
+  minX = Math.max(0, minX-margin); minY = Math.max(0, minY-margin);
+  maxX = Math.min(CANVAS_W, maxX+margin); maxY = Math.min(CANVAS_H, maxY+margin);
+  const bboxW = Math.max(1, maxX-minX), bboxH = Math.max(1, maxY-minY);
+  const viewW = scroll.clientWidth, viewH = scroll.clientHeight;
+  let z = Math.min(viewW/bboxW, viewH/bboxH);
+  z = Math.max(0.3, Math.min(1.5, z));
+  zoom = +z.toFixed(2);
+  applyZoom();
+  scroll.scrollLeft = minX*zoom;
+  scroll.scrollTop = minY*zoom;
+}
+
+/* ---------------- save / load / maps dropdown ---------------- */
+const mapNameInput = document.getElementById("mapNameInput");
+mapNameInput.addEventListener("change", ()=>{
+  const newName = mapNameInput.value.trim() || "Untitled";
+  if(newName === state.mapName) return;
+  const all = loadStorage();
+  if(all[newName]){
+    toast("A map named \\u201c"+newName+"\\u201d already exists \\u2014 pick a different name", false);
+    mapNameInput.value = state.mapName;
+    return;
+  }
+  if(all[state.mapName]){
+    all[newName] = all[state.mapName]; delete all[state.mapName]; saveStorage(all);
+  }
+  state.mapName = newName; setLastMapName(newName); renderMapName(); renderMapList();
+});
+
+function doSave(){
+  const all = loadStorage();
+  all[state.mapName] = {shapes:state.shapes, connections:state.connections, updatedAt:Date.now()};
+  const ok = saveStorage(all);
+  markClean(); renderMapList();
+  toast(ok ? "Saved to this browser" : "Could not save — storage unavailable", ok);
+}
+document.getElementById("saveBtn").addEventListener("click", doSave);
+
+document.getElementById("newMapBtn").addEventListener("click", ()=>{
+  confirmModal("Start a new map?", "This clears the canvas. Your other saved maps are untouched.", "New map", ()=>{
+    state = {mapName:"Untitled map", shapes:[], connections:[]};
+    selection = null; setLastMapName(state.mapName);
+    markDirty(); renderAll();
+  });
+});
+
+document.getElementById("saveAsBtn").addEventListener("click", ()=>{
+  promptModal("Save as new map", "Name", state.mapName+" copy", (name)=>{
+    if(!name) return;
+    const all = loadStorage();
+    const doSaveAs = ()=>{
+      all[name] = {shapes:state.shapes, connections:state.connections, updatedAt:Date.now()};
+      saveStorage(all);
+      state.mapName = name; setLastMapName(name);
+      markClean(); renderMapName(); renderMapList(); closeDropdown();
+      toast("Saved as \\u201c"+name+"\\u201d");
+    };
+    if(all[name] && name !== state.mapName){
+      confirmModal("Overwrite \\u201c"+name+"\\u201d?", "A saved map already has this name. Saving will replace it.", "Overwrite", doSaveAs, true);
+    } else {
+      doSaveAs();
+    }
+  });
+});
+
+function loadMap(name){
+  const all = loadStorage();
+  const data = all[name];
+  if(!data) return;
+  state = {mapName:name, shapes:data.shapes.map(s=>Object.assign({},s)), connections:data.connections.map(c=>Object.assign({},c))};
+  selection = null; setLastMapName(name);
+  markClean(); renderAll(); closeDropdown();
+}
+function deleteMap(name){
+  confirmModal("Delete \\u201c"+name+"\\u201d?", "This can't be undone.", "Delete", ()=>{
+    const all = loadStorage(); delete all[name]; saveStorage(all);
+    renderMapList();
+    if(state.mapName===name){
+      const rest = Object.keys(all);
+      if(rest.length) loadMap(rest[0]);
+      else { state = {mapName:"Untitled map", shapes:[], connections:[]}; selection=null; markDirty(); renderAll(); }
+    }
+  }, true);
+}
+
+const myMapsBtn = document.getElementById("myMapsBtn");
+const myMapsDropdown = document.getElementById("myMapsDropdown");
+myMapsBtn.addEventListener("click", (e)=>{ e.stopPropagation(); myMapsDropdown.classList.toggle("hidden"); renderMapList(); });
+document.addEventListener("click", (e)=>{ if(!myMapsDropdown.contains(e.target) && e.target!==myMapsBtn) closeDropdown(); });
+function closeDropdown(){ myMapsDropdown.classList.add("hidden"); }
+
+function renderMapList(){
+  const list = document.getElementById("mapList");
+  list.innerHTML = "";
+  const all = loadStorage();
+  const names = Object.keys(all).sort((a,b)=>(all[b].updatedAt||0)-(all[a].updatedAt||0));
+  if(!names.length){ list.appendChild(H("div",{class:"empty-hint"},"No saved maps yet.")); return; }
+  names.forEach(name=>{
+    const row = H("div",{class:"maprow"+(name===state.mapName?" active":"")});
+    const info = H("div",{class:"info"});
+    info.appendChild(H("div",{class:"name"}, esc(name)));
+    info.appendChild(H("div",{class:"time"}, relTime(all[name].updatedAt)));
+    row.appendChild(info);
+    const del = H("button",{class:"btn small ghost del"},"✕");
+    del.addEventListener("click",(e)=>{ e.stopPropagation(); deleteMap(name); });
+    row.appendChild(del);
+    row.addEventListener("click", ()=> loadMap(name));
+    list.appendChild(row);
+  });
+}
+function relTime(ts){
+  if(!ts) return "";
+  const s = (Date.now()-ts)/1000;
+  if(s<60) return "just now";
+  if(s<3600) return Math.floor(s/60)+"m ago";
+  if(s<86400) return Math.floor(s/3600)+"h ago";
+  return Math.floor(s/86400)+"d ago";
+}
+
+/* ---------------- export (png / pdf) ---------------- */
+function safeFileBase(){ return (state.mapName||"value-stream-map").replace(/[\\/:*?"<>|]/g,"-"); }
+
+function captureCanvasSnapshot(){
+  return new Promise((resolve, reject)=>{
+    const savedSelection = selection, savedPending = pendingFrom;
+    selection = null; pendingFrom = null;
+    renderShapes(); renderConnections();
+    const clone = stage.cloneNode(true);
+    selection = savedSelection; pendingFrom = savedPending;
+    renderShapes(); renderConnections();
+    clone.removeAttribute("style");
+    clone.setAttribute("xmlns","http://www.w3.org/2000/svg");
+    clone.setAttribute("viewBox","0 0 "+CANVAS_W+" "+CANVAS_H);
+    // Replace external fonts with system fonts so the canvas stays origin-clean
+    clone.querySelectorAll("[font-family]").forEach(el=>{
+      const ff = el.getAttribute("font-family")||"";
+      if(ff.includes("Archivo")) el.setAttribute("font-family","Arial,sans-serif");
+      if(ff.includes("IBM Plex Mono")) el.setAttribute("font-family","'Courier New',monospace");
+    });
+    const xml = new XMLSerializer().serializeToString(clone);
+    // base64 data URL is more reliable than blob URL across Chrome versions
+    const dataUrl = "data:image/svg+xml;base64,"+btoa(unescape(encodeURIComponent(xml)));
+    const img = new Image();
+    const timer = setTimeout(()=>{ reject(new Error("snapshot timeout")); }, 10000);
+    img.onload = ()=>{
+      clearTimeout(timer);
+      try{
+        const scale = 2;
+        const canvas = document.createElement("canvas");
+        canvas.width = CANVAS_W*scale; canvas.height = CANVAS_H*scale;
+        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas);
+      }catch(e){ reject(e); }
+    };
+    img.onerror = ()=>{ clearTimeout(timer); reject(new Error("snapshot render failed")); };
+    img.src = dataUrl;
+  });
+}
+
+async function saveExportedFile(filename, data, kindLabel){
+  try{
+    const blob = data instanceof Blob ? data : new Blob([data]);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+    toast("Map exported as "+kindLabel);
+  }catch(err){
+    toast("Export failed", false);
+  }
+}
+
+document.getElementById("exportPngBtn").addEventListener("click", async ()=>{
+  const btn = document.getElementById("exportPngBtn");
+  const orig = btn.textContent;
+  btn.disabled = true; btn.textContent = "Exporting…";
+  try{
+    const canvas = await captureCanvasSnapshot();
+    const blob = await new Promise((res, rej) => canvas.toBlob(b => b ? res(b) : rej(new Error("toBlob failed")), "image/png"));
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = safeFileBase()+".png";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+    toast("Map exported as PNG");
+  }catch(e){ toast("Export failed: "+e.message, false); }
+  finally{ btn.disabled = false; btn.textContent = orig; }
+});
+
+document.getElementById("exportPdfBtn").addEventListener("click", async ()=>{
+  // Open window synchronously within user gesture to avoid popup blocker
+  const win = window.open("","_blank","width=900,height=700");
+  if(!win){ toast("Allow pop-ups for PDF export", false); return; }
+  win.document.write(`<!doctype html><html><head><title>Generating…</title><style>
+    body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;background:#f5f5f5;color:#444;}
+  </style></head><body><p>Generating map…</p></body></html>`);
+  win.document.close();
+  const btn = document.getElementById("exportPdfBtn");
+  const orig = btn.textContent;
+  btn.disabled = true; btn.textContent = "Exporting…";
+  try{
+    const canvas = await captureCanvasSnapshot();
+    const imgData = canvas.toDataURL("image/png");
+    const landscape = canvas.width >= canvas.height;
+    win.document.open();
+    win.document.write(`<!doctype html><html><head><title>${safeFileBase()}</title><style>
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{background:#fff}
+      img{display:block;width:100%;height:auto}
+      @page{size:${landscape?"landscape":"portrait"};margin:0}
+      @media print{html,body{width:100%;height:100%}img{width:100%;height:100%;object-fit:contain}}
+    </style></head><body><img src="${imgData}"></body></html>`);
+    win.document.close();
+    win.onload = ()=>{ win.focus(); win.print(); };
+    toast("PDF — use the print dialog to save");
+  }catch(e){
+    win.close();
+    toast("Export failed: "+e.message, false);
+  }
+  finally{ btn.disabled = false; btn.textContent = orig; }
+});
+
+/* ---------------- guide panel ---------------- */
+const guidePanel = document.getElementById("guidePanel");
+function buildGuide(){
+  guidePanel.innerHTML = "";
+  guidePanel.appendChild(H("h3",{},"Reading a value stream map"));
+  guidePanel.appendChild(H("p",{class:"sub"},"VSM traces how material and information move through a process, so you can see where time is actually spent — and where it's wasted."));
+  const all = Object.assign({}, TYPE_META);
+  Object.keys(all).forEach(type=>{
+    const item = H("div",{class:"guide-item"});
+    item.innerHTML = paletteIcon(type);
+    const txt = H("div",{});
+    txt.innerHTML = `<div class="t">${TYPE_META[type].label}</div><div class="d">${esc(TYPE_META[type].desc)}</div>`;
+    item.appendChild(txt);
+    guidePanel.appendChild(item);
+  });
+  Object.keys(CONN_META).forEach(kind=>{
+    const item = H("div",{class:"guide-item"});
+    item.innerHTML = `<svg width="18" height="18" viewBox="0 0 18 18"><line x1="1" y1="9" x2="15" y2="9" stroke="${CONN_META[kind].color}" stroke-width="2"/><polygon points="15,5 17,9 15,13" fill="${CONN_META[kind].color}"/></svg>`;
+    const txt = H("div",{});
+    txt.innerHTML = `<div class="t">${CONN_META[kind].label}</div><div class="d">${esc(CONN_META[kind].desc)}</div>`;
+    item.appendChild(txt);
+    guidePanel.appendChild(item);
+  });
+}
+document.getElementById("guideToggleBtn").addEventListener("click", ()=>{
+  guidePanel.classList.toggle("hidden");
+});
+
+/* ---------------- modal & toast ---------------- */
+const overlay = document.getElementById("modalOverlay");
+const modalBox = document.getElementById("modalBox");
+function closeModal(){ overlay.classList.add("hidden"); modalBox.innerHTML=""; }
+overlay.addEventListener("click",(e)=>{ if(e.target===overlay) closeModal(); });
+
+function confirmModal(title, body, actionLabel, onConfirm, danger){
+  modalBox.innerHTML = `<h3>${esc(title)}</h3><p>${esc(body)}</p>`;
+  const actions = H("div",{class:"actions"});
+  const cancel = H("button",{class:"btn ghost"},"Cancel");
+  cancel.addEventListener("click", closeModal);
+  const ok = H("button",{class:"btn "+(danger?"danger":"primary")}, actionLabel);
+  ok.addEventListener("click", ()=>{ closeModal(); onConfirm(); });
+  actions.appendChild(cancel); actions.appendChild(ok);
+  modalBox.appendChild(actions);
+  overlay.classList.remove("hidden");
+}
+function promptModal(title, label, defVal, onSubmit){
+  modalBox.innerHTML = `<h3>${esc(title)}</h3>`;
+  const f = H("div",{class:"field"});
+  f.appendChild(H("label",{},label));
+  const inp = H("input",{type:"text"});
+  inp.value = defVal;
+  f.appendChild(inp);
+  modalBox.appendChild(f);
+  const actions = H("div",{class:"actions"});
+  const cancel = H("button",{class:"btn ghost"},"Cancel");
+  cancel.addEventListener("click", closeModal);
+  const ok = H("button",{class:"btn primary"},"Save");
+  const submit = ()=>{ const v = inp.value.trim(); closeModal(); onSubmit(v); };
+  ok.addEventListener("click", submit);
+  inp.addEventListener("keydown",(e)=>{ if(e.key==="Enter") submit(); });
+  actions.appendChild(cancel); actions.appendChild(ok);
+  modalBox.appendChild(actions);
+  overlay.classList.remove("hidden");
+  setTimeout(()=>{ inp.focus(); inp.select(); }, 30);
+}
+function toast(msg, ok){
+  const wrap = document.getElementById("toastWrap");
+  const t = H("div",{class:"toast"});
+  t.innerHTML = `<span class="d" style="background:${ok===false?'#E2645A':'#4FBF8B'}"></span>${esc(msg)}`;
+  wrap.appendChild(t);
+  setTimeout(()=>{ t.remove(); }, 2800);
+}
+
+/* ---------------- init ---------------- */
+initState();
+applyZoom();
+renderAll();
+renderStatus();
+buildGuide();
+if(!storageOk) toast("Local save unavailable in this browser — your work stays for this session only", false);
+
+})();
+</script>
+
+</body>
+</html>
