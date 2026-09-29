@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<meta name="description" content="LeanUniversity е създадена от практици с опит в Lean трансформации. Не ни води печалбата — води ни убеждението, че ефективното мислене трябва да е достъпно за всеки.">
+<meta name="keywords" content="LeanUniversity за нас, Lean методология България, Lean обучение безплатно">
+<meta name="author" content="LeanUniversity">
+<meta property="og:title" content="За нас — LeanUniversity">
+<meta property="og:description" content="Практици с опит, водени от ефективността, не от печалбата. Правим Lean знанието достъпно на български.">
+<meta property="og:url" content="https://leanhab.eu/za-nas.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://leanhab.eu/za-nas.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='26' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LU</text></svg>">
+<title>За нас — LeanUniversity</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1a2e;--blue:#1a3a5c;--accent:#1565c0;--gold:#c9a84c;--white:#ffffff;--off-white:#f8f7f4;--gray:#6b6b6b;--gray-dark:#3d3d3d;--black:#1a1a1a;--border:#e0e0e0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 2.5rem;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.97);border-bottom:2px solid var(--gold);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;backdrop-filter:blur(8px);}
+.logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--white);text-decoration:none;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-dropdown{position:relative;}
+.nav-dropdown-btn{background:none;border:none;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;cursor:pointer;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:0.3rem;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;}
+.nav-dropdown-btn:hover,.nav-dropdown.open .nav-dropdown-btn{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-dropdown-menu{display:none;position:absolute;top:64px;right:0;background:var(--navy);border:1px solid var(--gold);border-top:none;min-width:180px;z-index:200;list-style:none;}
+.nav-dropdown.open .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu a{display:block;padding:0.9rem 1.2rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.2s,background 0.2s;}
+.nav-dropdown-menu a:hover{color:var(--gold);background:rgba(255,255,255,0.05);}
+.nav-dropdown-menu li:last-child a{border-bottom:none;}
+.footer-social-link{color:rgba(255,255,255,0.4);transition:color 0.2s;display:inline-flex;align-items:center;}
+.footer-social-link:hover{color:var(--gold);}
+.btn-nav{background:var(--gold);color:var(--navy);padding:0.55rem 1.3rem;font-size:0.82rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;border-radius:2px;}
+.btn-nav:hover{opacity:0.85;}
+.lang-switcher{display:flex;gap:0.3rem;margin-left:1rem;}
+.lang-btn{background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);padding:0.3rem 0.65rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.lang-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.lang-btn:hover:not(.active){border-color:var(--gold);color:var(--gold);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);border-bottom:2px solid var(--gold);z-index:99;padding:1rem 1.5rem;flex-direction:column;gap:0;}
+.mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:block;}
+.mobile-nav a:hover{color:var(--gold);}
+.mobile-nav.open{display:flex;}
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:var(--white);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;z-index:999;flex-wrap:wrap;border-top:3px solid var(--gold);}
+.cookie-banner p{font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.5;margin:0;flex:1;min-width:200px;}
+.cookie-actions{display:flex;gap:0.8rem;flex-shrink:0;}
+.btn-cookie-accept{background:var(--gold);color:var(--navy);border:none;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.btn-cookie-decline{background:none;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.page-hero{padding-top:64px;background:linear-gradient(135deg,#0b1a2e 0%,#1a3a5c 60%,#0d2137 100%);padding-bottom:5rem;text-align:center;}
+.page-hero-inner{padding-top:4rem;max-width:760px;margin:0 auto;padding-left:2rem;padding-right:2rem;}
+.breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;justify-content:center;}
+.breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1.2rem;}
+.page-hero-lead{color:rgba(255,255,255,0.7);font-size:1.1rem;line-height:1.8;font-weight:300;}
+.section{padding:5rem 0;}
+.section-alt{background:var(--off-white);}
+.section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:600;color:var(--navy);margin-bottom:0.5rem;line-height:1.25;}
+.section-divider{width:48px;height:3px;background:var(--gold);margin:1rem 0 2rem;}
+.body-text{font-size:1rem;color:var(--gray-dark);line-height:1.85;margin-bottom:1.2rem;font-weight:300;}
+.body-text strong{font-weight:600;color:var(--navy);}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.value-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:2rem;border-top:3px solid var(--gold);}
+.value-icon{font-size:2rem;margin-bottom:1rem;}
+.value-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:0.7rem;}
+.value-desc{font-size:0.92rem;color:var(--gray);line-height:1.75;font-weight:300;}
+.mission-block{max-width:700px;}
+.callout{background:var(--navy);border-left:4px solid var(--gold);padding:2rem 2.2rem;border-radius:0 10px 10px 0;margin:3rem 0;}
+.callout p{color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.8;margin:0;font-weight:300;}
+.callout strong{color:var(--gold);font-weight:600;}
+.mvg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-bottom:2.5rem;}
+.mvg-card{border-top:3px solid var(--gold);padding-top:1.5rem;}
+.mvg-label{font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.mvg-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:600;color:var(--navy);margin-bottom:0.9rem;line-height:1.3;}
+.contact-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;}
+.contact-item{display:flex;align-items:center;gap:0.7rem;font-size:0.95rem;color:var(--gray-dark);}
+.contact-item a{color:var(--accent);text-decoration:none;font-weight:500;}
+.contact-item a:hover{color:var(--gold);}
+footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2rem;}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
+.footer-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none;}
+.footer-logo span{color:var(--gold);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{color:rgba(255,255,255,0.3);font-size:0.78rem;}
+.footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
+.footer-legal a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;transition:color 0.2s;}
+.footer-legal a:hover{color:var(--gold);}
+@media(max-width:900px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}.values-grid{grid-template-columns:1fr 1fr;}.mvg-grid{grid-template-columns:1fr;}.container{padding:0 1.5rem;}.section{padding:3.5rem 0;}}
+@media(max-width:600px){.page-hero h1{font-size:1.8rem;}.values-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Lean<span>University</span></a>
+  <ul class="nav-links">
+    <li><a href="/#history" data-bg="История" data-en="History">История</a></li>
+    <li><a href="/lean-principi.html" data-bg="Принципи" data-en="Principles">Принципи</a></li>
+    <li><a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a></li>
+    <li><a href="/tools/" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
+    <li><a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-btn" onclick="toggleDropdown(this)" data-bg="Още ▾" data-en="More ▾">Още ▾</button>
+      <ul class="nav-dropdown-menu">
+        <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a></li>
+        <li><a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
+        <li><a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a></li>
+        <li><a href="/za-nas.html" class="active" onclick="closeMenu()" data-bg="За нас" data-en="About Us">За нас</a></li>
+      </ul>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+  <div style="display:flex;align-items:center;gap:0.8rem;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">BG</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="/#contact" class="btn-nav" data-bg="Контакт" data-en="Contact">Контакт</a>
+  </div>
+</nav>
+
+<!-- COOKIE -->
+<div class="cookie-banner" id="cookie-banner">
+  <p data-bg="Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Политика за поверителност&lt;/a&gt;." data-en="This site uses cookies to improve user experience. See our &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Privacy Policy&lt;/a&gt;.">Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата <a href="/privacy-policy.html" style="color:var(--gold)">Политика за поверителност</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn-cookie-decline" onclick="cookieDecline()" data-bg="Отказ" data-en="Decline">Отказ</button>
+    <button class="btn-cookie-accept" onclick="cookieAccept()" data-bg="Приемам" data-en="Accept">Приемам</button>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="/#history" onclick="closeMenu()" data-bg="История" data-en="History">История</a>
+  <a href="/lean-principi.html" onclick="closeMenu()" data-bg="Принципи" data-en="Principles">Принципи</a>
+  <a href="/instrumenti.html" onclick="closeMenu()" data-bg="Инструменти" data-en="Tools">Инструменти</a>
+  <a href="/kursove.html" onclick="closeMenu()" data-bg="Курсове" data-en="Courses">Курсове</a>
+  <a href="/tools/" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
+  <a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a>
+  <a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a>
+  <a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a>
+  <a href="/za-nas.html" onclick="closeMenu()" data-bg="За нас" data-en="About Us">За нас</a>
+  <a href="/#contact" onclick="closeMenu()" data-bg="Контакт" data-en="Contact">Контакт</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Начало</a><span>›</span><span data-bg="За нас" data-en="About Us">За нас</span></div>
+    <h1 data-bg="Не ни води печалбата.<br>Води ни ефективността." data-en="We're not driven by profit.<br>We're driven by efficiency.">Не ни води печалбата.<br>Води ни ефективността.</h1>
+    <p class="page-hero-lead" data-bg="LeanUniversity е създадена от практици с реален опит в Lean трансформации. Убедени сме, че знанието за ефективното мислене трябва да е достъпно за всеки — не само за тези, които могат да си позволят скъпи консултанти." data-en="LeanUniversity was created by practitioners with real experience in Lean transformations. We believe that knowledge about effective thinking should be accessible to everyone — not only those who can afford expensive consultants.">LeanUniversity е създадена от практици с реален опит в Lean трансформации. Убедени сме, че знанието за ефективното мислене трябва да е достъпно за всеки — не само за тези, които могат да си позволят скъпи консултанти.</p>
+  </div>
+</div>
+
+<!-- МИСИЯ / ВИЗИЯ / ЦЕЛ -->
+<section class="section">
+  <div class="container">
+    <div class="mvg-grid">
+
+      <div class="mvg-card">
+        <div class="mvg-label" data-bg="Мисия" data-en="Mission">Мисия</div>
+        <h2 class="mvg-title" data-bg="Lean знанието — достъпно за всеки" data-en="Lean Knowledge — Accessible to All">Lean знанието — достъпно за всеки</h2>
+        <p class="body-text" data-bg="Lean методологията промени начина, по който работят едни от най-успешните организации в света. В България тя остава затворена зад езикова бариера и скъпи корпоративни програми. Ние правим обратното — всичко в LeanUniversity е &lt;strong&gt;безплатно и на български&lt;/strong&gt;." data-en="Lean methodology has transformed how some of the world's most successful organisations operate. In Bulgaria it remains locked behind a language barrier and expensive corporate programmes. We do the opposite — everything at LeanUniversity is &lt;strong&gt;free and in Bulgarian&lt;/strong&gt;.">Lean методологията промени начина, по който работят едни от най-успешните организации в света. В България тя остава затворена зад езикова бариера и скъпи корпоративни програми. Ние правим обратното — всичко в LeanUniversity е <strong>безплатно и на български</strong>.</p>
+      </div>
+
+      <div class="mvg-card">
+        <div class="mvg-label" data-bg="Визия" data-en="Vision">Визия</div>
+        <h2 class="mvg-title" data-bg="България с по-ефективни организации" data-en="Bulgaria with More Efficient Organisations">България с по-ефективни организации</h2>
+        <p class="body-text" data-bg="Представяме си бъдеще, в което Lean мисленето не е запазено за мултинационалните корпорации. Производства, болници, общини, стартъпи — всяка организация може да работи без излишни загуби, когато знанието е достъпно." data-en="We envision a future where Lean thinking is not reserved for multinational corporations. Factories, hospitals, municipalities, startups — every organisation can work without unnecessary waste when the knowledge is accessible.">Представяме си бъдеще, в което Lean мисленето не е запазено за мултинационалните корпорации. Производства, болници, общини, стартъпи — всяка организация може да работи без излишни загуби, когато знанието е достъпно.</p>
+      </div>
+
+      <div class="mvg-card">
+        <div class="mvg-label" data-bg="Цел" data-en="Goal">Цел</div>
+        <h2 class="mvg-title" data-bg="Най-пълният Lean ресурс на български" data-en="The Most Complete Lean Resource in Bulgarian">Най-пълният Lean ресурс на български</h2>
+        <p class="body-text" data-bg="Статии, инструменти, симулатори, онлайн приложения — изграждаме платформата, която искахме да имаме, когато сами започвахме. Дадем ли я на другите, нашата цел е постигната." data-en="Articles, tools, simulators, online apps — we are building the platform we wished we had when we started ourselves. Give it to others and our goal is achieved.">Статии, инструменти, симулатори, онлайн приложения — изграждаме платформата, която искахме да имаме, когато сами започвахме. Дадем ли я на другите, нашата цел е постигната.</p>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <p data-bg="&lt;strong&gt;Вярваме:&lt;/strong&gt; Когато повече хора разбират как да елиминират загубите и да създават стойност, цялата икономика печели. Lean не е привилегия на Toyota и Ford. Lean може да е в малкото предприятие, в болницата, в общинската администрация." data-en="&lt;strong&gt;We believe:&lt;/strong&gt; When more people understand how to eliminate waste and create value, the whole economy benefits. Lean is not the privilege of Toyota and Ford. Lean can be in the small business, in the hospital, in the municipal administration."><strong>Вярваме:</strong> Когато повече хора разбират как да елиминират загубите и да създават стойност, цялата икономика печели. Lean не е привилегия на Toyota и Ford. Lean може да е в малкото предприятие, в болницата, в общинската администрация.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕННОСТИ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-label" data-bg="Нашите принципи" data-en="Our Principles">Нашите принципи</div>
+    <h2 class="section-title" data-bg="Как работим" data-en="How We Work">Как работим</h2>
+    <div class="section-divider"></div>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <div class="value-title" data-bg="Практично, не теоретично" data-en="Practical, Not Theoretical">Практично, не теоретично</div>
+        <p class="value-desc" data-bg="Всяко съдържание е изградено от хора, прилагали Lean на живо — в производствени цехове, офиси и услуги. Без академични жаргон, без абстрактни диаграми. Само онова, което работи." data-en="All content is built by people who have applied Lean in real life — in production floors, offices and services. No academic jargon, no abstract diagrams. Only what works.">Всяко съдържание е изградено от хора, прилагали Lean на живо — в производствени цехове, офиси и услуги. Без академичен жаргон, без абстрактни диаграми. Само онова, което работи.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🔓</div>
+        <div class="value-title" data-bg="Отворено и безплатно" data-en="Open and Free">Отворено и безплатно</div>
+        <p class="value-desc" data-bg="Не вярваме, че знанието трябва да е зад paywall. Статиите, инструментите, симулаторите — всичко е безплатно. Не защото не ценим труда си, а защото ценим достъпността повече." data-en="We don't believe knowledge should be behind a paywall. The articles, tools, simulators — all free. Not because we don't value our work, but because we value accessibility more.">Не вярваме, че знанието трябва да е зад paywall. Статиите, инструментите, симулаторите — всичко е безплатно. Не защото не ценим труда си, а защото ценим достъпността повече.</p>
+      </div>
+
+      <div class="value-card">
+        <div class="value-icon">🇧🇬</div>
+        <div class="value-title" data-bg="На български" data-en="In Bulgarian">На български</div>
+        <p class="value-desc" data-bg="Повечето Lean ресурси са на английски. Ние вярваме, че ефективното мислене не трябва да изисква владеене на чужд език. Затова всичко е написано на български — ясно и директно." data-en="Most Lean resources are in English. We believe effective thinking should not require foreign language proficiency. That is why everything is written in Bulgarian — clearly and directly.">Повечето Lean ресурси са на английски. Ние вярваме, че ефективното мислене не трябва да изисква владеене на чужд език. Затова всичко е написано на български — ясно и директно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЗАЩО -->
+<section class="section">
+  <div class="container">
+    <div class="mission-block">
+      <div class="section-label" data-bg="Защо съществуваме" data-en="Why We Exist">Защо съществуваме</div>
+      <h2 class="section-title" data-bg="Опитът не трябва да остава само в наша полза" data-en="Experience Should Not Remain Only to Our Benefit">Опитът не трябва да остава само в наша полза</h2>
+      <div class="section-divider"></div>
+      <p class="body-text" data-bg="Имаме опит. Видели сме как Lean трансформира организации — как намалява загубите, ангажира хората и прави процесите по-издръжливи в трудни времена. Видели сме и обратното — компании, потънали не защото кризата е твърде голяма, а защото системите им са твърде крехки." data-en="We have experience. We have seen how Lean transforms organisations — how it reduces waste, engages people, and makes processes more resilient in difficult times. We have also seen the opposite — companies that sank not because the crisis was too large, but because their systems were too fragile.">Имаме опит. Видели сме как Lean трансформира организации — как намалява загубите, ангажира хората и прави процесите по-издръжливи в трудни времена. Видели сме и обратното — компании, потънали не защото кризата е твърде голяма, а защото системите им са твърде крехки.</p>
+      <p class="body-text" data-bg="Не е честно тази разлика да зависи само от бюджета за консултанти. Затова създадохме LeanUniversity — не като бизнес модел, а като начин да върнем обратно онова, което Lean ни е дало." data-en="It is not fair that this difference depends only on the budget for consultants. That is why we created LeanUniversity — not as a business model, but as a way to give back what Lean has given us.">Не е честно тази разлика да зависи само от бюджета за консултанти. Затова създадохме LeanUniversity — не като бизнес модел, а като начин да върнем обратно онова, което Lean ни е дало.</p>
+      <p class="body-text" data-bg="Ако четете това и сте направили нещо по-ефективно благодарение на нас — нашата цел е постигната." data-en="If you are reading this and have done something more efficiently thanks to us — our goal is achieved.">Ако четете това и сте направили нещо по-ефективно благодарение на нас — нашата цел е постигната.</p>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТ -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="mission-block">
+      <div class="section-label" data-bg="Свържете се с нас" data-en="Get in Touch">Свържете се с нас</div>
+      <h2 class="section-title" data-bg="Имате въпрос или предложение?" data-en="Have a Question or Suggestion?">Имате въпрос или предложение?</h2>
+      <div class="section-divider"></div>
+      <p class="body-text" data-bg="Пишете ни — отговаряме лично. Независимо дали имате въпрос за методологията, искате да споделите резултат или имате идея за съдържание." data-en="Write to us — we reply personally. Whether you have a question about methodology, want to share a result, or have an idea for content.">Пишете ни — отговаряме лично. Независимо дали имате въпрос за методологията, искате да споделите резултат или имате идея за съдържание.</p>
+      <div class="contact-row">
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:leanhabeu@gmail.com">leanhabeu@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.854 0C5.312 0 0 5.313 0 11.855c0 2.09.546 4.048 1.502 5.747L.057 23.054a.5.5 0 00.612.612l5.479-1.437A11.812 11.812 0 0011.854 23.71c6.542 0 11.854-5.312 11.854-11.855C23.708 5.313 18.396 0 11.854 0z"/></svg>
+          <a href="https://wa.me/359887557661" target="_blank" rel="noopener" data-bg="0887 557 661 (WhatsApp)" data-en="0887 557 661 (WhatsApp)">0887 557 661 (WhatsApp)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="/" class="footer-logo">Lean<span>University</span></a>
+        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;" data-bg="Образователна платформа за Lean методология" data-en="Educational platform for Lean methodology">Образователна платформа за Lean методология</div>
+      </div>
+      <div class="footer-links">
+        <a href="/lean-principi.html" data-bg="Принципи" data-en="Principles">Принципи</a>
+        <a href="/muda-8-vida-zagubi.html" data-bg="Загуби" data-en="Waste">Загуби</a>
+        <a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a>
+        <a href="/simulator.html" data-bg="Симулатор" data-en="Simulator">Симулатор</a>
+        <a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a>
+        <a href="/blog/" data-bg="Блог" data-en="Blog">Блог</a>
+        <a href="/publikatsii/" data-bg="Публикации" data-en="Publications">Публикации</a>
+        <a href="/za-nas.html" data-bg="За нас" data-en="About Us">За нас</a>
+        <a href="/#contact" data-bg="Контакт" data-en="Contact">Контакт</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-bg="© 2026 LeanUniversity — Всички права запазени" data-en="© 2026 LeanUniversity — All rights reserved">© 2026 LeanUniversity — Всички права запазени</div>
+      <div class="footer-legal">
+        <a href="/privacy-policy.html" data-bg="Поверителност" data-en="Privacy Policy">Поверителност</a>
+        <a href="/terms.html" data-bg="Условия" data-en="Terms">Условия</a>
+        <a href="/impressum.html" data-bg="Impressum" data-en="Impressum">Impressum</a>
+        <a href="https://www.linkedin.com/company/145216343/" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      </div>
+      <div class="footer-copy" data-bg="Lean образование България" data-en="Lean education Bulgaria">Lean образование България</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function loadGA(){if(document.getElementById('ga-script'))return;var s=document.createElement('script');s.id='ga-script';s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-TTTLSPYZEF';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config','G-TTTLSPYZEF');}
+if(localStorage.getItem('cookieConsent')==='accepted')loadGA();
+if(localStorage.getItem('cookieConsent'))document.getElementById('cookie-banner').style.display='none';
+function cookieAccept(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';loadGA();}
+function cookieDecline(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-nav').classList.toggle('open');}
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-nav').classList.remove('open');}
+function toggleDropdown(btn){btn.closest('.nav-dropdown').classList.toggle('open');}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'));});
+function setLang(lang){['bg','en'].forEach(l=>document.getElementById('btn-'+l).classList.remove('active'));document.getElementById('btn-'+lang).classList.add('active');document.documentElement.lang=lang;localStorage.setItem('lang',lang);document.querySelectorAll('[data-bg]').forEach(function(el){el.innerHTML=lang==='en'?el.dataset.en:el.dataset.bg;});}
+const savedLang=localStorage.getItem('lang')||'bg';
+if(savedLang!=='bg')setLang(savedLang);
+</script>
+</body>
+</html>
