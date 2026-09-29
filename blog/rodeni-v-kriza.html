@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" content="notranslate">
+<meta name="description" content="Родените в криза: защо едни компании излизат по-силни след кризи, а други само оцеляват. Анализ на Toyota, Wiremold, Ford и Kodak — и урокът, който Lean ни дава.">
+<meta name="keywords" content="Lean криза, Toyota Production System, Wiremold Lean, Ford кризис, Lean резилиентност, компании в криза">
+<meta name="author" content="LeanUniversity">
+<meta property="og:title" content="Родени в криза: защо едни компании излизат по-силни, а други само оцеляват | LeanUniversity">
+<meta property="og:description" content="Toyota, Wiremold, Ford — компаниите, които имаха Lean, излязоха по-силни. Тези, които нямаха, изчезнаха. Ето защо.">
+<meta property="og:url" content="https://leanhab.eu/blog/rodeni-v-kriza.html">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://leanhab.eu/blog/rodeni-v-kriza.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' fill='%230b1a2e'/><text x='50%25' y='54%25' font-family='Georgia,serif' font-size='26' font-weight='bold' fill='%23c9a84c' text-anchor='middle' dominant-baseline='middle'>LU</text></svg>">
+<title>Родени в криза: защо едни компании излизат по-силни, а други само оцеляват | LeanUniversity</title>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Родени в криза: защо едни компании излизат по-силни, а други само оцеляват","author":{"@type":"Organization","name":"LeanUniversity","url":"https://leanhab.eu"},"publisher":{"@type":"Organization","name":"LeanUniversity","url":"https://leanhab.eu"},"datePublished":"2026-09-29","dateModified":"2026-09-29","url":"https://leanhab.eu/blog/rodeni-v-kriza.html","description":"Toyota, Wiremold, Ford — компаниите, които имаха Lean, излязоха по-силни от кризите. Тези, които нямаха, изчезнаха. Анализ и ключовия урок."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Начало","item":"https://leanhab.eu/"},{"@type":"ListItem","position":2,"name":"Блог","item":"https://leanhab.eu/blog/"},{"@type":"ListItem","position":3,"name":"Родени в криза","item":"https://leanhab.eu/blog/rodeni-v-kriza.html"}]}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1a2e;--blue:#1a3a5c;--accent:#1565c0;--gold:#c9a84c;--white:#ffffff;--off-white:#f8f7f4;--gray:#6b6b6b;--gray-dark:#3d3d3d;--black:#1a1a1a;--border:#e0e0e0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+.container{max-width:1200px;margin:0 auto;padding:0 2.5rem;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.97);border-bottom:2px solid var(--gold);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;backdrop-filter:blur(8px);}
+.logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.4rem;color:var(--white);text-decoration:none;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;display:flex;align-items:center;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-dropdown{position:relative;}
+.nav-dropdown-btn{background:none;border:none;color:rgba(255,255,255,0.7);font-size:0.85rem;font-weight:500;padding:0 0.9rem;height:64px;cursor:pointer;font-family:'Source Sans 3',sans-serif;display:flex;align-items:center;gap:0.3rem;border-bottom:3px solid transparent;transition:color 0.2s,border-color 0.2s;}
+.nav-dropdown-btn:hover,.nav-dropdown.open .nav-dropdown-btn{color:var(--gold);border-bottom-color:var(--gold);}
+.nav-dropdown-menu{display:none;position:absolute;top:64px;right:0;background:var(--navy);border:1px solid var(--gold);border-top:none;min-width:180px;z-index:200;list-style:none;}
+.nav-dropdown.open .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu a{display:block;padding:0.9rem 1.2rem;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.85rem;border-bottom:1px solid rgba(255,255,255,0.08);transition:color 0.2s,background 0.2s;}
+.nav-dropdown-menu a:hover{color:var(--gold);background:rgba(255,255,255,0.05);}
+.nav-dropdown-menu li:last-child a{border-bottom:none;}
+.footer-social-link{color:rgba(255,255,255,0.4);transition:color 0.2s;display:inline-flex;align-items:center;}
+.footer-social-link:hover{color:var(--gold);}
+.btn-nav{background:var(--gold);color:var(--navy);padding:0.55rem 1.3rem;font-size:0.82rem;font-weight:700;text-decoration:none;transition:opacity 0.2s;border-radius:2px;}
+.btn-nav:hover{opacity:0.85;}
+.site-switcher{display:flex;gap:0;border:1px solid rgba(255,255,255,0.2);overflow:hidden;border-radius:3px;}
+.site-btn{background:none;border:none;color:rgba(255,255,255,0.6);padding:0.3rem 0.75rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;letter-spacing:0.05em;text-decoration:none;display:flex;align-items:center;}
+.site-btn.active{background:var(--gold);color:var(--navy);}
+.lang-switcher{display:flex;gap:0.3rem;margin-left:1rem;}
+.lang-btn{background:none;border:1px solid rgba(255,255,255,0.25);color:rgba(255,255,255,0.6);padding:0.3rem 0.65rem;font-size:0.75rem;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.lang-btn.active{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.lang-btn:hover:not(.active){border-color:var(--gold);color:var(--gold);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);border-bottom:2px solid var(--gold);z-index:99;padding:1rem 1.5rem;flex-direction:column;gap:0;}
+.mobile-nav a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:block;}
+.mobile-nav a:hover{color:var(--gold);}
+.mobile-nav.open{display:flex;}
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:var(--white);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;z-index:999;flex-wrap:wrap;border-top:3px solid var(--gold);}
+.cookie-banner p{font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.5;margin:0;flex:1;min-width:200px;}
+.cookie-actions{display:flex;gap:0.8rem;flex-shrink:0;}
+.btn-cookie-accept{background:var(--gold);color:var(--navy);border:none;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.btn-cookie-decline{background:none;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
+.page-hero{padding-top:64px;background:linear-gradient(135deg,#0b1a2e 0%,#1a3a5c 60%,#0d2137 100%);padding-bottom:4rem;text-align:center;}
+.page-hero-inner{padding-top:4rem;max-width:800px;margin:0 auto;padding-left:2rem;padding-right:2rem;}
+.breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;justify-content:center;}
+.breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.article-meta{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-top:1rem;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:1rem;}
+.article-wrap{max-width:760px;margin:0 auto;padding:4rem 2.5rem 5rem;}
+.article-body h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--navy);margin:2.5rem 0 1rem;}
+.article-body h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin:2rem 0 0.7rem;}
+.article-body p{font-size:1rem;color:var(--gray-dark);line-height:1.85;margin-bottom:1.2rem;font-weight:300;}
+.article-body ul,.article-body ol{margin:0.5rem 0 1.5rem 1.5rem;}
+.article-body li{font-size:1rem;color:var(--gray-dark);line-height:1.75;margin-bottom:0.5rem;font-weight:300;}
+.article-body a{color:var(--accent);text-decoration:none;}
+.article-body a:hover{text-decoration:underline;}
+.article-body strong{font-weight:600;color:var(--navy);}
+.article-callout{background:var(--off-white);border-left:4px solid var(--gold);padding:1.5rem 1.8rem;margin:2rem 0;border-radius:0 8px 8px 0;}
+.article-callout p{margin:0;font-size:0.95rem;}
+.article-intro{font-style:italic;font-size:1.08rem;color:var(--gray);line-height:1.9;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+.back-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent);font-size:0.88rem;font-weight:600;text-decoration:none;margin-bottom:3rem;transition:color 0.2s;}
+.back-link:hover{color:var(--gold);}
+.timeline-wrap{margin:2.5rem 0;background:var(--navy);border-radius:12px;padding:2rem 1.5rem 1.8rem;overflow:hidden;}
+.timeline-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--gold);text-align:center;margin-bottom:1.5rem;letter-spacing:0.03em;}
+footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2rem;}
+.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
+.footer-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;color:var(--white);text-decoration:none;}
+.footer-logo span{color:var(--gold);}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.footer-links a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-copy{color:rgba(255,255,255,0.3);font-size:0.78rem;}
+.footer-legal{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;}
+.footer-legal a{color:rgba(255,255,255,0.4);text-decoration:none;font-size:0.78rem;transition:color 0.2s;}
+.footer-legal a:hover{color:var(--gold);}
+@media(max-width:900px){nav{padding:0 1.5rem;}.nav-links{display:none;}.hamburger{display:flex;}.container{padding:0 1.5rem;}.article-wrap{padding:3rem 1.5rem 4rem;}}
+@media(max-width:600px){.page-hero h1{font-size:1.6rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">Lean<span>University</span></a>
+  <ul class="nav-links">
+    <li><a href="/#history" data-bg="История" data-en="History">История</a></li>
+    <li><a href="/lean-principi.html" data-bg="Принципи" data-en="Principles">Принципи</a></li>
+    <li><a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a></li>
+    <li><a href="/tools/" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a></li>
+    <li><a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-btn" onclick="toggleDropdown(this)" data-bg="Още ▾" data-en="More ▾">Още ▾</button>
+      <ul class="nav-dropdown-menu">
+        <li><a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a></li>
+        <li><a href="/blog/" class="active" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a></li>
+        <li><a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a></li>
+      </ul>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+  <div style="display:flex;align-items:center;gap:0.8rem;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-bg" onclick="setLang('bg')">BG</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="/#contact" class="btn-nav" data-bg="Контакт" data-en="Contact">Контакт</a>
+  </div>
+</nav>
+
+<!-- COOKIE -->
+<div class="cookie-banner" id="cookie-banner">
+  <p data-bg="Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Политика за поверителност&lt;/a&gt;." data-en="This site uses cookies to improve user experience. See our &lt;a href=&quot;/privacy-policy.html&quot; style=&quot;color:var(--gold)&quot;&gt;Privacy Policy&lt;/a&gt;.">Този сайт използва бисквитки за подобряване на потребителското изживяване. Вижте нашата <a href="/privacy-policy.html" style="color:var(--gold)">Политика за поверителност</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn-cookie-decline" onclick="cookieDecline()" data-bg="Отказ" data-en="Decline">Отказ</button>
+    <button class="btn-cookie-accept" onclick="cookieAccept()" data-bg="Приемам" data-en="Accept">Приемам</button>
+  </div>
+</div>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="/#history" onclick="closeMenu()" data-bg="История" data-en="History">История</a>
+  <a href="/lean-principi.html" onclick="closeMenu()" data-bg="Принципи" data-en="Principles">Принципи</a>
+  <a href="/instrumenti.html" onclick="closeMenu()" data-bg="Инструменти" data-en="Tools">Инструменти</a>
+  <a href="/kursove.html" onclick="closeMenu()" data-bg="Курсове" data-en="Courses">Курсове</a>
+  <a href="/tools/" onclick="closeMenu()" data-bg="Онлайн инструменти" data-en="Online Tools">Онлайн инструменти</a>
+  <a href="/muda-8-vida-zagubi.html" onclick="closeMenu()" data-bg="Загуби (MUDA)" data-en="Waste (MUDA)">Загуби (MUDA)</a>
+  <a href="/blog/" onclick="closeMenu()" data-bg="Блог" data-en="Blog">Блог</a>
+  <a href="/publikatsii/" onclick="closeMenu()" data-bg="Публикации" data-en="Publications">Публикации</a>
+  <a href="/#contact" onclick="closeMenu()" data-bg="Контакт" data-en="Contact">Контакт</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="/">Начало</a><span>›</span><a href="/blog/">Блог</a><span>›</span><span data-bg="Родени в криза" data-en="Born in Crisis">Родени в криза</span></div>
+    <h1 data-bg="Родени в криза: защо едни компании излизат по-силни, а други само оцеляват" data-en="Born in Crisis: Why Some Companies Emerge Stronger While Others Just Survive">Родени в криза: защо едни компании излизат по-силни, а други само оцеляват</h1>
+    <div class="article-meta" data-bg="29 септември 2026 · LeanUniversity · 6 минути четене" data-en="September 29, 2026 · LeanUniversity · 6 min read">29 септември 2026 · LeanUniversity · 6 минути четене</div>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <a href="/blog/" class="back-link" data-bg="← Обратно към Блога" data-en="← Back to Blog">← Обратно към Блога</a>
+
+  <article class="article-body">
+
+    <p class="article-intro" data-bg="Всяка криза е тест. Тест не само за финансовата стабилност на компанията, а за нещо по-дълбоко — за начина, по който тя мисли, организира работата си и се адаптира. Историята на индустрията ни показва ясна закономерност: компаниите, изградили Lean системи преди кризата, не само оцеляват — те излизат по-силни." data-en="Every crisis is a test. Not just of a company's financial stability, but of something deeper — the way it thinks, organises its work, and adapts. The history of industry shows us a clear pattern: companies that built Lean systems before the crisis don't just survive — they emerge stronger.">Всяка криза е тест. Тест не само за финансовата стабилност на компанията, а за нещо по-дълбоко — за начина, по който тя мисли, организира работата си и се адаптира. Историята на индустрията ни показва ясна закономерност: компаниите, изградили Lean системи преди кризата, не само оцеляват — те излизат по-силни.</p>
+
+    <!-- TIMELINE INFOGRAPHIC -->
+    <div class="timeline-wrap">
+      <div class="timeline-title" data-bg="Кризи, които промениха производството" data-en="Crises That Changed Manufacturing">Кризи, които промениха производството</div>
+      <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;" role="img" aria-label="Времева линия на кризи и Lean трансформации">
+        <!-- axis line -->
+        <line x1="30" y1="120" x2="680" y2="120" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+        <!-- year labels -->
+        <text x="30" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">1950</text>
+        <text x="145" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">1973</text>
+        <text x="185" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">1975</text>
+        <text x="365" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">1990</text>
+        <text x="405" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">1991</text>
+        <text x="530" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">2006</text>
+        <text x="660" y="140" fill="rgba(255,255,255,0.35)" font-size="10" text-anchor="middle" font-family="sans-serif">2020</text>
+
+        <!-- 1950 Toyota TPS — above line (gold/positive) -->
+        <line x1="30" y1="120" x2="30" y2="68" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="30" cy="120" r="5" fill="#c9a84c"/>
+        <rect x="0" y="35" width="62" height="32" rx="4" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
+        <text x="31" y="51" fill="#c9a84c" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Toyota TPS</text>
+        <text x="31" y="62" fill="rgba(255,255,255,0.55)" font-size="8" text-anchor="middle" font-family="sans-serif">Lean се ражда</text>
+
+        <!-- 1973 Oil crisis — below line (red/negative) -->
+        <line x1="145" y1="120" x2="145" y2="168" stroke="#e57373" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="145" cy="120" r="5" fill="#e57373"/>
+        <rect x="110" y="153" width="72" height="32" rx="4" fill="rgba(229,115,115,0.12)" stroke="#e57373" stroke-width="1"/>
+        <text x="146" y="168" fill="#e57373" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Нефтена криза</text>
+        <text x="146" y="179" fill="rgba(255,255,255,0.55)" font-size="8" text-anchor="middle" font-family="sans-serif">Toyota оцелява</text>
+
+        <!-- 1975 Kodak — below line (gray/negative) -->
+        <line x1="185" y1="120" x2="185" y2="194" stroke="#90a4ae" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="185" cy="120" r="4" fill="#90a4ae"/>
+        <rect x="152" y="195" width="65" height="20" rx="3" fill="rgba(144,164,174,0.12)" stroke="#90a4ae" stroke-width="1"/>
+        <text x="185" y="208" fill="#90a4ae" font-size="8.5" text-anchor="middle" font-family="sans-serif">Kodak игнорира</text>
+
+        <!-- 1990 MIT/Lean — above line (gold/positive) -->
+        <line x1="365" y1="120" x2="365" y2="55" stroke="#c9a84c" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="365" cy="120" r="5" fill="#c9a84c"/>
+        <rect x="327" y="22" width="78" height="32" rx="4" fill="rgba(201,168,76,0.15)" stroke="#c9a84c" stroke-width="1"/>
+        <text x="366" y="37" fill="#c9a84c" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">MIT — „Lean"</text>
+        <text x="366" y="48" fill="rgba(255,255,255,0.55)" font-size="8" text-anchor="middle" font-family="sans-serif">Книгата, която смени</text>
+
+        <!-- 1991 Wiremold — above line (teal/positive) -->
+        <line x1="405" y1="120" x2="405" y2="72" stroke="#4dd0e1" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="405" cy="120" r="5" fill="#4dd0e1"/>
+        <rect x="368" y="40" width="75" height="30" rx="4" fill="rgba(77,208,225,0.12)" stroke="#4dd0e1" stroke-width="1"/>
+        <text x="406" y="55" fill="#4dd0e1" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Wiremold</text>
+        <text x="406" y="65" fill="rgba(255,255,255,0.55)" font-size="8" text-anchor="middle" font-family="sans-serif">Lean в рецесия</text>
+
+        <!-- 2006 Ford — above line (teal/positive) -->
+        <line x1="530" y1="120" x2="530" y2="65" stroke="#4dd0e1" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="530" cy="120" r="5" fill="#4dd0e1"/>
+        <rect x="492" y="33" width="76" height="30" rx="4" fill="rgba(77,208,225,0.12)" stroke="#4dd0e1" stroke-width="1"/>
+        <text x="531" y="48" fill="#4dd0e1" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Ford — Lean</text>
+        <text x="531" y="58" fill="rgba(255,255,255,0.55)" font-size="8" text-anchor="middle" font-family="sans-serif">Без държавна помощ</text>
+
+        <!-- 2020 Pandemic — below then up (split) -->
+        <line x1="660" y1="120" x2="660" y2="168" stroke="#e57373" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <circle cx="660" cy="120" r="5" fill="#e57373"/>
+        <rect x="620" y="153" width="72" height="32" rx="4" fill="rgba(229,115,115,0.12)" stroke="#e57373" stroke-width="1"/>
+        <text x="657" y="168" fill="#e57373" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Пандемия</text>
+        <text x="657" y="179" fill="rgba(255,255,255,0.55)" font-size="8" text-anchor="middle" font-family="sans-serif">Lean оцелява отново</text>
+
+        <!-- Legend -->
+        <circle cx="30" cy="210" r="4" fill="#c9a84c"/>
+        <text x="40" y="214" fill="rgba(255,255,255,0.5)" font-size="8.5" font-family="sans-serif">Lean трансформация</text>
+        <circle cx="185" cy="210" r="4" fill="#e57373"/>
+        <text x="195" y="214" fill="rgba(255,255,255,0.5)" font-size="8.5" font-family="sans-serif">Криза / пропусната възможност</text>
+      </svg>
+    </div>
+
+    <h2 data-bg="Системата, родена от безизходица" data-en="The System Born from Desperation">Системата, родена от безизходица</h2>
+
+    <p data-bg="Следвоенна Япония. 1945 година. Тойота произвежда камиони за армия, която вече не съществува. Нямат суровини. Нямат капитал. Нямат пазар. Конкурентите им — американските автогиганти — произвеждат стотици хиляди автомобили на ден с конвейерни линии и масово производство." data-en="Post-war Japan. 1945. Toyota is producing trucks for an army that no longer exists. They have no raw materials. No capital. No market. Their competitors — American auto giants — produce hundreds of thousands of cars per day with assembly lines and mass production.">Следвоенна Япония. 1945 година. Тойота произвежда камиони за армия, която вече не съществува. Нямат суровини. Нямат капитал. Нямат пазар. Конкурентите им — американските автогиганти — произвеждат стотици хиляди автомобили на ден с конвейерни линии и масово производство.</p>
+
+    <p data-bg="Именно от тази безизходица Тайичи Оно разработва Производствената система на Toyota (TPS). Не като академично упражнение, а като въпрос на оцеляване. Ако не намерят начин да произвеждат повече с по-малко, компанията ще изчезне." data-en="It is from this desperation that Taiichi Ohno develops the Toyota Production System (TPS). Not as an academic exercise, but as a matter of survival. If they cannot find a way to produce more with less, the company will cease to exist.">Именно от тази безизходица Тайичи Оно разработва Производствената система на Toyota (TPS). Не като академично упражнение, а като въпрос на оцеляване. Ако не намерят начин да произвеждат повече с по-малко, компанията ще изчезне.</p>
+
+    <p data-bg="Резултатът? Toyota не само оцелява — тя преобразява цялата световна автомобилна индустрия. Когато нефтената криза от 1973 г. удря Западния свят, всички автопроизводители се борят. Toyota расте. Нейните малки, икономични автомобили, произведени в елиминирана от загуби система, стават точно това, което пазарът търси." data-en="The result? Toyota not only survives — it transforms the entire global automotive industry. When the 1973 oil crisis hits the Western world, every automaker struggles. Toyota grows. Its small, fuel-efficient cars, produced in a waste-free system, become exactly what the market demands.">Резултатът? Toyota не само оцелява — тя преобразява цялата световна автомобилна индустрия. Когато нефтената криза от 1973 г. удря Западния свят, всички автопроизводители се борят. Toyota расте. Нейните малки, икономични автомобили, произведени в елиминирана от загуби система, стават точно това, което пазарът търси.</p>
+
+    <div class="article-callout">
+      <p data-bg="&lt;strong&gt;Ключова мисъл:&lt;/strong&gt; Lean не е инструмент за добри времена. Той е система, изградена &lt;em&gt;специално&lt;/em&gt; за лоши — за ограничени ресурси, за нестабилно търсене, за необходимост от бърза адаптация." data-en="&lt;strong&gt;Key insight:&lt;/strong&gt; Lean is not a tool for good times. It is a system built &lt;em&gt;specifically&lt;/em&gt; for bad ones — for limited resources, volatile demand, and the need for rapid adaptation."><strong>Ключова мисъл:</strong> Lean не е инструмент за добри времена. Той е система, изградена <em>специално</em> за лоши — за ограничени ресурси, за нестабилно търсене, за необходимост от бърза адаптация.</p>
+    </div>
+
+    <h2 data-bg="Примерите не свършват с Toyota" data-en="The Examples Don't End with Toyota">Примерите не свършват с Toyota</h2>
+
+    <h3 data-bg="Wiremold, 1991 — Lean в рецесия" data-en="Wiremold, 1991 — Lean in Recession">Wiremold, 1991 — Lean в рецесия</h3>
+
+    <p data-bg="1991 година. САЩ е в рецесия. Wiremold — производител на кабелни системи — назначава нов изпълнителен директор, Арт Бърн. В момент, когато конкурентите съкращават персонал и свиват производство, Бърн прави нещо контраинтуитивно: въвежда Lean на пълна скорост." data-en="1991. The USA is in recession. Wiremold — a cable management manufacturer — appoints a new CEO, Art Byrne. At a moment when competitors are laying off staff and cutting production, Byrne does something counterintuitive: he introduces Lean at full speed.">1991 година. САЩ е в рецесия. Wiremold — производител на кабелни системи — назначава нов изпълнителен директор, Арт Бърн. В момент, когато конкурентите съкращават персонал и свиват производство, Бърн прави нещо контраинтуитивно: въвежда Lean на пълна скорост.</p>
+
+    <p data-bg="За десет години продажбите се удвояват. Печалбата се утроява. Wiremold не просто оцелява рецесията — компанията излиза от нея с пазарен дял, отнет от конкуренти, заети с оцеляването си." data-en="Over ten years, sales double. Profits triple. Wiremold doesn't just survive the recession — the company comes out of it with market share taken from competitors busy with their own survival.">За десет години продажбите се удвояват. Печалбата се утроява. Wiremold не просто оцелява рецесията — компанията излиза от нея с пазарен дял, отнет от конкуренти, заети с оцеляването си.</p>
+
+    <h3 data-bg="Ford, 2006–2009 — Lean вместо фалит" data-en="Ford, 2006–2009 — Lean Instead of Bankruptcy">Ford, 2006–2009 — Lean вместо фалит</h3>
+
+    <p data-bg="Когато финансовата криза от 2008–2009 г. удари автомобилната индустрия, General Motors и Chrysler поискаха правителствена помощ. Ford не поиска. Ford беше единственият голям американски автопроизводител, оцелял без спасителен пакет от данъкоплатците." data-en="When the 2008–2009 financial crisis hit the automotive industry, General Motors and Chrysler requested government bailouts. Ford did not. Ford was the only major American automaker to survive without a taxpayer-funded rescue package.">Когато финансовата криза от 2008–2009 г. удари автомобилната индустрия, General Motors и Chrysler поискаха правителствена помощ. Ford не поиска. Ford беше единственият голям американски автопроизводител, оцелял без спасителен пакет от данъкоплатците.</p>
+
+    <p data-bg="Причината? От 2006 г. Ford провежда мащабна Lean трансформация под ръководството на Алън Мълали. Преди кризата компанията е изградила достатъчно резерви от ефективност — намалени запаси, оптимизирани процеси, по-гъвкаво производство. Когато кризата дойде, Ford беше готов да я посрещне." data-en="The reason? Since 2006, Ford had been conducting a massive Lean transformation under Alan Mulally. Before the crisis, the company had built sufficient efficiency reserves — reduced inventories, optimised processes, more flexible production. When the crisis came, Ford was ready to meet it.">Причината? От 2006 г. Ford провежда мащабна Lean трансформация под ръководството на Алън Мълали. Преди кризата компанията е изградила достатъчно резерви от ефективност — намалени запаси, оптимизирани процеси, по-гъвкаво производство. Когато кризата дойде, Ford беше готов да я посрещне.</p>
+
+    <h3 data-bg="Пандемията от 2020 г. — познатата история с нов сюжет" data-en="The 2020 Pandemic — A Familiar Story with a New Plot">Пандемията от 2020 г. — познатата история с нов сюжет</h3>
+
+    <p data-bg="Toyota, Danaher, Illinois Tool Works — компаниите с дълбоко вкоренена Lean култура се адаптираха към пандемичните сривове в доставките и търсенето значително по-бързо от конкурентите. Гъвкавите им производствени клетки, обучените им хора и стандартизираните им процеси им позволиха да пренасочват ресурси в рамките на дни, не месеци." data-en="Toyota, Danaher, Illinois Tool Works — companies with deeply embedded Lean culture adapted to pandemic supply and demand disruptions significantly faster than competitors. Their flexible production cells, trained people, and standardised processes allowed them to redirect resources within days, not months.">Toyota, Danaher, Illinois Tool Works — компаниите с дълбоко вкоренена Lean култура се адаптираха към пандемичните сривове в доставките и търсенето значително по-бързо от конкурентите. Гъвкавите им производствени клетки, обучените им хора и стандартизираните им процеси им позволиха да пренасочват ресурси в рамките на дни, не месеци.</p>
+
+    <h2 data-bg="Обратната страна" data-en="The Other Side">Обратната страна</h2>
+
+    <p data-bg="За всяка Toyota има Kodak. Kodak изобретява дигиталната фотография още през 1975 г. — собственият им инженер Стивън Сасон разработва първия цифров фотоапарат в историята. Компанията обаче е толкова дълбоко потопена в традиционния си процес, толкова зависима от приходите от химикали и фотохартия, че не може да се адаптира." data-en="For every Toyota there is a Kodak. Kodak invented digital photography back in 1975 — their own engineer Steve Sasson built the first digital camera in history. But the company was so deeply entrenched in its traditional process, so dependent on revenue from chemicals and photographic paper, that it could not adapt.">За всяка Toyota има Kodak. Kodak изобретява дигиталната фотография още през 1975 г. — собственият им инженер Стивън Сасон разработва първия цифров фотоапарат в историята. Компанията обаче е толкова дълбоко потопена в традиционния си процес, толкова зависима от приходите от химикали и фотохартия, че не може да се адаптира.</p>
+
+    <p data-bg="Резултатът: Kodak подава молба за несъстоятелност през 2012 г. — дванадесет години след като цифровата фотография вече е доминираща технология." data-en="The result: Kodak filed for bankruptcy in 2012 — twelve years after digital photography had already become the dominant technology.">Резултатът: Kodak подава молба за несъстоятелност през 2012 г. — дванадесет години след като цифровата фотография вече е доминираща технология.</p>
+
+    <p data-bg="Проблемът на Kodak не е технологичен. Проблемът е организационен. Компанията не е имала процес на непрекъснато подобрение, навика да поставя под въпрос собствените си предположения, готовността да елиминира остарели процеси. Тоест — нямала е Lean мислене." data-en="Kodak's problem was not technological. It was organisational. The company lacked a process of continuous improvement, the habit of questioning its own assumptions, the willingness to eliminate outdated processes. In other words — it lacked Lean thinking.">Проблемът на Kodak не е технологичен. Проблемът е организационен. Компанията не е имала процес на непрекъснато подобрение, навика да поставя под въпрос собствените си предположения, готовността да елиминира остарели процеси. Тоест — нямала е Lean мислене.</p>
+
+    <div class="article-callout">
+      <p data-bg="&lt;strong&gt;Моделът е ясен:&lt;/strong&gt; Компаниите, изградили системи за непрекъснато подобрение, излизат по-силни от кризи. Компаниите, оптимизирали се само за добри времена, са уязвими." data-en="&lt;strong&gt;The pattern is clear:&lt;/strong&gt; Companies that build systems for continuous improvement emerge stronger from crises. Companies optimised only for good times are vulnerable."><strong>Моделът е ясен:</strong> Компаниите, изградили системи за непрекъснато подобрение, излизат по-силни от кризи. Компаниите, оптимизирали се само за добри времена, са уязвими.</p>
+    </div>
+
+    <h2 data-bg="Въпросът, който има значение" data-en="The Question That Matters">Въпросът, който има значение</h2>
+
+    <p data-bg="Не е въпрос дали ще дойде следващата криза. Въпросът е дали вашата организация ще бъде готова, когато тя дойде." data-en="It is not a question of whether the next crisis will come. The question is whether your organisation will be ready when it does.">Не е въпрос дали ще дойде следващата криза. Въпросът е дали вашата организация ще бъде готова, когато тя дойде.</p>
+
+    <p data-bg="Lean не е застраховка срещу кризи — кризи ще има. Lean е застраховка, която определя как ще излезете от кризата: по-слаби или по-силни. Компаниите, инвестирали в Lean &lt;em&gt;преди&lt;/em&gt; кризата, имат три конкурентни предимства в момент на сриване:" data-en="Lean is not insurance against crises — crises will happen. Lean is the insurance that determines how you come out of the crisis: weaker or stronger. Companies that invested in Lean &lt;em&gt;before&lt;/em&gt; the crisis have three competitive advantages in a moment of collapse:">Lean не е застраховка срещу кризи — кризи ще има. Lean е застраховката, която определя как ще излезете от кризата: по-слаби или по-силни. Компаниите, инвестирали в Lean <em>преди</em> кризата, имат три конкурентни предимства в момент на сриване:</p>
+
+    <ul>
+      <li data-bg="&lt;strong&gt;По-ниска себестойност&lt;/strong&gt; — минимизираните загуби означават повече резерви при свиване на приходите." data-en="&lt;strong&gt;Lower costs&lt;/strong&gt; — minimised waste means more reserves when revenue shrinks."><strong>По-ниска себестойност</strong> — минимизираните загуби означават повече резерви при свиване на приходите.</li>
+      <li data-bg="&lt;strong&gt;По-бърза адаптация&lt;/strong&gt; — стандартизираните и документирани процеси позволяват бързо пренасочване без хаос." data-en="&lt;strong&gt;Faster adaptation&lt;/strong&gt; — standardised and documented processes allow rapid redirection without chaos."><strong>По-бърза адаптация</strong> — стандартизираните и документирани процеси позволяват бързо пренасочване без хаос.</li>
+      <li data-bg="&lt;strong&gt;По-ангажирани хора&lt;/strong&gt; — Lean организациите развиват служители, способни да решават проблеми самостоятелно, а не такива, чакащи заповеди отгоре в момент на несигурност." data-en="&lt;strong&gt;More engaged people&lt;/strong&gt; — Lean organisations develop employees capable of solving problems independently, not ones waiting for orders from above in a moment of uncertainty."><strong>По-ангажирани хора</strong> — Lean организациите развиват служители, способни да решават проблеми самостоятелно, а не такива, чакащи заповеди отгоре в момент на несигурност.</li>
+    </ul>
+
+    <p data-bg="Toyota е разработила TPS в криза. Wiremold е внедрила Lean в рецесия. Ford е трансформирал компанията преди кризата и е оцелял без помощ. Общото между тях не е нито бранш, нито мащаб, нито география. Общото е решението да изградят система за непрекъснато подобрение — и последователността да я поддържат." data-en="Toyota developed TPS in a crisis. Wiremold implemented Lean in a recession. Ford transformed the company before the crisis and survived without a bailout. What they have in common is neither industry, nor scale, nor geography. What they share is the decision to build a system for continuous improvement — and the consistency to maintain it.">Toyota е разработила TPS в криза. Wiremold е внедрила Lean в рецесия. Ford е трансформирал компанията преди кризата и е оцелял без помощ. Общото между тях не е нито бранш, нито мащаб, нито география. Общото е решението да изградят система за непрекъснато подобрение — и последователността да я поддържат.</p>
+
+    <div class="article-callout">
+      <p data-bg="Ако четете това в период на стабилност — идеалният момент да започнете е сега. Ако четете това в период на криза — Lean оцелявания като тези на Toyota и Wiremold показват, че никога не е твърде късно. Разгледайте нашите &lt;a href=&quot;/instrumenti.html&quot;&gt;Lean инструменти&lt;/a&gt; или &lt;a href=&quot;/kursove.html&quot;&gt;курсове&lt;/a&gt;, за да направите първата стъпка." data-en="If you are reading this in a period of stability — the ideal moment to start is now. If you are reading this in a period of crisis — Lean survivals like those of Toyota and Wiremold show it is never too late. Explore our &lt;a href=&quot;/instrumenti.html&quot;&gt;Lean tools&lt;/a&gt; or &lt;a href=&quot;/kursove.html&quot;&gt;courses&lt;/a&gt; to take the first step.">Ако четете това в период на стабилност — идеалният момент да започнете е сега. Ако четете това в период на криза — Lean оцелявания като тези на Toyota и Wiremold показват, че никога не е твърде късно. Разгледайте нашите <a href="/instrumenti.html">Lean инструменти</a> или <a href="/kursove.html">курсове</a>, за да направите първата стъпка.</p>
+    </div>
+
+  </article>
+
+  <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
+    <a href="/blog/" class="back-link" data-bg="← Обратно към Блога" data-en="← Back to Blog">← Обратно към Блога</a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a href="/" class="footer-logo">Lean<span>University</span></a>
+        <div style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:0.4rem;" data-bg="Образователна платформа за Lean методология" data-en="Educational platform for Lean methodology">Образователна платформа за Lean методология</div>
+      </div>
+      <div class="footer-links">
+        <a href="/lean-principi.html" data-bg="Принципи" data-en="Principles">Принципи</a>
+        <a href="/muda-8-vida-zagubi.html" data-bg="Загуби" data-en="Waste">Загуби</a>
+        <a href="/instrumenti.html" data-bg="Инструменти" data-en="Tools">Инструменти</a>
+        <a href="/simulator.html" data-bg="Симулатор" data-en="Simulator">Симулатор</a>
+        <a href="/kursove.html" data-bg="Курсове" data-en="Courses">Курсове</a>
+        <a href="/blog/" data-bg="Блог" data-en="Blog">Блог</a>
+        <a href="/publikatsii/" data-bg="Публикации" data-en="Publications">Публикации</a>
+        <a href="/#contact" data-bg="Контакт" data-en="Contact">Контакт</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy" data-bg="© 2026 LeanUniversity — Всички права запазени" data-en="© 2026 LeanUniversity — All rights reserved">© 2026 LeanUniversity — Всички права запазени</div>
+      <div class="footer-legal">
+        <a href="/privacy-policy.html" data-bg="Поверителност" data-en="Privacy Policy">Поверителност</a>
+        <a href="/terms.html" data-bg="Условия" data-en="Terms">Условия</a>
+        <a href="/impressum.html" data-bg="Impressum" data-en="Impressum">Impressum</a>
+        <a href="https://www.linkedin.com/company/145216343/" target="_blank" rel="noopener" class="footer-social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      </div>
+      <div class="footer-copy" data-bg="Lean образование България" data-en="Lean education Bulgaria">Lean образование България</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function loadGA(){if(document.getElementById('ga-script'))return;var s=document.createElement('script');s.id='ga-script';s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-TTTLSPYZEF';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config','G-TTTLSPYZEF');}
+if(localStorage.getItem('cookieConsent')==='accepted')loadGA();
+if(localStorage.getItem('cookieConsent'))document.getElementById('cookie-banner').style.display='none';
+function cookieAccept(){localStorage.setItem('cookieConsent','accepted');document.getElementById('cookie-banner').style.display='none';loadGA();}
+function cookieDecline(){localStorage.setItem('cookieConsent','declined');document.getElementById('cookie-banner').style.display='none';}
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-nav').classList.toggle('open');}
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobile-nav').classList.remove('open');}
+function toggleDropdown(btn){btn.closest('.nav-dropdown').classList.toggle('open');}
+document.addEventListener('click',function(e){if(!e.target.closest('.nav-dropdown'))document.querySelectorAll('.nav-dropdown').forEach(d=>d.classList.remove('open'));});
+function setLang(lang){['bg','en'].forEach(l=>document.getElementById('btn-'+l).classList.remove('active'));document.getElementById('btn-'+lang).classList.add('active');document.documentElement.lang=lang;localStorage.setItem('lang',lang);document.querySelectorAll('[data-bg]').forEach(function(el){el.innerHTML=lang==='en'?el.dataset.en:el.dataset.bg;});}
+const savedLang=localStorage.getItem('lang')||'bg';
+if(savedLang!=='bg')setLang(savedLang);
+</script>
+</body>
+</html>
