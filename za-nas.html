@@ -57,8 +57,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,46,0.9
 .cookie-actions{display:flex;gap:0.8rem;flex-shrink:0;}
 .btn-cookie-accept{background:var(--gold);color:var(--navy);border:none;padding:0.6rem 1.5rem;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
 .btn-cookie-decline{background:none;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.3);padding:0.6rem 1.5rem;font-size:0.85rem;cursor:pointer;font-family:'Source Sans 3',sans-serif;border-radius:3px;}
-.page-hero{padding-top:64px;background:linear-gradient(135deg,#0b1a2e 0%,#1a3a5c 60%,#0d2137 100%);padding-bottom:5rem;text-align:center;}
-.page-hero-inner{padding-top:4rem;max-width:760px;margin:0 auto;padding-left:2rem;padding-right:2rem;}
+.page-hero{padding-top:64px;background:#0b1a2e;padding-bottom:5rem;text-align:center;position:relative;overflow:hidden;}
+.page-hero-bg{position:absolute;inset:0;width:100%;height:100%;opacity:0.18;pointer-events:none;}
+.page-hero-inner{padding-top:4rem;max-width:760px;margin:0 auto;padding-left:2rem;padding-right:2rem;position:relative;z-index:1;}
 .breadcrumb{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;justify-content:center;}
 .breadcrumb a{color:rgba(255,255,255,0.5);text-decoration:none;}
 .breadcrumb a:hover{color:var(--gold);}
@@ -161,6 +162,70 @@ footer{background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 2r
 
 <!-- HERO -->
 <div class="page-hero">
+  <!-- SVG flow background -->
+  <svg class="page-hero-bg" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- horizontal spine -->
+    <line x1="60" y1="210" x2="1380" y2="210" stroke="#c9a84c" stroke-width="1.5"/>
+    <!-- arrows along spine -->
+    <polygon points="280,204 295,210 280,216" fill="#c9a84c"/>
+    <polygon points="520,204 535,210 520,216" fill="#c9a84c"/>
+    <polygon points="760,204 775,210 760,216" fill="#c9a84c"/>
+    <polygon points="1000,204 1015,210 1000,216" fill="#c9a84c"/>
+    <polygon points="1240,204 1255,210 1240,216" fill="#c9a84c"/>
+    <!-- process nodes -->
+    <!-- Node 1 -->
+    <rect x="60" y="178" width="88" height="64" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="104" y="206" fill="#c9a84c" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">АНАЛИЗ</text>
+    <text x="104" y="220" fill="rgba(255,255,255,0.4)" font-size="8.5" text-anchor="middle" font-family="sans-serif">Виж загубите</text>
+    <!-- Node 2 -->
+    <rect x="300" y="178" width="88" height="64" rx="6" fill="none" stroke="#4dd0e1" stroke-width="1.5"/>
+    <text x="344" y="206" fill="#4dd0e1" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">ПЛАН</text>
+    <text x="344" y="220" fill="rgba(255,255,255,0.4)" font-size="8.5" text-anchor="middle" font-family="sans-serif">Намери решение</text>
+    <!-- Node 3 -->
+    <rect x="540" y="178" width="88" height="64" rx="6" fill="none" stroke="#4dd0e1" stroke-width="1.5"/>
+    <text x="584" y="206" fill="#4dd0e1" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">ДЕЙСТВИЕ</text>
+    <text x="584" y="220" fill="rgba(255,255,255,0.4)" font-size="8.5" text-anchor="middle" font-family="sans-serif">Внедри малко</text>
+    <!-- Node 4 -->
+    <rect x="780" y="178" width="88" height="64" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="824" y="206" fill="#c9a84c" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">ПРОВЕРКА</text>
+    <text x="824" y="220" fill="rgba(255,255,255,0.4)" font-size="8.5" text-anchor="middle" font-family="sans-serif">Измери ефекта</text>
+    <!-- Node 5 -->
+    <rect x="1020" y="178" width="88" height="64" rx="6" fill="none" stroke="#4dd0e1" stroke-width="1.5"/>
+    <text x="1064" y="206" fill="#4dd0e1" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">СТАНДАРТ</text>
+    <text x="1064" y="220" fill="rgba(255,255,255,0.4)" font-size="8.5" text-anchor="middle" font-family="sans-serif">Закрепи успеха</text>
+    <!-- Node 6 — loop back -->
+    <rect x="1260" y="178" width="88" height="64" rx="6" fill="none" stroke="#c9a84c" stroke-width="1.5"/>
+    <text x="1304" y="206" fill="#c9a84c" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">ПОДОБРИ</text>
+    <text x="1304" y="220" fill="rgba(255,255,255,0.4)" font-size="8.5" text-anchor="middle" font-family="sans-serif">Повтори цикъла</text>
+    <!-- loop back arc -->
+    <path d="M1348 178 Q1400 90 720 90 Q40 90 60 178" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="6,4"/>
+    <polygon points="60,175 67,185 73,175" fill="#c9a84c"/>
+    <!-- data boxes above nodes -->
+    <rect x="104" y="110" width="56" height="22" rx="3" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+    <text x="132" y="125" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">CT: 1 ден</text>
+    <rect x="344" y="110" width="56" height="22" rx="3" fill="rgba(77,208,225,0.1)" stroke="rgba(77,208,225,0.25)" stroke-width="1"/>
+    <text x="372" y="125" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">CT: 2 дни</text>
+    <rect x="584" y="110" width="56" height="22" rx="3" fill="rgba(77,208,225,0.1)" stroke="rgba(77,208,225,0.25)" stroke-width="1"/>
+    <text x="612" y="125" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">CT: 1 ден</text>
+    <rect x="824" y="110" width="56" height="22" rx="3" fill="rgba(201,168,76,0.12)" stroke="rgba(201,168,76,0.3)" stroke-width="1"/>
+    <text x="852" y="125" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">CT: 1 ден</text>
+    <rect x="1064" y="110" width="56" height="22" rx="3" fill="rgba(77,208,225,0.1)" stroke="rgba(77,208,225,0.25)" stroke-width="1"/>
+    <text x="1092" y="125" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle" font-family="sans-serif">CT: 3 дни</text>
+    <!-- bottom timeline -->
+    <line x1="60" y1="320" x2="1380" y2="320" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    <rect x="60" y="310" width="88" height="20" rx="2" fill="rgba(201,168,76,0.08)"/>
+    <text x="104" y="324" fill="rgba(255,255,255,0.2)" font-size="8" text-anchor="middle" font-family="sans-serif">VA: 1д</text>
+    <rect x="300" y="310" width="88" height="20" rx="2" fill="rgba(77,208,225,0.06)"/>
+    <text x="344" y="324" fill="rgba(255,255,255,0.2)" font-size="8" text-anchor="middle" font-family="sans-serif">VA: 2д</text>
+    <rect x="540" y="310" width="88" height="20" rx="2" fill="rgba(77,208,225,0.06)"/>
+    <text x="584" y="324" fill="rgba(255,255,255,0.2)" font-size="8" text-anchor="middle" font-family="sans-serif">VA: 1д</text>
+    <rect x="780" y="310" width="88" height="20" rx="2" fill="rgba(201,168,76,0.08)"/>
+    <text x="824" y="324" fill="rgba(255,255,255,0.2)" font-size="8" text-anchor="middle" font-family="sans-serif">VA: 1д</text>
+    <rect x="1020" y="310" width="88" height="20" rx="2" fill="rgba(77,208,225,0.06)"/>
+    <text x="1064" y="324" fill="rgba(255,255,255,0.2)" font-size="8" text-anchor="middle" font-family="sans-serif">VA: 3д</text>
+    <rect x="1260" y="310" width="88" height="20" rx="2" fill="rgba(201,168,76,0.08)"/>
+    <text x="1304" y="324" fill="rgba(255,255,255,0.2)" font-size="8" text-anchor="middle" font-family="sans-serif">∞</text>
+  </svg>
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="/">Начало</a><span>›</span><span data-bg="За нас" data-en="About Us">За нас</span></div>
     <h1 data-bg="Не ни води печалбата.<br>Води ни ефективността." data-en="We're not driven by profit.<br>We're driven by efficiency.">Не ни води печалбата.<br>Води ни ефективността.</h1>
