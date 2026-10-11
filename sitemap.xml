@@ -42,12 +42,7 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url>
-    <loc>https://leanhab.eu/terms.html</loc>
-    <lastmod>2026-09-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
+
   <url>
     <loc>https://leanhab.eu/impressum.html</loc>
     <lastmod>2026-09-22</lastmod>
