@@ -196,6 +196,15 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
 .mobile-nav a { color:rgba(255,255,255,0.8);text-decoration:none;font-size:1rem;font-weight:500;padding:0.9rem 0;border-bottom:1px solid rgba(255,255,255,0.1);display:block; }
 .mobile-nav a:hover { color:var(--gold); }
 .mobile-nav.open { display:flex; }
+/* MANIFESTO */
+.manifesto{background:#0d0d0d;padding:5rem 0;text-align:center;position:relative;overflow:hidden;}
+.manifesto::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,0.07) 0%,transparent 70%);pointer-events:none;}
+.manifesto-quote{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:700;color:var(--white);line-height:1.2;max-width:820px;margin:0 auto 1.5rem;position:relative;}
+.manifesto-quote em{color:var(--gold);font-style:normal;}
+.manifesto-sub{font-size:1rem;color:rgba(255,255,255,0.45);max-width:520px;margin:0 auto 2rem;line-height:1.7;font-weight:300;}
+.manifesto-attr{font-size:0.78rem;color:rgba(255,255,255,0.25);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2.5rem;}
+.manifesto-link{display:inline-flex;align-items:center;gap:0.5rem;color:var(--gold);font-size:0.88rem;font-weight:700;text-decoration:none;border:1px solid rgba(201,168,76,0.35);padding:0.6rem 1.4rem;border-radius:3px;transition:background 0.2s,border-color 0.2s;}
+.manifesto-link:hover{background:rgba(201,168,76,0.1);border-color:var(--gold);}
 /* TOOLS HIGHLIGHT */
 .tools-highlight { background:var(--navy);padding:4rem 0; }
 .tools-highlight .section-label { color:var(--gold); }
@@ -315,6 +324,16 @@ footer { background:var(--navy);border-top:3px solid var(--gold);padding:3rem 0 
       <div class="hero-stat"><div class="hero-stat-icon">🗑️</div><div class="hero-stat-val">8</div><div class="hero-stat-lbl" data-bg="Вида загуби" data-en="Types of waste">Вида загуби</div></div>
       <div class="hero-stat"><div class="hero-stat-icon">🛠️</div><div class="hero-stat-val">9+</div><div class="hero-stat-lbl" data-bg="Инструмента" data-en="Tools">Инструмента</div></div>
     </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="container">
+    <p class="manifesto-quote" data-bg="Хората <em>никога</em> не са виновни." data-en="People are <em>never</em> to blame.">Хората <em>никога</em> не са виновни.</p>
+    <p class="manifesto-sub" data-bg="94% от проблемите в една организация идват от системата. 6% — от хората. Lean е дисциплината, която поправя системата." data-en="94% of problems in an organisation come from the system. 6% from people. Lean is the discipline that fixes the system.">94% от проблемите в една организация идват от системата. 6% — от хората. Lean е дисциплината, която поправя системата.</p>
+    <p class="manifesto-attr">W. Edwards Deming</p>
+    <a href="/blog/nummi-fremont-1984.html" class="manifesto-link" data-bg="Историята, която го доказа →" data-en="The story that proved it →">Историята, която го доказа →</a>
   </div>
 </section>
 
